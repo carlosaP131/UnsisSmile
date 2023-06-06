@@ -16,7 +16,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 /**
@@ -68,11 +67,11 @@ public class Alumnos implements Serializable {
     private String emailAlumno;
     @Column(name = "estatus")
     private Boolean estatus;
-    @OneToMany(mappedBy = "fkIdAlumno")
-    private Collection<PacienteAlumno> pacienteAlumnoCollection;
+    //@OneToMany(mappedBy = "fkIdAlumno")
+    //private Collection<PacienteAlumno> pacienteAlumnoCollection;
     @JoinColumn(name = "fk_id_semestre_grupo", referencedColumnName = "id_semestre_grupo")
-    @ManyToOne
-    private SemestreGrupo fkIdSemestreGrupo;
+    //@ManyToOne
+    //private SemestreGrupo fkIdSemestreGrupo;
     @JoinColumn(name = "f_id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false)
     private Usuarios fIdUsuario;
@@ -176,8 +175,8 @@ public class Alumnos implements Serializable {
     public void setEstatus(Boolean estatus) {
         this.estatus = estatus;
     }
-
-    @XmlTransient
+/*
+   //@XmlTransient
     public Collection<PacienteAlumno> getPacienteAlumnoCollection() {
         return pacienteAlumnoCollection;
     }
@@ -193,7 +192,7 @@ public class Alumnos implements Serializable {
     public void setFkIdSemestreGrupo(SemestreGrupo fkIdSemestreGrupo) {
         this.fkIdSemestreGrupo = fkIdSemestreGrupo;
     }
-
+*/
     public Usuarios getFIdUsuario() {
         return fIdUsuario;
     }
