@@ -2,23 +2,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.unsis.odonto.edu.entity;
+package UnsisSmile.odonto.edu.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Collection;
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+import java.util.Date;
+
+import jakarta.persistence.Basic;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 /**
  *
@@ -26,19 +28,19 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "signos_vitales")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "SignosVitales.findAll", query = "SELECT s FROM SignosVitales s"),
-    @NamedQuery(name = "SignosVitales.findByIdSignosVitales", query = "SELECT s FROM SignosVitales s WHERE s.idSignosVitales = :idSignosVitales"),
-    @NamedQuery(name = "SignosVitales.findByPeso", query = "SELECT s FROM SignosVitales s WHERE s.peso = :peso"),
-    @NamedQuery(name = "SignosVitales.findByEstatura", query = "SELECT s FROM SignosVitales s WHERE s.estatura = :estatura"),
-    @NamedQuery(name = "SignosVitales.findByTemperatura", query = "SELECT s FROM SignosVitales s WHERE s.temperatura = :temperatura"),
-    @NamedQuery(name = "SignosVitales.findByFrecuenciaCardiaca", query = "SELECT s FROM SignosVitales s WHERE s.frecuenciaCardiaca = :frecuenciaCardiaca"),
-    @NamedQuery(name = "SignosVitales.findByFrecuenciaRespiratoria", query = "SELECT s FROM SignosVitales s WHERE s.frecuenciaRespiratoria = :frecuenciaRespiratoria"),
-    @NamedQuery(name = "SignosVitales.findByPesionArterial", query = "SELECT s FROM SignosVitales s WHERE s.pesionArterial = :pesionArterial"),
-    @NamedQuery(name = "SignosVitales.findBySaturacionOxigeno", query = "SELECT s FROM SignosVitales s WHERE s.saturacionOxigeno = :saturacionOxigeno"),
-    @NamedQuery(name = "SignosVitales.findByGlucosa", query = "SELECT s FROM SignosVitales s WHERE s.glucosa = :glucosa"),
-    @NamedQuery(name = "SignosVitales.findByPulso", query = "SELECT s FROM SignosVitales s WHERE s.pulso = :pulso")})
+//@XmlRootElement
+//@NamedQueries({
+//    @NamedQuery(name = "SignosVitales.findAll", query = "SELECT s FROM SignosVitales s"),
+//    @NamedQuery(name = "SignosVitales.findByIdSignosVitales", query = "SELECT s FROM SignosVitales s WHERE s.idSignosVitales = :idSignosVitales"),
+//    @NamedQuery(name = "SignosVitales.findByPeso", query = "SELECT s FROM SignosVitales s WHERE s.peso = :peso"),
+//    @NamedQuery(name = "SignosVitales.findByEstatura", query = "SELECT s FROM SignosVitales s WHERE s.estatura = :estatura"),
+//    @NamedQuery(name = "SignosVitales.findByTemperatura", query = "SELECT s FROM SignosVitales s WHERE s.temperatura = :temperatura"),
+//    @NamedQuery(name = "SignosVitales.findByFrecuenciaCardiaca", query = "SELECT s FROM SignosVitales s WHERE s.frecuenciaCardiaca = :frecuenciaCardiaca"),
+//    @NamedQuery(name = "SignosVitales.findByFrecuenciaRespiratoria", query = "SELECT s FROM SignosVitales s WHERE s.frecuenciaRespiratoria = :frecuenciaRespiratoria"),
+//    @NamedQuery(name = "SignosVitales.findByPesionArterial", query = "SELECT s FROM SignosVitales s WHERE s.pesionArterial = :pesionArterial"),
+//    @NamedQuery(name = "SignosVitales.findBySaturacionOxigeno", query = "SELECT s FROM SignosVitales s WHERE s.saturacionOxigeno = :saturacionOxigeno"),
+//    @NamedQuery(name = "SignosVitales.findByGlucosa", query = "SELECT s FROM SignosVitales s WHERE s.glucosa = :glucosa"),
+//    @NamedQuery(name = "SignosVitales.findByPulso", query = "SELECT s FROM SignosVitales s WHERE s.pulso = :pulso")})
 public class SignosVitales implements Serializable {
 
     private static final long serialVersionUID = 1L;
