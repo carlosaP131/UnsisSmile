@@ -6,6 +6,7 @@ package UnsisSmile.odonto.edu.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.Date;
 
 import jakarta.persistence.Basic;
@@ -15,7 +16,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 /**
@@ -125,8 +128,8 @@ public class AntecedentesPersonalesPatologicos implements Serializable {
     @Lob
     @Column(name = "observaciones")
     private String observaciones;
-    @OneToMany(mappedBy = "fkIdAntecedentesPersonalesPatologicos")
-    private Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection;
+//    @OneToMany(mappedBy = "fkIdAntecedentesPersonalesPatologicos")
+//    private Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection;
 
     public AntecedentesPersonalesPatologicos() {
     }
@@ -383,14 +386,14 @@ public class AntecedentesPersonalesPatologicos implements Serializable {
         this.observaciones = observaciones;
     }
 
-    @XmlTransient
-    public Collection<HistoriaClinicaGeneral> getHistoriaClinicaGeneralCollection() {
-        return historiaClinicaGeneralCollection;
-    }
-
-    public void setHistoriaClinicaGeneralCollection(Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection) {
-        this.historiaClinicaGeneralCollection = historiaClinicaGeneralCollection;
-    }
+//    @XmlTransient
+//    public Collection<HistoriaClinicaGeneral> getHistoriaClinicaGeneralCollection() {
+//        return historiaClinicaGeneralCollection;
+//    }
+//
+//    public void setHistoriaClinicaGeneralCollection(Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection) {
+//        this.historiaClinicaGeneralCollection = historiaClinicaGeneralCollection;
+//    }
 
     @Override
     public int hashCode() {
