@@ -2,27 +2,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.unsis.odonto.edu.entity;
+package UnsisSmile.odonto.edu.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Collection;
 import java.util.Date;
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+
+import jakarta.persistence.Basic;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 /**
  *
@@ -30,25 +25,25 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "paciente")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Paciente.findAll", query = "SELECT p FROM Paciente p"),
-    @NamedQuery(name = "Paciente.findByIdPaciente", query = "SELECT p FROM Paciente p WHERE p.idPaciente = :idPaciente"),
-    @NamedQuery(name = "Paciente.findByNombre1", query = "SELECT p FROM Paciente p WHERE p.nombre1 = :nombre1"),
-    @NamedQuery(name = "Paciente.findByNombre2", query = "SELECT p FROM Paciente p WHERE p.nombre2 = :nombre2"),
-    @NamedQuery(name = "Paciente.findByApellido1", query = "SELECT p FROM Paciente p WHERE p.apellido1 = :apellido1"),
-    @NamedQuery(name = "Paciente.findByApellido2", query = "SELECT p FROM Paciente p WHERE p.apellido2 = :apellido2"),
-    @NamedQuery(name = "Paciente.findBySexo", query = "SELECT p FROM Paciente p WHERE p.sexo = :sexo"),
-    @NamedQuery(name = "Paciente.findByGrupoEtnico", query = "SELECT p FROM Paciente p WHERE p.grupoEtnico = :grupoEtnico"),
-    @NamedQuery(name = "Paciente.findByOcupacion", query = "SELECT p FROM Paciente p WHERE p.ocupacion = :ocupacion"),
-    @NamedQuery(name = "Paciente.findByFechaNacimiento", query = "SELECT p FROM Paciente p WHERE p.fechaNacimiento = :fechaNacimiento"),
-    @NamedQuery(name = "Paciente.findByDomicilio", query = "SELECT p FROM Paciente p WHERE p.domicilio = :domicilio"),
-    @NamedQuery(name = "Paciente.findByEstadoCivil", query = "SELECT p FROM Paciente p WHERE p.estadoCivil = :estadoCivil"),
-    @NamedQuery(name = "Paciente.findByReligion", query = "SELECT p FROM Paciente p WHERE p.religion = :religion"),
-    @NamedQuery(name = "Paciente.findByFechaIngreso", query = "SELECT p FROM Paciente p WHERE p.fechaIngreso = :fechaIngreso"),
-    @NamedQuery(name = "Paciente.findByNacionalidad", query = "SELECT p FROM Paciente p WHERE p.nacionalidad = :nacionalidad"),
-    @NamedQuery(name = "Paciente.findByLocalidad", query = "SELECT p FROM Paciente p WHERE p.localidad = :localidad"),
-    @NamedQuery(name = "Paciente.findByEstatus", query = "SELECT p FROM Paciente p WHERE p.estatus = :estatus")})
+//@XmlRootElement
+//@NamedQueries({
+//    @NamedQuery(name = "Paciente.findAll", query = "SELECT p FROM Paciente p"),
+//    @NamedQuery(name = "Paciente.findByIdPaciente", query = "SELECT p FROM Paciente p WHERE p.idPaciente = :idPaciente"),
+//    @NamedQuery(name = "Paciente.findByNombre1", query = "SELECT p FROM Paciente p WHERE p.nombre1 = :nombre1"),
+//    @NamedQuery(name = "Paciente.findByNombre2", query = "SELECT p FROM Paciente p WHERE p.nombre2 = :nombre2"),
+//    @NamedQuery(name = "Paciente.findByApellido1", query = "SELECT p FROM Paciente p WHERE p.apellido1 = :apellido1"),
+//    @NamedQuery(name = "Paciente.findByApellido2", query = "SELECT p FROM Paciente p WHERE p.apellido2 = :apellido2"),
+//    @NamedQuery(name = "Paciente.findBySexo", query = "SELECT p FROM Paciente p WHERE p.sexo = :sexo"),
+//    @NamedQuery(name = "Paciente.findByGrupoEtnico", query = "SELECT p FROM Paciente p WHERE p.grupoEtnico = :grupoEtnico"),
+//    @NamedQuery(name = "Paciente.findByOcupacion", query = "SELECT p FROM Paciente p WHERE p.ocupacion = :ocupacion"),
+//    @NamedQuery(name = "Paciente.findByFechaNacimiento", query = "SELECT p FROM Paciente p WHERE p.fechaNacimiento = :fechaNacimiento"),
+//    @NamedQuery(name = "Paciente.findByDomicilio", query = "SELECT p FROM Paciente p WHERE p.domicilio = :domicilio"),
+//    @NamedQuery(name = "Paciente.findByEstadoCivil", query = "SELECT p FROM Paciente p WHERE p.estadoCivil = :estadoCivil"),
+//    @NamedQuery(name = "Paciente.findByReligion", query = "SELECT p FROM Paciente p WHERE p.religion = :religion"),
+//    @NamedQuery(name = "Paciente.findByFechaIngreso", query = "SELECT p FROM Paciente p WHERE p.fechaIngreso = :fechaIngreso"),
+//    @NamedQuery(name = "Paciente.findByNacionalidad", query = "SELECT p FROM Paciente p WHERE p.nacionalidad = :nacionalidad"),
+//    @NamedQuery(name = "Paciente.findByLocalidad", query = "SELECT p FROM Paciente p WHERE p.localidad = :localidad"),
+//    @NamedQuery(name = "Paciente.findByEstatus", query = "SELECT p FROM Paciente p WHERE p.estatus = :estatus")})
 public class Paciente implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -90,14 +85,14 @@ public class Paciente implements Serializable {
     private String localidad;
     @Column(name = "estatus")
     private Boolean estatus;
-    @OneToMany(mappedBy = "fkIdPaciente")
-    private Collection<PacienteAlumno> pacienteAlumnoCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkIdPaciente")
-    private Collection<Consulta> consultaCollection;
-    @OneToMany(mappedBy = "fkIdPaciente")
-    private Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection;
-    @OneToMany(mappedBy = "fkIdPaciente")
-    private Collection<Tutor> tutorCollection;
+//    @OneToMany(mappedBy = "fkIdPaciente")
+//    private Collection<PacienteAlumno> pacienteAlumnoCollection;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkIdPaciente")
+//    private Collection<Consulta> consultaCollection;
+//    @OneToMany(mappedBy = "fkIdPaciente")
+//    private Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection;
+//    @OneToMany(mappedBy = "fkIdPaciente")
+//    private Collection<Tutor> tutorCollection;
 
     public Paciente() {
     }
@@ -234,41 +229,41 @@ public class Paciente implements Serializable {
         this.estatus = estatus;
     }
 
-    @XmlTransient
-    public Collection<PacienteAlumno> getPacienteAlumnoCollection() {
-        return pacienteAlumnoCollection;
-    }
+//    @XmlTransient
+//    public Collection<PacienteAlumno> getPacienteAlumnoCollection() {
+//        return pacienteAlumnoCollection;
+//    }
 
-    public void setPacienteAlumnoCollection(Collection<PacienteAlumno> pacienteAlumnoCollection) {
-        this.pacienteAlumnoCollection = pacienteAlumnoCollection;
-    }
+//    public void setPacienteAlumnoCollection(Collection<PacienteAlumno> pacienteAlumnoCollection) {
+//        this.pacienteAlumnoCollection = pacienteAlumnoCollection;
+//    }
 
-    @XmlTransient
-    public Collection<Consulta> getConsultaCollection() {
-        return consultaCollection;
-    }
+//    @XmlTransient
+//    public Collection<Consulta> getConsultaCollection() {
+//        return consultaCollection;
+//    }
 
-    public void setConsultaCollection(Collection<Consulta> consultaCollection) {
-        this.consultaCollection = consultaCollection;
-    }
+//    public void setConsultaCollection(Collection<Consulta> consultaCollection) {
+//        this.consultaCollection = consultaCollection;
+//    }
 
-    @XmlTransient
-    public Collection<HistoriaClinicaGeneral> getHistoriaClinicaGeneralCollection() {
-        return historiaClinicaGeneralCollection;
-    }
+//    @XmlTransient
+//    public Collection<HistoriaClinicaGeneral> getHistoriaClinicaGeneralCollection() {
+//        return historiaClinicaGeneralCollection;
+//    }
 
-    public void setHistoriaClinicaGeneralCollection(Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection) {
-        this.historiaClinicaGeneralCollection = historiaClinicaGeneralCollection;
-    }
+//    public void setHistoriaClinicaGeneralCollection(Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection) {
+//        this.historiaClinicaGeneralCollection = historiaClinicaGeneralCollection;
+//    }
 
-    @XmlTransient
-    public Collection<Tutor> getTutorCollection() {
-        return tutorCollection;
-    }
+//    @XmlTransient
+//    public Collection<Tutor> getTutorCollection() {
+//        return tutorCollection;
+//    }
 
-    public void setTutorCollection(Collection<Tutor> tutorCollection) {
-        this.tutorCollection = tutorCollection;
-    }
+//    public void setTutorCollection(Collection<Tutor> tutorCollection) {
+//        this.tutorCollection = tutorCollection;
+//    }
 
     @Override
     public int hashCode() {
