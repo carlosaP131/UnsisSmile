@@ -6,6 +6,7 @@ package UnsisSmile.odonto.edu.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.Date;
 
 import jakarta.persistence.Basic;
@@ -16,6 +17,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 /**
@@ -174,14 +176,14 @@ public class AntecedentesPersonalesNoPatologicos implements Serializable {
         this.materialDeVivienda = materialDeVivienda;
     }
 
-    @XmlTransient
-    public Collection<HistoriaClinicaGeneral> getHistoriaClinicaGeneralCollection() {
-        return historiaClinicaGeneralCollection;
-    }
+//    @XmlTransient
+//    public Collection<HistoriaClinicaGeneral> getHistoriaClinicaGeneralCollection() {
+//        return historiaClinicaGeneralCollection;
+//    }
 
-    public void setHistoriaClinicaGeneralCollection(Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection) {
-        this.historiaClinicaGeneralCollection = historiaClinicaGeneralCollection;
-    }
+//    public void setHistoriaClinicaGeneralCollection(Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection) {
+//        this.historiaClinicaGeneralCollection = historiaClinicaGeneralCollection;
+//    }
 
     @Override
     public int hashCode() {

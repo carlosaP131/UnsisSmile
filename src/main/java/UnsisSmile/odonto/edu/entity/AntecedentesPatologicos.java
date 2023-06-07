@@ -99,7 +99,7 @@ public class AntecedentesPatologicos implements Serializable {
     private Boolean ulcerasdelEstómago;
     @Column(name = "Fiebre_Reum\u00e1tica")
     private Boolean fiebreReumática;
-    @Lob
+    //@Lob
     @Column(name = "otras")
     private String otras;
 
