@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-package UnsisSmile.odonto.edu.entity;
 
-import java.io.Serializable;
-
-
-=======
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -14,10 +8,6 @@ package UnsisSmile.odonto.edu.entity;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
-<<<<<<< HEAD
-=======
->>>>>>> oscarBackend
->>>>>>> BackEnd
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
@@ -27,14 +17,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
+
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
-=======
->>>>>>> oscarBackend
->>>>>>> BackEnd
 import jakarta.persistence.Table;
 
 /**
@@ -44,21 +29,15 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "catedratico_grupo")
 //@XmlRootElement
-<<<<<<< HEAD
+
 //@NamedQueries({
 //    @NamedQuery(name = "CatedraticoGrupo.findAll", query = "SELECT c FROM CatedraticoGrupo c"),
 //    @NamedQuery(name = "CatedraticoGrupo.findByIdCatedraticoSemestreGrupo", query = "SELECT c FROM CatedraticoGrupo c WHERE c.idCatedraticoSemestreGrupo = :idCatedraticoSemestreGrupo")})
-=======
-<<<<<<< HEAD
-@NamedQueries({
-    @NamedQuery(name = "CatedraticoGrupo.findAll", query = "SELECT c FROM CatedraticoGrupo c"),
-    @NamedQuery(name = "CatedraticoGrupo.findByIdCatedraticoSemestreGrupo", query = "SELECT c FROM CatedraticoGrupo c WHERE c.idCatedraticoSemestreGrupo = :idCatedraticoSemestreGrupo")})
-=======
+
 //@NamedQueries({
 //    @NamedQuery(name = "CatedraticoGrupo.findAll", query = "SELECT c FROM CatedraticoGrupo c"),
 //    @NamedQuery(name = "CatedraticoGrupo.findByIdCatedraticoSemestreGrupo", query = "SELECT c FROM CatedraticoGrupo c WHERE c.idCatedraticoSemestreGrupo = :idCatedraticoSemestreGrupo")})
->>>>>>> oscarBackend
->>>>>>> BackEnd
+
 public class CatedraticoGrupo implements Serializable {
 
     private static final long serialVersionUID = 1L;
