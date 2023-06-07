@@ -2,23 +2,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.unsis.odonto.edu.entity;
+package UnsisSmile.odonto.edu.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+import java.time.LocalDate;
+import java.util.Date;
+
+import jakarta.persistence.Basic;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 /**
  *
@@ -26,10 +25,10 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "examen_clinico")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "ExamenClinico.findAll", query = "SELECT e FROM ExamenClinico e"),
-    @NamedQuery(name = "ExamenClinico.findByIdExamenClinico", query = "SELECT e FROM ExamenClinico e WHERE e.idExamenClinico = :idExamenClinico")})
+//@XmlRootElement
+//@NamedQueries({
+  //  @NamedQuery(name = "ExamenClinico.findAll", query = "SELECT e FROM ExamenClinico e"),
+    //@NamedQuery(name = "ExamenClinico.findByIdExamenClinico", query = "SELECT e FROM ExamenClinico e WHERE e.idExamenClinico = :idExamenClinico")})
 public class ExamenClinico implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -74,8 +73,8 @@ public class ExamenClinico implements Serializable {
     @Lob
     @Column(name = "Otras_se\u00f1as_particulares")
     private String otrasseñasparticulares;
-    @OneToMany(mappedBy = "fkIdExamenClinico")
-    private Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection;
+  //  @OneToMany(mappedBy = "fkIdExamenClinico")
+    //private Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection;
 
     public ExamenClinico() {
     }
@@ -188,14 +187,14 @@ public class ExamenClinico implements Serializable {
         this.otrasseñasparticulares = otrasseñasparticulares;
     }
 
-    @XmlTransient
-    public Collection<HistoriaClinicaGeneral> getHistoriaClinicaGeneralCollection() {
-        return historiaClinicaGeneralCollection;
-    }
+//    @XmlTransient
+//    public Collection<HistoriaClinicaGeneral> getHistoriaClinicaGeneralCollection() {
+//        return historiaClinicaGeneralCollection;
+    //}
 
-    public void setHistoriaClinicaGeneralCollection(Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection) {
-        this.historiaClinicaGeneralCollection = historiaClinicaGeneralCollection;
-    }
+//    public void setHistoriaClinicaGeneralCollection(Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection) {
+//        this.historiaClinicaGeneralCollection = historiaClinicaGeneralCollection;
+//    }
 
     @Override
     public int hashCode() {
