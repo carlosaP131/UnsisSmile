@@ -6,21 +6,21 @@ package UnsisSmile.odonto.edu.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Collection;
 import java.util.Date;
 
 import jakarta.persistence.Basic;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.criteria.CollectionJoin;
+import jakarta.persistence.criteria.Selection;
+import jakarta.persistence.metamodel.CollectionAttribute;
 
 /**
  *
@@ -68,10 +68,10 @@ public class SignosVitales implements Serializable {
     private Double glucosa;
     @Column(name = "pulso")
     private Double pulso;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkIdSignosVitales")
-    private Collection<Consulta> consultaCollection;
-    @OneToMany(mappedBy = "fkIdSignosVitales")
-    private Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection;
+   // @OneToOne(cascade = CascadeType.ALL, mappedBy = "fkIdSignosVitales")
+  //  private Selection<Consulta> consultaCollection;
+   // @OneToOne(mappedBy = "fkIdSignosVitales")
+  //  private CollectionJoin<HistoriaClinicaGeneral> historiaClinicaGeneralCollection;
 
     public SignosVitales() {
     }
@@ -160,23 +160,23 @@ public class SignosVitales implements Serializable {
         this.pulso = pulso;
     }
 
-    @XmlTransient
-    public Collection<Consulta> getConsultaCollection() {
-        return consultaCollection;
-    }
+//    @XmlTransient
+//    public CollectionAttribute<Consulta> getConsultaCollection() {
+//        return consultaCollection;
+//    }
 
-    public void setConsultaCollection(Collection<Consulta> consultaCollection) {
-        this.consultaCollection = consultaCollection;
-    }
+//    public void setConsultaCollection(CollectionAttribute<Consulta> consultaCollection) {
+//        this.consultaCollection = consultaCollection;
+//    }
 
-    @XmlTransient
-    public Collection<HistoriaClinicaGeneral> getHistoriaClinicaGeneralCollection() {
-        return historiaClinicaGeneralCollection;
-    }
+//    @XmlTransient
+//    public CollectionAttribute<HistoriaClinicaGeneral> getHistoriaClinicaGeneralCollection() {
+//        return historiaClinicaGeneralCollection;
+//    }
 
-    public void setHistoriaClinicaGeneralCollection(Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection) {
-        this.historiaClinicaGeneralCollection = historiaClinicaGeneralCollection;
-    }
+//    public void setHistoriaClinicaGeneralCollection(Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection) {
+//        this.historiaClinicaGeneralCollection = historiaClinicaGeneralCollection;
+//    }
 
     @Override
     public int hashCode() {

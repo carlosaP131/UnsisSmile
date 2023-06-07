@@ -2,43 +2,41 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.unsis.odonto.edu.entity;
+package UnsisSmile.odonto.edu.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
+
+import jakarta.persistence.Basic;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapKeyTemporal;
+import jakarta.persistence.Table;
 
 /**
  *
  * @author froste
  */
-@Entity
-@Table(name = "tutor")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Tutor.findAll", query = "SELECT t FROM Tutor t"),
-    @NamedQuery(name = "Tutor.findByIdTutor", query = "SELECT t FROM Tutor t WHERE t.idTutor = :idTutor"),
-    @NamedQuery(name = "Tutor.findByNombre1", query = "SELECT t FROM Tutor t WHERE t.nombre1 = :nombre1"),
-    @NamedQuery(name = "Tutor.findByNombre2", query = "SELECT t FROM Tutor t WHERE t.nombre2 = :nombre2"),
-    @NamedQuery(name = "Tutor.findByApellido1", query = "SELECT t FROM Tutor t WHERE t.apellido1 = :apellido1"),
-    @NamedQuery(name = "Tutor.findByApellido2", query = "SELECT t FROM Tutor t WHERE t.apellido2 = :apellido2"),
-    @NamedQuery(name = "Tutor.findBySexo", query = "SELECT t FROM Tutor t WHERE t.sexo = :sexo"),
-    @NamedQuery(name = "Tutor.findByFechaNacimiento", query = "SELECT t FROM Tutor t WHERE t.fechaNacimiento = :fechaNacimiento"),
-    @NamedQuery(name = "Tutor.findByOcupacion", query = "SELECT t FROM Tutor t WHERE t.ocupacion = :ocupacion"),
-    @NamedQuery(name = "Tutor.findByEstadoCivil", query = "SELECT t FROM Tutor t WHERE t.estadoCivil = :estadoCivil")})
+//@Entity
+//@Table(name = "tutor")
+//@XmlRootElement
+//@NamedQueries({
+//    @NamedQuery(name = "Tutor.findAll", query = "SELECT t FROM Tutor t"),
+//    @NamedQuery(name = "Tutor.findByIdTutor", query = "SELECT t FROM Tutor t WHERE t.idTutor = :idTutor"),
+//    @NamedQuery(name = "Tutor.findByNombre1", query = "SELECT t FROM Tutor t WHERE t.nombre1 = :nombre1"),
+//    @NamedQuery(name = "Tutor.findByNombre2", query = "SELECT t FROM Tutor t WHERE t.nombre2 = :nombre2"),
+//    @NamedQuery(name = "Tutor.findByApellido1", query = "SELECT t FROM Tutor t WHERE t.apellido1 = :apellido1"),
+//    @NamedQuery(name = "Tutor.findByApellido2", query = "SELECT t FROM Tutor t WHERE t.apellido2 = :apellido2"),
+//    @NamedQuery(name = "Tutor.findBySexo", query = "SELECT t FROM Tutor t WHERE t.sexo = :sexo"),
+//    @NamedQuery(name = "Tutor.findByFechaNacimiento", query = "SELECT t FROM Tutor t WHERE t.fechaNacimiento = :fechaNacimiento"),
+//    @NamedQuery(name = "Tutor.findByOcupacion", query = "SELECT t FROM Tutor t WHERE t.ocupacion = :ocupacion"),
+//    @NamedQuery(name = "Tutor.findByEstadoCivil", query = "SELECT t FROM Tutor t WHERE t.estadoCivil = :estadoCivil")})
 public class Tutor implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -58,15 +56,15 @@ public class Tutor implements Serializable {
     @Column(name = "sexo")
     private Character sexo;
     @Column(name = "fecha_nacimiento")
-    @Temporal(TemporalType.DATE)
+   // @MapKeyTemporal(TemporalType.DATE)
     private Date fechaNacimiento;
     @Column(name = "ocupacion")
     private String ocupacion;
     @Column(name = "estado_civil")
     private String estadoCivil;
-    @JoinColumn(name = "fk_id_paciente", referencedColumnName = "id_paciente")
-    @ManyToOne
-    private Paciente fkIdPaciente;
+    //  @JoinColumn(name = "fk_id_paciente", referencedColumnName = "id_paciente")
+    // @ManyToOne
+    //private Paciente fkIdPaciente;
 
     public Tutor() {
     }
@@ -147,13 +145,13 @@ public class Tutor implements Serializable {
         this.estadoCivil = estadoCivil;
     }
 
-    public Paciente getFkIdPaciente() {
-        return fkIdPaciente;
-    }
-
-    public void setFkIdPaciente(Paciente fkIdPaciente) {
-        this.fkIdPaciente = fkIdPaciente;
-    }
+//    public Paciente getFkIdPaciente() {
+//        return fkIdPaciente;
+//    }
+//
+//    public void setFkIdPaciente(Paciente fkIdPaciente) {
+//        this.fkIdPaciente = fkIdPaciente;
+//    }
 
     @Override
     public int hashCode() {
