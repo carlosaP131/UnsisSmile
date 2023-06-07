@@ -2,22 +2,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.unsis.odonto.edu.entity;
+package UnsisSmile.odonto.edu.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+import java.time.LocalDate;
+import java.util.Date;
+
+import jakarta.persistence.Basic;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
 
 /**
  *
@@ -25,12 +25,12 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "codigo_pieza_dental")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "CodigoPiezaDental.findAll", query = "SELECT c FROM CodigoPiezaDental c"),
-    @NamedQuery(name = "CodigoPiezaDental.findByIdCodigoPiezaDental", query = "SELECT c FROM CodigoPiezaDental c WHERE c.idCodigoPiezaDental = :idCodigoPiezaDental"),
-    @NamedQuery(name = "CodigoPiezaDental.findByCodigo", query = "SELECT c FROM CodigoPiezaDental c WHERE c.codigo = :codigo"),
-    @NamedQuery(name = "CodigoPiezaDental.findByAdulto", query = "SELECT c FROM CodigoPiezaDental c WHERE c.adulto = :adulto")})
+//@XmlRootElement
+//@NamedQueries({
+//    @NamedQuery(name = "CodigoPiezaDental.findAll", query = "SELECT c FROM CodigoPiezaDental c"),
+//    @NamedQuery(name = "CodigoPiezaDental.findByIdCodigoPiezaDental", query = "SELECT c FROM CodigoPiezaDental c WHERE c.idCodigoPiezaDental = :idCodigoPiezaDental"),
+//    @NamedQuery(name = "CodigoPiezaDental.findByCodigo", query = "SELECT c FROM CodigoPiezaDental c WHERE c.codigo = :codigo"),
+//    @NamedQuery(name = "CodigoPiezaDental.findByAdulto", query = "SELECT c FROM CodigoPiezaDental c WHERE c.adulto = :adulto")})
 public class CodigoPiezaDental implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,10 +43,10 @@ public class CodigoPiezaDental implements Serializable {
     private String codigo;
     @Column(name = "adulto")
     private Boolean adulto;
-    @OneToMany(mappedBy = "fkIdCodigoPiezaDental")
-    private Collection<MedicionBolsasDetalle> medicionBolsasDetalleCollection;
-    @OneToMany(mappedBy = "fkIdCodigoPiezaDental")
-    private Collection<DienteDetalle> dienteDetalleCollection;
+//    @OneToMany(mappedBy = "fkIdCodigoPiezaDental")
+//    private Collection<MedicionBolsasDetalle> medicionBolsasDetalleCollection;
+//    @OneToMany(mappedBy = "fkIdCodigoPiezaDental")
+//    private Collection<DienteDetalle> dienteDetalleCollection;
 
     public CodigoPiezaDental() {
     }
@@ -79,23 +79,23 @@ public class CodigoPiezaDental implements Serializable {
         this.adulto = adulto;
     }
 
-    @XmlTransient
-    public Collection<MedicionBolsasDetalle> getMedicionBolsasDetalleCollection() {
-        return medicionBolsasDetalleCollection;
-    }
-
-    public void setMedicionBolsasDetalleCollection(Collection<MedicionBolsasDetalle> medicionBolsasDetalleCollection) {
-        this.medicionBolsasDetalleCollection = medicionBolsasDetalleCollection;
-    }
-
-    @XmlTransient
-    public Collection<DienteDetalle> getDienteDetalleCollection() {
-        return dienteDetalleCollection;
-    }
-
-    public void setDienteDetalleCollection(Collection<DienteDetalle> dienteDetalleCollection) {
-        this.dienteDetalleCollection = dienteDetalleCollection;
-    }
+//    @XmlTransient
+//    public Collection<MedicionBolsasDetalle> getMedicionBolsasDetalleCollection() {
+//        return medicionBolsasDetalleCollection;
+//    }
+//
+//    public void setMedicionBolsasDetalleCollection(Collection<MedicionBolsasDetalle> medicionBolsasDetalleCollection) {
+//        this.medicionBolsasDetalleCollection = medicionBolsasDetalleCollection;
+//    }
+//
+//    @XmlTransient
+//    public Collection<DienteDetalle> getDienteDetalleCollection() {
+//        return dienteDetalleCollection;
+//    }
+//
+//    public void setDienteDetalleCollection(Collection<DienteDetalle> dienteDetalleCollection) {
+//        this.dienteDetalleCollection = dienteDetalleCollection;
+//    }
 
     @Override
     public int hashCode() {

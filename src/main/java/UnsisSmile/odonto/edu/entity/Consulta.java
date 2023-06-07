@@ -2,25 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.unsis.odonto.edu.entity;
+package UnsisSmile.odonto.edu.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
+
+import jakarta.persistence.Basic;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
 
 /**
  *
@@ -28,11 +26,11 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "consulta")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Consulta.findAll", query = "SELECT c FROM Consulta c"),
-    @NamedQuery(name = "Consulta.findByIdConsulta", query = "SELECT c FROM Consulta c WHERE c.idConsulta = :idConsulta"),
-    @NamedQuery(name = "Consulta.findByFechaDeConsulta", query = "SELECT c FROM Consulta c WHERE c.fechaDeConsulta = :fechaDeConsulta")})
+//@XmlRootElement
+//@NamedQueries({
+//    @NamedQuery(name = "Consulta.findAll", query = "SELECT c FROM Consulta c"),
+//    @NamedQuery(name = "Consulta.findByIdConsulta", query = "SELECT c FROM Consulta c WHERE c.idConsulta = :idConsulta"),
+//    @NamedQuery(name = "Consulta.findByFechaDeConsulta", query = "SELECT c FROM Consulta c WHERE c.fechaDeConsulta = :fechaDeConsulta")})
 public class Consulta implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -57,22 +55,22 @@ public class Consulta implements Serializable {
     @Column(name = "motivo_de_la_consulta")
     private String motivoDeLaConsulta;
     @Column(name = "fecha_de_consulta")
-    @Temporal(TemporalType.DATE)
+   // @Temporal(TemporalType.DATE)
     private Date fechaDeConsulta;
     @JoinColumn(name = "fk_id_clinica", referencedColumnName = "id_clinica")
     @ManyToOne(optional = false)
     private Clinica fkIdClinica;
     @JoinColumn(name = "fk_id_paciente", referencedColumnName = "id_paciente")
-    @ManyToOne(optional = false)
-    private Paciente fkIdPaciente;
+//    @ManyToOne(optional = false)
+//    private Paciente fkIdPaciente;
     @JoinColumn(name = "fk_id_procedimiento_realizado", referencedColumnName = "id_procedimiento_tipo")
-    @ManyToOne(optional = false)
-    private ProcedimientoTipo fkIdProcedimientoRealizado;
-    @JoinColumn(name = "fk_id_signos_vitales", referencedColumnName = "id_signos_vitales")
-    @ManyToOne(optional = false)
-    private SignosVitales fkIdSignosVitales;
-    @JoinColumn(name = "fk_id_alumno", referencedColumnName = "id_usuario")
-    @ManyToOne(optional = false)
+  //  @ManyToOne(optional = false)
+//    private ProcedimientoTipo fkIdProcedimientoRealizado;
+//    @JoinColumn(name = "fk_id_signos_vitales", referencedColumnName = "id_signos_vitales")
+//    @ManyToOne(optional = false)
+//    private SignosVitales fkIdSignosVitales;
+//    @JoinColumn(name = "fk_id_alumno", referencedColumnName = "id_usuario")
+//    @ManyToOne(optional = false)
     private Usuarios fkIdAlumno;
 
     public Consulta() {
@@ -146,29 +144,29 @@ public class Consulta implements Serializable {
         this.fkIdClinica = fkIdClinica;
     }
 
-    public Paciente getFkIdPaciente() {
-        return fkIdPaciente;
-    }
-
-    public void setFkIdPaciente(Paciente fkIdPaciente) {
-        this.fkIdPaciente = fkIdPaciente;
-    }
-
-    public ProcedimientoTipo getFkIdProcedimientoRealizado() {
-        return fkIdProcedimientoRealizado;
-    }
-
-    public void setFkIdProcedimientoRealizado(ProcedimientoTipo fkIdProcedimientoRealizado) {
-        this.fkIdProcedimientoRealizado = fkIdProcedimientoRealizado;
-    }
-
-    public SignosVitales getFkIdSignosVitales() {
-        return fkIdSignosVitales;
-    }
-
-    public void setFkIdSignosVitales(SignosVitales fkIdSignosVitales) {
-        this.fkIdSignosVitales = fkIdSignosVitales;
-    }
+//    public Paciente getFkIdPaciente() {
+//        return fkIdPaciente;
+//    }
+//
+//    public void setFkIdPaciente(Paciente fkIdPaciente) {
+//        this.fkIdPaciente = fkIdPaciente;
+//    }
+//
+//    public ProcedimientoTipo getFkIdProcedimientoRealizado() {
+//        return fkIdProcedimientoRealizado;
+//    }
+//
+//    public void setFkIdProcedimientoRealizado(ProcedimientoTipo fkIdProcedimientoRealizado) {
+//        this.fkIdProcedimientoRealizado = fkIdProcedimientoRealizado;
+//    }
+//
+//    public SignosVitales getFkIdSignosVitales() {
+//        return fkIdSignosVitales;
+//    }
+//
+//    public void setFkIdSignosVitales(SignosVitales fkIdSignosVitales) {
+//        this.fkIdSignosVitales = fkIdSignosVitales;
+//    }
 
     public Usuarios getFkIdAlumno() {
         return fkIdAlumno;

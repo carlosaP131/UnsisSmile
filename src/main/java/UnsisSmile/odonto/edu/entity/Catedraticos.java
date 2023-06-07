@@ -71,13 +71,13 @@ public class Catedraticos implements Serializable {
     private String emailCatedratico;
     @Column(name = "estatus")
     private Boolean estatus;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkIdCatedraticoResponsable")
-    private Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection;
-    @JoinColumn(name = "fk_id_usuario", referencedColumnName = "id_usuario")
-    @ManyToOne(optional = false)
-    private Usuarios fkIdUsuario;
-    @OneToMany(mappedBy = "fkIdCatedratico")
-    private Collection<CatedraticoGrupo> catedraticoGrupoCollection;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkIdCatedraticoResponsable")
+//    private Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection;
+//    @JoinColumn(name = "fk_id_usuario", referencedColumnName = "id_usuario")
+//    @ManyToOne(optional = false)
+//    private Usuarios fkIdUsuario;
+//    @OneToMany(mappedBy = "fkIdCatedratico")
+//    private Collection<CatedraticoGrupo> catedraticoGrupoCollection;
 
     public Catedraticos() {
     }
@@ -186,32 +186,32 @@ public class Catedraticos implements Serializable {
     public void setEstatus(Boolean estatus) {
         this.estatus = estatus;
     }
-
-    @XmlTransient
-    public Collection<HistoriaClinicaGeneral> getHistoriaClinicaGeneralCollection() {
-        return historiaClinicaGeneralCollection;
-    }
-
-    public void setHistoriaClinicaGeneralCollection(Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection) {
-        this.historiaClinicaGeneralCollection = historiaClinicaGeneralCollection;
-    }
-
-    public Usuarios getFkIdUsuario() {
-        return fkIdUsuario;
-    }
-
-    public void setFkIdUsuario(Usuarios fkIdUsuario) {
-        this.fkIdUsuario = fkIdUsuario;
-    }
-
-    @XmlTransient
-    public Collection<CatedraticoGrupo> getCatedraticoGrupoCollection() {
-        return catedraticoGrupoCollection;
-    }
-
-    public void setCatedraticoGrupoCollection(Collection<CatedraticoGrupo> catedraticoGrupoCollection) {
-        this.catedraticoGrupoCollection = catedraticoGrupoCollection;
-    }
+//
+//    @XmlTransient
+//    public Collection<HistoriaClinicaGeneral> getHistoriaClinicaGeneralCollection() {
+//        return historiaClinicaGeneralCollection;
+//    }
+//
+//    public void setHistoriaClinicaGeneralCollection(Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection) {
+//        this.historiaClinicaGeneralCollection = historiaClinicaGeneralCollection;
+//    }
+//
+//    public Usuarios getFkIdUsuario() {
+//        return fkIdUsuario;
+//    }
+//
+//    public void setFkIdUsuario(Usuarios fkIdUsuario) {
+//        this.fkIdUsuario = fkIdUsuario;
+//    }
+//
+//    @XmlTransient
+//    public Collection<CatedraticoGrupo> getCatedraticoGrupoCollection() {
+//        return catedraticoGrupoCollection;
+//    }
+//
+//    public void setCatedraticoGrupoCollection(Collection<CatedraticoGrupo> catedraticoGrupoCollection) {
+//        this.catedraticoGrupoCollection = catedraticoGrupoCollection;
+//    }
 
     @Override
     public int hashCode() {
