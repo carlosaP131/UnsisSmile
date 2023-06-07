@@ -2,21 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.unsis.odonto.edu.entity;
+package UnsisSmile.odonto.edu.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+import java.time.LocalDate;
+import java.util.Date;
+
+import jakarta.persistence.Basic;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
 
 /**
  *
@@ -24,10 +26,10 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "examen_facial")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "ExamenFacial.findAll", query = "SELECT e FROM ExamenFacial e"),
-    @NamedQuery(name = "ExamenFacial.findByIdExamenFacial", query = "SELECT e FROM ExamenFacial e WHERE e.idExamenFacial = :idExamenFacial")})
+//@XmlRootElement
+//@NamedQueries({
+//    @NamedQuery(name = "ExamenFacial.findAll", query = "SELECT e FROM ExamenFacial e"),
+//    @NamedQuery(name = "ExamenFacial.findByIdExamenFacial", query = "SELECT e FROM ExamenFacial e WHERE e.idExamenFacial = :idExamenFacial")})
 public class ExamenFacial implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,8 +46,8 @@ public class ExamenFacial implements Serializable {
     @Lob
     @Column(name = "senias_particulares")
     private String seniasParticulares;
-    @OneToMany(mappedBy = "fkIdExamenFacial")
-    private Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection;
+//    @OneToMany(mappedBy = "fkIdExamenFacial")
+//    private Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection;
 
     public ExamenFacial() {
     }
@@ -86,14 +88,14 @@ public class ExamenFacial implements Serializable {
         this.seniasParticulares = seniasParticulares;
     }
 
-    @XmlTransient
-    public Collection<HistoriaClinicaGeneral> getHistoriaClinicaGeneralCollection() {
-        return historiaClinicaGeneralCollection;
-    }
-
-    public void setHistoriaClinicaGeneralCollection(Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection) {
-        this.historiaClinicaGeneralCollection = historiaClinicaGeneralCollection;
-    }
+//    @XmlTransient
+//    public Collection<HistoriaClinicaGeneral> getHistoriaClinicaGeneralCollection() {
+//        return historiaClinicaGeneralCollection;
+//    }
+//
+//    public void setHistoriaClinicaGeneralCollection(Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection) {
+//        this.historiaClinicaGeneralCollection = historiaClinicaGeneralCollection;
+//    }
 
     @Override
     public int hashCode() {
