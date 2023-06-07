@@ -11,7 +11,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 /*
@@ -63,8 +65,8 @@ public class AnalisisRadiografico implements Serializable {
     @Lob
     @Column(name = "Panoramica")
     private String panoramica;
-    @OneToMany(mappedBy = "fkIdAnalisisRadiografico")
-    private Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection;
+   // @OneToMany(mappedBy = "fkIdAnalisisRadiografico")
+    //private Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection;
 
     public AnalisisRadiografico() {
     }
@@ -104,7 +106,7 @@ public class AnalisisRadiografico implements Serializable {
     public void setPanoramica(String panoramica) {
         this.panoramica = panoramica;
     }
-
+    /*
     @XmlTransient
     public Collection<HistoriaClinicaGeneral> getHistoriaClinicaGeneralCollection() {
         return historiaClinicaGeneralCollection;
@@ -113,7 +115,7 @@ public class AnalisisRadiografico implements Serializable {
     public void setHistoriaClinicaGeneralCollection(Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection) {
         this.historiaClinicaGeneralCollection = historiaClinicaGeneralCollection;
     }
-
+    */
     @Override
     public int hashCode() {
         int hash = 0;

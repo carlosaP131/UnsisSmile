@@ -6,8 +6,8 @@ package UnsisSmile.odonto.edu.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.Date;
-
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,7 +15,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 /**
@@ -35,6 +37,7 @@ public class AnalisisFuncional implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_analisis_funcional")
+    
     private Integer idAnalisisFuncional;
     @Lob
     @Column(name = "Degluci\u00f3n")
@@ -48,8 +51,8 @@ public class AnalisisFuncional implements Serializable {
     @Lob
     @Column(name = "Observaciones")
     private String observaciones;
-    @OneToMany(mappedBy = "fkIdAnalisisFuncional")
-    private Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection;
+  // @OneToMany(mappedBy = "fkIdAnalisisFuncional")
+   // private Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection;
 
     public AnalisisFuncional() {
     }
@@ -97,7 +100,7 @@ public class AnalisisFuncional implements Serializable {
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
     }
-
+/*
     @XmlTransient
     public Collection<HistoriaClinicaGeneral> getHistoriaClinicaGeneralCollection() {
         return historiaClinicaGeneralCollection;
@@ -106,7 +109,7 @@ public class AnalisisFuncional implements Serializable {
     public void setHistoriaClinicaGeneralCollection(Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection) {
         this.historiaClinicaGeneralCollection = historiaClinicaGeneralCollection;
     }
-
+*/
     @Override
     public int hashCode() {
         int hash = 0;
