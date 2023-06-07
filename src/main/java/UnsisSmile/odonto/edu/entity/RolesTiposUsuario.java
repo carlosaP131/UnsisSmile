@@ -74,10 +74,10 @@ public class RolesTiposUsuario implements Serializable {
         this.nombreRol = nombreRol;
     }
 
-    @XmlTransient
-    public Collection<Usuarios> getUsuariosCollection() {
-        return usuariosCollection;
-    }
+//    @XmlTransient
+//    public Collection<Usuarios> getUsuariosCollection() {
+//        return usuariosCollection;
+//    }
 
     public void setUsuariosCollection(Collection<Usuarios> usuariosCollection) {
         this.usuariosCollection = usuariosCollection;

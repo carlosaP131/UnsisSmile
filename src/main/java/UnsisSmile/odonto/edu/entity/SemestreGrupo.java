@@ -1,25 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.unsis.odonto.edu.entity;
+package UnsisSmile.odonto.edu.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+import java.time.LocalDate;
+import java.util.Date;
+
+import jakarta.persistence.Basic;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 /**
  *
@@ -27,10 +20,10 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "semestre_grupo")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "SemestreGrupo.findAll", query = "SELECT s FROM SemestreGrupo s"),
-    @NamedQuery(name = "SemestreGrupo.findByIdSemestreGrupo", query = "SELECT s FROM SemestreGrupo s WHERE s.idSemestreGrupo = :idSemestreGrupo")})
+//@XmlRootElement
+//@NamedQueries({
+//    @NamedQuery(name = "SemestreGrupo.findAll", query = "SELECT s FROM SemestreGrupo s"),
+//    @NamedQuery(name = "SemestreGrupo.findByIdSemestreGrupo", query = "SELECT s FROM SemestreGrupo s WHERE s.idSemestreGrupo = :idSemestreGrupo")})
 public class SemestreGrupo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -39,16 +32,16 @@ public class SemestreGrupo implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_semestre_grupo")
     private Integer idSemestreGrupo;
-    @OneToMany(mappedBy = "fkIdSemestreGrupo")
-    private Collection<Alumnos> alumnosCollection;
+//    @OneToMany(mappedBy = "fkIdSemestreGrupo")
+//    private Collection<Alumnos> alumnosCollection;
     @JoinColumn(name = "fk_id_grupo", referencedColumnName = "id_grupos")
     @ManyToOne
     private Grupo fkIdGrupo;
     @JoinColumn(name = "fk_id_semestre", referencedColumnName = "id_semestre")
     @ManyToOne
     private Semestres fkIdSemestre;
-    @OneToMany(mappedBy = "fkIdSemestreGrupo")
-    private Collection<CatedraticoGrupo> catedraticoGrupoCollection;
+//    @OneToMany(mappedBy = "fkIdSemestreGrupo")
+//    private Collection<CatedraticoGrupo> catedraticoGrupoCollection;
 
     public SemestreGrupo() {
     }
@@ -65,14 +58,14 @@ public class SemestreGrupo implements Serializable {
         this.idSemestreGrupo = idSemestreGrupo;
     }
 
-    @XmlTransient
-    public Collection<Alumnos> getAlumnosCollection() {
-        return alumnosCollection;
-    }
-
-    public void setAlumnosCollection(Collection<Alumnos> alumnosCollection) {
-        this.alumnosCollection = alumnosCollection;
-    }
+//    @XmlTransient
+//    public Collection<Alumnos> getAlumnosCollection() {
+//        return alumnosCollection;
+//    }
+//
+//    public void setAlumnosCollection(Collection<Alumnos> alumnosCollection) {
+//        this.alumnosCollection = alumnosCollection;
+//    }
 
     public Grupo getFkIdGrupo() {
         return fkIdGrupo;
@@ -89,15 +82,15 @@ public class SemestreGrupo implements Serializable {
     public void setFkIdSemestre(Semestres fkIdSemestre) {
         this.fkIdSemestre = fkIdSemestre;
     }
-
-    @XmlTransient
-    public Collection<CatedraticoGrupo> getCatedraticoGrupoCollection() {
-        return catedraticoGrupoCollection;
-    }
-
-    public void setCatedraticoGrupoCollection(Collection<CatedraticoGrupo> catedraticoGrupoCollection) {
-        this.catedraticoGrupoCollection = catedraticoGrupoCollection;
-    }
+//
+//    @XmlTransient
+//    public Collection<CatedraticoGrupo> getCatedraticoGrupoCollection() {
+//        return catedraticoGrupoCollection;
+//    }
+//
+//    public void setCatedraticoGrupoCollection(Collection<CatedraticoGrupo> catedraticoGrupoCollection) {
+//        this.catedraticoGrupoCollection = catedraticoGrupoCollection;
+//    }
 
     @Override
     public int hashCode() {
