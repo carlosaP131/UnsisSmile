@@ -100,7 +100,7 @@ public class EstudioDeLaboratorioBiopsia implements Serializable {
         this.laboratorioDondeSeEnviaElEstudio = laboratorioDondeSeEnviaElEstudio;
     }
 
-    @XmlTransient
+    //@XmlTransient
     public Collection<HistoriaClinicaGeneral> getHistoriaClinicaGeneralCollection() {
         return historiaClinicaGeneralCollection;
     }

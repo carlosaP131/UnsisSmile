@@ -100,7 +100,7 @@ public class ExamenBucal implements Serializable {
         this.relacióncaninaIzquierda = relacióncaninaIzquierda;
     }
 
-    @XmlTransient
+    //@XmlTransient
     public Collection<HistoriaClinicaGeneral> getHistoriaClinicaGeneralCollection() {
         return historiaClinicaGeneralCollection;
     }
