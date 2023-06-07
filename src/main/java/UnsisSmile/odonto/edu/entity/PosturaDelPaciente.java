@@ -2,47 +2,46 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.unsis.odonto.edu.entity;
+package UnsisSmile.odonto.edu.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+import java.time.LocalDate;
+import java.util.Date;
+
+import jakarta.persistence.Basic;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
 
 /**
  *
  * @author froste
  */
-@Entity
-@Table(name = "postura_del_paciente")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "PosturaDelPaciente.findAll", query = "SELECT p FROM PosturaDelPaciente p"),
-    @NamedQuery(name = "PosturaDelPaciente.findByIdPosturaDelPaciente", query = "SELECT p FROM PosturaDelPaciente p WHERE p.idPosturaDelPaciente = :idPosturaDelPaciente")})
+//@Entity
+//@Table(name = "postura_del_paciente")
+//@XmlRootElement
+//@NamedQueries({
+//    @NamedQuery(name = "PosturaDelPaciente.findAll", query = "SELECT p FROM PosturaDelPaciente p"),
+//    @NamedQuery(name = "PosturaDelPaciente.findByIdPosturaDelPaciente", query = "SELECT p FROM PosturaDelPaciente p WHERE p.idPosturaDelPaciente = :idPosturaDelPaciente")})
 public class PosturaDelPaciente implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id_postura_del_paciente")
+    @jakarta.persistence.Id
+ //   @jakarta.persistence.GeneratedValue(strategy = Generated.IDENTITY)
+    @jakarta.persistence.Basic(optional = false)
+    @jakarta.persistence.Column(name = "id_postura_del_paciente")
     private Integer idPosturaDelPaciente;
-    @Lob
-    @Column(name = "atm_palpacion")
+    @jakarta.persistence.Lob
+    @jakarta.persistence.Column(name = "atm_palpacion")
     private String atmPalpacion;
-    @OneToMany(mappedBy = "fkIdPosturaDelPaciente")
-    private Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection;
+   // @jakarta.persistence.OneToMany(mappedBy = "fkIdPosturaDelPaciente")
+   // private Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection;
 
     public PosturaDelPaciente() {
     }
@@ -67,14 +66,14 @@ public class PosturaDelPaciente implements Serializable {
         this.atmPalpacion = atmPalpacion;
     }
 
-    @XmlTransient
-    public Collection<HistoriaClinicaGeneral> getHistoriaClinicaGeneralCollection() {
-        return historiaClinicaGeneralCollection;
-    }
+//    @XmlTransient
+//    public Collection<HistoriaClinicaGeneral> getHistoriaClinicaGeneralCollection() {
+//        return historiaClinicaGeneralCollection;
+//    }
 
-    public void setHistoriaClinicaGeneralCollection(Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection) {
-        this.historiaClinicaGeneralCollection = historiaClinicaGeneralCollection;
-    }
+//    public void setHistoriaClinicaGeneralCollection(Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection) {
+//        this.historiaClinicaGeneralCollection = historiaClinicaGeneralCollection;
+//    }
 
     @Override
     public int hashCode() {

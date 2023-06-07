@@ -2,46 +2,48 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.unsis.odonto.edu.entity;
+package UnsisSmile.odonto.edu.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+import java.time.LocalDate;
+import java.util.Date;
+
+import jakarta.persistence.Basic;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
 
 /**
  *
  * @author froste
  */
-@Entity
-@Table(name = "region_diente")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "RegionDiente.findAll", query = "SELECT r FROM RegionDiente r"),
-    @NamedQuery(name = "RegionDiente.findByIdRegion", query = "SELECT r FROM RegionDiente r WHERE r.idRegion = :idRegion"),
-    @NamedQuery(name = "RegionDiente.findByDescripcion", query = "SELECT r FROM RegionDiente r WHERE r.descripcion = :descripcion")})
+//@Entity
+//@Table(name = "region_diente")
+//@XmlRootElement
+//@NamedQueries({
+//    @NamedQuery(name = "RegionDiente.findAll", query = "SELECT r FROM RegionDiente r"),
+//    @NamedQuery(name = "RegionDiente.findByIdRegion", query = "SELECT r FROM RegionDiente r WHERE r.idRegion = :idRegion"),
+//    @NamedQuery(name = "RegionDiente.findByDescripcion", query = "SELECT r FROM RegionDiente r WHERE r.descripcion = :descripcion")})
+
 public class RegionDiente implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id_region")
+    @jakarta.persistence.Id
+    @jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
+    @jakarta.persistence.Basic(optional = false)
+    @jakarta.persistence.Column(name = "id_region")
     private Integer idRegion;
-    @Column(name = "descripcion")
+    @jakarta.persistence.Column(name = "descripcion")
     private String descripcion;
-    @OneToMany(mappedBy = "fkIdRegionDiente")
-    private Collection<DienteDetalle> dienteDetalleCollection;
+    
+  //  @jakarta.persistence.OneToMany(mappedBy = "fkIdRegionDiente")    
+   // private Collection<DienteDetalle> dienteDetalleCollection;
 
     public RegionDiente() {
     }
@@ -66,14 +68,14 @@ public class RegionDiente implements Serializable {
         this.descripcion = descripcion;
     }
 
-    @XmlTransient
-    public Collection<DienteDetalle> getDienteDetalleCollection() {
-        return dienteDetalleCollection;
-    }
+//    @XmlTransient
+//    public Collection<DienteDetalle> getDienteDetalleCollection() {
+//        return dienteDetalleCollection;
+//    }
 
-    public void setDienteDetalleCollection(Collection<DienteDetalle> dienteDetalleCollection) {
-        this.dienteDetalleCollection = dienteDetalleCollection;
-    }
+//    public void setDienteDetalleCollection(Collection<DienteDetalle> dienteDetalleCollection) {
+//        this.dienteDetalleCollection = dienteDetalleCollection;
+//    }
 
     @Override
     public int hashCode() {
