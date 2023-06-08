@@ -1,36 +1,31 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
 
 /**
  *
- * @author froste
+ * @author labingsw05
  */
 @Entity
 @Table(name = "codigo_pieza_dental")
-//@XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "CodigoPiezaDental.findAll", query = "SELECT c FROM CodigoPiezaDental c"),
-//    @NamedQuery(name = "CodigoPiezaDental.findByIdCodigoPiezaDental", query = "SELECT c FROM CodigoPiezaDental c WHERE c.idCodigoPiezaDental = :idCodigoPiezaDental"),
-//    @NamedQuery(name = "CodigoPiezaDental.findByCodigo", query = "SELECT c FROM CodigoPiezaDental c WHERE c.codigo = :codigo"),
-//    @NamedQuery(name = "CodigoPiezaDental.findByAdulto", query = "SELECT c FROM CodigoPiezaDental c WHERE c.adulto = :adulto")})
+//    @NamedQuery(name = "CodigoPiezaDental.findAll", query = "SELECT c FROM CodigoPiezaDental c")})
 public class CodigoPiezaDental implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,10 +38,10 @@ public class CodigoPiezaDental implements Serializable {
     private String codigo;
     @Column(name = "adulto")
     private Boolean adulto;
-//    @OneToMany(mappedBy = "fkIdCodigoPiezaDental")
-//    private Collection<MedicionBolsasDetalle> medicionBolsasDetalleCollection;
-//    @OneToMany(mappedBy = "fkIdCodigoPiezaDental")
-//    private Collection<DienteDetalle> dienteDetalleCollection;
+//    @OneToMany(mappedBy = "codigoPiezaDental", fetch = FetchType.LAZY)
+//    private List<MedicionBolsasDetalle> medicionBolsasDetalleList;
+//    @OneToMany(mappedBy = "codigoPiezaDental", fetch = FetchType.LAZY)
+//    private List<DienteDetalle> dienteDetalleList;
 
     public CodigoPiezaDental() {
     }
@@ -79,22 +74,20 @@ public class CodigoPiezaDental implements Serializable {
         this.adulto = adulto;
     }
 
-//    @XmlTransient
-//    public Collection<MedicionBolsasDetalle> getMedicionBolsasDetalleCollection() {
-//        return medicionBolsasDetalleCollection;
+//    public List<MedicionBolsasDetalle> getMedicionBolsasDetalleList() {
+//        return medicionBolsasDetalleList;
 //    }
 //
-//    public void setMedicionBolsasDetalleCollection(Collection<MedicionBolsasDetalle> medicionBolsasDetalleCollection) {
-//        this.medicionBolsasDetalleCollection = medicionBolsasDetalleCollection;
+//    public void setMedicionBolsasDetalleList(List<MedicionBolsasDetalle> medicionBolsasDetalleList) {
+//        this.medicionBolsasDetalleList = medicionBolsasDetalleList;
 //    }
 //
-//    @XmlTransient
-//    public Collection<DienteDetalle> getDienteDetalleCollection() {
-//        return dienteDetalleCollection;
+//    public List<DienteDetalle> getDienteDetalleList() {
+//        return dienteDetalleList;
 //    }
 //
-//    public void setDienteDetalleCollection(Collection<DienteDetalle> dienteDetalleCollection) {
-//        this.dienteDetalleCollection = dienteDetalleCollection;
+//    public void setDienteDetalleList(List<DienteDetalle> dienteDetalleList) {
+//        this.dienteDetalleList = dienteDetalleList;
 //    }
 
     @Override
@@ -119,7 +112,7 @@ public class CodigoPiezaDental implements Serializable {
 
     @Override
     public String toString() {
-        return "com.unsis.odonto.edu.entity.CodigoPiezaDental[ idCodigoPiezaDental=" + idCodigoPiezaDental + " ]";
+        return "entity.CodigoPiezaDental[ idCodigoPiezaDental=" + idCodigoPiezaDental + " ]";
     }
     
 }

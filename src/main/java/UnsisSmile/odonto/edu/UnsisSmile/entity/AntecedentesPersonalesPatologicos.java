@@ -1,17 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.time.LocalDate;
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -20,41 +17,14 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
 /**
  *
- * @author froste
+ * @author labingsw05
  */
 @Entity
 @Table(name = "antecedentes_personales_patologicos")
-//@XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "AntecedentesPersonalesPatologicos.findAll", query = "SELECT a FROM AntecedentesPersonalesPatologicos a"),
-//    @NamedQuery(name = "AntecedentesPersonalesPatologicos.findByIdAntecedentesPersonalesPatologicos", query = "SELECT a FROM AntecedentesPersonalesPatologicos a WHERE a.idAntecedentesPersonalesPatologicos = :idAntecedentesPersonalesPatologicos"),
-//    @NamedQuery(name = "AntecedentesPersonalesPatologicos.findByTabaquismo", query = "SELECT a FROM AntecedentesPersonalesPatologicos a WHERE a.tabaquismo = :tabaquismo"),
-//    @NamedQuery(name = "AntecedentesPersonalesPatologicos.findByAlcoholismo", query = "SELECT a FROM AntecedentesPersonalesPatologicos a WHERE a.alcoholismo = :alcoholismo"),
-//    @NamedQuery(name = "AntecedentesPersonalesPatologicos.findByOtrasSustanciasPsicoactivasRecreativas", query = "SELECT a FROM AntecedentesPersonalesPatologicos a WHERE a.otrasSustanciasPsicoactivasRecreativas = :otrasSustanciasPsicoactivasRecreativas"),
-//    @NamedQuery(name = "AntecedentesPersonalesPatologicos.findByPerforaciones", query = "SELECT a FROM AntecedentesPersonalesPatologicos a WHERE a.perforaciones = :perforaciones"),
-//    @NamedQuery(name = "AntecedentesPersonalesPatologicos.findByTatuajes", query = "SELECT a FROM AntecedentesPersonalesPatologicos a WHERE a.tatuajes = :tatuajes"),
-//    @NamedQuery(name = "AntecedentesPersonalesPatologicos.findByNeoplastia", query = "SELECT a FROM AntecedentesPersonalesPatologicos a WHERE a.neoplastia = :neoplastia"),
-//    @NamedQuery(name = "AntecedentesPersonalesPatologicos.findByDiabetes", query = "SELECT a FROM AntecedentesPersonalesPatologicos a WHERE a.diabetes = :diabetes"),
-//    @NamedQuery(name = "AntecedentesPersonalesPatologicos.findByHipertensionArterial", query = "SELECT a FROM AntecedentesPersonalesPatologicos a WHERE a.hipertensionArterial = :hipertensionArterial"),
-//    @NamedQuery(name = "AntecedentesPersonalesPatologicos.findByPedecimientosMentales", query = "SELECT a FROM AntecedentesPersonalesPatologicos a WHERE a.pedecimientosMentales = :pedecimientosMentales"),
-//    @NamedQuery(name = "AntecedentesPersonalesPatologicos.findByObesidadDiagnosticada", query = "SELECT a FROM AntecedentesPersonalesPatologicos a WHERE a.obesidadDiagnosticada = :obesidadDiagnosticada"),
-//    @NamedQuery(name = "AntecedentesPersonalesPatologicos.findByPadecimientosHematologicos", query = "SELECT a FROM AntecedentesPersonalesPatologicos a WHERE a.padecimientosHematologicos = :padecimientosHematologicos"),
-//    @NamedQuery(name = "AntecedentesPersonalesPatologicos.findByMalformacionesCongenitasSindromes", query = "SELECT a FROM AntecedentesPersonalesPatologicos a WHERE a.malformacionesCongenitasSindromes = :malformacionesCongenitasSindromes"),
-//    @NamedQuery(name = "AntecedentesPersonalesPatologicos.findByProblemasCardiacos", query = "SELECT a FROM AntecedentesPersonalesPatologicos a WHERE a.problemasCardiacos = :problemasCardiacos"),
-//    @NamedQuery(name = "AntecedentesPersonalesPatologicos.findByRadioterapiaQuimioterapia", query = "SELECT a FROM AntecedentesPersonalesPatologicos a WHERE a.radioterapiaQuimioterapia = :radioterapiaQuimioterapia"),
-//    @NamedQuery(name = "AntecedentesPersonalesPatologicos.findByPadecimientosReumatologicos", query = "SELECT a FROM AntecedentesPersonalesPatologicos a WHERE a.padecimientosReumatologicos = :padecimientosReumatologicos"),
-//    @NamedQuery(name = "AntecedentesPersonalesPatologicos.findByEnfermedadesDelRinion", query = "SELECT a FROM AntecedentesPersonalesPatologicos a WHERE a.enfermedadesDelRinion = :enfermedadesDelRinion"),
-//    @NamedQuery(name = "AntecedentesPersonalesPatologicos.findByEts", query = "SELECT a FROM AntecedentesPersonalesPatologicos a WHERE a.ets = :ets"),
-//    @NamedQuery(name = "AntecedentesPersonalesPatologicos.findByHipertiroidismoHipotiroidismo", query = "SELECT a FROM AntecedentesPersonalesPatologicos a WHERE a.hipertiroidismoHipotiroidismo = :hipertiroidismoHipotiroidismo"),
-//    @NamedQuery(name = "AntecedentesPersonalesPatologicos.findByEnfermedadesDeViasAereas", query = "SELECT a FROM AntecedentesPersonalesPatologicos a WHERE a.enfermedadesDeViasAereas = :enfermedadesDeViasAereas"),
-//    @NamedQuery(name = "AntecedentesPersonalesPatologicos.findByProbleamasOculares", query = "SELECT a FROM AntecedentesPersonalesPatologicos a WHERE a.probleamasOculares = :probleamasOculares"),
-//    @NamedQuery(name = "AntecedentesPersonalesPatologicos.findByEnfermedadesDigestivas", query = "SELECT a FROM AntecedentesPersonalesPatologicos a WHERE a.enfermedadesDigestivas = :enfermedadesDigestivas"),
-//    @NamedQuery(name = "AntecedentesPersonalesPatologicos.findByTuberculosis", query = "SELECT a FROM AntecedentesPersonalesPatologicos a WHERE a.tuberculosis = :tuberculosis"),
-//    @NamedQuery(name = "AntecedentesPersonalesPatologicos.findByEnfermedadesDeLaPiel", query = "SELECT a FROM AntecedentesPersonalesPatologicos a WHERE a.enfermedadesDeLaPiel = :enfermedadesDeLaPiel"),
-//    @NamedQuery(name = "AntecedentesPersonalesPatologicos.findByTrasplantesDeOrganos", query = "SELECT a FROM AntecedentesPersonalesPatologicos a WHERE a.trasplantesDeOrganos = :trasplantesDeOrganos")})
+//    @NamedQuery(name = "AntecedentesPersonalesPatologicos.findAll", query = "SELECT a FROM AntecedentesPersonalesPatologicos a")})
 public class AntecedentesPersonalesPatologicos implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -128,8 +98,8 @@ public class AntecedentesPersonalesPatologicos implements Serializable {
     @Lob
     @Column(name = "observaciones")
     private String observaciones;
-//    @OneToMany(mappedBy = "fkIdAntecedentesPersonalesPatologicos")
-//    private Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection;
+    @OneToMany(mappedBy = "antecedentesPersonalesPatologicos", fetch = FetchType.LAZY)
+    private List<HistoriaClinicaGeneral> historiaClinicaGeneralList;
 
     public AntecedentesPersonalesPatologicos() {
     }
@@ -386,14 +356,13 @@ public class AntecedentesPersonalesPatologicos implements Serializable {
         this.observaciones = observaciones;
     }
 
-//    @XmlTransient
-//    public Collection<HistoriaClinicaGeneral> getHistoriaClinicaGeneralCollection() {
-//        return historiaClinicaGeneralCollection;
-//    }
-//
-//    public void setHistoriaClinicaGeneralCollection(Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection) {
-//        this.historiaClinicaGeneralCollection = historiaClinicaGeneralCollection;
-//    }
+    public List<HistoriaClinicaGeneral> getHistoriaClinicaGeneralList() {
+        return historiaClinicaGeneralList;
+    }
+
+    public void setHistoriaClinicaGeneralList(List<HistoriaClinicaGeneral> historiaClinicaGeneralList) {
+        this.historiaClinicaGeneralList = historiaClinicaGeneralList;
+    }
 
     @Override
     public int hashCode() {
@@ -417,7 +386,7 @@ public class AntecedentesPersonalesPatologicos implements Serializable {
 
     @Override
     public String toString() {
-        return "com.unsis.odonto.edu.entity.AntecedentesPersonalesPatologicos[ idAntecedentesPersonalesPatologicos=" + idAntecedentesPersonalesPatologicos + " ]";
+        return "entity.AntecedentesPersonalesPatologicos[ idAntecedentesPersonalesPatologicos=" + idAntecedentesPersonalesPatologicos + " ]";
     }
     
 }

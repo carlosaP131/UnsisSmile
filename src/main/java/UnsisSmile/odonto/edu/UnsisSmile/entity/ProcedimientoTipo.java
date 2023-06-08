@@ -1,48 +1,43 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
-
 
 /**
  *
- * @author froste
+ * @author labingsw05
  */
-//@Entity
-//@Table(name = "procedimiento_tipo")
-//@XmlRootElement
+@Entity
+@Table(name = "procedimiento_tipo")
 //@NamedQueries({
-//    @NamedQuery(name = "ProcedimientoTipo.findAll", query = "SELECT p FROM ProcedimientoTipo p"),
-//    @NamedQuery(name = "ProcedimientoTipo.findByIdProcedimientoTipo", query = "SELECT p FROM ProcedimientoTipo p WHERE p.idProcedimientoTipo = :idProcedimientoTipo"),
-//    @NamedQuery(name = "ProcedimientoTipo.findByProcedimiento", query = "SELECT p FROM ProcedimientoTipo p WHERE p.procedimiento = :procedimiento")})
+//    @NamedQuery(name = "ProcedimientoTipo.findAll", query = "SELECT p FROM ProcedimientoTipo p")})
 public class ProcedimientoTipo implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @jakarta.persistence.Id
-    @jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
-    @jakarta.persistence.Basic(optional = false)
-    @jakarta.persistence.Column(name = "id_procedimiento_tipo")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id_procedimiento_tipo")
     private Integer idProcedimientoTipo;
-    @jakarta.persistence.Column(name = "procedimiento")
+    @Column(name = "procedimiento")
     private String procedimiento;
-//    @jakarta.persistence.OneToMany(cascade = jakarta.persistence.CascadeType.ALL, mappedBy = "fkIdProcedimientoRealizado")
-//    private Collection<Consulta> consultaCollection;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "procedimientoTipo", fetch = FetchType.LAZY)
+//    private List<Consulta> consultaList;
 
     public ProcedimientoTipo() {
     }
@@ -67,13 +62,12 @@ public class ProcedimientoTipo implements Serializable {
         this.procedimiento = procedimiento;
     }
 
-//    @XmlTransient
-//    public Collection<Consulta> getConsultaCollection() {
-//        return consultaCollection;
+//    public List<Consulta> getConsultaList() {
+//        return consultaList;
 //    }
-
-//    public void setConsultaCollection(Collection<Consulta> consultaCollection) {
-//        this.consultaCollection = consultaCollection;
+//
+//    public void setConsultaList(List<Consulta> consultaList) {
+//        this.consultaList = consultaList;
 //    }
 
     @Override
@@ -98,7 +92,7 @@ public class ProcedimientoTipo implements Serializable {
 
     @Override
     public String toString() {
-        return "com.unsis.odonto.edu.entity.ProcedimientoTipo[ idProcedimientoTipo=" + idProcedimientoTipo + " ]";
+        return "entity.ProcedimientoTipo[ idProcedimientoTipo=" + idProcedimientoTipo + " ]";
     }
     
 }

@@ -1,35 +1,31 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
 
 /**
  *
- * @author froste
+ * @author labingsw05
  */
 @Entity
 @Table(name = "examen_facial")
-//@XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "ExamenFacial.findAll", query = "SELECT e FROM ExamenFacial e"),
-//    @NamedQuery(name = "ExamenFacial.findByIdExamenFacial", query = "SELECT e FROM ExamenFacial e WHERE e.idExamenFacial = :idExamenFacial")})
+//    @NamedQuery(name = "ExamenFacial.findAll", query = "SELECT e FROM ExamenFacial e")})
 public class ExamenFacial implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -46,8 +42,8 @@ public class ExamenFacial implements Serializable {
     @Lob
     @Column(name = "senias_particulares")
     private String seniasParticulares;
-//    @OneToMany(mappedBy = "fkIdExamenFacial")
-//    private Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection;
+//    @OneToMany(mappedBy = "examenFacial", fetch = FetchType.LAZY)
+//    private List<HistoriaClinicaGeneral> historiaClinicaGeneralList;
 
     public ExamenFacial() {
     }
@@ -87,14 +83,13 @@ public class ExamenFacial implements Serializable {
     public void setSeniasParticulares(String seniasParticulares) {
         this.seniasParticulares = seniasParticulares;
     }
-
-//    @XmlTransient
-//    public Collection<HistoriaClinicaGeneral> getHistoriaClinicaGeneralCollection() {
-//        return historiaClinicaGeneralCollection;
+//
+//    public List<HistoriaClinicaGeneral> getHistoriaClinicaGeneralList() {
+//        return historiaClinicaGeneralList;
 //    }
 //
-//    public void setHistoriaClinicaGeneralCollection(Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection) {
-//        this.historiaClinicaGeneralCollection = historiaClinicaGeneralCollection;
+//    public void setHistoriaClinicaGeneralList(List<HistoriaClinicaGeneral> historiaClinicaGeneralList) {
+//        this.historiaClinicaGeneralList = historiaClinicaGeneralList;
 //    }
 
     @Override
@@ -119,7 +114,7 @@ public class ExamenFacial implements Serializable {
 
     @Override
     public String toString() {
-        return "com.unsis.odonto.edu.entity.ExamenFacial[ idExamenFacial=" + idExamenFacial + " ]";
+        return "entity.ExamenFacial[ idExamenFacial=" + idExamenFacial + " ]";
     }
     
 }

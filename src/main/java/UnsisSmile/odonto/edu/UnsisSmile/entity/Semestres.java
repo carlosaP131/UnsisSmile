@@ -1,30 +1,31 @@
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 /**
  *
- * @author froste
+ * @author labingsw05
  */
 @Entity
 @Table(name = "semestres")
-//@XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "Semestres.findAll", query = "SELECT s FROM Semestres s"),
-//    @NamedQuery(name = "Semestres.findByIdSemestre", query = "SELECT s FROM Semestres s WHERE s.idSemestre = :idSemestre"),
-//    @NamedQuery(name = "Semestres.findBySemestre", query = "SELECT s FROM Semestres s WHERE s.semestre = :semestre")})
+//    @NamedQuery(name = "Semestres.findAll", query = "SELECT s FROM Semestres s")})
 public class Semestres implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -33,10 +34,10 @@ public class Semestres implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_semestre")
     private Integer idSemestre;
-//    @Column(name = "semestre")
-//    private String semestre;
-//    @OneToMany(mappedBy = "fkIdSemestre")
-//    private Collection<SemestreGrupo> semestreGrupoCollection;
+    @Column(name = "semestre")
+    private String semestre;
+    @OneToMany(mappedBy = "semestres", fetch = FetchType.LAZY)
+    private List<SemestreGrupo> semestreGrupoList;
 
     public Semestres() {
     }
@@ -53,22 +54,21 @@ public class Semestres implements Serializable {
         this.idSemestre = idSemestre;
     }
 
-//    public String getSemestre() {
-//        return semestre;
-//    }
-//
-//    public void setSemestre(String semestre) {
-//        this.semestre = semestre;
-//    }
-//
-//    @XmlTransient
-//    public Collection<SemestreGrupo> getSemestreGrupoCollection() {
-//        return semestreGrupoCollection;
-//    }
-//
-//    public void setSemestreGrupoCollection(Collection<SemestreGrupo> semestreGrupoCollection) {
-//        this.semestreGrupoCollection = semestreGrupoCollection;
-//    }
+    public String getSemestre() {
+        return semestre;
+    }
+
+    public void setSemestre(String semestre) {
+        this.semestre = semestre;
+    }
+
+    public List<SemestreGrupo> getSemestreGrupoList() {
+        return semestreGrupoList;
+    }
+
+    public void setSemestreGrupoList(List<SemestreGrupo> semestreGrupoList) {
+        this.semestreGrupoList = semestreGrupoList;
+    }
 
     @Override
     public int hashCode() {
@@ -92,7 +92,7 @@ public class Semestres implements Serializable {
 
     @Override
     public String toString() {
-        return "com.unsis.odonto.edu.entity.Semestres[ idSemestre=" + idSemestre + " ]";
+        return "entity.Semestres[ idSemestre=" + idSemestre + " ]";
     }
     
 }

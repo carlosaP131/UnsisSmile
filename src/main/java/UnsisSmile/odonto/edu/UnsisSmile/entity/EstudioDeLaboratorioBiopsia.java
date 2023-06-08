@@ -1,17 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.time.LocalDate;
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -20,16 +17,15 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+
 /**
  *
- * @author froste
+ * @author labingsw05
  */
 @Entity
 @Table(name = "estudio_de_laboratorio_biopsia")
-//@XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "EstudioDeLaboratorioBiopsia.findAll", query = "SELECT e FROM EstudioDeLaboratorioBiopsia e"),
-//    @NamedQuery(name = "EstudioDeLaboratorioBiopsia.findByIdEstudioDeLaboratorioBiopsia", query = "SELECT e FROM EstudioDeLaboratorioBiopsia e WHERE e.idEstudioDeLaboratorioBiopsia = :idEstudioDeLaboratorioBiopsia")})
+//    @NamedQuery(name = "EstudioDeLaboratorioBiopsia.findAll", query = "SELECT e FROM EstudioDeLaboratorioBiopsia e")})
 public class EstudioDeLaboratorioBiopsia implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -50,8 +46,8 @@ public class EstudioDeLaboratorioBiopsia implements Serializable {
     @Lob
     @Column(name = "laboratorio_donde_se_envia_el_estudio")
     private String laboratorioDondeSeEnviaElEstudio;
-    @OneToMany(mappedBy = "fkIdEstudioDeLaboratorioBiopsia")
-    private Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection;
+//    @OneToMany(mappedBy = "estudioDeLaboratorioBiopsia", fetch = FetchType.LAZY)
+//    private List<HistoriaClinicaGeneral> historiaClinicaGeneralList;
 
     public EstudioDeLaboratorioBiopsia() {
     }
@@ -100,14 +96,13 @@ public class EstudioDeLaboratorioBiopsia implements Serializable {
         this.laboratorioDondeSeEnviaElEstudio = laboratorioDondeSeEnviaElEstudio;
     }
 
-    //@XmlTransient
-    public Collection<HistoriaClinicaGeneral> getHistoriaClinicaGeneralCollection() {
-        return historiaClinicaGeneralCollection;
-    }
-
-    public void setHistoriaClinicaGeneralCollection(Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection) {
-        this.historiaClinicaGeneralCollection = historiaClinicaGeneralCollection;
-    }
+//    public List<HistoriaClinicaGeneral> getHistoriaClinicaGeneralList() {
+//        return historiaClinicaGeneralList;
+//    }
+//
+//    public void setHistoriaClinicaGeneralList(List<HistoriaClinicaGeneral> historiaClinicaGeneralList) {
+//        this.historiaClinicaGeneralList = historiaClinicaGeneralList;
+//    }
 
     @Override
     public int hashCode() {
@@ -131,7 +126,7 @@ public class EstudioDeLaboratorioBiopsia implements Serializable {
 
     @Override
     public String toString() {
-        return "com.unsis.odonto.edu.entity.EstudioDeLaboratorioBiopsia[ idEstudioDeLaboratorioBiopsia=" + idEstudioDeLaboratorioBiopsia + " ]";
+        return "entity.EstudioDeLaboratorioBiopsia[ idEstudioDeLaboratorioBiopsia=" + idEstudioDeLaboratorioBiopsia + " ]";
     }
     
 }

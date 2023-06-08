@@ -1,17 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.time.LocalDate;
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -20,25 +17,14 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
 /**
  *
- * @author froste
+ * @author labingsw05
  */
 @Entity
 @Table(name = "antecedentes_heredofamiliares")
-//@XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "AntecedentesHeredofamiliares.findAll", query = "SELECT a FROM AntecedentesHeredofamiliares a"),
-//    @NamedQuery(name = "AntecedentesHeredofamiliares.findByIdAntecedentesHeredofamiliares", query = "SELECT a FROM AntecedentesHeredofamiliares a WHERE a.idAntecedentesHeredofamiliares = :idAntecedentesHeredofamiliares"),
-//    @NamedQuery(name = "AntecedentesHeredofamiliares.findByNeoplacia", query = "SELECT a FROM AntecedentesHeredofamiliares a WHERE a.neoplacia = :neoplacia"),
-//    @NamedQuery(name = "AntecedentesHeredofamiliares.findByDiabetes", query = "SELECT a FROM AntecedentesHeredofamiliares a WHERE a.diabetes = :diabetes"),
-//    @NamedQuery(name = "AntecedentesHeredofamiliares.findByHipertencion", query = "SELECT a FROM AntecedentesHeredofamiliares a WHERE a.hipertencion = :hipertencion"),
-//    @NamedQuery(name = "AntecedentesHeredofamiliares.findByPadecimientosMentalesNeurologicos", query = "SELECT a FROM AntecedentesHeredofamiliares a WHERE a.padecimientosMentalesNeurologicos = :padecimientosMentalesNeurologicos"),
-//    @NamedQuery(name = "AntecedentesHeredofamiliares.findByObecidad", query = "SELECT a FROM AntecedentesHeredofamiliares a WHERE a.obecidad = :obecidad"),
-//    @NamedQuery(name = "AntecedentesHeredofamiliares.findByPadecimientosHematologicos", query = "SELECT a FROM AntecedentesHeredofamiliares a WHERE a.padecimientosHematologicos = :padecimientosHematologicos"),
-//    @NamedQuery(name = "AntecedentesHeredofamiliares.findByMalformacionesCongenitas", query = "SELECT a FROM AntecedentesHeredofamiliares a WHERE a.malformacionesCongenitas = :malformacionesCongenitas"),
-//    @NamedQuery(name = "AntecedentesHeredofamiliares.findByProblemasCardiacos", query = "SELECT a FROM AntecedentesHeredofamiliares a WHERE a.problemasCardiacos = :problemasCardiacos")})
+//    @NamedQuery(name = "AntecedentesHeredofamiliares.findAll", query = "SELECT a FROM AntecedentesHeredofamiliares a")})
 public class AntecedentesHeredofamiliares implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -87,8 +73,8 @@ public class AntecedentesHeredofamiliares implements Serializable {
     @Lob
     @Column(name = "problemas_cardiacos_amplio")
     private String problemasCardiacosAmplio;
-    //@OneToMany(mappedBy = "fkIdAntecedentesHeredofamiliares")
-    //private Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection;
+//    @OneToMany(mappedBy = "antecedentesHeredofamiliares", fetch = FetchType.LAZY)
+//    private List<HistoriaClinicaGeneral> historiaClinicaGeneralList;
 
     public AntecedentesHeredofamiliares() {
     }
@@ -233,13 +219,12 @@ public class AntecedentesHeredofamiliares implements Serializable {
         this.problemasCardiacosAmplio = problemasCardiacosAmplio;
     }
 
-//    @XmlTransient
-//    public Collection<HistoriaClinicaGeneral> getHistoriaClinicaGeneralCollection() {
-//        return historiaClinicaGeneralCollection;
+//    public List<HistoriaClinicaGeneral> getHistoriaClinicaGeneralList() {
+//        return historiaClinicaGeneralList;
 //    }
 //
-//    public void setHistoriaClinicaGeneralCollection(Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection) {
-//        this.historiaClinicaGeneralCollection = historiaClinicaGeneralCollection;
+//    public void setHistoriaClinicaGeneralList(List<HistoriaClinicaGeneral> historiaClinicaGeneralList) {
+//        this.historiaClinicaGeneralList = historiaClinicaGeneralList;
 //    }
 
     @Override
@@ -264,7 +249,7 @@ public class AntecedentesHeredofamiliares implements Serializable {
 
     @Override
     public String toString() {
-        return "com.unsis.odonto.edu.entity.AntecedentesHeredofamiliares[ idAntecedentesHeredofamiliares=" + idAntecedentesHeredofamiliares + " ]";
+        return "entity.AntecedentesHeredofamiliares[ idAntecedentesHeredofamiliares=" + idAntecedentesHeredofamiliares + " ]";
     }
     
 }

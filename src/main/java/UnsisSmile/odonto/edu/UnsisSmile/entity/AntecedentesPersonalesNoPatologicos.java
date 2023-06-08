@@ -1,46 +1,31 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.time.LocalDate;
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 /**
  *
- * @author froste
+ * @author labingsw05
  */
 @Entity
 @Table(name = "antecedentes_personales_no_patologicos")
-//@XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "AntecedentesPersonalesNoPatologicos.findAll", query = "SELECT a FROM AntecedentesPersonalesNoPatologicos a"),
-//    @NamedQuery(name = "AntecedentesPersonalesNoPatologicos.findByIdAntecedentesPersonalesNoPatologicos", query = "SELECT a FROM AntecedentesPersonalesNoPatologicos a WHERE a.idAntecedentesPersonalesNoPatologicos = :idAntecedentesPersonalesNoPatologicos"),
-//    @NamedQuery(name = "AntecedentesPersonalesNoPatologicos.findByComeFrutasVerduras", query = "SELECT a FROM AntecedentesPersonalesNoPatologicos a WHERE a.comeFrutasVerduras = :comeFrutasVerduras"),
-//    @NamedQuery(name = "AntecedentesPersonalesNoPatologicos.findByComeCarne", query = "SELECT a FROM AntecedentesPersonalesNoPatologicos a WHERE a.comeCarne = :comeCarne"),
-//    @NamedQuery(name = "AntecedentesPersonalesNoPatologicos.findByComeCereales", query = "SELECT a FROM AntecedentesPersonalesNoPatologicos a WHERE a.comeCereales = :comeCereales"),
-//    @NamedQuery(name = "AntecedentesPersonalesNoPatologicos.findByComeAlimentosChatarra", query = "SELECT a FROM AntecedentesPersonalesNoPatologicos a WHERE a.comeAlimentosChatarra = :comeAlimentosChatarra"),
-//    @NamedQuery(name = "AntecedentesPersonalesNoPatologicos.findByTomaDosLitrosDeAguaXDia", query = "SELECT a FROM AntecedentesPersonalesNoPatologicos a WHERE a.tomaDosLitrosDeAguaXDia = :tomaDosLitrosDeAguaXDia"),
-//    @NamedQuery(name = "AntecedentesPersonalesNoPatologicos.findByUnoOMasRefrescosDia", query = "SELECT a FROM AntecedentesPersonalesNoPatologicos a WHERE a.unoOMasRefrescosDia = :unoOMasRefrescosDia"),
-//    @NamedQuery(name = "AntecedentesPersonalesNoPatologicos.findByHorasDuermeDia", query = "SELECT a FROM AntecedentesPersonalesNoPatologicos a WHERE a.horasDuermeDia = :horasDuermeDia"),
-//    @NamedQuery(name = "AntecedentesPersonalesNoPatologicos.findByBa\u00f1oVecesXSemana", query = "SELECT a FROM AntecedentesPersonalesNoPatologicos a WHERE a.ba\u00f1oVecesXSemana = :ba\u00f1oVecesXSemana"),
-//    @NamedQuery(name = "AntecedentesPersonalesNoPatologicos.findByCepilladoXDia", query = "SELECT a FROM AntecedentesPersonalesNoPatologicos a WHERE a.cepilladoXDia = :cepilladoXDia"),
-//    @NamedQuery(name = "AntecedentesPersonalesNoPatologicos.findBySuViviendaTienePiso", query = "SELECT a FROM AntecedentesPersonalesNoPatologicos a WHERE a.suViviendaTienePiso = :suViviendaTienePiso"),
-//    @NamedQuery(name = "AntecedentesPersonalesNoPatologicos.findByMaterialDeVivienda", query = "SELECT a FROM AntecedentesPersonalesNoPatologicos a WHERE a.materialDeVivienda = :materialDeVivienda")})
+//    @NamedQuery(name = "AntecedentesPersonalesNoPatologicos.findAll", query = "SELECT a FROM AntecedentesPersonalesNoPatologicos a")})
 public class AntecedentesPersonalesNoPatologicos implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -70,8 +55,8 @@ public class AntecedentesPersonalesNoPatologicos implements Serializable {
     private Integer suViviendaTienePiso;
     @Column(name = "material_de_vivienda")
     private String materialDeVivienda;
-    @OneToMany(mappedBy = "fkIdAntecedentesPersonalesNoPatologicos")
-    private Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection;
+    @OneToMany(mappedBy = "antecedentesPersonalesNoPatologicos", fetch = FetchType.LAZY)
+    private List<HistoriaClinicaGeneral> historiaClinicaGeneralList;
 
     public AntecedentesPersonalesNoPatologicos() {
     }
@@ -176,14 +161,13 @@ public class AntecedentesPersonalesNoPatologicos implements Serializable {
         this.materialDeVivienda = materialDeVivienda;
     }
 
-//    @XmlTransient
-//    public Collection<HistoriaClinicaGeneral> getHistoriaClinicaGeneralCollection() {
-//        return historiaClinicaGeneralCollection;
-//    }
+    public List<HistoriaClinicaGeneral> getHistoriaClinicaGeneralList() {
+        return historiaClinicaGeneralList;
+    }
 
-//    public void setHistoriaClinicaGeneralCollection(Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection) {
-//        this.historiaClinicaGeneralCollection = historiaClinicaGeneralCollection;
-//    }
+    public void setHistoriaClinicaGeneralList(List<HistoriaClinicaGeneral> historiaClinicaGeneralList) {
+        this.historiaClinicaGeneralList = historiaClinicaGeneralList;
+    }
 
     @Override
     public int hashCode() {
@@ -207,7 +191,7 @@ public class AntecedentesPersonalesNoPatologicos implements Serializable {
 
     @Override
     public String toString() {
-        return "com.unsis.odonto.edu.entity.AntecedentesPersonalesNoPatologicos[ idAntecedentesPersonalesNoPatologicos=" + idAntecedentesPersonalesNoPatologicos + " ]";
+        return "entity.AntecedentesPersonalesNoPatologicos[ idAntecedentesPersonalesNoPatologicos=" + idAntecedentesPersonalesNoPatologicos + " ]";
     }
     
 }

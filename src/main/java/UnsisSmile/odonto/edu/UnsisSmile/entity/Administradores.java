@@ -1,45 +1,31 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
 
 /**
  *
- * @author froste
+ * @author labingsw05
  */
 @Entity
 @Table(name = "administradores")
-//@XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "Administradores.findAll", query = "SELECT a FROM Administradores a"),
-//    @NamedQuery(name = "Administradores.findByIdAdministrador", query = "SELECT a FROM Administradores a WHERE a.idAdministrador = :idAdministrador"),
-//    @NamedQuery(name = "Administradores.findByNombre1", query = "SELECT a FROM Administradores a WHERE a.nombre1 = :nombre1"),
-//    @NamedQuery(name = "Administradores.findByNombre2", query = "SELECT a FROM Administradores a WHERE a.nombre2 = :nombre2"),
-//    @NamedQuery(name = "Administradores.findByApellido1", query = "SELECT a FROM Administradores a WHERE a.apellido1 = :apellido1"),
-//    @NamedQuery(name = "Administradores.findByApellido2", query = "SELECT a FROM Administradores a WHERE a.apellido2 = :apellido2"),
-//    @NamedQuery(name = "Administradores.findByCurp", query = "SELECT a FROM Administradores a WHERE a.curp = :curp"),
-//    @NamedQuery(name = "Administradores.findByTelefono", query = "SELECT a FROM Administradores a WHERE a.telefono = :telefono"),
-//    @NamedQuery(name = "Administradores.findByNumeroTrabajador", query = "SELECT a FROM Administradores a WHERE a.numeroTrabajador = :numeroTrabajador"),
-//    @NamedQuery(name = "Administradores.findByFechaNacimiento", query = "SELECT a FROM Administradores a WHERE a.fechaNacimiento = :fechaNacimiento"),
-//    @NamedQuery(name = "Administradores.findBySexo", query = "SELECT a FROM Administradores a WHERE a.sexo = :sexo"),
-//    @NamedQuery(name = "Administradores.findByEmailAdmin", query = "SELECT a FROM Administradores a WHERE a.emailAdmin = :emailAdmin"),
-//    @NamedQuery(name = "Administradores.findByEstatus", query = "SELECT a FROM Administradores a WHERE a.estatus = :estatus")})
+//    @NamedQuery(name = "Administradores.findAll", query = "SELECT a FROM Administradores a")})
 public class Administradores implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -62,9 +48,9 @@ public class Administradores implements Serializable {
     private String telefono;
     @Column(name = "numero_trabajador")
     private String numeroTrabajador;
-    @Column(name = "fecha_nacimiento", columnDefinition = "DATE")
-    //@Temporal(TemporalType.DATE)
-    private LocalDate fechaNacimiento;
+//    @Column(name = "fecha_nacimiento")
+//    @Temporal(TemporalType.DATE)
+    private Date fechaNacimiento;
     @Column(name = "sexo")
     private Character sexo;
     @Basic(optional = false)
@@ -72,9 +58,9 @@ public class Administradores implements Serializable {
     private String emailAdmin;
     @Column(name = "estatus")
     private Boolean estatus;
-    /*@JoinColumn(name = "fk_usuario", referencedColumnName = "id_usuario")
-    @ManyToOne
-    private Usuarios fkUsuario;*/
+    @JoinColumn(name = "fk_usuario", referencedColumnName = "id_usuario")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Usuarios usuarios;
 
     public Administradores() {
     }
@@ -152,11 +138,11 @@ public class Administradores implements Serializable {
         this.numeroTrabajador = numeroTrabajador;
     }
 
-    public LocalDate getFechaNacimiento() {
+    public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+    public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -184,13 +170,13 @@ public class Administradores implements Serializable {
         this.estatus = estatus;
     }
 
-    /*public Usuarios getFkUsuario() {
-        return fkUsuario;
+    public Usuarios getUsuarios() {
+        return usuarios;
     }
 
-    public void setFkUsuario(Usuarios fkUsuario) {
-        this.fkUsuario = fkUsuario;
-    }*/
+    public void setUsuarios(Usuarios usuarios) {
+        this.usuarios = usuarios;
+    }
 
     @Override
     public int hashCode() {
@@ -214,7 +200,7 @@ public class Administradores implements Serializable {
 
     @Override
     public String toString() {
-        return "com.unsis.odonto.edu.entity.Administradores[ idAdministrador=" + idAdministrador + " ]";
+        return "entity.Administradores[ idAdministrador=" + idAdministrador + " ]";
     }
     
 }

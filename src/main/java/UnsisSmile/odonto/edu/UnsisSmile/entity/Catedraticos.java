@@ -1,44 +1,34 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Basic;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 /**
  *
- * @author froste
+ * @author labingsw05
  */
 @Entity
 @Table(name = "catedraticos")
-//@XmlRootElement
-//@NamedQueries({
-//    @NamedQuery(name = "Catedraticos.findAll", query = "SELECT c FROM Catedraticos c"),
-//    @NamedQuery(name = "Catedraticos.findByIdCatedratico", query = "SELECT c FROM Catedraticos c WHERE c.idCatedratico = :idCatedratico"),
-//    @NamedQuery(name = "Catedraticos.findByNombre", query = "SELECT c FROM Catedraticos c WHERE c.nombre = :nombre"),
-//    @NamedQuery(name = "Catedraticos.findByNombre2", query = "SELECT c FROM Catedraticos c WHERE c.nombre2 = :nombre2"),
-//    @NamedQuery(name = "Catedraticos.findByApellido", query = "SELECT c FROM Catedraticos c WHERE c.apellido = :apellido"),
-//    @NamedQuery(name = "Catedraticos.findByApellido2", query = "SELECT c FROM Catedraticos c WHERE c.apellido2 = :apellido2"),
-//    @NamedQuery(name = "Catedraticos.findByCurp", query = "SELECT c FROM Catedraticos c WHERE c.curp = :curp"),
-//    @NamedQuery(name = "Catedraticos.findByTelefono", query = "SELECT c FROM Catedraticos c WHERE c.telefono = :telefono"),
-//    @NamedQuery(name = "Catedraticos.findBySexo", query = "SELECT c FROM Catedraticos c WHERE c.sexo = :sexo"),
-//    @NamedQuery(name = "Catedraticos.findByFechaNacimiento", query = "SELECT c FROM Catedraticos c WHERE c.fechaNacimiento = :fechaNacimiento"),
-//    @NamedQuery(name = "Catedraticos.findByNumeroTrabajador", query = "SELECT c FROM Catedraticos c WHERE c.numeroTrabajador = :numeroTrabajador"),
-//    @NamedQuery(name = "Catedraticos.findByEmailCatedratico", query = "SELECT c FROM Catedraticos c WHERE c.emailCatedratico = :emailCatedratico"),
-//    @NamedQuery(name = "Catedraticos.findByEstatus", query = "SELECT c FROM Catedraticos c WHERE c.estatus = :estatus")})
+@NamedQueries({
+    @NamedQuery(name = "Catedraticos.findAll", query = "SELECT c FROM Catedraticos c")})
 public class Catedraticos implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -61,9 +51,9 @@ public class Catedraticos implements Serializable {
     private String telefono;
     @Column(name = "sexo")
     private Character sexo;
-    @Column(name = "fecha_nacimiento", columnDefinition = "DATE")
-    //@Temporal(TemporalType.DATE)
-    private LocalDate fechaNacimiento;
+//    @Column(name = "fecha_nacimiento")
+//    @Temporal(TemporalType.DATE)
+    private Date fechaNacimiento;
     @Column(name = "numero_trabajador")
     private String numeroTrabajador;
     @Basic(optional = false)
@@ -71,13 +61,13 @@ public class Catedraticos implements Serializable {
     private String emailCatedratico;
     @Column(name = "estatus")
     private Boolean estatus;
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkIdCatedraticoResponsable")
-//    private Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection;
-//    @JoinColumn(name = "fk_id_usuario", referencedColumnName = "id_usuario")
-//    @ManyToOne(optional = false)
-//    private Usuarios fkIdUsuario;
-//    @OneToMany(mappedBy = "fkIdCatedratico")
-//    private Collection<CatedraticoGrupo> catedraticoGrupoCollection;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "catedraticos", fetch = FetchType.LAZY)
+//    private List<HistoriaClinicaGeneral> historiaClinicaGeneralList;
+    @JoinColumn(name = "fk_id_usuario", referencedColumnName = "id_usuario")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+//    private Usuarios usuarios;
+//    @OneToMany(mappedBy = "catedraticos", fetch = FetchType.LAZY)
+    private List<CatedraticoGrupo> catedraticoGrupoList;
 
     public Catedraticos() {
     }
@@ -155,11 +145,11 @@ public class Catedraticos implements Serializable {
         this.sexo = sexo;
     }
 
-    public LocalDate getFechaNacimiento() {
+    public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+    public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -186,32 +176,30 @@ public class Catedraticos implements Serializable {
     public void setEstatus(Boolean estatus) {
         this.estatus = estatus;
     }
-//
-//    @XmlTransient
-//    public Collection<HistoriaClinicaGeneral> getHistoriaClinicaGeneralCollection() {
-//        return historiaClinicaGeneralCollection;
+
+//    public List<HistoriaClinicaGeneral> getHistoriaClinicaGeneralList() {
+//        return historiaClinicaGeneralList;
 //    }
 //
-//    public void setHistoriaClinicaGeneralCollection(Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection) {
-//        this.historiaClinicaGeneralCollection = historiaClinicaGeneralCollection;
+//    public void setHistoriaClinicaGeneralList(List<HistoriaClinicaGeneral> historiaClinicaGeneralList) {
+//        this.historiaClinicaGeneralList = historiaClinicaGeneralList;
 //    }
 //
-//    public Usuarios getFkIdUsuario() {
-//        return fkIdUsuario;
+//    public Usuarios getUsuarios() {
+//        return usuarios;
 //    }
 //
-//    public void setFkIdUsuario(Usuarios fkIdUsuario) {
-//        this.fkIdUsuario = fkIdUsuario;
+//    public void setUsuarios(Usuarios usuarios) {
+//        this.usuarios = usuarios;
 //    }
-//
-//    @XmlTransient
-//    public Collection<CatedraticoGrupo> getCatedraticoGrupoCollection() {
-//        return catedraticoGrupoCollection;
-//    }
-//
-//    public void setCatedraticoGrupoCollection(Collection<CatedraticoGrupo> catedraticoGrupoCollection) {
-//        this.catedraticoGrupoCollection = catedraticoGrupoCollection;
-//    }
+
+    public List<CatedraticoGrupo> getCatedraticoGrupoList() {
+        return catedraticoGrupoList;
+    }
+
+    public void setCatedraticoGrupoList(List<CatedraticoGrupo> catedraticoGrupoList) {
+        this.catedraticoGrupoList = catedraticoGrupoList;
+    }
 
     @Override
     public int hashCode() {
@@ -235,7 +223,7 @@ public class Catedraticos implements Serializable {
 
     @Override
     public String toString() {
-        return "com.unsis.odonto.edu.entity.Catedraticos[ idCatedratico=" + idCatedratico + " ]";
+        return "entity.Catedraticos[ idCatedratico=" + idCatedratico + " ]";
     }
     
 }

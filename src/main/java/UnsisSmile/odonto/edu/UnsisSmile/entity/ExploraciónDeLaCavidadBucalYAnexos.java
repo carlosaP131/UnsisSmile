@@ -1,35 +1,31 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
 
 /**
  *
- * @author froste
+ * @author labingsw05
  */
 @Entity
 @Table(name = "EXPLORACI\u00d3N_DE_LA_CAVIDAD_BUCAL_Y_ANEXOS")
-//@XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "Exploraci\u00f3nDeLaCavidadBucalYAnexos.findAll", query = "SELECT e FROM Exploraci\u00f3nDeLaCavidadBucalYAnexos e"),
-//    @NamedQuery(name = "Exploraci\u00f3nDeLaCavidadBucalYAnexos.findByIdEXPLORACI\u00d3NDELACAVIDADBUCALYANEXOS", query = "SELECT e FROM Exploraci\u00f3nDeLaCavidadBucalYAnexos e WHERE e.idEXPLORACI\u00d3NDELACAVIDADBUCALYANEXOS = :idEXPLORACI\u00d3NDELACAVIDADBUCALYANEXOS")})
+//    @NamedQuery(name = "Exploraci\u00f3nDeLaCavidadBucalYAnexos.findAll", query = "SELECT e FROM Exploraci\u00f3nDeLaCavidadBucalYAnexos e")})
 public class ExploraciónDeLaCavidadBucalYAnexos implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -142,7 +138,7 @@ public class ExploraciónDeLaCavidadBucalYAnexos implements Serializable {
 
     @Override
     public String toString() {
-        return "com.unsis.odonto.edu.entity.Exploraci\u00f3nDeLaCavidadBucalYAnexos[ idEXPLORACI\u00d3NDELACAVIDADBUCALYANEXOS=" + idEXPLORACIÓNDELACAVIDADBUCALYANEXOS + " ]";
+        return "entity.Exploraci\u00f3nDeLaCavidadBucalYAnexos[ idEXPLORACI\u00d3NDELACAVIDADBUCALYANEXOS=" + idEXPLORACIÓNDELACAVIDADBUCALYANEXOS + " ]";
     }
     
 }

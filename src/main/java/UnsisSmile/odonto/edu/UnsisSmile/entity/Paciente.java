@@ -1,49 +1,31 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 /**
  *
- * @author froste
+ * @author labingsw05
  */
 @Entity
 @Table(name = "paciente")
-//@XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "Paciente.findAll", query = "SELECT p FROM Paciente p"),
-//    @NamedQuery(name = "Paciente.findByIdPaciente", query = "SELECT p FROM Paciente p WHERE p.idPaciente = :idPaciente"),
-//    @NamedQuery(name = "Paciente.findByNombre1", query = "SELECT p FROM Paciente p WHERE p.nombre1 = :nombre1"),
-//    @NamedQuery(name = "Paciente.findByNombre2", query = "SELECT p FROM Paciente p WHERE p.nombre2 = :nombre2"),
-//    @NamedQuery(name = "Paciente.findByApellido1", query = "SELECT p FROM Paciente p WHERE p.apellido1 = :apellido1"),
-//    @NamedQuery(name = "Paciente.findByApellido2", query = "SELECT p FROM Paciente p WHERE p.apellido2 = :apellido2"),
-//    @NamedQuery(name = "Paciente.findBySexo", query = "SELECT p FROM Paciente p WHERE p.sexo = :sexo"),
-//    @NamedQuery(name = "Paciente.findByGrupoEtnico", query = "SELECT p FROM Paciente p WHERE p.grupoEtnico = :grupoEtnico"),
-//    @NamedQuery(name = "Paciente.findByOcupacion", query = "SELECT p FROM Paciente p WHERE p.ocupacion = :ocupacion"),
-//    @NamedQuery(name = "Paciente.findByFechaNacimiento", query = "SELECT p FROM Paciente p WHERE p.fechaNacimiento = :fechaNacimiento"),
-//    @NamedQuery(name = "Paciente.findByDomicilio", query = "SELECT p FROM Paciente p WHERE p.domicilio = :domicilio"),
-//    @NamedQuery(name = "Paciente.findByEstadoCivil", query = "SELECT p FROM Paciente p WHERE p.estadoCivil = :estadoCivil"),
-//    @NamedQuery(name = "Paciente.findByReligion", query = "SELECT p FROM Paciente p WHERE p.religion = :religion"),
-//    @NamedQuery(name = "Paciente.findByFechaIngreso", query = "SELECT p FROM Paciente p WHERE p.fechaIngreso = :fechaIngreso"),
-//    @NamedQuery(name = "Paciente.findByNacionalidad", query = "SELECT p FROM Paciente p WHERE p.nacionalidad = :nacionalidad"),
-//    @NamedQuery(name = "Paciente.findByLocalidad", query = "SELECT p FROM Paciente p WHERE p.localidad = :localidad"),
-//    @NamedQuery(name = "Paciente.findByEstatus", query = "SELECT p FROM Paciente p WHERE p.estatus = :estatus")})
+//    @NamedQuery(name = "Paciente.findAll", query = "SELECT p FROM Paciente p")})
 public class Paciente implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -66,33 +48,32 @@ public class Paciente implements Serializable {
     private String grupoEtnico;
     @Column(name = "ocupacion")
     private String ocupacion;
-    @Column(name = "fecha_nacimiento", columnDefinition = "DATE")
-    //@Temporal(TemporalType.DATE)
-    private LocalDate fechaNacimiento;
+//    @Column(name = "fecha_nacimiento")
+//    @Temporal(TemporalType.DATE)
+    private Date fechaNacimiento;
     @Column(name = "domicilio")
     private String domicilio;
     @Column(name = "estado_civil")
     private String estadoCivil;
     @Column(name = "religion")
     private String religion;
-    @Column(name = "fecha_ingreso", columnDefinition = "DATE")
-    //@Temporal(TemporalType.DATE)
-    //@Temporal(javax.persistence.TemporalType.DATE)
-    private LocalDate fechaIngreso;
+//    @Column(name = "fecha_ingreso")
+//    @Temporal(TemporalType.DATE)
+    private Date fechaIngreso;
     @Column(name = "nacionalidad")
     private String nacionalidad;
     @Column(name = "localidad")
     private String localidad;
     @Column(name = "estatus")
     private Boolean estatus;
-//    @OneToMany(mappedBy = "fkIdPaciente")
-//    private Collection<PacienteAlumno> pacienteAlumnoCollection;
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkIdPaciente")
-//    private Collection<Consulta> consultaCollection;
-//    @OneToMany(mappedBy = "fkIdPaciente")
-//    private Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection;
-//    @OneToMany(mappedBy = "fkIdPaciente")
-//    private Collection<Tutor> tutorCollection;
+//    @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
+//    private List<PacienteAlumno> pacienteAlumnoList;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "paciente", fetch = FetchType.LAZY)
+//    private List<Consulta> consultaList;
+    @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
+    private List<HistoriaClinicaGeneral> historiaClinicaGeneralList;
+//    @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
+//    private List<Tutor> tutorList;
 
     public Paciente() {
     }
@@ -165,11 +146,11 @@ public class Paciente implements Serializable {
         this.ocupacion = ocupacion;
     }
 
-    public LocalDate getFechaNacimiento() {
+    public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+    public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -197,11 +178,11 @@ public class Paciente implements Serializable {
         this.religion = religion;
     }
 
-    public LocalDate getFechaIngreso() {
+    public Date getFechaIngreso() {
         return fechaIngreso;
     }
 
-    public void setFechaIngreso(LocalDate fechaIngreso) {
+    public void setFechaIngreso(Date fechaIngreso) {
         this.fechaIngreso = fechaIngreso;
     }
 
@@ -229,40 +210,36 @@ public class Paciente implements Serializable {
         this.estatus = estatus;
     }
 
-//    @XmlTransient
-//    public Collection<PacienteAlumno> getPacienteAlumnoCollection() {
-//        return pacienteAlumnoCollection;
+//    public List<PacienteAlumno> getPacienteAlumnoList() {
+//        return pacienteAlumnoList;
+//    }
+//
+//    public void setPacienteAlumnoList(List<PacienteAlumno> pacienteAlumnoList) {
+//        this.pacienteAlumnoList = pacienteAlumnoList;
 //    }
 
-//    public void setPacienteAlumnoCollection(Collection<PacienteAlumno> pacienteAlumnoCollection) {
-//        this.pacienteAlumnoCollection = pacienteAlumnoCollection;
+//    public List<Consulta> getConsultaList() {
+//        return consultaList;
+//    }
+//
+//    public void setConsultaList(List<Consulta> consultaList) {
+//        this.consultaList = consultaList;
 //    }
 
-//    @XmlTransient
-//    public Collection<Consulta> getConsultaCollection() {
-//        return consultaCollection;
-//    }
+    public List<HistoriaClinicaGeneral> getHistoriaClinicaGeneralList() {
+        return historiaClinicaGeneralList;
+    }
 
-//    public void setConsultaCollection(Collection<Consulta> consultaCollection) {
-//        this.consultaCollection = consultaCollection;
-//    }
+    public void setHistoriaClinicaGeneralList(List<HistoriaClinicaGeneral> historiaClinicaGeneralList) {
+        this.historiaClinicaGeneralList = historiaClinicaGeneralList;
+    }
 
-//    @XmlTransient
-//    public Collection<HistoriaClinicaGeneral> getHistoriaClinicaGeneralCollection() {
-//        return historiaClinicaGeneralCollection;
+//    public List<Tutor> getTutorList() {
+//        return tutorList;
 //    }
-
-//    public void setHistoriaClinicaGeneralCollection(Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection) {
-//        this.historiaClinicaGeneralCollection = historiaClinicaGeneralCollection;
-//    }
-
-//    @XmlTransient
-//    public Collection<Tutor> getTutorCollection() {
-//        return tutorCollection;
-//    }
-
-//    public void setTutorCollection(Collection<Tutor> tutorCollection) {
-//        this.tutorCollection = tutorCollection;
+//
+//    public void setTutorList(List<Tutor> tutorList) {
+//        this.tutorList = tutorList;
 //    }
 
     @Override
@@ -287,7 +264,7 @@ public class Paciente implements Serializable {
 
     @Override
     public String toString() {
-        return "com.unsis.odonto.edu.entity.Paciente[ idPaciente=" + idPaciente + " ]";
+        return "entity.Paciente[ idPaciente=" + idPaciente + " ]";
     }
     
 }

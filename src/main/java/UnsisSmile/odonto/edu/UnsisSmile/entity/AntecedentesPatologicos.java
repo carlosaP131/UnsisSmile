@@ -1,54 +1,30 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
 /**
  *
- * @author froste
+ * @author labingsw05
  */
 @Entity
 @Table(name = "Antecedentes_Patologicos")
-//@XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "AntecedentesPatologicos.findAll", query = "SELECT a FROM AntecedentesPatologicos a"),
-//    @NamedQuery(name = "AntecedentesPatologicos.findByIdAntecedentesPatologicos", query = "SELECT a FROM AntecedentesPatologicos a WHERE a.idAntecedentesPatologicos = :idAntecedentesPatologicos"),
-//    @NamedQuery(name = "AntecedentesPatologicos.findByAlcoholismo", query = "SELECT a FROM AntecedentesPatologicos a WHERE a.alcoholismo = :alcoholismo"),
-//    @NamedQuery(name = "AntecedentesPatologicos.findByAlergias", query = "SELECT a FROM AntecedentesPatologicos a WHERE a.alergias = :alergias"),
-//    @NamedQuery(name = "AntecedentesPatologicos.findByAnemias", query = "SELECT a FROM AntecedentesPatologicos a WHERE a.anemias = :anemias"),
-//    @NamedQuery(name = "AntecedentesPatologicos.findByArtritis", query = "SELECT a FROM AntecedentesPatologicos a WHERE a.artritis = :artritis"),
-//    @NamedQuery(name = "AntecedentesPatologicos.findByAsma", query = "SELECT a FROM AntecedentesPatologicos a WHERE a.asma = :asma"),
-//    @NamedQuery(name = "AntecedentesPatologicos.findByC\u00e1ncer", query = "SELECT a FROM AntecedentesPatologicos a WHERE a.c\u00e1ncer = :c\u00e1ncer"),
-//    @NamedQuery(name = "AntecedentesPatologicos.findByDependenciadeDrogasoNarc\u00f3ticos", query = "SELECT a FROM AntecedentesPatologicos a WHERE a.dependenciadeDrogasoNarc\u00f3ticos = :dependenciadeDrogasoNarc\u00f3ticos"),
-//    @NamedQuery(name = "AntecedentesPatologicos.findByDiabetes", query = "SELECT a FROM AntecedentesPatologicos a WHERE a.diabetes = :diabetes"),
-//    @NamedQuery(name = "AntecedentesPatologicos.findByEnfermedadesVen\u00e9reas", query = "SELECT a FROM AntecedentesPatologicos a WHERE a.enfermedadesVen\u00e9reas = :enfermedadesVen\u00e9reas"),
-//    @NamedQuery(name = "AntecedentesPatologicos.findByEpilepsia", query = "SELECT a FROM AntecedentesPatologicos a WHERE a.epilepsia = :epilepsia"),
-//    @NamedQuery(name = "AntecedentesPatologicos.findByTrastornodelRi\u00f1\u00f3noH\u00edgado", query = "SELECT a FROM AntecedentesPatologicos a WHERE a.trastornodelRi\u00f1\u00f3noH\u00edgado = :trastornodelRi\u00f1\u00f3noH\u00edgado"),
-//    @NamedQuery(name = "AntecedentesPatologicos.findBySida", query = "SELECT a FROM AntecedentesPatologicos a WHERE a.sida = :sida"),
-//    @NamedQuery(name = "AntecedentesPatologicos.findByLesionesencabezaocuello", query = "SELECT a FROM AntecedentesPatologicos a WHERE a.lesionesencabezaocuello = :lesionesencabezaocuello"),
-//    @NamedQuery(name = "AntecedentesPatologicos.findByMigra\u00f1a", query = "SELECT a FROM AntecedentesPatologicos a WHERE a.migra\u00f1a = :migra\u00f1a"),
-//    @NamedQuery(name = "AntecedentesPatologicos.findByProblemasCardiacos", query = "SELECT a FROM AntecedentesPatologicos a WHERE a.problemasCardiacos = :problemasCardiacos"),
-//    @NamedQuery(name = "AntecedentesPatologicos.findBySinusitis", query = "SELECT a FROM AntecedentesPatologicos a WHERE a.sinusitis = :sinusitis"),
-//    @NamedQuery(name = "AntecedentesPatologicos.findByTrastornosMetales", query = "SELECT a FROM AntecedentesPatologicos a WHERE a.trastornosMetales = :trastornosMetales"),
-//    @NamedQuery(name = "AntecedentesPatologicos.findByTrastornosRespiratorios", query = "SELECT a FROM AntecedentesPatologicos a WHERE a.trastornosRespiratorios = :trastornosRespiratorios"),
-//    @NamedQuery(name = "AntecedentesPatologicos.findByTuberculosis", query = "SELECT a FROM AntecedentesPatologicos a WHERE a.tuberculosis = :tuberculosis"),
-//    @NamedQuery(name = "AntecedentesPatologicos.findByUlcerasdelEst\u00f3mago", query = "SELECT a FROM AntecedentesPatologicos a WHERE a.ulcerasdelEst\u00f3mago = :ulcerasdelEst\u00f3mago"),
-//    @NamedQuery(name = "AntecedentesPatologicos.findByFiebreReum\u00e1tica", query = "SELECT a FROM AntecedentesPatologicos a WHERE a.fiebreReum\u00e1tica = :fiebreReum\u00e1tica")})
+//    @NamedQuery(name = "AntecedentesPatologicos.findAll", query = "SELECT a FROM AntecedentesPatologicos a")})
 public class AntecedentesPatologicos implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -99,7 +75,7 @@ public class AntecedentesPatologicos implements Serializable {
     private Boolean ulcerasdelEstómago;
     @Column(name = "Fiebre_Reum\u00e1tica")
     private Boolean fiebreReumática;
-    //@Lob
+    @Lob
     @Column(name = "otras")
     private String otras;
 
@@ -316,7 +292,7 @@ public class AntecedentesPatologicos implements Serializable {
 
     @Override
     public String toString() {
-        return "com.unsis.odonto.edu.entity.AntecedentesPatologicos[ idAntecedentesPatologicos=" + idAntecedentesPatologicos + " ]";
+        return "entity.AntecedentesPatologicos[ idAntecedentesPatologicos=" + idAntecedentesPatologicos + " ]";
     }
     
 }

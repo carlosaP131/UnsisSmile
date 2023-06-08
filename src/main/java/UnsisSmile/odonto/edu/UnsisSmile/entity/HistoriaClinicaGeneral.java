@@ -1,35 +1,31 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
 
 /**
  *
- * @author froste
+ * @author labingsw05
  */
 @Entity
 @Table(name = "historia_clinica_general")
-//@XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "HistoriaClinicaGeneral.findAll", query = "SELECT h FROM HistoriaClinicaGeneral h"),
-//    @NamedQuery(name = "HistoriaClinicaGeneral.findByIdHistoriaClinicaGeneral", query = "SELECT h FROM HistoriaClinicaGeneral h WHERE h.idHistoriaClinicaGeneral = :idHistoriaClinicaGeneral")})
-
+//    @NamedQuery(name = "HistoriaClinicaGeneral.findAll", query = "SELECT h FROM HistoriaClinicaGeneral h")})
 public class HistoriaClinicaGeneral implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -38,57 +34,57 @@ public class HistoriaClinicaGeneral implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_historia_clinica_general")
     private Integer idHistoriaClinicaGeneral;
-    @JoinColumn(name = "fk_id_antecedentes_personales_patologicos", referencedColumnName = "id_antecedentes_personales_patologicos")
-    @ManyToOne
-    private AntecedentesPersonalesPatologicos fkIdAntecedentesPersonalesPatologicos;
-    @JoinColumn(name = "fk_id_analisis_funcional", referencedColumnName = "id_analisis_funcional")
-    @ManyToOne
-    private AnalisisFuncional fkIdAnalisisFuncional;
     @JoinColumn(name = "fk_id_analisis_radiografico", referencedColumnName = "id_analisis_radiografico")
-    @ManyToOne
-    private AnalisisRadiografico fkIdAnalisisRadiografico;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private AnalisisRadiografico analisisRadiografico;
+    @JoinColumn(name = "fk_id_analisis_funcional", referencedColumnName = "id_analisis_funcional")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private AnalisisFuncional analisisFuncional;
     @JoinColumn(name = "fk_id_antecedentes_heredofamiliares", referencedColumnName = "id_antecedentes_heredofamiliares")
-    @ManyToOne
-    private AntecedentesHeredofamiliares fkIdAntecedentesHeredofamiliares;
-    @JoinColumn(name = "fk_id_paciente", referencedColumnName = "id_paciente")
-    @ManyToOne
-    private Paciente fkIdPaciente;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private AntecedentesHeredofamiliares antecedentesHeredofamiliares;
     @JoinColumn(name = "fk_id_antecedentes_personales_no_patologicos", referencedColumnName = "id_antecedentes_personales_no_patologicos")
-    @ManyToOne
-    private AntecedentesPersonalesNoPatologicos fkIdAntecedentesPersonalesNoPatologicos;
-    @JoinColumn(name = "fk_id_catedratico_responsable", referencedColumnName = "id_catedratico")
-    @ManyToOne(optional = false)
-    private Catedraticos fkIdCatedraticoResponsable;
-    @JoinColumn(name = "fk_id_odontograma_inicial", referencedColumnName = "id_odontograma")
-    @ManyToOne
-    private Odontograma fkIdOdontogramaInicial;
-    @JoinColumn(name = "fk_id_estudio_de_laboratorio_biopsia", referencedColumnName = "id_estudio_de_laboratorio_biopsia")
-    @ManyToOne
-    private EstudioDeLaboratorioBiopsia fkIdEstudioDeLaboratorioBiopsia;
-    @JoinColumn(name = "fk_id_examen_bucal", referencedColumnName = "id_examen_bucal")
-    @ManyToOne
-    private ExamenBucal fkIdExamenBucal;
-    @JoinColumn(name = "fk_id_odontograma_final", referencedColumnName = "id_odontograma")
-    @ManyToOne
-    private Odontograma fkIdOdontogramaFinal;
-    /*@JoinColumn(name = "fk_id_postura_del_paciente", referencedColumnName = "id_postura_del_paciente")
-    @ManyToOne
-    private PosturaDelPaciente fkIdPosturaDelPaciente;*/
-    @JoinColumn(name = "fk_id_signos_vitales", referencedColumnName = "id_signos_vitales")
-    @ManyToOne
-    private SignosVitales fkIdSignosVitales;
-    @JoinColumn(name = "fk_id_examen_clinico", referencedColumnName = "id_examen_clinico")
-    @ManyToOne
-    private ExamenClinico fkIdExamenClinico;
-    @JoinColumn(name = "fk_id_examen_facial", referencedColumnName = "id_examen_facial")
-    @ManyToOne
-    private ExamenFacial fkIdExamenFacial;
-    @JoinColumn(name = "fk_id_interconsulta_medica", referencedColumnName = "id_interconsulta_medica")
-    @ManyToOne
-    private InterconsultaMedica fkIdInterconsultaMedica;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private AntecedentesPersonalesNoPatologicos antecedentesPersonalesNoPatologicos;
     @JoinColumn(name = "fk_id_modelos_de_estudio_fotografias", referencedColumnName = "id_modelos_de_estudio_fotografias")
-    @ManyToOne
-    private ModelosDeEstudioFotografias fkIdModelosDeEstudioFotografias;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private ModelosDeEstudioFotografias modelosDeEstudioFotografias;
+//    @JoinColumn(name = "fk_id_odontograma_final", referencedColumnName = "id_odontograma")
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private Odontograma odontograma;
+//    @JoinColumn(name = "fk_id_postura_del_paciente", referencedColumnName = "id_postura_del_paciente")
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private PosturaDelPaciente posturaDelPaciente;
+    @JoinColumn(name = "fk_id_antecedentes_personales_patologicos", referencedColumnName = "id_antecedentes_personales_patologicos")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private AntecedentesPersonalesPatologicos antecedentesPersonalesPatologicos;
+//    @JoinColumn(name = "fk_id_paciente", referencedColumnName = "id_paciente")
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private Paciente paciente;
+    @JoinColumn(name = "fk_id_catedratico_responsable", referencedColumnName = "id_catedratico")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Catedraticos catedraticos;
+    @JoinColumn(name = "fk_id_estudio_de_laboratorio_biopsia", referencedColumnName = "id_estudio_de_laboratorio_biopsia")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private EstudioDeLaboratorioBiopsia estudioDeLaboratorioBiopsia;
+//    @JoinColumn(name = "fk_id_signos_vitales", referencedColumnName = "id_signos_vitales")
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private SignosVitales signosVitales;
+    @JoinColumn(name = "fk_id_examen_bucal", referencedColumnName = "id_examen_bucal")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private ExamenBucal examenBucal;
+    @JoinColumn(name = "fk_id_examen_clinico", referencedColumnName = "id_examen_clinico")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private ExamenClinico examenClinico;
+    @JoinColumn(name = "fk_id_examen_facial", referencedColumnName = "id_examen_facial")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private ExamenFacial examenFacial;
+//    @JoinColumn(name = "fk_id_odontograma_inicial", referencedColumnName = "id_odontograma")
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private Odontograma odontograma1;
+//    @JoinColumn(name = "fk_id_interconsulta_medica", referencedColumnName = "id_interconsulta_medica")
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private InterconsultaMedica interconsultaMedica;
 
     public HistoriaClinicaGeneral() {
     }
@@ -105,141 +101,141 @@ public class HistoriaClinicaGeneral implements Serializable {
         this.idHistoriaClinicaGeneral = idHistoriaClinicaGeneral;
     }
 
-    public AntecedentesPersonalesPatologicos getFkIdAntecedentesPersonalesPatologicos() {
-        return fkIdAntecedentesPersonalesPatologicos;
+    public AnalisisRadiografico getAnalisisRadiografico() {
+        return analisisRadiografico;
     }
 
-    public void setFkIdAntecedentesPersonalesPatologicos(AntecedentesPersonalesPatologicos fkIdAntecedentesPersonalesPatologicos) {
-        this.fkIdAntecedentesPersonalesPatologicos = fkIdAntecedentesPersonalesPatologicos;
+    public void setAnalisisRadiografico(AnalisisRadiografico analisisRadiografico) {
+        this.analisisRadiografico = analisisRadiografico;
     }
 
-    public AnalisisFuncional getFkIdAnalisisFuncional() {
-        return fkIdAnalisisFuncional;
+    public AnalisisFuncional getAnalisisFuncional() {
+        return analisisFuncional;
     }
 
-    public void setFkIdAnalisisFuncional(AnalisisFuncional fkIdAnalisisFuncional) {
-        this.fkIdAnalisisFuncional = fkIdAnalisisFuncional;
+    public void setAnalisisFuncional(AnalisisFuncional analisisFuncional) {
+        this.analisisFuncional = analisisFuncional;
     }
 
-    public AnalisisRadiografico getFkIdAnalisisRadiografico() {
-        return fkIdAnalisisRadiografico;
+    public AntecedentesHeredofamiliares getAntecedentesHeredofamiliares() {
+        return antecedentesHeredofamiliares;
     }
 
-    public void setFkIdAnalisisRadiografico(AnalisisRadiografico fkIdAnalisisRadiografico) {
-        this.fkIdAnalisisRadiografico = fkIdAnalisisRadiografico;
+    public void setAntecedentesHeredofamiliares(AntecedentesHeredofamiliares antecedentesHeredofamiliares) {
+        this.antecedentesHeredofamiliares = antecedentesHeredofamiliares;
     }
 
-    public AntecedentesHeredofamiliares getFkIdAntecedentesHeredofamiliares() {
-        return fkIdAntecedentesHeredofamiliares;
+    public AntecedentesPersonalesNoPatologicos getAntecedentesPersonalesNoPatologicos() {
+        return antecedentesPersonalesNoPatologicos;
     }
 
-    public void setFkIdAntecedentesHeredofamiliares(AntecedentesHeredofamiliares fkIdAntecedentesHeredofamiliares) {
-        this.fkIdAntecedentesHeredofamiliares = fkIdAntecedentesHeredofamiliares;
+    public void setAntecedentesPersonalesNoPatologicos(AntecedentesPersonalesNoPatologicos antecedentesPersonalesNoPatologicos) {
+        this.antecedentesPersonalesNoPatologicos = antecedentesPersonalesNoPatologicos;
     }
 
-    public Paciente getFkIdPaciente() {
-        return fkIdPaciente;
+//    public ModelosDeEstudioFotografias getModelosDeEstudioFotografias() {
+//        return modelosDeEstudioFotografias;
+//    }
+//
+//    public void setModelosDeEstudioFotografias(ModelosDeEstudioFotografias modelosDeEstudioFotografias) {
+//        this.modelosDeEstudioFotografias = modelosDeEstudioFotografias;
+//    }
+//
+//    public Odontograma getOdontograma() {
+//        return odontograma;
+//    }
+//
+//    public void setOdontograma(Odontograma odontograma) {
+//        this.odontograma = odontograma;
+//    }
+//
+//    public PosturaDelPaciente getPosturaDelPaciente() {
+//        return posturaDelPaciente;
+//    }
+//
+//    public void setPosturaDelPaciente(PosturaDelPaciente posturaDelPaciente) {
+//        this.posturaDelPaciente = posturaDelPaciente;
+//    }
+
+    public AntecedentesPersonalesPatologicos getAntecedentesPersonalesPatologicos() {
+        return antecedentesPersonalesPatologicos;
     }
 
-    public void setFkIdPaciente(Paciente fkIdPaciente) {
-        this.fkIdPaciente = fkIdPaciente;
+    public void setAntecedentesPersonalesPatologicos(AntecedentesPersonalesPatologicos antecedentesPersonalesPatologicos) {
+        this.antecedentesPersonalesPatologicos = antecedentesPersonalesPatologicos;
     }
 
-    public AntecedentesPersonalesNoPatologicos getFkIdAntecedentesPersonalesNoPatologicos() {
-        return fkIdAntecedentesPersonalesNoPatologicos;
+//    public Paciente getPaciente() {
+//        return paciente;
+//    }
+//
+//    public void setPaciente(Paciente paciente) {
+//        this.paciente = paciente;
+//    }
+
+    public Catedraticos getCatedraticos() {
+        return catedraticos;
     }
 
-    public void setFkIdAntecedentesPersonalesNoPatologicos(AntecedentesPersonalesNoPatologicos fkIdAntecedentesPersonalesNoPatologicos) {
-        this.fkIdAntecedentesPersonalesNoPatologicos = fkIdAntecedentesPersonalesNoPatologicos;
+    public void setCatedraticos(Catedraticos catedraticos) {
+        this.catedraticos = catedraticos;
     }
 
-    public Catedraticos getFkIdCatedraticoResponsable() {
-        return fkIdCatedraticoResponsable;
+    public EstudioDeLaboratorioBiopsia getEstudioDeLaboratorioBiopsia() {
+        return estudioDeLaboratorioBiopsia;
     }
 
-    public void setFkIdCatedraticoResponsable(Catedraticos fkIdCatedraticoResponsable) {
-        this.fkIdCatedraticoResponsable = fkIdCatedraticoResponsable;
+    public void setEstudioDeLaboratorioBiopsia(EstudioDeLaboratorioBiopsia estudioDeLaboratorioBiopsia) {
+        this.estudioDeLaboratorioBiopsia = estudioDeLaboratorioBiopsia;
+    }
+//
+//    public SignosVitales getSignosVitales() {
+//        return signosVitales;
+//    }
+//
+//    public void setSignosVitales(SignosVitales signosVitales) {
+//        this.signosVitales = signosVitales;
+//    }
+
+    public ExamenBucal getExamenBucal() {
+        return examenBucal;
     }
 
-    public Odontograma getFkIdOdontogramaInicial() {
-        return fkIdOdontogramaInicial;
+    public void setExamenBucal(ExamenBucal examenBucal) {
+        this.examenBucal = examenBucal;
     }
 
-    public void setFkIdOdontogramaInicial(Odontograma fkIdOdontogramaInicial) {
-        this.fkIdOdontogramaInicial = fkIdOdontogramaInicial;
+    public ExamenClinico getExamenClinico() {
+        return examenClinico;
     }
 
-    public EstudioDeLaboratorioBiopsia getFkIdEstudioDeLaboratorioBiopsia() {
-        return fkIdEstudioDeLaboratorioBiopsia;
+    public void setExamenClinico(ExamenClinico examenClinico) {
+        this.examenClinico = examenClinico;
     }
 
-    public void setFkIdEstudioDeLaboratorioBiopsia(EstudioDeLaboratorioBiopsia fkIdEstudioDeLaboratorioBiopsia) {
-        this.fkIdEstudioDeLaboratorioBiopsia = fkIdEstudioDeLaboratorioBiopsia;
+    public ExamenFacial getExamenFacial() {
+        return examenFacial;
     }
 
-    public ExamenBucal getFkIdExamenBucal() {
-        return fkIdExamenBucal;
+    public void setExamenFacial(ExamenFacial examenFacial) {
+        this.examenFacial = examenFacial;
     }
 
-    public void setFkIdExamenBucal(ExamenBucal fkIdExamenBucal) {
-        this.fkIdExamenBucal = fkIdExamenBucal;
-    }
-
-    public Odontograma getFkIdOdontogramaFinal() {
-        return fkIdOdontogramaFinal;
-    }
-
-    public void setFkIdOdontogramaFinal(Odontograma fkIdOdontogramaFinal) {
-        this.fkIdOdontogramaFinal = fkIdOdontogramaFinal;
-    }
-
-   /* public PosturaDelPaciente getFkIdPosturaDelPaciente() {
-        return fkIdPosturaDelPaciente;
-    }
-
-    public void setFkIdPosturaDelPaciente(PosturaDelPaciente fkIdPosturaDelPaciente) {
-        this.fkIdPosturaDelPaciente = fkIdPosturaDelPaciente;
-    }*/
-
-    public SignosVitales getFkIdSignosVitales() {
-        return fkIdSignosVitales;
-    }
-
-    public void setFkIdSignosVitales(SignosVitales fkIdSignosVitales) {
-        this.fkIdSignosVitales = fkIdSignosVitales;
-    }
-
-    public ExamenClinico getFkIdExamenClinico() {
-        return fkIdExamenClinico;
-    }
-
-    public void setFkIdExamenClinico(ExamenClinico fkIdExamenClinico) {
-        this.fkIdExamenClinico = fkIdExamenClinico;
-    }
-
-    public ExamenFacial getFkIdExamenFacial() {
-        return fkIdExamenFacial;
-    }
-
-    public void setFkIdExamenFacial(ExamenFacial fkIdExamenFacial) {
-        this.fkIdExamenFacial = fkIdExamenFacial;
-    }
-
-    public InterconsultaMedica getFkIdInterconsultaMedica() {
-        return fkIdInterconsultaMedica;
-    }
-
-    public void setFkIdInterconsultaMedica(InterconsultaMedica fkIdInterconsultaMedica) {
-        this.fkIdInterconsultaMedica = fkIdInterconsultaMedica;
-    }
-
-    public ModelosDeEstudioFotografias getFkIdModelosDeEstudioFotografias() {
-        return fkIdModelosDeEstudioFotografias;
-    }
-
-    public void setFkIdModelosDeEstudioFotografias(ModelosDeEstudioFotografias fkIdModelosDeEstudioFotografias) {
-        this.fkIdModelosDeEstudioFotografias = fkIdModelosDeEstudioFotografias;
-    }
+//    public Odontograma getOdontograma1() {
+//        return odontograma1;
+//    }
+//
+//    public void setOdontograma1(Odontograma odontograma1) {
+//        this.odontograma1 = odontograma1;
+//    }
+//
+//    public InterconsultaMedica getInterconsultaMedica() {
+//        return interconsultaMedica;
+//    }
+//
+//    public void setInterconsultaMedica(InterconsultaMedica interconsultaMedica) {
+//        this.interconsultaMedica = interconsultaMedica;
+//    }
 
     @Override
     public int hashCode() {
@@ -263,7 +259,7 @@ public class HistoriaClinicaGeneral implements Serializable {
 
     @Override
     public String toString() {
-        return "com.unsis.odonto.edu.entity.HistoriaClinicaGeneral[ idHistoriaClinicaGeneral=" + idHistoriaClinicaGeneral + " ]";
+        return "entity.HistoriaClinicaGeneral[ idHistoriaClinicaGeneral=" + idHistoriaClinicaGeneral + " ]";
     }
     
 }

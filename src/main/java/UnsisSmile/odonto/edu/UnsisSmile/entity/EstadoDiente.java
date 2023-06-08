@@ -1,36 +1,31 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.time.LocalDate;
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 /**
  *
- * @author froste
+ * @author labingsw05
  */
 @Entity
 @Table(name = "estado_diente")
-//@XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "EstadoDiente.findAll", query = "SELECT e FROM EstadoDiente e"),
-//    @NamedQuery(name = "EstadoDiente.findByIdEstadoDiente", query = "SELECT e FROM EstadoDiente e WHERE e.idEstadoDiente = :idEstadoDiente"),
-//    @NamedQuery(name = "EstadoDiente.findByDescripcion", query = "SELECT e FROM EstadoDiente e WHERE e.descripcion = :descripcion")})
+//    @NamedQuery(name = "EstadoDiente.findAll", query = "SELECT e FROM EstadoDiente e")})
 public class EstadoDiente implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -41,8 +36,8 @@ public class EstadoDiente implements Serializable {
     private Integer idEstadoDiente;
     @Column(name = "descripcion")
     private String descripcion;
-    @OneToMany(mappedBy = "fkIdEstadoDiente")
-    private Collection<DienteDetalle> dienteDetalleCollection;
+    @OneToMany(mappedBy = "estadoDiente", fetch = FetchType.LAZY)
+    private List<DienteDetalle> dienteDetalleList;
 
     public EstadoDiente() {
     }
@@ -67,13 +62,12 @@ public class EstadoDiente implements Serializable {
         this.descripcion = descripcion;
     }
 
-    //@XmlTransient
-    public Collection<DienteDetalle> getDienteDetalleCollection() {
-        return dienteDetalleCollection;
+    public List<DienteDetalle> getDienteDetalleList() {
+        return dienteDetalleList;
     }
 
-    public void setDienteDetalleCollection(Collection<DienteDetalle> dienteDetalleCollection) {
-        this.dienteDetalleCollection = dienteDetalleCollection;
+    public void setDienteDetalleList(List<DienteDetalle> dienteDetalleList) {
+        this.dienteDetalleList = dienteDetalleList;
     }
 
     @Override
@@ -98,7 +92,7 @@ public class EstadoDiente implements Serializable {
 
     @Override
     public String toString() {
-        return "com.unsis.odonto.edu.entity.EstadoDiente[ idEstadoDiente=" + idEstadoDiente + " ]";
+        return "entity.EstadoDiente[ idEstadoDiente=" + idEstadoDiente + " ]";
     }
     
 }
