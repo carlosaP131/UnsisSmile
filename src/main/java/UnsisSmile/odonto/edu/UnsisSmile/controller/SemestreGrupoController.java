@@ -2,7 +2,7 @@
  *Autor:Carlos Aurelio Alcántara Pérez
  *Fecha de creación: 7-06-2023 ***
  *Fecha de actualización:8-06-2023
- *Descripción: Controll del Semestre grupo
+ *Descripción: Controller del Semestre grupo
  **
  * ****************************************************************************/
 package UnsisSmile.odonto.edu.UnsisSmile.controller;
