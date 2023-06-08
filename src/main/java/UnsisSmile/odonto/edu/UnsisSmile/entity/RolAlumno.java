@@ -1,30 +1,31 @@
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 /**
  *
- * @author froste
+ * @author labingsw05
  */
 @Entity
 @Table(name = "rol_alumno")
-//@XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "RolAlumno.findAll", query = "SELECT r FROM RolAlumno r"),
-//    @NamedQuery(name = "RolAlumno.findByIdRolAlumno", query = "SELECT r FROM RolAlumno r WHERE r.idRolAlumno = :idRolAlumno"),
-//    @NamedQuery(name = "RolAlumno.findByRolAlumno", query = "SELECT r FROM RolAlumno r WHERE r.rolAlumno = :rolAlumno")})
+//    @NamedQuery(name = "RolAlumno.findAll", query = "SELECT r FROM RolAlumno r")})
 public class RolAlumno implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -35,8 +36,8 @@ public class RolAlumno implements Serializable {
     private Integer idRolAlumno;
     @Column(name = "rol_alumno")
     private String rolAlumno;
-//    @OneToMany(mappedBy = "fkIdRolAlumno")
-//    private Collection<PacienteAlumno> pacienteAlumnoCollection;
+    @OneToMany(mappedBy = "rolAlumno", fetch = FetchType.LAZY)
+    private List<PacienteAlumno> pacienteAlumnoList;
 
     public RolAlumno() {
     }
@@ -61,14 +62,13 @@ public class RolAlumno implements Serializable {
         this.rolAlumno = rolAlumno;
     }
 
-//    @XmlTransient
-//    public Collection<PacienteAlumno> getPacienteAlumnoCollection() {
-//        return pacienteAlumnoCollection;
-//    }
-//
-//    public void setPacienteAlumnoCollection(Collection<PacienteAlumno> pacienteAlumnoCollection) {
-//        this.pacienteAlumnoCollection = pacienteAlumnoCollection;
-//    }
+    public List<PacienteAlumno> getPacienteAlumnoList() {
+        return pacienteAlumnoList;
+    }
+
+    public void setPacienteAlumnoList(List<PacienteAlumno> pacienteAlumnoList) {
+        this.pacienteAlumnoList = pacienteAlumnoList;
+    }
 
     @Override
     public int hashCode() {
@@ -92,7 +92,7 @@ public class RolAlumno implements Serializable {
 
     @Override
     public String toString() {
-        return "com.unsis.odonto.edu.entity.RolAlumno[ idRolAlumno=" + idRolAlumno + " ]";
+        return "entity.RolAlumno[ idRolAlumno=" + idRolAlumno + " ]";
     }
     
 }

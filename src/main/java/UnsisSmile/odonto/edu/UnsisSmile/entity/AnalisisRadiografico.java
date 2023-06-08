@@ -1,12 +1,14 @@
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -16,38 +18,14 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-//package com.unsis.odonto.edu.entity;
-//
-//import java.io.Serializable;
-//import java.util.Collection;
-//import javax.persistence.Basic;
-//import javax.persistence.Column;
-//import javax.persistence.Entity;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.GenerationType;
-//import javax.persistence.Id;
-//import javax.persistence.Lob;
-//import javax.persistence.NamedQueries;
-//import javax.persistence.NamedQuery;
-//import javax.persistence.OneToMany;
-//import javax.persistence.Table;
-//import javax.xml.bind.annotation.XmlRootElement;
-//import javax.xml.bind.annotation.XmlTransient;
-
 /**
  *
- * @author froste
+ * @author labingsw05
  */
 @Entity
 @Table(name = "analisis_radiografico")
-//@XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "AnalisisRadiografico.findAll", query = "SELECT a FROM AnalisisRadiografico a"),
-//    @NamedQuery(name = "AnalisisRadiografico.findByIdAnalisisRadiografico", query = "SELECT a FROM AnalisisRadiografico a WHERE a.idAnalisisRadiografico = :idAnalisisRadiografico")})
+//    @NamedQuery(name = "AnalisisRadiografico.findAll", query = "SELECT a FROM AnalisisRadiografico a")})
 public class AnalisisRadiografico implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -65,8 +43,8 @@ public class AnalisisRadiografico implements Serializable {
     @Lob
     @Column(name = "Panoramica")
     private String panoramica;
-   // @OneToMany(mappedBy = "fkIdAnalisisRadiografico")
-    //private Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection;
+//    @OneToMany(mappedBy = "analisisRadiografico", fetch = FetchType.LAZY)
+//    private List<HistoriaClinicaGeneral> historiaClinicaGeneralList;
 
     public AnalisisRadiografico() {
     }
@@ -106,16 +84,15 @@ public class AnalisisRadiografico implements Serializable {
     public void setPanoramica(String panoramica) {
         this.panoramica = panoramica;
     }
-    /*
-    @XmlTransient
-    public Collection<HistoriaClinicaGeneral> getHistoriaClinicaGeneralCollection() {
-        return historiaClinicaGeneralCollection;
-    }
 
-    public void setHistoriaClinicaGeneralCollection(Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection) {
-        this.historiaClinicaGeneralCollection = historiaClinicaGeneralCollection;
-    }
-    */
+//    public List<HistoriaClinicaGeneral> getHistoriaClinicaGeneralList() {
+//        return historiaClinicaGeneralList;
+//    }
+//
+//    public void setHistoriaClinicaGeneralList(List<HistoriaClinicaGeneral> historiaClinicaGeneralList) {
+//        this.historiaClinicaGeneralList = historiaClinicaGeneralList;
+//    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -138,7 +115,7 @@ public class AnalisisRadiografico implements Serializable {
 
     @Override
     public String toString() {
-        return "com.unsis.odonto.edu.entity.AnalisisRadiografico[ idAnalisisRadiografico=" + idAnalisisRadiografico + " ]";
+        return "entity.AnalisisRadiografico[ idAnalisisRadiografico=" + idAnalisisRadiografico + " ]";
     }
     
 }

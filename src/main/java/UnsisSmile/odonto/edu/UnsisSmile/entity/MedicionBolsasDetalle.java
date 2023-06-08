@@ -1,16 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.time.LocalDate;
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
+
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,19 +17,15 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
+ 
 /**
  *
- * @author froste
+ * @author labingsw05
  */
 @Entity
 @Table(name = "medicion_bolsas_detalle")
-//@XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "MedicionBolsasDetalle.findAll", query = "SELECT m FROM MedicionBolsasDetalle m"),
-//    @NamedQuery(name = "MedicionBolsasDetalle.findByIdMedicionBolsasDetalle", query = "SELECT m FROM MedicionBolsasDetalle m WHERE m.idMedicionBolsasDetalle = :idMedicionBolsasDetalle"),
-//    @NamedQuery(name = "MedicionBolsasDetalle.findByMedicion", query = "SELECT m FROM MedicionBolsasDetalle m WHERE m.medicion = :medicion")})
-
+//    @NamedQuery(name = "MedicionBolsasDetalle.findAll", query = "SELECT m FROM MedicionBolsasDetalle m")})
 public class MedicionBolsasDetalle implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,17 +38,17 @@ public class MedicionBolsasDetalle implements Serializable {
     @Column(name = "medicion")
     private Float medicion;
     @JoinColumn(name = "fk_id_codigo_pieza_dental", referencedColumnName = "id_codigo_pieza_dental")
-    @ManyToOne
-    private CodigoPiezaDental fkIdCodigoPiezaDental;
-    /*@JoinColumn(name = "fk_id_periodontograma", referencedColumnName = "id_periodontograma")
-    @ManyToOne
-    private Periodontograma fkIdPeriodontograma;*/
-    @JoinColumn(name = "fk_id_regiones_diente_periodontograma", referencedColumnName = "id_regiones_diente_periodontograma")
-    @ManyToOne
-    private RegionesDientePeriodontograma fkIdRegionesDientePeriodontograma;
-    @JoinColumn(name = "fk_id_regiones_medicion_bolsas", referencedColumnName = "id_regiones_medicion_bolsas")
-    @ManyToOne
-    private RegionesMedicionBolsas fkIdRegionesMedicionBolsas;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private CodigoPiezaDental codigoPiezaDental;
+//    @JoinColumn(name = "fk_id_periodontograma", referencedColumnName = "id_periodontograma")
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private Periodontograma periodontograma;
+//    @JoinColumn(name = "fk_id_regiones_diente_periodontograma", referencedColumnName = "id_regiones_diente_periodontograma")
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private RegionesDientePeriodontograma regionesDientePeriodontograma;
+//    @JoinColumn(name = "fk_id_regiones_medicion_bolsas", referencedColumnName = "id_regiones_medicion_bolsas")
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private RegionesMedicionBolsas regionesMedicionBolsas;
 
     public MedicionBolsasDetalle() {
     }
@@ -79,37 +73,37 @@ public class MedicionBolsasDetalle implements Serializable {
         this.medicion = medicion;
     }
 
-    public CodigoPiezaDental getFkIdCodigoPiezaDental() {
-        return fkIdCodigoPiezaDental;
+    public CodigoPiezaDental getCodigoPiezaDental() {
+        return codigoPiezaDental;
     }
 
-    public void setFkIdCodigoPiezaDental(CodigoPiezaDental fkIdCodigoPiezaDental) {
-        this.fkIdCodigoPiezaDental = fkIdCodigoPiezaDental;
+    public void setCodigoPiezaDental(CodigoPiezaDental codigoPiezaDental) {
+        this.codigoPiezaDental = codigoPiezaDental;
     }
 
-    /*public Periodontograma getFkIdPeriodontograma() {
-        return fkIdPeriodontograma;
-    }
-
-    public void setFkIdPeriodontograma(Periodontograma fkIdPeriodontograma) {
-        this.fkIdPeriodontograma = fkIdPeriodontograma;
-    }*/
-
-    public RegionesDientePeriodontograma getFkIdRegionesDientePeriodontograma() {
-        return fkIdRegionesDientePeriodontograma;
-    }
-
-    public void setFkIdRegionesDientePeriodontograma(RegionesDientePeriodontograma fkIdRegionesDientePeriodontograma) {
-        this.fkIdRegionesDientePeriodontograma = fkIdRegionesDientePeriodontograma;
-    }
-
-    public RegionesMedicionBolsas getFkIdRegionesMedicionBolsas() {
-        return fkIdRegionesMedicionBolsas;
-    }
-
-    public void setFkIdRegionesMedicionBolsas(RegionesMedicionBolsas fkIdRegionesMedicionBolsas) {
-        this.fkIdRegionesMedicionBolsas = fkIdRegionesMedicionBolsas;
-    }
+//    public Periodontograma getPeriodontograma() {
+//        return periodontograma;
+//    }
+//
+//    public void setPeriodontograma(Periodontograma periodontograma) {
+//        this.periodontograma = periodontograma;
+//    }
+//
+//    public RegionesDientePeriodontograma getRegionesDientePeriodontograma() {
+//        return regionesDientePeriodontograma;
+//    }
+//
+//    public void setRegionesDientePeriodontograma(RegionesDientePeriodontograma regionesDientePeriodontograma) {
+//        this.regionesDientePeriodontograma = regionesDientePeriodontograma;
+//    }
+//
+//    public RegionesMedicionBolsas getRegionesMedicionBolsas() {
+//        return regionesMedicionBolsas;
+//    }
+//
+//    public void setRegionesMedicionBolsas(RegionesMedicionBolsas regionesMedicionBolsas) {
+//        this.regionesMedicionBolsas = regionesMedicionBolsas;
+//    }
 
     @Override
     public int hashCode() {
@@ -133,7 +127,7 @@ public class MedicionBolsasDetalle implements Serializable {
 
     @Override
     public String toString() {
-        return "com.unsis.odonto.edu.entity.MedicionBolsasDetalle[ idMedicionBolsasDetalle=" + idMedicionBolsasDetalle + " ]";
+        return "entity.MedicionBolsasDetalle[ idMedicionBolsasDetalle=" + idMedicionBolsasDetalle + " ]";
     }
     
 }

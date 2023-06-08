@@ -4,7 +4,7 @@
  */
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -20,24 +20,12 @@ import jakarta.persistence.Table;
 
 /**
  *
- * @author froste
+ * @author labingsw05
  */
 @Entity
 @Table(name = "alumnos")
-//@XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "Alumnos.findAll", query = "SELECT a FROM Alumnos a"),
-//    @NamedQuery(name = "Alumnos.findByIdAlumno", query = "SELECT a FROM Alumnos a WHERE a.idAlumno = :idAlumno"),
-//    @NamedQuery(name = "Alumnos.findByNombre", query = "SELECT a FROM Alumnos a WHERE a.nombre = :nombre"),
-//    @NamedQuery(name = "Alumnos.findByNombre2", query = "SELECT a FROM Alumnos a WHERE a.nombre2 = :nombre2"),
-//    @NamedQuery(name = "Alumnos.findByApellido", query = "SELECT a FROM Alumnos a WHERE a.apellido = :apellido"),
-//    @NamedQuery(name = "Alumnos.findByApellido2", query = "SELECT a FROM Alumnos a WHERE a.apellido2 = :apellido2"),
-//    @NamedQuery(name = "Alumnos.findBySexo", query = "SELECT a FROM Alumnos a WHERE a.sexo = :sexo"),
-//    @NamedQuery(name = "Alumnos.findByCurp", query = "SELECT a FROM Alumnos a WHERE a.curp = :curp"),
-//    @NamedQuery(name = "Alumnos.findByMatricula", query = "SELECT a FROM Alumnos a WHERE a.matricula = :matricula"),
-//    @NamedQuery(name = "Alumnos.findByTelefono", query = "SELECT a FROM Alumnos a WHERE a.telefono = :telefono"),
-//    @NamedQuery(name = "Alumnos.findByEmailAlumno", query = "SELECT a FROM Alumnos a WHERE a.emailAlumno = :emailAlumno"),
-//    @NamedQuery(name = "Alumnos.findByEstatus", query = "SELECT a FROM Alumnos a WHERE a.estatus = :estatus")})
+//    @NamedQuery(name = "Alumnos.findAll", query = "SELECT a FROM Alumnos a")})
 public class Alumnos implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -67,14 +55,14 @@ public class Alumnos implements Serializable {
     private String emailAlumno;
     @Column(name = "estatus")
     private Boolean estatus;
-    //@OneToMany(mappedBy = "fkIdAlumno")
-    //private Collection<PacienteAlumno> pacienteAlumnoCollection;
-    @JoinColumn(name = "fk_id_semestre_grupo", referencedColumnName = "id_semestre_grupo")
-    //@ManyToOne
-    //private SemestreGrupo fkIdSemestreGrupo;
-    @JoinColumn(name = "f_id_usuario", referencedColumnName = "id_usuario")
-    @ManyToOne(optional = false)
-    private Usuarios fIdUsuario;
+//    @OneToMany(mappedBy = "alumnos", fetch = FetchType.LAZY)
+//    private List<PacienteAlumno> pacienteAlumnoList;
+//    @JoinColumn(name = "fk_id_semestre_grupo", referencedColumnName = "id_semestre_grupo")
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private SemestreGrupo semestreGrupo;
+//    @JoinColumn(name = "f_id_usuario", referencedColumnName = "id_usuario")
+//    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+//    private Usuarios usuarios;
 
     public Alumnos() {
     }
@@ -175,31 +163,30 @@ public class Alumnos implements Serializable {
     public void setEstatus(Boolean estatus) {
         this.estatus = estatus;
     }
-/*
-   //@XmlTransient
-    public Collection<PacienteAlumno> getPacienteAlumnoCollection() {
-        return pacienteAlumnoCollection;
-    }
 
-    public void setPacienteAlumnoCollection(Collection<PacienteAlumno> pacienteAlumnoCollection) {
-        this.pacienteAlumnoCollection = pacienteAlumnoCollection;
-    }
-
-    public SemestreGrupo getFkIdSemestreGrupo() {
-        return fkIdSemestreGrupo;
-    }
-
-    public void setFkIdSemestreGrupo(SemestreGrupo fkIdSemestreGrupo) {
-        this.fkIdSemestreGrupo = fkIdSemestreGrupo;
-    }
-*/
-    public Usuarios getFIdUsuario() {
-        return fIdUsuario;
-    }
-
-    public void setFIdUsuario(Usuarios fIdUsuario) {
-        this.fIdUsuario = fIdUsuario;
-    }
+//    public List<PacienteAlumno> getPacienteAlumnoList() {
+//        return pacienteAlumnoList;
+//    }
+//
+//    public void setPacienteAlumnoList(List<PacienteAlumno> pacienteAlumnoList) {
+//        this.pacienteAlumnoList = pacienteAlumnoList;
+//    }
+//
+//    public SemestreGrupo getSemestreGrupo() {
+//        return semestreGrupo;
+//    }
+//
+//    public void setSemestreGrupo(SemestreGrupo semestreGrupo) {
+//        this.semestreGrupo = semestreGrupo;
+//    }
+//
+//    public Usuarios getUsuarios() {
+//        return usuarios;
+//    }
+//
+//    public void setUsuarios(Usuarios usuarios) {
+//        this.usuarios = usuarios;
+//    }
 
     @Override
     public int hashCode() {
@@ -223,7 +210,7 @@ public class Alumnos implements Serializable {
 
     @Override
     public String toString() {
-        return "com.unsis.odonto.edu.entity.Alumnos[ idAlumno=" + idAlumno + " ]";
+        return "entity.Alumnos[ idAlumno=" + idAlumno + " ]";
     }
     
 }

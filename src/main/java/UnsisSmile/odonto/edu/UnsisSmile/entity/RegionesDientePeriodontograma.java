@@ -1,28 +1,30 @@
-
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
-
+/**
+ *
+ * @author labingsw05
+ */
 @Entity
 @Table(name = "regiones_diente_periodontograma")
-//@XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "RegionesDientePeriodontograma.findAll", query = "SELECT r FROM RegionesDientePeriodontograma r"),
-//    @NamedQuery(name = "RegionesDientePeriodontograma.findByIdRegionesDientePeriodontograma", query = "SELECT r FROM RegionesDientePeriodontograma r WHERE r.idRegionesDientePeriodontograma = :idRegionesDientePeriodontograma"),
-//    @NamedQuery(name = "RegionesDientePeriodontograma.findByRegion", query = "SELECT r FROM RegionesDientePeriodontograma r WHERE r.region = :region")})
+//    @NamedQuery(name = "RegionesDientePeriodontograma.findAll", query = "SELECT r FROM RegionesDientePeriodontograma r")})
 public class RegionesDientePeriodontograma implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -33,8 +35,8 @@ public class RegionesDientePeriodontograma implements Serializable {
     private Integer idRegionesDientePeriodontograma;
     @Column(name = "region")
     private String region;
-//    @OneToMany(mappedBy = "fkIdRegionesDientePeriodontograma")
-//    private Collection<MedicionBolsasDetalle> medicionBolsasDetalleCollection;
+    @OneToMany(mappedBy = "regionesDientePeriodontograma", fetch = FetchType.LAZY)
+    private List<MedicionBolsasDetalle> medicionBolsasDetalleList;
 
     public RegionesDientePeriodontograma() {
     }
@@ -59,14 +61,13 @@ public class RegionesDientePeriodontograma implements Serializable {
         this.region = region;
     }
 
-//    @XmlTransient
-//    public Collection<MedicionBolsasDetalle> getMedicionBolsasDetalleCollection() {
-//        return medicionBolsasDetalleCollection;
-//    }
+    public List<MedicionBolsasDetalle> getMedicionBolsasDetalleList() {
+        return medicionBolsasDetalleList;
+    }
 
-//    public void setMedicionBolsasDetalleCollection(Collection<MedicionBolsasDetalle> medicionBolsasDetalleCollection) {
-//        this.medicionBolsasDetalleCollection = medicionBolsasDetalleCollection;
-//    }
+    public void setMedicionBolsasDetalleList(List<MedicionBolsasDetalle> medicionBolsasDetalleList) {
+        this.medicionBolsasDetalleList = medicionBolsasDetalleList;
+    }
 
     @Override
     public int hashCode() {
@@ -90,7 +91,7 @@ public class RegionesDientePeriodontograma implements Serializable {
 
     @Override
     public String toString() {
-        return "com.unsis.odonto.edu.entity.RegionesDientePeriodontograma[ idRegionesDientePeriodontograma=" + idRegionesDientePeriodontograma + " ]";
+        return "entity.RegionesDientePeriodontograma[ idRegionesDientePeriodontograma=" + idRegionesDientePeriodontograma + " ]";
     }
     
 }

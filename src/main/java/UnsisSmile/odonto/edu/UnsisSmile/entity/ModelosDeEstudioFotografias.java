@@ -1,16 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.time.LocalDate;
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
+
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,17 +17,15 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+
 /**
  *
- * @author froste
+ * @author labingsw05
  */
 @Entity
 @Table(name = "modelos_de_estudio_fotografias")
-//@XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "ModelosDeEstudioFotografias.findAll", query = "SELECT m FROM ModelosDeEstudioFotografias m"),
-//    @NamedQuery(name = "ModelosDeEstudioFotografias.findByIdModelosDeEstudioFotografias", query = "SELECT m FROM ModelosDeEstudioFotografias m WHERE m.idModelosDeEstudioFotografias = :idModelosDeEstudioFotografias")})
-
+//    @NamedQuery(name = "ModelosDeEstudioFotografias.findAll", query = "SELECT m FROM ModelosDeEstudioFotografias m")})
 public class ModelosDeEstudioFotografias implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -47,8 +43,8 @@ public class ModelosDeEstudioFotografias implements Serializable {
     @Lob
     @Column(name = "Fotografias")
     private String fotografias;
-    @OneToMany(mappedBy = "fkIdModelosDeEstudioFotografias")
-    private Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection;
+    @OneToMany(mappedBy = "modelosDeEstudioFotografias", fetch = FetchType.LAZY)
+    private List<HistoriaClinicaGeneral> historiaClinicaGeneralList;
 
     public ModelosDeEstudioFotografias() {
     }
@@ -89,13 +85,12 @@ public class ModelosDeEstudioFotografias implements Serializable {
         this.fotografias = fotografias;
     }
 
-    //@XmlTransient
-    public Collection<HistoriaClinicaGeneral> getHistoriaClinicaGeneralCollection() {
-        return historiaClinicaGeneralCollection;
+    public List<HistoriaClinicaGeneral> getHistoriaClinicaGeneralList() {
+        return historiaClinicaGeneralList;
     }
 
-    public void setHistoriaClinicaGeneralCollection(Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection) {
-        this.historiaClinicaGeneralCollection = historiaClinicaGeneralCollection;
+    public void setHistoriaClinicaGeneralList(List<HistoriaClinicaGeneral> historiaClinicaGeneralList) {
+        this.historiaClinicaGeneralList = historiaClinicaGeneralList;
     }
 
     @Override
@@ -120,7 +115,7 @@ public class ModelosDeEstudioFotografias implements Serializable {
 
     @Override
     public String toString() {
-        return "com.unsis.odonto.edu.entity.ModelosDeEstudioFotografias[ idModelosDeEstudioFotografias=" + idModelosDeEstudioFotografias + " ]";
+        return "entity.ModelosDeEstudioFotografias[ idModelosDeEstudioFotografias=" + idModelosDeEstudioFotografias + " ]";
     }
     
 }

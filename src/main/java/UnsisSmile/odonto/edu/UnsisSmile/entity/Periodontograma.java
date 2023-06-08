@@ -1,51 +1,47 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
 
 /**
  *
- * @author froste
+ * @author labingsw05
  */
-//@Entity
-//@Table(name = "periodontograma")
-//@XmlRootElement
+@Entity
+@Table(name = "periodontograma")
 //@NamedQueries({
-//    @NamedQuery(name = "Periodontograma.findAll", query = "SELECT p FROM Periodontograma p"),
-//    @NamedQuery(name = "Periodontograma.findByIdPeriodontograma", query = "SELECT p FROM Periodontograma p WHERE p.idPeriodontograma = :idPeriodontograma"),
-//    @NamedQuery(name = "Periodontograma.findByFecha", query = "SELECT p FROM Periodontograma p WHERE p.fecha = :fecha")})
+//    @NamedQuery(name = "Periodontograma.findAll", query = "SELECT p FROM Periodontograma p")})
 public class Periodontograma implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @jakarta.persistence.Id
-    @jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
-    @jakarta.persistence.Basic(optional = false)
-    @jakarta.persistence.Column(name = "id_periodontograma")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id_periodontograma")
     private Integer idPeriodontograma;
-    @jakarta.persistence.Lob
-    @jakarta.persistence.Column(name = "descripcion")
+    @Lob
+    @Column(name = "descripcion")
     private String descripcion;
-    @jakarta.persistence.Column(name = "fecha")
-  //  @Temporal(TemporalType.DATE)
-    private Date fecha;
-   // @jakarta.persistence.OneToMany(mappedBy = "fkIdPeriodontograma")
-    //private Collection<MedicionBolsasDetalle> medicionBolsasDetalleCollection;
+//    @Column(name = "fecha")
+//    @Temporal(TemporalType.DATE)
+//    private Date fecha;
+//    @OneToMany(mappedBy = "periodontograma", fetch = FetchType.LAZY)
+//    private List<MedicionBolsasDetalle> medicionBolsasDetalleList;
 
     public Periodontograma() {
     }
@@ -69,22 +65,21 @@ public class Periodontograma implements Serializable {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
-    public Date getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
-//    @XmlTransient
-//    public Collection<MedicionBolsasDetalle> getMedicionBolsasDetalleCollection() {
-//        return medicionBolsasDetalleCollection;
+//
+//    public Date getFecha() {
+//        return fecha;
 //    }
 //
-//    public void setMedicionBolsasDetalleCollection(Collection<MedicionBolsasDetalle> medicionBolsasDetalleCollection) {
-//        this.medicionBolsasDetalleCollection = medicionBolsasDetalleCollection;
+//    public void setFecha(Date fecha) {
+//        this.fecha = fecha;
+//    }
+//
+//    public List<MedicionBolsasDetalle> getMedicionBolsasDetalleList() {
+//        return medicionBolsasDetalleList;
+//    }
+//
+//    public void setMedicionBolsasDetalleList(List<MedicionBolsasDetalle> medicionBolsasDetalleList) {
+//        this.medicionBolsasDetalleList = medicionBolsasDetalleList;
 //    }
 
     @Override
@@ -109,7 +104,7 @@ public class Periodontograma implements Serializable {
 
     @Override
     public String toString() {
-        return "com.unsis.odonto.edu.entity.Periodontograma[ idPeriodontograma=" + idPeriodontograma + " ]";
+        return "entity.Periodontograma[ idPeriodontograma=" + idPeriodontograma + " ]";
     }
     
 }

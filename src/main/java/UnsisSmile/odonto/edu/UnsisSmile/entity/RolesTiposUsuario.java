@@ -1,37 +1,31 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.time.LocalDate;
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Basic;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 /**
  *
- * @author froste
+ * @author labingsw05
  */
 @Entity
 @Table(name = "roles_tipos_usuario")
-//@XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "RolesTiposUsuario.findAll", query = "SELECT r FROM RolesTiposUsuario r"),
-//    @NamedQuery(name = "RolesTiposUsuario.findByIdRol", query = "SELECT r FROM RolesTiposUsuario r WHERE r.idRol = :idRol"),
-//    @NamedQuery(name = "RolesTiposUsuario.findByNombreRol", query = "SELECT r FROM RolesTiposUsuario r WHERE r.nombreRol = :nombreRol")})
+//    @NamedQuery(name = "RolesTiposUsuario.findAll", query = "SELECT r FROM RolesTiposUsuario r")})
 public class RolesTiposUsuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,8 +37,8 @@ public class RolesTiposUsuario implements Serializable {
     @Basic(optional = false)
     @Column(name = "nombre_rol")
     private String nombreRol;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fIdRol")
-    private Collection<Usuarios> usuariosCollection;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rolesTiposUsuario", fetch = FetchType.LAZY)
+//    private List<Usuarios> usuariosList;
 
     public RolesTiposUsuario() {
     }
@@ -74,14 +68,13 @@ public class RolesTiposUsuario implements Serializable {
         this.nombreRol = nombreRol;
     }
 
-//    @XmlTransient
-//    public Collection<Usuarios> getUsuariosCollection() {
-//        return usuariosCollection;
+//    public List<Usuarios> getUsuariosList() {
+//        return usuariosList;
 //    }
-
-    public void setUsuariosCollection(Collection<Usuarios> usuariosCollection) {
-        this.usuariosCollection = usuariosCollection;
-    }
+//
+//    public void setUsuariosList(List<Usuarios> usuariosList) {
+//        this.usuariosList = usuariosList;
+//    }
 
     @Override
     public int hashCode() {
@@ -105,7 +98,7 @@ public class RolesTiposUsuario implements Serializable {
 
     @Override
     public String toString() {
-        return "com.unsis.odonto.edu.entity.RolesTiposUsuario[ idRol=" + idRol + " ]";
+        return "entity.RolesTiposUsuario[ idRol=" + idRol + " ]";
     }
     
 }

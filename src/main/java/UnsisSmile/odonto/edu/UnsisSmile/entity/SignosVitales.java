@@ -1,46 +1,30 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.criteria.CollectionJoin;
-import jakarta.persistence.criteria.Selection;
-import jakarta.persistence.metamodel.CollectionAttribute;
-
 /**
  *
- * @author froste
+ * @author labingsw05
  */
 @Entity
 @Table(name = "signos_vitales")
-//@XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "SignosVitales.findAll", query = "SELECT s FROM SignosVitales s"),
-//    @NamedQuery(name = "SignosVitales.findByIdSignosVitales", query = "SELECT s FROM SignosVitales s WHERE s.idSignosVitales = :idSignosVitales"),
-//    @NamedQuery(name = "SignosVitales.findByPeso", query = "SELECT s FROM SignosVitales s WHERE s.peso = :peso"),
-//    @NamedQuery(name = "SignosVitales.findByEstatura", query = "SELECT s FROM SignosVitales s WHERE s.estatura = :estatura"),
-//    @NamedQuery(name = "SignosVitales.findByTemperatura", query = "SELECT s FROM SignosVitales s WHERE s.temperatura = :temperatura"),
-//    @NamedQuery(name = "SignosVitales.findByFrecuenciaCardiaca", query = "SELECT s FROM SignosVitales s WHERE s.frecuenciaCardiaca = :frecuenciaCardiaca"),
-//    @NamedQuery(name = "SignosVitales.findByFrecuenciaRespiratoria", query = "SELECT s FROM SignosVitales s WHERE s.frecuenciaRespiratoria = :frecuenciaRespiratoria"),
-//    @NamedQuery(name = "SignosVitales.findByPesionArterial", query = "SELECT s FROM SignosVitales s WHERE s.pesionArterial = :pesionArterial"),
-//    @NamedQuery(name = "SignosVitales.findBySaturacionOxigeno", query = "SELECT s FROM SignosVitales s WHERE s.saturacionOxigeno = :saturacionOxigeno"),
-//    @NamedQuery(name = "SignosVitales.findByGlucosa", query = "SELECT s FROM SignosVitales s WHERE s.glucosa = :glucosa"),
-//    @NamedQuery(name = "SignosVitales.findByPulso", query = "SELECT s FROM SignosVitales s WHERE s.pulso = :pulso")})
+//    @NamedQuery(name = "SignosVitales.findAll", query = "SELECT s FROM SignosVitales s")})
 public class SignosVitales implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -68,10 +52,10 @@ public class SignosVitales implements Serializable {
     private Double glucosa;
     @Column(name = "pulso")
     private Double pulso;
-   // @OneToOne(cascade = CascadeType.ALL, mappedBy = "fkIdSignosVitales")
-  //  private Selection<Consulta> consultaCollection;
-   // @OneToOne(mappedBy = "fkIdSignosVitales")
-  //  private CollectionJoin<HistoriaClinicaGeneral> historiaClinicaGeneralCollection;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "signosVitales", fetch = FetchType.LAZY)
+//    private List<Consulta> consultaList;
+    @OneToMany(mappedBy = "signosVitales", fetch = FetchType.LAZY)
+    private List<HistoriaClinicaGeneral> historiaClinicaGeneralList;
 
     public SignosVitales() {
     }
@@ -160,23 +144,21 @@ public class SignosVitales implements Serializable {
         this.pulso = pulso;
     }
 
-//    @XmlTransient
-//    public CollectionAttribute<Consulta> getConsultaCollection() {
-//        return consultaCollection;
+//    public List<Consulta> getConsultaList() {
+//        return consultaList;
+//    }
+//
+//    public void setConsultaList(List<Consulta> consultaList) {
+//        this.consultaList = consultaList;
 //    }
 
-//    public void setConsultaCollection(CollectionAttribute<Consulta> consultaCollection) {
-//        this.consultaCollection = consultaCollection;
-//    }
+    public List<HistoriaClinicaGeneral> getHistoriaClinicaGeneralList() {
+        return historiaClinicaGeneralList;
+    }
 
-//    @XmlTransient
-//    public CollectionAttribute<HistoriaClinicaGeneral> getHistoriaClinicaGeneralCollection() {
-//        return historiaClinicaGeneralCollection;
-//    }
-
-//    public void setHistoriaClinicaGeneralCollection(Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection) {
-//        this.historiaClinicaGeneralCollection = historiaClinicaGeneralCollection;
-//    }
+    public void setHistoriaClinicaGeneralList(List<HistoriaClinicaGeneral> historiaClinicaGeneralList) {
+        this.historiaClinicaGeneralList = historiaClinicaGeneralList;
+    }
 
     @Override
     public int hashCode() {
@@ -200,7 +182,7 @@ public class SignosVitales implements Serializable {
 
     @Override
     public String toString() {
-        return "com.unsis.odonto.edu.entity.SignosVitales[ idSignosVitales=" + idSignosVitales + " ]";
+        return "entity.SignosVitales[ idSignosVitales=" + idSignosVitales + " ]";
     }
     
 }

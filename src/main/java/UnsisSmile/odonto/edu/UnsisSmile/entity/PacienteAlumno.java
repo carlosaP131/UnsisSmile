@@ -1,33 +1,31 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 /**
  *
- * @author froste
+ * @author labingsw05
  */
 @Entity
 @Table(name = "paciente_alumno")
-//@XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "PacienteAlumno.findAll", query = "SELECT p FROM PacienteAlumno p"),
-//    @NamedQuery(name = "PacienteAlumno.findByIdPacienteAlumno", query = "SELECT p FROM PacienteAlumno p WHERE p.idPacienteAlumno = :idPacienteAlumno")})
+//    @NamedQuery(name = "PacienteAlumno.findAll", query = "SELECT p FROM PacienteAlumno p")})
 public class PacienteAlumno implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -37,14 +35,14 @@ public class PacienteAlumno implements Serializable {
     @Column(name = "id_paciente_alumno")
     private Integer idPacienteAlumno;
     @JoinColumn(name = "fk_id_alumno", referencedColumnName = "id_alumno")
-    @ManyToOne
-    private Alumnos fkIdAlumno;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Alumnos alumnos;
     @JoinColumn(name = "fk_id_paciente", referencedColumnName = "id_paciente")
-    @ManyToOne
-    private Paciente fkIdPaciente;
-    @JoinColumn(name = "fk_id_rol_alumno", referencedColumnName = "id_rol_alumno")
-    @ManyToOne
-    private RolAlumno fkIdRolAlumno;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Paciente paciente;
+//    @JoinColumn(name = "fk_id_rol_alumno", referencedColumnName = "id_rol_alumno")
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private RolAlumno rolAlumno;
 
     public PacienteAlumno() {
     }
@@ -61,29 +59,29 @@ public class PacienteAlumno implements Serializable {
         this.idPacienteAlumno = idPacienteAlumno;
     }
 
-    public Alumnos getFkIdAlumno() {
-        return fkIdAlumno;
+    public Alumnos getAlumnos() {
+        return alumnos;
     }
 
-    public void setFkIdAlumno(Alumnos fkIdAlumno) {
-        this.fkIdAlumno = fkIdAlumno;
+    public void setAlumnos(Alumnos alumnos) {
+        this.alumnos = alumnos;
     }
 
-    public Paciente getFkIdPaciente() {
-        return fkIdPaciente;
+    public Paciente getPaciente() {
+        return paciente;
     }
 
-    public void setFkIdPaciente(Paciente fkIdPaciente) {
-        this.fkIdPaciente = fkIdPaciente;
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
     }
 
-    public RolAlumno getFkIdRolAlumno() {
-        return fkIdRolAlumno;
-    }
-
-    public void setFkIdRolAlumno(RolAlumno fkIdRolAlumno) {
-        this.fkIdRolAlumno = fkIdRolAlumno;
-    }
+//    public RolAlumno getRolAlumno() {
+//        return rolAlumno;
+//    }
+//
+//    public void setRolAlumno(RolAlumno rolAlumno) {
+//        this.rolAlumno = rolAlumno;
+//    }
 
     @Override
     public int hashCode() {
@@ -107,7 +105,7 @@ public class PacienteAlumno implements Serializable {
 
     @Override
     public String toString() {
-        return "com.unsis.odonto.edu.entity.PacienteAlumno[ idPacienteAlumno=" + idPacienteAlumno + " ]";
+        return "entity.PacienteAlumno[ idPacienteAlumno=" + idPacienteAlumno + " ]";
     }
     
 }

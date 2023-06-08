@@ -1,36 +1,30 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
-
 /**
  *
- * @author froste
+ * @author labingsw05
  */
 @Entity
 @Table(name = "clinica")
-//@XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "Clinica.findAll", query = "SELECT c FROM Clinica c"),
-//    @NamedQuery(name = "Clinica.findByIdClinica", query = "SELECT c FROM Clinica c WHERE c.idClinica = :idClinica"),
-//    @NamedQuery(name = "Clinica.findByNombreClinica", query = "SELECT c FROM Clinica c WHERE c.nombreClinica = :nombreClinica"),
-//    @NamedQuery(name = "Clinica.findByDireccion", query = "SELECT c FROM Clinica c WHERE c.direccion = :direccion")})
+//    @NamedQuery(name = "Clinica.findAll", query = "SELECT c FROM Clinica c")})
 public class Clinica implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -41,10 +35,10 @@ public class Clinica implements Serializable {
     private Integer idClinica;
     @Column(name = "nombre_clinica")
     private String nombreClinica;
-    @Column(name = "direccion")
-    private String direccion;
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkIdClinica")
-//    private Collection<Consulta> consultaCollection;
+//    @Column(name = "direccion")
+//    private String direccion;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "clinica", fetch = FetchType.LAZY)
+//    private List<Consulta> consultaList;
 
     public Clinica() {
     }
@@ -68,22 +62,21 @@ public class Clinica implements Serializable {
     public void setNombreClinica(String nombreClinica) {
         this.nombreClinica = nombreClinica;
     }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
 //
-//    @XmlTransient
-//    public Collection<Consulta> getConsultaCollection() {
-//        return consultaCollection;
+//    public String getDireccion() {
+//        return direccion;
 //    }
 //
-//    public void setConsultaCollection(Collection<Consulta> consultaCollection) {
-//        this.consultaCollection = consultaCollection;
+//    public void setDireccion(String direccion) {
+//        this.direccion = direccion;
+//    }
+//
+//    public List<Consulta> getConsultaList() {
+//        return consultaList;
+//    }
+//
+//    public void setConsultaList(List<Consulta> consultaList) {
+//        this.consultaList = consultaList;
 //    }
 
     @Override
@@ -108,7 +101,7 @@ public class Clinica implements Serializable {
 
     @Override
     public String toString() {
-        return "com.unsis.odonto.edu.entity.Clinica[ idClinica=" + idClinica + " ]";
+        return "entity.Clinica[ idClinica=" + idClinica + " ]";
     }
     
 }

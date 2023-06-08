@@ -1,34 +1,31 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
+
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
 
 /**
  *
- * @author froste
+ * @author labingsw05
  */
 @Entity
 @Table(name = "grupo")
-//@XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "Grupo.findAll", query = "SELECT g FROM Grupo g"),
-//    @NamedQuery(name = "Grupo.findByIdGrupos", query = "SELECT g FROM Grupo g WHERE g.idGrupos = :idGrupos"),
-//    @NamedQuery(name = "Grupo.findByGrupo", query = "SELECT g FROM Grupo g WHERE g.grupo = :grupo")})
+//    @NamedQuery(name = "Grupo.findAll", query = "SELECT g FROM Grupo g")})
 public class Grupo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -39,8 +36,8 @@ public class Grupo implements Serializable {
     private Integer idGrupos;
     @Column(name = "grupo")
     private String grupo;
-//    @OneToMany(mappedBy = "fkIdGrupo")
-//    private Collection<SemestreGrupo> semestreGrupoCollection;
+//    @OneToMany(mappedBy = "grupo", fetch = FetchType.LAZY)
+//    private List<SemestreGrupo> semestreGrupoList;
 
     public Grupo() {
     }
@@ -65,13 +62,12 @@ public class Grupo implements Serializable {
         this.grupo = grupo;
     }
 
-//    @XmlTransient
-//    public Collection<SemestreGrupo> getSemestreGrupoCollection() {
-//        return semestreGrupoCollection;
+//    public List<SemestreGrupo> getSemestreGrupoList() {
+//        return semestreGrupoList;
 //    }
-
-//    public void setSemestreGrupoCollection(Collection<SemestreGrupo> semestreGrupoCollection) {
-//        this.semestreGrupoCollection = semestreGrupoCollection;
+//
+//    public void setSemestreGrupoList(List<SemestreGrupo> semestreGrupoList) {
+//        this.semestreGrupoList = semestreGrupoList;
 //    }
 
     @Override
@@ -96,7 +92,7 @@ public class Grupo implements Serializable {
 
     @Override
     public String toString() {
-        return "com.unsis.odonto.edu.entity.Grupo[ idGrupos=" + idGrupos + " ]";
+        return "entity.Grupo[ idGrupos=" + idGrupos + " ]";
     }
     
 }

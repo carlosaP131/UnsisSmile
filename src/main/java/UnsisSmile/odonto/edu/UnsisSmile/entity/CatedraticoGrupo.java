@@ -1,43 +1,31 @@
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
-
-import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 /**
  *
- * @author froste
+ * @author labingsw05
  */
 @Entity
 @Table(name = "catedratico_grupo")
-//@XmlRootElement
-
 //@NamedQueries({
-//    @NamedQuery(name = "CatedraticoGrupo.findAll", query = "SELECT c FROM CatedraticoGrupo c"),
-//    @NamedQuery(name = "CatedraticoGrupo.findByIdCatedraticoSemestreGrupo", query = "SELECT c FROM CatedraticoGrupo c WHERE c.idCatedraticoSemestreGrupo = :idCatedraticoSemestreGrupo")})
-
-//@NamedQueries({
-//    @NamedQuery(name = "CatedraticoGrupo.findAll", query = "SELECT c FROM CatedraticoGrupo c"),
-//    @NamedQuery(name = "CatedraticoGrupo.findByIdCatedraticoSemestreGrupo", query = "SELECT c FROM CatedraticoGrupo c WHERE c.idCatedraticoSemestreGrupo = :idCatedraticoSemestreGrupo")})
-
+//    @NamedQuery(name = "CatedraticoGrupo.findAll", query = "SELECT c FROM CatedraticoGrupo c")})
 public class CatedraticoGrupo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -46,12 +34,12 @@ public class CatedraticoGrupo implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_catedratico_semestre_grupo")
     private Integer idCatedraticoSemestreGrupo;
-    @JoinColumn(name = "fk_id_catedratico", referencedColumnName = "id_catedratico")
-    @ManyToOne
-    private Catedraticos fkIdCatedratico;
-  //  @JoinColumn(name = "fk_id_semestre_grupo", referencedColumnName = "id_semestre_grupo")
-   // @ManyToOne
-   // private SemestreGrupo fkIdSemestreGrupo;
+//    @JoinColumn(name = "fk_id_catedratico", referencedColumnName = "id_catedratico")
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private Catedraticos catedraticos;
+//    @JoinColumn(name = "fk_id_semestre_grupo", referencedColumnName = "id_semestre_grupo")
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private SemestreGrupo semestreGrupo;
 
     public CatedraticoGrupo() {
     }
@@ -68,20 +56,20 @@ public class CatedraticoGrupo implements Serializable {
         this.idCatedraticoSemestreGrupo = idCatedraticoSemestreGrupo;
     }
 
-    public Catedraticos getFkIdCatedratico() {
-        return fkIdCatedratico;
-    }
-
-    public void setFkIdCatedratico(Catedraticos fkIdCatedratico) {
-        this.fkIdCatedratico = fkIdCatedratico;
-    }
-
-//    public SemestreGrupo getFkIdSemestreGrupo() {
-//        return fkIdSemestreGrupo;
+//    public Catedraticos getCatedraticos() {
+//        return catedraticos;
 //    }
 //
-//    public void setFkIdSemestreGrupo(SemestreGrupo fkIdSemestreGrupo) {
-//        this.fkIdSemestreGrupo = fkIdSemestreGrupo;
+//    public void setCatedraticos(Catedraticos catedraticos) {
+//        this.catedraticos = catedraticos;
+//    }
+//
+//    public SemestreGrupo getSemestreGrupo() {
+//        return semestreGrupo;
+//    }
+//
+//    public void setSemestreGrupo(SemestreGrupo semestreGrupo) {
+//        this.semestreGrupo = semestreGrupo;
 //    }
 
     @Override
@@ -106,7 +94,7 @@ public class CatedraticoGrupo implements Serializable {
 
     @Override
     public String toString() {
-        return "com.unsis.odonto.edu.entity.CatedraticoGrupo[ idCatedraticoSemestreGrupo=" + idCatedraticoSemestreGrupo + " ]";
+        return "entity.CatedraticoGrupo[ idCatedraticoSemestreGrupo=" + idCatedraticoSemestreGrupo + " ]";
     }
     
 }

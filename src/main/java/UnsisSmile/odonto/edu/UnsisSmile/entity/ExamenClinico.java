@@ -1,34 +1,31 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 /**
  *
- * @author froste
+ * @author labingsw05
  */
 @Entity
 @Table(name = "examen_clinico")
-//@XmlRootElement
 //@NamedQueries({
-  //  @NamedQuery(name = "ExamenClinico.findAll", query = "SELECT e FROM ExamenClinico e"),
-    //@NamedQuery(name = "ExamenClinico.findByIdExamenClinico", query = "SELECT e FROM ExamenClinico e WHERE e.idExamenClinico = :idExamenClinico")})
+//    @NamedQuery(name = "ExamenClinico.findAll", query = "SELECT e FROM ExamenClinico e")})
 public class ExamenClinico implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -73,8 +70,8 @@ public class ExamenClinico implements Serializable {
     @Lob
     @Column(name = "Otras_se\u00f1as_particulares")
     private String otrasseñasparticulares;
-  //  @OneToMany(mappedBy = "fkIdExamenClinico")
-    //private Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection;
+//    @OneToMany(mappedBy = "examenClinico", fetch = FetchType.LAZY)
+//    private List<HistoriaClinicaGeneral> historiaClinicaGeneralList;
 
     public ExamenClinico() {
     }
@@ -187,13 +184,12 @@ public class ExamenClinico implements Serializable {
         this.otrasseñasparticulares = otrasseñasparticulares;
     }
 
-//    @XmlTransient
-//    public Collection<HistoriaClinicaGeneral> getHistoriaClinicaGeneralCollection() {
-//        return historiaClinicaGeneralCollection;
-    //}
-
-//    public void setHistoriaClinicaGeneralCollection(Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection) {
-//        this.historiaClinicaGeneralCollection = historiaClinicaGeneralCollection;
+//    public List<HistoriaClinicaGeneral> getHistoriaClinicaGeneralList() {
+//        return historiaClinicaGeneralList;
+//    }
+//
+//    public void setHistoriaClinicaGeneralList(List<HistoriaClinicaGeneral> historiaClinicaGeneralList) {
+//        this.historiaClinicaGeneralList = historiaClinicaGeneralList;
 //    }
 
     @Override
@@ -218,7 +214,7 @@ public class ExamenClinico implements Serializable {
 
     @Override
     public String toString() {
-        return "com.unsis.odonto.edu.entity.ExamenClinico[ idExamenClinico=" + idExamenClinico + " ]";
+        return "entity.ExamenClinico[ idExamenClinico=" + idExamenClinico + " ]";
     }
     
 }

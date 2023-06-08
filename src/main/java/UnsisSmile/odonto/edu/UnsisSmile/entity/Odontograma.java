@@ -1,17 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.time.LocalDate;
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -23,15 +20,12 @@ import jakarta.persistence.Table;
 
 /**
  *
- * @author froste
+ * @author labingsw05
  */
 @Entity
 @Table(name = "odontograma")
-//@XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "Odontograma.findAll", query = "SELECT o FROM Odontograma o"),
-//    @NamedQuery(name = "Odontograma.findByIdOdontograma", query = "SELECT o FROM Odontograma o WHERE o.idOdontograma = :idOdontograma"),
-//    @NamedQuery(name = "Odontograma.findByFecha", query = "SELECT o FROM Odontograma o WHERE o.fecha = :fecha")})
+//    @NamedQuery(name = "Odontograma.findAll", query = "SELECT o FROM Odontograma o")})
 public class Odontograma implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,14 +38,14 @@ public class Odontograma implements Serializable {
     @Column(name = "descripcion")
     private String descripcion;
     @Column(name = "fecha")
-  //  @Temporal(TemporalType.DATE)
-    private Date fecha;
-//    @OneToMany(mappedBy = "fkIdOdontogramaInicial")
-//    private Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection;
-//    @OneToMany(mappedBy = "fkIdOdontogramaFinal")
-//    private Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection1;
-//    @OneToMany(mappedBy = "fkIdOdontograma")
-//    private Collection<DienteDetalle> dienteDetalleCollection;
+//    @Temporal(TemporalType.DATE)
+//    private Date fecha;
+    @OneToMany(mappedBy = "odontograma", fetch = FetchType.LAZY)
+    private List<HistoriaClinicaGeneral> historiaClinicaGeneralList;
+    @OneToMany(mappedBy = "odontograma1", fetch = FetchType.LAZY)
+    private List<HistoriaClinicaGeneral> historiaClinicaGeneralList1;
+    @OneToMany(mappedBy = "odontograma", fetch = FetchType.LAZY)
+    private List<DienteDetalle> dienteDetalleList;
 
     public Odontograma() {
     }
@@ -75,41 +69,38 @@ public class Odontograma implements Serializable {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+//
+//    public Date getFecha() {
+//        return fecha;
+//    }
+//
+//    public void setFecha(Date fecha) {
+//        this.fecha = fecha;
+//    }
 
-    public Date getFecha() {
-        return fecha;
+    public List<HistoriaClinicaGeneral> getHistoriaClinicaGeneralList() {
+        return historiaClinicaGeneralList;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setHistoriaClinicaGeneralList(List<HistoriaClinicaGeneral> historiaClinicaGeneralList) {
+        this.historiaClinicaGeneralList = historiaClinicaGeneralList;
     }
 
-//    @XmlTransient
-//    public Collection<HistoriaClinicaGeneral> getHistoriaClinicaGeneralCollection() {
-//        return historiaClinicaGeneralCollection;
-//    }
+    public List<HistoriaClinicaGeneral> getHistoriaClinicaGeneralList1() {
+        return historiaClinicaGeneralList1;
+    }
 
-//    public void setHistoriaClinicaGeneralCollection(Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection) {
-//        this.historiaClinicaGeneralCollection = historiaClinicaGeneralCollection;
-//    }
+    public void setHistoriaClinicaGeneralList1(List<HistoriaClinicaGeneral> historiaClinicaGeneralList1) {
+        this.historiaClinicaGeneralList1 = historiaClinicaGeneralList1;
+    }
 
-//    @XmlTransient
-//    public Collection<HistoriaClinicaGeneral> getHistoriaClinicaGeneralCollection1() {
-//        return historiaClinicaGeneralCollection1;
-//    }
+    public List<DienteDetalle> getDienteDetalleList() {
+        return dienteDetalleList;
+    }
 
-//    public void setHistoriaClinicaGeneralCollection1(Collection<HistoriaClinicaGeneral> historiaClinicaGeneralCollection1) {
-//        this.historiaClinicaGeneralCollection1 = historiaClinicaGeneralCollection1;
-//    }
-
-//    @XmlTransient
-//    public Collection<DienteDetalle> getDienteDetalleCollection() {
-//        return dienteDetalleCollection;
-//    }
-
-//    public void setDienteDetalleCollection(Collection<DienteDetalle> dienteDetalleCollection) {
-//        this.dienteDetalleCollection = dienteDetalleCollection;
-//    }
+    public void setDienteDetalleList(List<DienteDetalle> dienteDetalleList) {
+        this.dienteDetalleList = dienteDetalleList;
+    }
 
     @Override
     public int hashCode() {
@@ -133,7 +124,7 @@ public class Odontograma implements Serializable {
 
     @Override
     public String toString() {
-        return "com.unsis.odonto.edu.entity.Odontograma[ idOdontograma=" + idOdontograma + " ]";
+        return "entity.Odontograma[ idOdontograma=" + idOdontograma + " ]";
     }
     
 }

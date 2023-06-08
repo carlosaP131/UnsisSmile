@@ -1,29 +1,31 @@
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 /**
  *
- * @author froste
+ * @author labingsw05
  */
 @Entity
 @Table(name = "semestre_grupo")
-//@XmlRootElement
 //@NamedQueries({
-//    @NamedQuery(name = "SemestreGrupo.findAll", query = "SELECT s FROM SemestreGrupo s"),
-//    @NamedQuery(name = "SemestreGrupo.findByIdSemestreGrupo", query = "SELECT s FROM SemestreGrupo s WHERE s.idSemestreGrupo = :idSemestreGrupo")})
+//    @NamedQuery(name = "SemestreGrupo.findAll", query = "SELECT s FROM SemestreGrupo s")})
 public class SemestreGrupo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -32,16 +34,16 @@ public class SemestreGrupo implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_semestre_grupo")
     private Integer idSemestreGrupo;
-//    @OneToMany(mappedBy = "fkIdSemestreGrupo")
-//    private Collection<Alumnos> alumnosCollection;
+    @OneToMany(mappedBy = "semestreGrupo", fetch = FetchType.LAZY)
+    private List<Alumnos> alumnosList;
     @JoinColumn(name = "fk_id_grupo", referencedColumnName = "id_grupos")
-    @ManyToOne
-    private Grupo fkIdGrupo;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Grupo grupo;
     @JoinColumn(name = "fk_id_semestre", referencedColumnName = "id_semestre")
-    @ManyToOne
-    private Semestres fkIdSemestre;
-//    @OneToMany(mappedBy = "fkIdSemestreGrupo")
-//    private Collection<CatedraticoGrupo> catedraticoGrupoCollection;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private Semestres semestres;
+  @OneToMany(mappedBy = "semestreGrupo", fetch = FetchType.LAZY)
+    private List<CatedraticoGrupo> catedraticoGrupoList;
 
     public SemestreGrupo() {
     }
@@ -58,39 +60,37 @@ public class SemestreGrupo implements Serializable {
         this.idSemestreGrupo = idSemestreGrupo;
     }
 
-//    @XmlTransient
-//    public Collection<Alumnos> getAlumnosCollection() {
-//        return alumnosCollection;
+    public List<Alumnos> getAlumnosList() {
+        return alumnosList;
+    }
+
+    public void setAlumnosList(List<Alumnos> alumnosList) {
+        this.alumnosList = alumnosList;
+    }
+
+    public Grupo getGrupo() {
+        return grupo;
+    }
+
+    public void setGrupo(Grupo grupo) {
+        this.grupo = grupo;
+    }
+
+//    public Semestres getSemestres() {
+//        return semestres;
 //    }
 //
-//    public void setAlumnosCollection(Collection<Alumnos> alumnosCollection) {
-//        this.alumnosCollection = alumnosCollection;
+//    public void setSemestres(Semestres semestres) {
+//        this.semestres = semestres;
 //    }
 
-    public Grupo getFkIdGrupo() {
-        return fkIdGrupo;
+    public List<CatedraticoGrupo> getCatedraticoGrupoList() {
+        return catedraticoGrupoList;
     }
 
-    public void setFkIdGrupo(Grupo fkIdGrupo) {
-        this.fkIdGrupo = fkIdGrupo;
+    public void setCatedraticoGrupoList(List<CatedraticoGrupo> catedraticoGrupoList) {
+        this.catedraticoGrupoList = catedraticoGrupoList;
     }
-
-    public Semestres getFkIdSemestre() {
-        return fkIdSemestre;
-    }
-
-    public void setFkIdSemestre(Semestres fkIdSemestre) {
-        this.fkIdSemestre = fkIdSemestre;
-    }
-//
-//    @XmlTransient
-//    public Collection<CatedraticoGrupo> getCatedraticoGrupoCollection() {
-//        return catedraticoGrupoCollection;
-//    }
-//
-//    public void setCatedraticoGrupoCollection(Collection<CatedraticoGrupo> catedraticoGrupoCollection) {
-//        this.catedraticoGrupoCollection = catedraticoGrupoCollection;
-//    }
 
     @Override
     public int hashCode() {
@@ -114,7 +114,7 @@ public class SemestreGrupo implements Serializable {
 
     @Override
     public String toString() {
-        return "com.unsis.odonto.edu.entity.SemestreGrupo[ idSemestreGrupo=" + idSemestreGrupo + " ]";
+        return "entity.SemestreGrupo[ idSemestreGrupo=" + idSemestreGrupo + " ]";
     }
     
 }
