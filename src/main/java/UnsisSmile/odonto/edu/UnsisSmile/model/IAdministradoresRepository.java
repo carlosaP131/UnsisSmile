@@ -21,6 +21,11 @@ public interface IAdministradoresRepository  extends JpaRepository<Administrador
 	@Procedure(name= "obtenerAdministradores")
 	Administradores obtenAdministradores(int id_admin);
 	
+	@Procedure(name="obtenerTodosAdministradores")
+	Administradores obtenerTodosAdministradores();
+	
+	@Procedure(name="actualizarAdministrador")
+	Administradores actualizarAdministrador (String nombre1Aux,String nombre2Aux,String apellido1Aux,String apellido2Aux,String curpAux,String telefonoAux,String numero_trabajadorAux,LocalDate fecha_nacimientoAux,Character sexoAux, String email_adminAux );
 	
 
 
