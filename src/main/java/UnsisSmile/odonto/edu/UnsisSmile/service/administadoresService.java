@@ -17,7 +17,8 @@ public class administadoresService {
 	
 	@Transactional
 	public void crearRegistro(Administradores administradores) {
-		repository.insertarAdministrador(null, null, null, null, null, null, null, null, null, null);
+		repository.insertarAdministrador(administradores.getNombre1(), administradores.getNombre2(), administradores.getApellido1(), administradores.getApellido2(), administradores.getCurp(),administradores.getTelefono(), administradores.getNumeroTrabajador(), administradores.getFechaNacimiento(), administradores.getSexo(), administradores.getEmailAdmin());
+	
 	}
 	
 	@Transactional
@@ -25,14 +26,16 @@ public class administadoresService {
 		repository.eliminarAdministrador(id_administrador);
 	}
 	@Transactional
-	public Administradores obtenerRegistroById(int id_admin) {
+	public Administradores obtenerRegistroById(Long id_admin) {
 		return repository.obtenAdministradores(id_admin);
 	}
 	@Transactional
 	public List<Administradores> obtenerTodosRegistro() {
 		return (List<Administradores>) repository.obtenerTodosAdministradores();
 	}
+	@Transactional
 	public void actualizarRegistro(Administradores administradores) {
-		repository.actualizarAdministrador(null, null, null, null, null, null, null, null, null, null);
+		repository.actualizarAdministrador(administradores.getNombre1(), administradores.getNombre2(), administradores.getApellido1(), administradores.getApellido2(), administradores.getCurp(),administradores.getTelefono(), administradores.getNumeroTrabajador(), administradores.getFechaNacimiento(), administradores.getSexo(), administradores.getEmailAdmin());
+		
 	}
 }

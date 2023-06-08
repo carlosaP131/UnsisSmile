@@ -33,7 +33,7 @@ public class administradoresController {
 		service.eliminarRegistro(id_administrador);
 	}
 	@GetMapping("/obtenerAdministradorPorId/{id}")
-	public Administradores obtenerRegistroById(@PathVariable int id_admin) {
+	public Administradores obtenerRegistroById(@PathVariable Long id_admin) {
 		return service.obtenerRegistroById(id_admin);}
 	
 	@GetMapping("/listar")
