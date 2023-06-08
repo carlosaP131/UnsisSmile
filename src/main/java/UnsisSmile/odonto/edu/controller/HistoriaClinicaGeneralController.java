@@ -23,27 +23,27 @@ public class HistoriaClinicaGeneralController {
 	@Autowired // Spring se encarga de gestionar la creacion de los objetos
 	private HistoriaClinicaGeneralService service;
 	
-	@PostMapping("/crear")
+	@PostMapping("/crearHCG")
 	public void crearRegistro(@RequestBody HistoriaClinicaGeneral HistoriaClinicaGeneral) {
 		service.crearRegistro(HistoriaClinicaGeneral);
 	}
 	
-	@GetMapping("/listar")
+	@GetMapping("/listarHCG")
 	public List<HistoriaClinicaGeneral> listarRegistros() {
 		return service.obtenerRegistros();
 	}
 	
-	@DeleteMapping("/eliminar/{id}")
+	@DeleteMapping("/eliminarHCG/{id}")
 	public void eliminarRegistro(@PathVariable Long id) {
 		service.eliminarRegistro(id);
 	}
 	
-	@GetMapping("/listarById/{id}")
+	@GetMapping("/listarHCGById/{id}")
 	public HistoriaClinicaGeneral obtenerRegistroById(@PathVariable Long id) {
 		return service.obtenerRegistroById(id);
 	}
 	
-	@PutMapping("/actualizar/{id}")
+	@PutMapping("/actualizarHCG/{id}")
 	public void actualizarRegistro(@RequestBody HistoriaClinicaGeneral HistoriaClinicaGeneral, @PathVariable Integer id) {
 		HistoriaClinicaGeneral.setIdHistoriaClinicaGeneral(id);
 		service.actualizarRegistro(HistoriaClinicaGeneral);
