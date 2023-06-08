@@ -1,3 +1,9 @@
+/**
+ * Autor     : Jesús Fernando Hernández Vite 
+ * Fecha de creación : 07 jun 2023, 16:55
+ * Fecha de modificación: 08 jun 2023, 16:58
+ * Descripción : HistoriaClinicaGeneralService 
+ */
 package UnsisSmile.odonto.edu.UnsisSmile.service;
 
 import java.util.List;
