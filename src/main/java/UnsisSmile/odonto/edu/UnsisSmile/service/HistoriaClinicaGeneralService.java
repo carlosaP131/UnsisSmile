@@ -1,11 +1,12 @@
-package UnsisSmile.odonto.edu.service;
+package UnsisSmile.odonto.edu.UnsisSmile.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import UnsisSmile.odonto.edu.entity.HistoriaClinicaGeneral;
-import UnsisSmile.odonto.edu.model.IHistoriaClinicaGeneralRepository;
+
+import UnsisSmile.odonto.edu.UnsisSmile.entity.HistoriaClinicaGeneral;
+import UnsisSmile.odonto.edu.UnsisSmile.model.IHistoriaClinicaGeneralRepository;
 
 @Service
 public class HistoriaClinicaGeneralService {

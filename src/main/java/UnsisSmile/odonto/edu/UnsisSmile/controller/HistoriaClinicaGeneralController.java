@@ -1,4 +1,4 @@
-package UnsisSmile.odonto.edu.controller;
+package UnsisSmile.odonto.edu.UnsisSmile.controller;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import UnsisSmile.odonto.edu.entity.HistoriaClinicaGeneral;
-import UnsisSmile.odonto.edu.service.HistoriaClinicaGeneralService;
+import UnsisSmile.odonto.edu.UnsisSmile.entity.HistoriaClinicaGeneral;
+import UnsisSmile.odonto.edu.UnsisSmile.service.HistoriaClinicaGeneralService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
