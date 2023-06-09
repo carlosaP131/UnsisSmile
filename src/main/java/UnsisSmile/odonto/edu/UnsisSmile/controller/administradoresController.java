@@ -1,3 +1,11 @@
+/**
+ *Autor:Nancy Obed Martínez Miguel
+ *Fecha de creación:09 de junio del 2023
+ *Fecha de Modificación:
+ *Descripción: se crea la clase del administradoresController para implementar los métodos correspondientes
+ *             
+ *             
+ */
 package UnsisSmile.odonto.edu.UnsisSmile.controller;
 
 import java.util.List;
