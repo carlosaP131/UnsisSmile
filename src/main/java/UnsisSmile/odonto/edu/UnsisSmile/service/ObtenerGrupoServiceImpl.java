@@ -13,17 +13,19 @@ import java.util.List;
 import UnsisSmile.odonto.edu.UnsisSmile.model.ISemestreGrupoImpl;
 
 public class ObtenerGrupoServiceImpl {
+	//Instanciado de la interfaz de SemestreGrupo 
 	private  ISemestreGrupoImpl  repository;
+	//Obtiene una lista de semestres
 	public List<String> obtenerRegistros(String semestre) {
         return repository.spFiltarSemGrup(semestre);
     }
 
-    
+    //Obtiene una lista de grupos
     public ArrayList<String> obtenerSemGrup(int id) {
         return repository.obtenerSemGrup(id);
     }
 
-    
+    //Obtiene un grupo
     public int obtenerIdSG(String semestre, String grupo) {
         return repository.filtrarIdSemestreGrupo(semestre, grupo);
     }

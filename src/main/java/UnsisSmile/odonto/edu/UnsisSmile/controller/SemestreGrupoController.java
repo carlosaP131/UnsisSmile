@@ -21,18 +21,20 @@ import UnsisSmile.odonto.edu.UnsisSmile.service.ObtenerGrupoServiceImpl;
 
 @RequestMapping("/unsis") // http:localhost:8080/api/crear
 public class SemestreGrupoController {
+	//Estanciado de el service de SemestreGrupo
 	@Autowired
 	private ObtenerGrupoServiceImpl service;
+	//Muestra la lista de grupos
 	@GetMapping("/obtenerRegistros/{semestre}")
 	public List<String> obtenerRegistros(@PathVariable String semestre) {
         return service.obtenerRegistros(semestre);
     }
-
+	//Muestra un grupo
 	@GetMapping("/obtenerSemestreGrupo/{id}")
     public ArrayList<String> obtenerSemGrup(@PathVariable int id) {
         return service.obtenerSemGrup(id);
     }
-
+	//Muestra los grupos por semestre
 	@GetMapping("/obtenerIdSemestre/{semestre},{ grupo}")
     public int obtenerIdSG(@PathVariable String semestre,@PathVariable String grupo) {
         return service.obtenerIdSG(semestre, grupo);
