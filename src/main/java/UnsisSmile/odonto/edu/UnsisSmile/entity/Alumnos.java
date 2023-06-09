@@ -1,4 +1,12 @@
+/** ****************************************************************************
+ *Autor:Carlos Aurelio Alcántara Pérez
+ *Fecha de creación: 7-06-2023 ***
+ *Fecha de actualización:8-06-2023
+ *Descripción: Entity Alumnos
+ **
+ * ****************************************************************************/
 /*
+
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */

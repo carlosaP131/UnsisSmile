@@ -1,3 +1,10 @@
+/** ****************************************************************************
+ *Autor:Carlos Aurelio Alcántara Pérez
+ *Fecha de creación: 7-06-2023 ***
+ *Fecha de actualización:8-06-2023
+ *Descripción: Entity AnalisisRaiografico
+ **
+ * ****************************************************************************/
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
 import java.io.Serializable; 
