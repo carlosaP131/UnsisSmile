@@ -1,6 +1,6 @@
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable; 
+import java.io.Serializable;  
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -24,8 +24,6 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "tutor")
-//@NamedQueries({
-//    @NamedQuery(name = "Tutor.findAll", query = "SELECT t FROM Tutor t")})
 public class Tutor implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,9 +42,8 @@ public class Tutor implements Serializable {
     private String apellido2;
     @Column(name = "sexo")
     private Character sexo;
-//    @Column(name = "fecha_nacimiento")
-//    @Temporal(TemporalType.DATE)
-    private Date fechaNacimiento;
+    @Column(name = "fecha_nacimiento", columnDefinition = "DATE")
+    private LocalDate fechaNacimiento;
     @Column(name = "ocupacion")
     private String ocupacion;
     @Column(name = "estado_civil")
@@ -110,11 +107,11 @@ public class Tutor implements Serializable {
         this.sexo = sexo;
     }
 
-    public Date getFechaNacimiento() {
+    public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -164,7 +161,7 @@ public class Tutor implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Tutor[ idTutor=" + idTutor + " ]";
+        return "com.unsis.odonto.edu.entity.base.Tutor[ idTutor=" + idTutor + " ]";
     }
     
 }

@@ -1,11 +1,12 @@
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable; 
+import java.io.Serializable;  
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.Basic;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -17,15 +18,12 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
 /**
  *
  * @author labingsw05
  */
 @Entity
 @Table(name = "roles_tipos_usuario")
-//@NamedQueries({
-//    @NamedQuery(name = "RolesTiposUsuario.findAll", query = "SELECT r FROM RolesTiposUsuario r")})
 public class RolesTiposUsuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -37,8 +35,8 @@ public class RolesTiposUsuario implements Serializable {
     @Basic(optional = false)
     @Column(name = "nombre_rol")
     private String nombreRol;
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rolesTiposUsuario", fetch = FetchType.LAZY)
-//    private List<Usuarios> usuariosList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rolesTiposUsuario", fetch = FetchType.LAZY)
+    private List<Usuarios> usuariosList;
 
     public RolesTiposUsuario() {
     }
@@ -68,13 +66,13 @@ public class RolesTiposUsuario implements Serializable {
         this.nombreRol = nombreRol;
     }
 
-//    public List<Usuarios> getUsuariosList() {
-//        return usuariosList;
-//    }
-//
-//    public void setUsuariosList(List<Usuarios> usuariosList) {
-//        this.usuariosList = usuariosList;
-//    }
+    public List<Usuarios> getUsuariosList() {
+        return usuariosList;
+    }
+
+    public void setUsuariosList(List<Usuarios> usuariosList) {
+        this.usuariosList = usuariosList;
+    }
 
     @Override
     public int hashCode() {
@@ -98,7 +96,7 @@ public class RolesTiposUsuario implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.RolesTiposUsuario[ idRol=" + idRol + " ]";
+        return "com.unsis.odonto.edu.entity.base.RolesTiposUsuario[ idRol=" + idRol + " ]";
     }
     
 }

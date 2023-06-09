@@ -1,6 +1,6 @@
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable; 
+import java.io.Serializable;  
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -24,8 +24,7 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "examen_bucal")
-//@NamedQueries({
-//    @NamedQuery(name = "ExamenBucal.findAll", query = "SELECT e FROM ExamenBucal e")})
+
 public class ExamenBucal implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -35,19 +34,19 @@ public class ExamenBucal implements Serializable {
     @Column(name = "id_examen_bucal")
     private Integer idExamenBucal;
     @Lob
-    @Column(name = "Relaci\u00f3n_molar_Derecha")
-    private String relaciónmolarDerecha;
+    @Column(name = "Relacion_molar_Derecha")
+    private String relacionmolarDerecha;
     @Lob
-    @Column(name = "Relaci\u00f3n_molar_Izquierda")
-    private String relaciónmolarIzquierda;
+    @Column(name = "Relacion_molar_Izquierda")
+    private String relacionmolarIzquierda;
     @Lob
-    @Column(name = "Relaci\u00f3n_canina_Derecha")
-    private String relacióncaninaDerecha;
+    @Column(name = "Relacion_canina_Derecha")
+    private String relacioncaninaDerecha;
     @Lob
-    @Column(name = "Relaci\u00f3n_canina_Izquierda")
-    private String relacióncaninaIzquierda;
-//    @OneToMany(mappedBy = "examenBucal", fetch = FetchType.LAZY)
-//    private List<HistoriaClinicaGeneral> historiaClinicaGeneralList;
+    @Column(name = "Relacion_canina_Izquierda")
+    private String relacioncaninaIzquierda;
+    @OneToMany(mappedBy = "examenBucal", fetch = FetchType.LAZY)
+    private List<HistoriaClinicaGeneral> historiaClinicaGeneralList;
 
     public ExamenBucal() {
     }
@@ -64,45 +63,45 @@ public class ExamenBucal implements Serializable {
         this.idExamenBucal = idExamenBucal;
     }
 
-    public String getRelaciónmolarDerecha() {
-        return relaciónmolarDerecha;
+    public String getRelacionmolarDerecha() {
+        return relacionmolarDerecha;
     }
 
-    public void setRelaciónmolarDerecha(String relaciónmolarDerecha) {
-        this.relaciónmolarDerecha = relaciónmolarDerecha;
+    public void setRelacionmolarDerecha(String relacionmolarDerecha) {
+        this.relacionmolarDerecha = relacionmolarDerecha;
     }
 
-    public String getRelaciónmolarIzquierda() {
-        return relaciónmolarIzquierda;
+    public String getRelacionmolarIzquierda() {
+        return relacionmolarIzquierda;
     }
 
-    public void setRelaciónmolarIzquierda(String relaciónmolarIzquierda) {
-        this.relaciónmolarIzquierda = relaciónmolarIzquierda;
+    public void setRelacionmolarIzquierda(String relacionmolarIzquierda) {
+        this.relacionmolarIzquierda = relacionmolarIzquierda;
     }
 
-    public String getRelacióncaninaDerecha() {
-        return relacióncaninaDerecha;
+    public String getRelacioncaninaDerecha() {
+        return relacioncaninaDerecha;
     }
 
-    public void setRelacióncaninaDerecha(String relacióncaninaDerecha) {
-        this.relacióncaninaDerecha = relacióncaninaDerecha;
+    public void setRelacioncaninaDerecha(String relacioncaninaDerecha) {
+        this.relacioncaninaDerecha = relacioncaninaDerecha;
     }
 
-    public String getRelacióncaninaIzquierda() {
-        return relacióncaninaIzquierda;
+    public String getRelacioncaninaIzquierda() {
+        return relacioncaninaIzquierda;
     }
 
-    public void setRelacióncaninaIzquierda(String relacióncaninaIzquierda) {
-        this.relacióncaninaIzquierda = relacióncaninaIzquierda;
+    public void setRelacioncaninaIzquierda(String relacioncaninaIzquierda) {
+        this.relacioncaninaIzquierda = relacioncaninaIzquierda;
     }
 
-//    public List<HistoriaClinicaGeneral> getHistoriaClinicaGeneralList() {
-//        return historiaClinicaGeneralList;
-//    }
-//
-//    public void setHistoriaClinicaGeneralList(List<HistoriaClinicaGeneral> historiaClinicaGeneralList) {
-//        this.historiaClinicaGeneralList = historiaClinicaGeneralList;
-//    }
+    public List<HistoriaClinicaGeneral> getHistoriaClinicaGeneralList() {
+        return historiaClinicaGeneralList;
+    }
+
+    public void setHistoriaClinicaGeneralList(List<HistoriaClinicaGeneral> historiaClinicaGeneralList) {
+        this.historiaClinicaGeneralList = historiaClinicaGeneralList;
+    }
 
     @Override
     public int hashCode() {
@@ -126,7 +125,7 @@ public class ExamenBucal implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.ExamenBucal[ idExamenBucal=" + idExamenBucal + " ]";
+        return "com.unsis.odonto.edu.entity.base.ExamenBucal[ idExamenBucal=" + idExamenBucal + " ]";
     }
     
 }

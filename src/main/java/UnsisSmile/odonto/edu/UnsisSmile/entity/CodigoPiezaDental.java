@@ -1,6 +1,6 @@
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable; 
+import java.io.Serializable;  
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -17,15 +17,13 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
 /**
  *
  * @author labingsw05
  */
 @Entity
 @Table(name = "codigo_pieza_dental")
-//@NamedQueries({
-//    @NamedQuery(name = "CodigoPiezaDental.findAll", query = "SELECT c FROM CodigoPiezaDental c")})
+
 public class CodigoPiezaDental implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -38,10 +36,10 @@ public class CodigoPiezaDental implements Serializable {
     private String codigo;
     @Column(name = "adulto")
     private Boolean adulto;
-//    @OneToMany(mappedBy = "codigoPiezaDental", fetch = FetchType.LAZY)
-//    private List<MedicionBolsasDetalle> medicionBolsasDetalleList;
-//    @OneToMany(mappedBy = "codigoPiezaDental", fetch = FetchType.LAZY)
-//    private List<DienteDetalle> dienteDetalleList;
+    @OneToMany(mappedBy = "codigoPiezaDental", fetch = FetchType.LAZY)
+    private List<MedicionBolsasDetalle> medicionBolsasDetalleList;
+    @OneToMany(mappedBy = "codigoPiezaDental", fetch = FetchType.LAZY)
+    private List<DienteDetalle> dienteDetalleList;
 
     public CodigoPiezaDental() {
     }
@@ -74,21 +72,21 @@ public class CodigoPiezaDental implements Serializable {
         this.adulto = adulto;
     }
 
-//    public List<MedicionBolsasDetalle> getMedicionBolsasDetalleList() {
-//        return medicionBolsasDetalleList;
-//    }
-//
-//    public void setMedicionBolsasDetalleList(List<MedicionBolsasDetalle> medicionBolsasDetalleList) {
-//        this.medicionBolsasDetalleList = medicionBolsasDetalleList;
-//    }
-//
-//    public List<DienteDetalle> getDienteDetalleList() {
-//        return dienteDetalleList;
-//    }
-//
-//    public void setDienteDetalleList(List<DienteDetalle> dienteDetalleList) {
-//        this.dienteDetalleList = dienteDetalleList;
-//    }
+    public List<MedicionBolsasDetalle> getMedicionBolsasDetalleList() {
+        return medicionBolsasDetalleList;
+    }
+
+    public void setMedicionBolsasDetalleList(List<MedicionBolsasDetalle> medicionBolsasDetalleList) {
+        this.medicionBolsasDetalleList = medicionBolsasDetalleList;
+    }
+
+    public List<DienteDetalle> getDienteDetalleList() {
+        return dienteDetalleList;
+    }
+
+    public void setDienteDetalleList(List<DienteDetalle> dienteDetalleList) {
+        this.dienteDetalleList = dienteDetalleList;
+    }
 
     @Override
     public int hashCode() {
@@ -112,7 +110,7 @@ public class CodigoPiezaDental implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.CodigoPiezaDental[ idCodigoPiezaDental=" + idCodigoPiezaDental + " ]";
+        return "com.unsis.odonto.edu.entity.base.CodigoPiezaDental[ idCodigoPiezaDental=" + idCodigoPiezaDental + " ]";
     }
     
 }

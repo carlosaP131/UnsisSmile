@@ -1,11 +1,12 @@
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable; 
+import java.io.Serializable;  
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.Basic;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -24,8 +25,7 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "usuarios")
-//@NamedQueries({
-//    @NamedQuery(name = "Usuarios.findAll", query = "SELECT u FROM Usuarios u")})
+
 public class Usuarios implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,19 +42,17 @@ public class Usuarios implements Serializable {
     private String passUsuario;
     @Column(name = "estatus")
     private Boolean estatus;
-    @Column(name = "nombreRol")
-    private String nombreRol;
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarios", fetch = FetchType.LAZY)
-//    private List<Alumnos> alumnosList;
-//    @JoinColumn(name = "f_id_rol", referencedColumnName = "id_rol")
-//    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-//    private RolesTiposUsuario rolesTiposUsuario;
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarios", fetch = FetchType.LAZY)
-//    private List<Consulta> consultaList;
-//    @OneToMany(mappedBy = "usuarios", fetch = FetchType.LAZY)
-//    private List<Administradores> administradoresList;
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarios", fetch = FetchType.LAZY)
-//    private List<Catedraticos> catedraticosList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarios", fetch = FetchType.LAZY)
+    private List<Alumnos> alumnosList;
+    @JoinColumn(name = "f_id_rol", referencedColumnName = "id_rol")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private RolesTiposUsuario rolesTiposUsuario;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarios", fetch = FetchType.LAZY)
+    private List<Consulta> consultaList;
+    @OneToMany(mappedBy = "usuarios", fetch = FetchType.LAZY)
+    private List<Administradores> administradoresList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarios", fetch = FetchType.LAZY)
+    private List<Catedraticos> catedraticosList;
 
     public Usuarios() {
     }
@@ -101,53 +99,45 @@ public class Usuarios implements Serializable {
         this.estatus = estatus;
     }
 
-    public String getNombreRol() {
-        return nombreRol;
+    public List<Alumnos> getAlumnosList() {
+        return alumnosList;
     }
 
-    public void setNombreRol(String nombreRol) {
-        this.nombreRol = nombreRol;
+    public void setAlumnosList(List<Alumnos> alumnosList) {
+        this.alumnosList = alumnosList;
     }
 
-//    public List<Alumnos> getAlumnosList() {
-//        return alumnosList;
-//    }
-//
-//    public void setAlumnosList(List<Alumnos> alumnosList) {
-//        this.alumnosList = alumnosList;
-//    }
-//
-//    public RolesTiposUsuario getRolesTiposUsuario() {
-//        return rolesTiposUsuario;
-//    }
-//
-//    public void setRolesTiposUsuario(RolesTiposUsuario rolesTiposUsuario) {
-//        this.rolesTiposUsuario = rolesTiposUsuario;
-//    }
-//
-//    public List<Consulta> getConsultaList() {
-//        return consultaList;
-//    }
-//
-//    public void setConsultaList(List<Consulta> consultaList) {
-//        this.consultaList = consultaList;
-//    }
-//
-//    public List<Administradores> getAdministradoresList() {
-//        return administradoresList;
-//    }
-//
-//    public void setAdministradoresList(List<Administradores> administradoresList) {
-//        this.administradoresList = administradoresList;
-//    }
-//
-//    public List<Catedraticos> getCatedraticosList() {
-//        return catedraticosList;
-//    }
-//
-//    public void setCatedraticosList(List<Catedraticos> catedraticosList) {
-//        this.catedraticosList = catedraticosList;
-//    }
+    public RolesTiposUsuario getRolesTiposUsuario() {
+        return rolesTiposUsuario;
+    }
+
+    public void setRolesTiposUsuario(RolesTiposUsuario rolesTiposUsuario) {
+        this.rolesTiposUsuario = rolesTiposUsuario;
+    }
+
+    public List<Consulta> getConsultaList() {
+        return consultaList;
+    }
+
+    public void setConsultaList(List<Consulta> consultaList) {
+        this.consultaList = consultaList;
+    }
+
+    public List<Administradores> getAdministradoresList() {
+        return administradoresList;
+    }
+
+    public void setAdministradoresList(List<Administradores> administradoresList) {
+        this.administradoresList = administradoresList;
+    }
+
+    public List<Catedraticos> getCatedraticosList() {
+        return catedraticosList;
+    }
+
+    public void setCatedraticosList(List<Catedraticos> catedraticosList) {
+        this.catedraticosList = catedraticosList;
+    }
 
     @Override
     public int hashCode() {
@@ -171,7 +161,7 @@ public class Usuarios implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Usuarios[ idUsuario=" + idUsuario + " ]";
+        return "com.unsis.odonto.edu.entity.base.Usuarios[ idUsuario=" + idUsuario + " ]";
     }
     
 }
