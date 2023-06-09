@@ -1,6 +1,6 @@
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable; 
+import java.io.Serializable;  
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -24,8 +24,7 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "estado_diente")
-//@NamedQueries({
-//    @NamedQuery(name = "EstadoDiente.findAll", query = "SELECT e FROM EstadoDiente e")})
+
 public class EstadoDiente implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -92,7 +91,7 @@ public class EstadoDiente implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.EstadoDiente[ idEstadoDiente=" + idEstadoDiente + " ]";
+        return "com.unsis.odonto.edu.entity.base.EstadoDiente[ idEstadoDiente=" + idEstadoDiente + " ]";
     }
     
 }

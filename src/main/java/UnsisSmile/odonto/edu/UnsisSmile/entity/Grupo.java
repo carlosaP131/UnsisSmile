@@ -1,6 +1,6 @@
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable; 
+import java.io.Serializable;  
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -24,8 +24,7 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "grupo")
-//@NamedQueries({
-//    @NamedQuery(name = "Grupo.findAll", query = "SELECT g FROM Grupo g")})
+
 public class Grupo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -36,8 +35,8 @@ public class Grupo implements Serializable {
     private Integer idGrupos;
     @Column(name = "grupo")
     private String grupo;
-//    @OneToMany(mappedBy = "grupo", fetch = FetchType.LAZY)
-//    private List<SemestreGrupo> semestreGrupoList;
+    @OneToMany(mappedBy = "grupo", fetch = FetchType.LAZY)
+    private List<SemestreGrupo> semestreGrupoList;
 
     public Grupo() {
     }
@@ -62,13 +61,13 @@ public class Grupo implements Serializable {
         this.grupo = grupo;
     }
 
-//    public List<SemestreGrupo> getSemestreGrupoList() {
-//        return semestreGrupoList;
-//    }
-//
-//    public void setSemestreGrupoList(List<SemestreGrupo> semestreGrupoList) {
-//        this.semestreGrupoList = semestreGrupoList;
-//    }
+    public List<SemestreGrupo> getSemestreGrupoList() {
+        return semestreGrupoList;
+    }
+
+    public void setSemestreGrupoList(List<SemestreGrupo> semestreGrupoList) {
+        this.semestreGrupoList = semestreGrupoList;
+    }
 
     @Override
     public int hashCode() {
@@ -92,7 +91,7 @@ public class Grupo implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Grupo[ idGrupos=" + idGrupos + " ]";
+        return "com.unsis.odonto.edu.entity.base.Grupo[ idGrupos=" + idGrupos + " ]";
     }
     
 }

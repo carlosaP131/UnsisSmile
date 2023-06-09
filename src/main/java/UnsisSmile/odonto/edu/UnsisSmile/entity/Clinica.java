@@ -1,11 +1,12 @@
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable; 
+import java.io.Serializable;  
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.Basic;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -23,8 +24,7 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "clinica")
-//@NamedQueries({
-//    @NamedQuery(name = "Clinica.findAll", query = "SELECT c FROM Clinica c")})
+
 public class Clinica implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -35,10 +35,10 @@ public class Clinica implements Serializable {
     private Integer idClinica;
     @Column(name = "nombre_clinica")
     private String nombreClinica;
-//    @Column(name = "direccion")
-//    private String direccion;
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "clinica", fetch = FetchType.LAZY)
-//    private List<Consulta> consultaList;
+    @Column(name = "direccion")
+    private String direccion;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "clinica", fetch = FetchType.LAZY)
+    private List<Consulta> consultaList;
 
     public Clinica() {
     }
@@ -62,22 +62,22 @@ public class Clinica implements Serializable {
     public void setNombreClinica(String nombreClinica) {
         this.nombreClinica = nombreClinica;
     }
-//
-//    public String getDireccion() {
-//        return direccion;
-//    }
-//
-//    public void setDireccion(String direccion) {
-//        this.direccion = direccion;
-//    }
-//
-//    public List<Consulta> getConsultaList() {
-//        return consultaList;
-//    }
-//
-//    public void setConsultaList(List<Consulta> consultaList) {
-//        this.consultaList = consultaList;
-//    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public List<Consulta> getConsultaList() {
+        return consultaList;
+    }
+
+    public void setConsultaList(List<Consulta> consultaList) {
+        this.consultaList = consultaList;
+    }
 
     @Override
     public int hashCode() {
@@ -101,7 +101,7 @@ public class Clinica implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Clinica[ idClinica=" + idClinica + " ]";
+        return "com.unsis.odonto.edu.entity.base.Clinica[ idClinica=" + idClinica + " ]";
     }
     
 }

@@ -1,6 +1,6 @@
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable; 
+import java.io.Serializable;  
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -24,8 +24,7 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "examen_facial")
-//@NamedQueries({
-//    @NamedQuery(name = "ExamenFacial.findAll", query = "SELECT e FROM ExamenFacial e")})
+
 public class ExamenFacial implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,8 +41,8 @@ public class ExamenFacial implements Serializable {
     @Lob
     @Column(name = "senias_particulares")
     private String seniasParticulares;
-//    @OneToMany(mappedBy = "examenFacial", fetch = FetchType.LAZY)
-//    private List<HistoriaClinicaGeneral> historiaClinicaGeneralList;
+    @OneToMany(mappedBy = "examenFacial", fetch = FetchType.LAZY)
+    private List<HistoriaClinicaGeneral> historiaClinicaGeneralList;
 
     public ExamenFacial() {
     }
@@ -83,14 +82,14 @@ public class ExamenFacial implements Serializable {
     public void setSeniasParticulares(String seniasParticulares) {
         this.seniasParticulares = seniasParticulares;
     }
-//
-//    public List<HistoriaClinicaGeneral> getHistoriaClinicaGeneralList() {
-//        return historiaClinicaGeneralList;
-//    }
-//
-//    public void setHistoriaClinicaGeneralList(List<HistoriaClinicaGeneral> historiaClinicaGeneralList) {
-//        this.historiaClinicaGeneralList = historiaClinicaGeneralList;
-//    }
+
+    public List<HistoriaClinicaGeneral> getHistoriaClinicaGeneralList() {
+        return historiaClinicaGeneralList;
+    }
+
+    public void setHistoriaClinicaGeneralList(List<HistoriaClinicaGeneral> historiaClinicaGeneralList) {
+        this.historiaClinicaGeneralList = historiaClinicaGeneralList;
+    }
 
     @Override
     public int hashCode() {
@@ -114,7 +113,7 @@ public class ExamenFacial implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.ExamenFacial[ idExamenFacial=" + idExamenFacial + " ]";
+        return "com.unsis.odonto.edu.entity.base.ExamenFacial[ idExamenFacial=" + idExamenFacial + " ]";
     }
     
 }
