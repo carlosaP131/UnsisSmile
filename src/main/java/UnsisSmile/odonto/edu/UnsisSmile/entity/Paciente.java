@@ -1,11 +1,12 @@
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable; 
+import java.io.Serializable;  
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.Basic;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -17,15 +18,13 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
 /**
  *
  * @author labingsw05
  */
 @Entity
 @Table(name = "paciente")
-//@NamedQueries({
-//    @NamedQuery(name = "Paciente.findAll", query = "SELECT p FROM Paciente p")})
+
 public class Paciente implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,32 +47,30 @@ public class Paciente implements Serializable {
     private String grupoEtnico;
     @Column(name = "ocupacion")
     private String ocupacion;
-//    @Column(name = "fecha_nacimiento")
-//    @Temporal(TemporalType.DATE)
-    private Date fechaNacimiento;
+    @Column(name = "fecha_nacimiento", columnDefinition = "DATE")
+    private LocalDate fechaNacimiento;
     @Column(name = "domicilio")
     private String domicilio;
     @Column(name = "estado_civil")
     private String estadoCivil;
     @Column(name = "religion")
     private String religion;
-//    @Column(name = "fecha_ingreso")
-//    @Temporal(TemporalType.DATE)
-    private Date fechaIngreso;
+    @Column(name = "fecha_ingreso", columnDefinition = "DATE")
+    private LocalDate fechaIngreso;
     @Column(name = "nacionalidad")
     private String nacionalidad;
     @Column(name = "localidad")
     private String localidad;
     @Column(name = "estatus")
     private Boolean estatus;
-//    @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
-//    private List<PacienteAlumno> pacienteAlumnoList;
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "paciente", fetch = FetchType.LAZY)
-//    private List<Consulta> consultaList;
+    @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
+    private List<PacienteAlumno> pacienteAlumnoList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "paciente", fetch = FetchType.LAZY)
+    private List<Consulta> consultaList;
     @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
     private List<HistoriaClinicaGeneral> historiaClinicaGeneralList;
-//    @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
-//    private List<Tutor> tutorList;
+    @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
+    private List<Tutor> tutorList;
 
     public Paciente() {
     }
@@ -146,11 +143,11 @@ public class Paciente implements Serializable {
         this.ocupacion = ocupacion;
     }
 
-    public Date getFechaNacimiento() {
+    public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -178,11 +175,11 @@ public class Paciente implements Serializable {
         this.religion = religion;
     }
 
-    public Date getFechaIngreso() {
+    public LocalDate getFechaIngreso() {
         return fechaIngreso;
     }
 
-    public void setFechaIngreso(Date fechaIngreso) {
+    public void setFechaIngreso(LocalDate fechaIngreso) {
         this.fechaIngreso = fechaIngreso;
     }
 
@@ -210,21 +207,21 @@ public class Paciente implements Serializable {
         this.estatus = estatus;
     }
 
-//    public List<PacienteAlumno> getPacienteAlumnoList() {
-//        return pacienteAlumnoList;
-//    }
-//
-//    public void setPacienteAlumnoList(List<PacienteAlumno> pacienteAlumnoList) {
-//        this.pacienteAlumnoList = pacienteAlumnoList;
-//    }
+    public List<PacienteAlumno> getPacienteAlumnoList() {
+        return pacienteAlumnoList;
+    }
 
-//    public List<Consulta> getConsultaList() {
-//        return consultaList;
-//    }
-//
-//    public void setConsultaList(List<Consulta> consultaList) {
-//        this.consultaList = consultaList;
-//    }
+    public void setPacienteAlumnoList(List<PacienteAlumno> pacienteAlumnoList) {
+        this.pacienteAlumnoList = pacienteAlumnoList;
+    }
+
+    public List<Consulta> getConsultaList() {
+        return consultaList;
+    }
+
+    public void setConsultaList(List<Consulta> consultaList) {
+        this.consultaList = consultaList;
+    }
 
     public List<HistoriaClinicaGeneral> getHistoriaClinicaGeneralList() {
         return historiaClinicaGeneralList;
@@ -234,13 +231,13 @@ public class Paciente implements Serializable {
         this.historiaClinicaGeneralList = historiaClinicaGeneralList;
     }
 
-//    public List<Tutor> getTutorList() {
-//        return tutorList;
-//    }
-//
-//    public void setTutorList(List<Tutor> tutorList) {
-//        this.tutorList = tutorList;
-//    }
+    public List<Tutor> getTutorList() {
+        return tutorList;
+    }
+
+    public void setTutorList(List<Tutor> tutorList) {
+        this.tutorList = tutorList;
+    }
 
     @Override
     public int hashCode() {
@@ -264,7 +261,7 @@ public class Paciente implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Paciente[ idPaciente=" + idPaciente + " ]";
+        return "com.unsis.odonto.edu.entity.base.Paciente[ idPaciente=" + idPaciente + " ]";
     }
     
 }

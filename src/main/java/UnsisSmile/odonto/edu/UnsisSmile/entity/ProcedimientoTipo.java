@@ -1,11 +1,12 @@
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable; 
+import java.io.Serializable;  
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.Basic;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -24,8 +25,7 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "procedimiento_tipo")
-//@NamedQueries({
-//    @NamedQuery(name = "ProcedimientoTipo.findAll", query = "SELECT p FROM ProcedimientoTipo p")})
+
 public class ProcedimientoTipo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -36,8 +36,8 @@ public class ProcedimientoTipo implements Serializable {
     private Integer idProcedimientoTipo;
     @Column(name = "procedimiento")
     private String procedimiento;
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "procedimientoTipo", fetch = FetchType.LAZY)
-//    private List<Consulta> consultaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "procedimientoTipo", fetch = FetchType.LAZY)
+    private List<Consulta> consultaList;
 
     public ProcedimientoTipo() {
     }
@@ -62,13 +62,13 @@ public class ProcedimientoTipo implements Serializable {
         this.procedimiento = procedimiento;
     }
 
-//    public List<Consulta> getConsultaList() {
-//        return consultaList;
-//    }
-//
-//    public void setConsultaList(List<Consulta> consultaList) {
-//        this.consultaList = consultaList;
-//    }
+    public List<Consulta> getConsultaList() {
+        return consultaList;
+    }
+
+    public void setConsultaList(List<Consulta> consultaList) {
+        this.consultaList = consultaList;
+    }
 
     @Override
     public int hashCode() {
@@ -92,7 +92,7 @@ public class ProcedimientoTipo implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.ProcedimientoTipo[ idProcedimientoTipo=" + idProcedimientoTipo + " ]";
+        return "com.unsis.odonto.edu.entity.base.ProcedimientoTipo[ idProcedimientoTipo=" + idProcedimientoTipo + " ]";
     }
     
 }

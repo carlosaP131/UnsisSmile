@@ -1,6 +1,6 @@
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable; 
+import java.io.Serializable;  
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -24,8 +24,7 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "examen_clinico")
-//@NamedQueries({
-//    @NamedQuery(name = "ExamenClinico.findAll", query = "SELECT e FROM ExamenClinico e")})
+
 public class ExamenClinico implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,8 +43,8 @@ public class ExamenClinico implements Serializable {
     @Column(name = "Mucosa_yugal")
     private String mucosayugal;
     @Lob
-    @Column(name = "N\u00f3dulos_linf\u00e1ticos")
-    private String nóduloslinfáticos;
+    @Column(name = "Nodulos_linfaticos")
+    private String noduloslinfaticos;
     @Lob
     @Column(name = "Lengua")
     private String lengua;
@@ -56,11 +55,11 @@ public class ExamenClinico implements Serializable {
     @Column(name = "Labios")
     private String labios;
     @Lob
-    @Column(name = "Gl\u00e1ndulas_salivales")
-    private String glándulassalivales;
+    @Column(name = "Glandulas_salivales")
+    private String glandulassalivales;
     @Lob
-    @Column(name = "Enc\u00eda")
-    private String encía;
+    @Column(name = "Encia")
+    private String encia;
     @Lob
     @Column(name = "Frenillos")
     private String frenillos;
@@ -68,10 +67,10 @@ public class ExamenClinico implements Serializable {
     @Column(name = "Saliva")
     private String saliva;
     @Lob
-    @Column(name = "Otras_se\u00f1as_particulares")
-    private String otrasseñasparticulares;
-//    @OneToMany(mappedBy = "examenClinico", fetch = FetchType.LAZY)
-//    private List<HistoriaClinicaGeneral> historiaClinicaGeneralList;
+    @Column(name = "Otras_senias_particulares")
+    private String otrasseniasparticulares;
+    @OneToMany(mappedBy = "examenClinico", fetch = FetchType.LAZY)
+    private List<HistoriaClinicaGeneral> historiaClinicaGeneralList;
 
     public ExamenClinico() {
     }
@@ -112,12 +111,12 @@ public class ExamenClinico implements Serializable {
         this.mucosayugal = mucosayugal;
     }
 
-    public String getNóduloslinfáticos() {
-        return nóduloslinfáticos;
+    public String getNoduloslinfaticos() {
+        return noduloslinfaticos;
     }
 
-    public void setNóduloslinfáticos(String nóduloslinfáticos) {
-        this.nóduloslinfáticos = nóduloslinfáticos;
+    public void setNoduloslinfaticos(String noduloslinfaticos) {
+        this.noduloslinfaticos = noduloslinfaticos;
     }
 
     public String getLengua() {
@@ -144,20 +143,20 @@ public class ExamenClinico implements Serializable {
         this.labios = labios;
     }
 
-    public String getGlándulassalivales() {
-        return glándulassalivales;
+    public String getGlandulassalivales() {
+        return glandulassalivales;
     }
 
-    public void setGlándulassalivales(String glándulassalivales) {
-        this.glándulassalivales = glándulassalivales;
+    public void setGlandulassalivales(String glandulassalivales) {
+        this.glandulassalivales = glandulassalivales;
     }
 
-    public String getEncía() {
-        return encía;
+    public String getEncia() {
+        return encia;
     }
 
-    public void setEncía(String encía) {
-        this.encía = encía;
+    public void setEncia(String encia) {
+        this.encia = encia;
     }
 
     public String getFrenillos() {
@@ -176,21 +175,21 @@ public class ExamenClinico implements Serializable {
         this.saliva = saliva;
     }
 
-    public String getOtrasseñasparticulares() {
-        return otrasseñasparticulares;
+    public String getOtrasseniasparticulares() {
+        return otrasseniasparticulares;
     }
 
-    public void setOtrasseñasparticulares(String otrasseñasparticulares) {
-        this.otrasseñasparticulares = otrasseñasparticulares;
+    public void setOtrasseniasparticulares(String otrasseniasparticulares) {
+        this.otrasseniasparticulares = otrasseniasparticulares;
     }
 
-//    public List<HistoriaClinicaGeneral> getHistoriaClinicaGeneralList() {
-//        return historiaClinicaGeneralList;
-//    }
-//
-//    public void setHistoriaClinicaGeneralList(List<HistoriaClinicaGeneral> historiaClinicaGeneralList) {
-//        this.historiaClinicaGeneralList = historiaClinicaGeneralList;
-//    }
+    public List<HistoriaClinicaGeneral> getHistoriaClinicaGeneralList() {
+        return historiaClinicaGeneralList;
+    }
+
+    public void setHistoriaClinicaGeneralList(List<HistoriaClinicaGeneral> historiaClinicaGeneralList) {
+        this.historiaClinicaGeneralList = historiaClinicaGeneralList;
+    }
 
     @Override
     public int hashCode() {
@@ -214,7 +213,7 @@ public class ExamenClinico implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.ExamenClinico[ idExamenClinico=" + idExamenClinico + " ]";
+        return "com.unsis.odonto.edu.entity.base.ExamenClinico[ idExamenClinico=" + idExamenClinico + " ]";
     }
     
 }

@@ -1,6 +1,6 @@
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable; 
+import java.io.Serializable;  
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -17,14 +17,14 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+
 /**
  *
  * @author labingsw05
  */
 @Entity
 @Table(name = "diente_detalle")
-//@NamedQueries({
-//    @NamedQuery(name = "DienteDetalle.findAll", query = "SELECT d FROM DienteDetalle d")})
+
 public class DienteDetalle implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -36,15 +36,15 @@ public class DienteDetalle implements Serializable {
     @JoinColumn(name = "fk_id_codigo_pieza_dental", referencedColumnName = "id_codigo_pieza_dental")
     @ManyToOne(fetch = FetchType.LAZY)
     private CodigoPiezaDental codigoPiezaDental;
-//    @JoinColumn(name = "fk_id_estado_diente", referencedColumnName = "id_estado_diente")
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    private EstadoDiente estadoDiente;
-//    @JoinColumn(name = "fk_id_odontograma", referencedColumnName = "id_odontograma")
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    private Odontograma odontograma;
-//    @JoinColumn(name = "fk_id_region_diente", referencedColumnName = "id_region")
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    private RegionDiente regionDiente;
+    @JoinColumn(name = "fk_id_estado_diente", referencedColumnName = "id_estado_diente")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private EstadoDiente estadoDiente;
+    @JoinColumn(name = "fk_id_odontograma", referencedColumnName = "id_odontograma")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Odontograma odontograma;
+    @JoinColumn(name = "fk_id_region_diente", referencedColumnName = "id_region")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private RegionDiente regionDiente;
 
     public DienteDetalle() {
     }
@@ -68,30 +68,30 @@ public class DienteDetalle implements Serializable {
     public void setCodigoPiezaDental(CodigoPiezaDental codigoPiezaDental) {
         this.codigoPiezaDental = codigoPiezaDental;
     }
-//
-//    public EstadoDiente getEstadoDiente() {
-//        return estadoDiente;
-//    }
-//
-//    public void setEstadoDiente(EstadoDiente estadoDiente) {
-//        this.estadoDiente = estadoDiente;
-//    }
-//
-//    public Odontograma getOdontograma() {
-//        return odontograma;
-//    }
-//
-//    public void setOdontograma(Odontograma odontograma) {
-//        this.odontograma = odontograma;
-//    }
-//
-//    public RegionDiente getRegionDiente() {
-//        return regionDiente;
-//    }
-//
-//    public void setRegionDiente(RegionDiente regionDiente) {
-//        this.regionDiente = regionDiente;
-//    }
+
+    public EstadoDiente getEstadoDiente() {
+        return estadoDiente;
+    }
+
+    public void setEstadoDiente(EstadoDiente estadoDiente) {
+        this.estadoDiente = estadoDiente;
+    }
+
+    public Odontograma getOdontograma() {
+        return odontograma;
+    }
+
+    public void setOdontograma(Odontograma odontograma) {
+        this.odontograma = odontograma;
+    }
+
+    public RegionDiente getRegionDiente() {
+        return regionDiente;
+    }
+
+    public void setRegionDiente(RegionDiente regionDiente) {
+        this.regionDiente = regionDiente;
+    }
 
     @Override
     public int hashCode() {
@@ -115,7 +115,7 @@ public class DienteDetalle implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.DienteDetalle[ idDienteDetalle=" + idDienteDetalle + " ]";
+        return "com.unsis.odonto.edu.entity.base.DienteDetalle[ idDienteDetalle=" + idDienteDetalle + " ]";
     }
     
 }
