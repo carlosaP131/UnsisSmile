@@ -1,6 +1,6 @@
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable; 
+import java.io.Serializable;  
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -24,8 +24,6 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "semestre_grupo")
-//@NamedQueries({
-//    @NamedQuery(name = "SemestreGrupo.findAll", query = "SELECT s FROM SemestreGrupo s")})
 public class SemestreGrupo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -40,9 +38,9 @@ public class SemestreGrupo implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     private Grupo grupo;
     @JoinColumn(name = "fk_id_semestre", referencedColumnName = "id_semestre")
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    private Semestres semestres;
-  @OneToMany(mappedBy = "semestreGrupo", fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Semestres semestres;
+    @OneToMany(mappedBy = "semestreGrupo", fetch = FetchType.LAZY)
     private List<CatedraticoGrupo> catedraticoGrupoList;
 
     public SemestreGrupo() {
@@ -76,13 +74,13 @@ public class SemestreGrupo implements Serializable {
         this.grupo = grupo;
     }
 
-//    public Semestres getSemestres() {
-//        return semestres;
-//    }
-//
-//    public void setSemestres(Semestres semestres) {
-//        this.semestres = semestres;
-//    }
+    public Semestres getSemestres() {
+        return semestres;
+    }
+
+    public void setSemestres(Semestres semestres) {
+        this.semestres = semestres;
+    }
 
     public List<CatedraticoGrupo> getCatedraticoGrupoList() {
         return catedraticoGrupoList;
@@ -114,7 +112,7 @@ public class SemestreGrupo implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.SemestreGrupo[ idSemestreGrupo=" + idSemestreGrupo + " ]";
+        return "com.unsis.odonto.edu.entity.base.SemestreGrupo[ idSemestreGrupo=" + idSemestreGrupo + " ]";
     }
     
 }

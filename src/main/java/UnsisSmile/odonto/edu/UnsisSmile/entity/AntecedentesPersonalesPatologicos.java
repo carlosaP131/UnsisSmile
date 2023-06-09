@@ -1,6 +1,6 @@
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable; 
+import java.io.Serializable;  
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -17,14 +17,14 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+
 /**
  *
  * @author labingsw05
  */
 @Entity
 @Table(name = "antecedentes_personales_patologicos")
-//@NamedQueries({
-//    @NamedQuery(name = "AntecedentesPersonalesPatologicos.findAll", query = "SELECT a FROM AntecedentesPersonalesPatologicos a")})
+
 public class AntecedentesPersonalesPatologicos implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -386,7 +386,7 @@ public class AntecedentesPersonalesPatologicos implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.AntecedentesPersonalesPatologicos[ idAntecedentesPersonalesPatologicos=" + idAntecedentesPersonalesPatologicos + " ]";
+        return "com.unsis.odonto.edu.entity.base.AntecedentesPersonalesPatologicos[ idAntecedentesPersonalesPatologicos=" + idAntecedentesPersonalesPatologicos + " ]";
     }
     
 }

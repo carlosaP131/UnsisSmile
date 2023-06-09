@@ -1,6 +1,6 @@
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable; 
+import java.io.Serializable;  
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -17,15 +17,13 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
 /**
  *
  * @author labingsw05
  */
 @Entity
 @Table(name = "estudio_de_laboratorio_biopsia")
-//@NamedQueries({
-//    @NamedQuery(name = "EstudioDeLaboratorioBiopsia.findAll", query = "SELECT e FROM EstudioDeLaboratorioBiopsia e")})
+
 public class EstudioDeLaboratorioBiopsia implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -41,13 +39,13 @@ public class EstudioDeLaboratorioBiopsia implements Serializable {
     @Column(name = "tipo_de_biopsia")
     private String tipoDeBiopsia;
     @Lob
-    @Column(name = "regi\u00f3n_donde_se_realiz\u00f3_biopsia")
-    private String regiónDondeSeRealizóBiopsia;
+    @Column(name = "region_donde_se_realizo_biopsia")
+    private String regionDondeSeRealizoBiopsia;
     @Lob
     @Column(name = "laboratorio_donde_se_envia_el_estudio")
     private String laboratorioDondeSeEnviaElEstudio;
-//    @OneToMany(mappedBy = "estudioDeLaboratorioBiopsia", fetch = FetchType.LAZY)
-//    private List<HistoriaClinicaGeneral> historiaClinicaGeneralList;
+    @OneToMany(mappedBy = "estudioDeLaboratorioBiopsia", fetch = FetchType.LAZY)
+    private List<HistoriaClinicaGeneral> historiaClinicaGeneralList;
 
     public EstudioDeLaboratorioBiopsia() {
     }
@@ -80,12 +78,12 @@ public class EstudioDeLaboratorioBiopsia implements Serializable {
         this.tipoDeBiopsia = tipoDeBiopsia;
     }
 
-    public String getRegiónDondeSeRealizóBiopsia() {
-        return regiónDondeSeRealizóBiopsia;
+    public String getRegionDondeSeRealizoBiopsia() {
+        return regionDondeSeRealizoBiopsia;
     }
 
-    public void setRegiónDondeSeRealizóBiopsia(String regiónDondeSeRealizóBiopsia) {
-        this.regiónDondeSeRealizóBiopsia = regiónDondeSeRealizóBiopsia;
+    public void setRegionDondeSeRealizoBiopsia(String regionDondeSeRealizoBiopsia) {
+        this.regionDondeSeRealizoBiopsia = regionDondeSeRealizoBiopsia;
     }
 
     public String getLaboratorioDondeSeEnviaElEstudio() {
@@ -96,13 +94,13 @@ public class EstudioDeLaboratorioBiopsia implements Serializable {
         this.laboratorioDondeSeEnviaElEstudio = laboratorioDondeSeEnviaElEstudio;
     }
 
-//    public List<HistoriaClinicaGeneral> getHistoriaClinicaGeneralList() {
-//        return historiaClinicaGeneralList;
-//    }
-//
-//    public void setHistoriaClinicaGeneralList(List<HistoriaClinicaGeneral> historiaClinicaGeneralList) {
-//        this.historiaClinicaGeneralList = historiaClinicaGeneralList;
-//    }
+    public List<HistoriaClinicaGeneral> getHistoriaClinicaGeneralList() {
+        return historiaClinicaGeneralList;
+    }
+
+    public void setHistoriaClinicaGeneralList(List<HistoriaClinicaGeneral> historiaClinicaGeneralList) {
+        this.historiaClinicaGeneralList = historiaClinicaGeneralList;
+    }
 
     @Override
     public int hashCode() {
@@ -126,7 +124,7 @@ public class EstudioDeLaboratorioBiopsia implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.EstudioDeLaboratorioBiopsia[ idEstudioDeLaboratorioBiopsia=" + idEstudioDeLaboratorioBiopsia + " ]";
+        return "com.unsis.odonto.edu.entity.base.EstudioDeLaboratorioBiopsia[ idEstudioDeLaboratorioBiopsia=" + idEstudioDeLaboratorioBiopsia + " ]";
     }
     
 }

@@ -1,6 +1,6 @@
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable; 
+import java.io.Serializable;  
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -17,15 +17,14 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
- 
+
 /**
  *
  * @author labingsw05
  */
 @Entity
 @Table(name = "region_diente")
-//@NamedQueries({
-//    @NamedQuery(name = "RegionDiente.findAll", query = "SELECT r FROM RegionDiente r")})
+
 public class RegionDiente implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -92,7 +91,7 @@ public class RegionDiente implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.RegionDiente[ idRegion=" + idRegion + " ]";
+        return "com.unsis.odonto.edu.entity.base.RegionDiente[ idRegion=" + idRegion + " ]";
     }
     
 }

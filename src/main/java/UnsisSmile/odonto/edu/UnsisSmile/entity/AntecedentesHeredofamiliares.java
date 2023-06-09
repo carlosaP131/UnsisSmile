@@ -7,7 +7,7 @@
  * ****************************************************************************/
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable; 
+import java.io.Serializable;  
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -24,14 +24,14 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+
 /**
  *
  * @author labingsw05
  */
 @Entity
 @Table(name = "antecedentes_heredofamiliares")
-//@NamedQueries({
-//    @NamedQuery(name = "AntecedentesHeredofamiliares.findAll", query = "SELECT a FROM AntecedentesHeredofamiliares a")})
+
 public class AntecedentesHeredofamiliares implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -80,8 +80,8 @@ public class AntecedentesHeredofamiliares implements Serializable {
     @Lob
     @Column(name = "problemas_cardiacos_amplio")
     private String problemasCardiacosAmplio;
-//    @OneToMany(mappedBy = "antecedentesHeredofamiliares", fetch = FetchType.LAZY)
-//    private List<HistoriaClinicaGeneral> historiaClinicaGeneralList;
+    @OneToMany(mappedBy = "antecedentesHeredofamiliares", fetch = FetchType.LAZY)
+    private List<HistoriaClinicaGeneral> historiaClinicaGeneralList;
 
     public AntecedentesHeredofamiliares() {
     }
@@ -226,13 +226,13 @@ public class AntecedentesHeredofamiliares implements Serializable {
         this.problemasCardiacosAmplio = problemasCardiacosAmplio;
     }
 
-//    public List<HistoriaClinicaGeneral> getHistoriaClinicaGeneralList() {
-//        return historiaClinicaGeneralList;
-//    }
-//
-//    public void setHistoriaClinicaGeneralList(List<HistoriaClinicaGeneral> historiaClinicaGeneralList) {
-//        this.historiaClinicaGeneralList = historiaClinicaGeneralList;
-//    }
+    public List<HistoriaClinicaGeneral> getHistoriaClinicaGeneralList() {
+        return historiaClinicaGeneralList;
+    }
+
+    public void setHistoriaClinicaGeneralList(List<HistoriaClinicaGeneral> historiaClinicaGeneralList) {
+        this.historiaClinicaGeneralList = historiaClinicaGeneralList;
+    }
 
     @Override
     public int hashCode() {
@@ -256,7 +256,7 @@ public class AntecedentesHeredofamiliares implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.AntecedentesHeredofamiliares[ idAntecedentesHeredofamiliares=" + idAntecedentesHeredofamiliares + " ]";
+        return "com.unsis.odonto.edu.entity.base.AntecedentesHeredofamiliares[ idAntecedentesHeredofamiliares=" + idAntecedentesHeredofamiliares + " ]";
     }
     
 }

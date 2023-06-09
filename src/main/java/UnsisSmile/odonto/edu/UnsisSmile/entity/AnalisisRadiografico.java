@@ -7,7 +7,7 @@
  * ****************************************************************************/
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable; 
+import java.io.Serializable;  
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -31,8 +31,7 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "analisis_radiografico")
-//@NamedQueries({
-//    @NamedQuery(name = "AnalisisRadiografico.findAll", query = "SELECT a FROM AnalisisRadiografico a")})
+
 public class AnalisisRadiografico implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -50,8 +49,8 @@ public class AnalisisRadiografico implements Serializable {
     @Lob
     @Column(name = "Panoramica")
     private String panoramica;
-//    @OneToMany(mappedBy = "analisisRadiografico", fetch = FetchType.LAZY)
-//    private List<HistoriaClinicaGeneral> historiaClinicaGeneralList;
+    @OneToMany(mappedBy = "analisisRadiografico", fetch = FetchType.LAZY)
+    private List<HistoriaClinicaGeneral> historiaClinicaGeneralList;
 
     public AnalisisRadiografico() {
     }
@@ -92,13 +91,13 @@ public class AnalisisRadiografico implements Serializable {
         this.panoramica = panoramica;
     }
 
-//    public List<HistoriaClinicaGeneral> getHistoriaClinicaGeneralList() {
-//        return historiaClinicaGeneralList;
-//    }
-//
-//    public void setHistoriaClinicaGeneralList(List<HistoriaClinicaGeneral> historiaClinicaGeneralList) {
-//        this.historiaClinicaGeneralList = historiaClinicaGeneralList;
-//    }
+    public List<HistoriaClinicaGeneral> getHistoriaClinicaGeneralList() {
+        return historiaClinicaGeneralList;
+    }
+
+    public void setHistoriaClinicaGeneralList(List<HistoriaClinicaGeneral> historiaClinicaGeneralList) {
+        this.historiaClinicaGeneralList = historiaClinicaGeneralList;
+    }
 
     @Override
     public int hashCode() {
@@ -122,7 +121,7 @@ public class AnalisisRadiografico implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.AnalisisRadiografico[ idAnalisisRadiografico=" + idAnalisisRadiografico + " ]";
+        return "com.unsis.odonto.edu.entity.base.AnalisisRadiografico[ idAnalisisRadiografico=" + idAnalisisRadiografico + " ]";
     }
     
 }

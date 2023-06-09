@@ -1,3 +1,4 @@
+
 /** ****************************************************************************
  *Autor:Carlos Aurelio Alcántara Pérez
  *Fecha de creación: 7-06-2023 ***
@@ -5,25 +6,25 @@
  *Descripción: Entity Alumnos
  **
  * ****************************************************************************/
-/*
 
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable; 
+import java.io.Serializable;  
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 /**
@@ -32,8 +33,7 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "alumnos")
-//@NamedQueries({
-//    @NamedQuery(name = "Alumnos.findAll", query = "SELECT a FROM Alumnos a")})
+
 public class Alumnos implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -63,14 +63,14 @@ public class Alumnos implements Serializable {
     private String emailAlumno;
     @Column(name = "estatus")
     private Boolean estatus;
-//    @OneToMany(mappedBy = "alumnos", fetch = FetchType.LAZY)
-//    private List<PacienteAlumno> pacienteAlumnoList;
-//    @JoinColumn(name = "fk_id_semestre_grupo", referencedColumnName = "id_semestre_grupo")
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    private SemestreGrupo semestreGrupo;
-//    @JoinColumn(name = "f_id_usuario", referencedColumnName = "id_usuario")
-//    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-//    private Usuarios usuarios;
+    @OneToMany(mappedBy = "alumnos", fetch = FetchType.LAZY)
+    private List<PacienteAlumno> pacienteAlumnoList;
+    @JoinColumn(name = "fk_id_semestre_grupo", referencedColumnName = "id_semestre_grupo")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private SemestreGrupo semestreGrupo;
+    @JoinColumn(name = "f_id_usuario", referencedColumnName = "id_usuario")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Usuarios usuarios;
 
     public Alumnos() {
     }
@@ -172,29 +172,29 @@ public class Alumnos implements Serializable {
         this.estatus = estatus;
     }
 
-//    public List<PacienteAlumno> getPacienteAlumnoList() {
-//        return pacienteAlumnoList;
-//    }
-//
-//    public void setPacienteAlumnoList(List<PacienteAlumno> pacienteAlumnoList) {
-//        this.pacienteAlumnoList = pacienteAlumnoList;
-//    }
-//
-//    public SemestreGrupo getSemestreGrupo() {
-//        return semestreGrupo;
-//    }
-//
-//    public void setSemestreGrupo(SemestreGrupo semestreGrupo) {
-//        this.semestreGrupo = semestreGrupo;
-//    }
-//
-//    public Usuarios getUsuarios() {
-//        return usuarios;
-//    }
-//
-//    public void setUsuarios(Usuarios usuarios) {
-//        this.usuarios = usuarios;
-//    }
+    public List<PacienteAlumno> getPacienteAlumnoList() {
+        return pacienteAlumnoList;
+    }
+
+    public void setPacienteAlumnoList(List<PacienteAlumno> pacienteAlumnoList) {
+        this.pacienteAlumnoList = pacienteAlumnoList;
+    }
+
+    public SemestreGrupo getSemestreGrupo() {
+        return semestreGrupo;
+    }
+
+    public void setSemestreGrupo(SemestreGrupo semestreGrupo) {
+        this.semestreGrupo = semestreGrupo;
+    }
+
+    public Usuarios getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(Usuarios usuarios) {
+        this.usuarios = usuarios;
+    }
 
     @Override
     public int hashCode() {
@@ -218,7 +218,7 @@ public class Alumnos implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Alumnos[ idAlumno=" + idAlumno + " ]";
+        return "com.unsis.odonto.edu.entity.base.Alumnos[ idAlumno=" + idAlumno + " ]";
     }
     
 }
