@@ -1,6 +1,6 @@
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable; 
+import java.io.Serializable;  
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -17,14 +17,13 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+
 /**
  *
  * @author labingsw05
  */
 @Entity
 @Table(name = "Antecedentes_Patologicos")
-//@NamedQueries({
-//    @NamedQuery(name = "AntecedentesPatologicos.findAll", query = "SELECT a FROM AntecedentesPatologicos a")})
 public class AntecedentesPatologicos implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,24 +42,24 @@ public class AntecedentesPatologicos implements Serializable {
     private Boolean artritis;
     @Column(name = "Asma")
     private Boolean asma;
-    @Column(name = "C\u00e1ncer")
-    private Boolean cáncer;
-    @Column(name = "Dependencia_de_Drogas_o_Narc\u00f3ticos")
-    private Boolean dependenciadeDrogasoNarcóticos;
+    @Column(name = "Cancer")
+    private Boolean cancer;
+    @Column(name = "Dependencia_de_Drogas_o_Narcoticos")
+    private Boolean dependenciadeDrogasoNarcoticos;
     @Column(name = "Diabetes")
     private Boolean diabetes;
-    @Column(name = "Enfermedades_Ven\u00e9reas")
-    private Boolean enfermedadesVenéreas;
+    @Column(name = "Enfermedades_Venereas")
+    private Boolean enfermedadesVenereas;
     @Column(name = "Epilepsia")
     private Boolean epilepsia;
-    @Column(name = "Trastorno_del_Ri\u00f1\u00f3n_o_H\u00edgado")
-    private Boolean trastornodelRiñónoHígado;
+    @Column(name = "Trastorno_del_Rinion_o_Higado")
+    private Boolean trastornodelRinionoHigado;
     @Column(name = "SIDA")
     private Boolean sida;
     @Column(name = "Lesiones_en_cabeza_o_cuello")
     private Boolean lesionesencabezaocuello;
-    @Column(name = "Migra\u00f1a")
-    private Boolean migraña;
+    @Column(name = "Migrania")
+    private Boolean migrania;
     @Column(name = "Problemas_Cardiacos")
     private Boolean problemasCardiacos;
     @Column(name = "Sinusitis")
@@ -71,10 +70,10 @@ public class AntecedentesPatologicos implements Serializable {
     private Boolean trastornosRespiratorios;
     @Column(name = "Tuberculosis")
     private Boolean tuberculosis;
-    @Column(name = "Ulceras_del_Est\u00f3mago")
-    private Boolean ulcerasdelEstómago;
-    @Column(name = "Fiebre_Reum\u00e1tica")
-    private Boolean fiebreReumática;
+    @Column(name = "Ulceras_del_Estomago")
+    private Boolean ulcerasdelEstomago;
+    @Column(name = "Fiebre_Reumatica")
+    private Boolean fiebreReumatica;
     @Lob
     @Column(name = "otras")
     private String otras;
@@ -134,20 +133,20 @@ public class AntecedentesPatologicos implements Serializable {
         this.asma = asma;
     }
 
-    public Boolean getCáncer() {
-        return cáncer;
+    public Boolean getCancer() {
+        return cancer;
     }
 
-    public void setCáncer(Boolean cáncer) {
-        this.cáncer = cáncer;
+    public void setCancer(Boolean cancer) {
+        this.cancer = cancer;
     }
 
-    public Boolean getDependenciadeDrogasoNarcóticos() {
-        return dependenciadeDrogasoNarcóticos;
+    public Boolean getDependenciadeDrogasoNarcoticos() {
+        return dependenciadeDrogasoNarcoticos;
     }
 
-    public void setDependenciadeDrogasoNarcóticos(Boolean dependenciadeDrogasoNarcóticos) {
-        this.dependenciadeDrogasoNarcóticos = dependenciadeDrogasoNarcóticos;
+    public void setDependenciadeDrogasoNarcoticos(Boolean dependenciadeDrogasoNarcoticos) {
+        this.dependenciadeDrogasoNarcoticos = dependenciadeDrogasoNarcoticos;
     }
 
     public Boolean getDiabetes() {
@@ -158,12 +157,12 @@ public class AntecedentesPatologicos implements Serializable {
         this.diabetes = diabetes;
     }
 
-    public Boolean getEnfermedadesVenéreas() {
-        return enfermedadesVenéreas;
+    public Boolean getEnfermedadesVenereas() {
+        return enfermedadesVenereas;
     }
 
-    public void setEnfermedadesVenéreas(Boolean enfermedadesVenéreas) {
-        this.enfermedadesVenéreas = enfermedadesVenéreas;
+    public void setEnfermedadesVenereas(Boolean enfermedadesVenereas) {
+        this.enfermedadesVenereas = enfermedadesVenereas;
     }
 
     public Boolean getEpilepsia() {
@@ -174,12 +173,12 @@ public class AntecedentesPatologicos implements Serializable {
         this.epilepsia = epilepsia;
     }
 
-    public Boolean getTrastornodelRiñónoHígado() {
-        return trastornodelRiñónoHígado;
+    public Boolean getTrastornodelRinionoHigado() {
+        return trastornodelRinionoHigado;
     }
 
-    public void setTrastornodelRiñónoHígado(Boolean trastornodelRiñónoHígado) {
-        this.trastornodelRiñónoHígado = trastornodelRiñónoHígado;
+    public void setTrastornodelRinionoHigado(Boolean trastornodelRinionoHigado) {
+        this.trastornodelRinionoHigado = trastornodelRinionoHigado;
     }
 
     public Boolean getSida() {
@@ -198,12 +197,12 @@ public class AntecedentesPatologicos implements Serializable {
         this.lesionesencabezaocuello = lesionesencabezaocuello;
     }
 
-    public Boolean getMigraña() {
-        return migraña;
+    public Boolean getMigrania() {
+        return migrania;
     }
 
-    public void setMigraña(Boolean migraña) {
-        this.migraña = migraña;
+    public void setMigrania(Boolean migrania) {
+        this.migrania = migrania;
     }
 
     public Boolean getProblemasCardiacos() {
@@ -246,20 +245,20 @@ public class AntecedentesPatologicos implements Serializable {
         this.tuberculosis = tuberculosis;
     }
 
-    public Boolean getUlcerasdelEstómago() {
-        return ulcerasdelEstómago;
+    public Boolean getUlcerasdelEstomago() {
+        return ulcerasdelEstomago;
     }
 
-    public void setUlcerasdelEstómago(Boolean ulcerasdelEstómago) {
-        this.ulcerasdelEstómago = ulcerasdelEstómago;
+    public void setUlcerasdelEstomago(Boolean ulcerasdelEstomago) {
+        this.ulcerasdelEstomago = ulcerasdelEstomago;
     }
 
-    public Boolean getFiebreReumática() {
-        return fiebreReumática;
+    public Boolean getFiebreReumatica() {
+        return fiebreReumatica;
     }
 
-    public void setFiebreReumática(Boolean fiebreReumática) {
-        this.fiebreReumática = fiebreReumática;
+    public void setFiebreReumatica(Boolean fiebreReumatica) {
+        this.fiebreReumatica = fiebreReumatica;
     }
 
     public String getOtras() {
@@ -292,7 +291,7 @@ public class AntecedentesPatologicos implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.AntecedentesPatologicos[ idAntecedentesPatologicos=" + idAntecedentesPatologicos + " ]";
+        return "com.unsis.odonto.edu.entity.base.AntecedentesPatologicos[ idAntecedentesPatologicos=" + idAntecedentesPatologicos + " ]";
     }
     
 }

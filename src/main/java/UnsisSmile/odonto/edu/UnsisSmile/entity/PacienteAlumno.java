@@ -1,6 +1,6 @@
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable; 
+import java.io.Serializable;  
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -24,8 +24,7 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "paciente_alumno")
-//@NamedQueries({
-//    @NamedQuery(name = "PacienteAlumno.findAll", query = "SELECT p FROM PacienteAlumno p")})
+
 public class PacienteAlumno implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -40,9 +39,9 @@ public class PacienteAlumno implements Serializable {
     @JoinColumn(name = "fk_id_paciente", referencedColumnName = "id_paciente")
     @ManyToOne(fetch = FetchType.LAZY)
     private Paciente paciente;
-//    @JoinColumn(name = "fk_id_rol_alumno", referencedColumnName = "id_rol_alumno")
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    private RolAlumno rolAlumno;
+    @JoinColumn(name = "fk_id_rol_alumno", referencedColumnName = "id_rol_alumno")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private RolAlumno rolAlumno;
 
     public PacienteAlumno() {
     }
@@ -75,13 +74,13 @@ public class PacienteAlumno implements Serializable {
         this.paciente = paciente;
     }
 
-//    public RolAlumno getRolAlumno() {
-//        return rolAlumno;
-//    }
-//
-//    public void setRolAlumno(RolAlumno rolAlumno) {
-//        this.rolAlumno = rolAlumno;
-//    }
+    public RolAlumno getRolAlumno() {
+        return rolAlumno;
+    }
+
+    public void setRolAlumno(RolAlumno rolAlumno) {
+        this.rolAlumno = rolAlumno;
+    }
 
     @Override
     public int hashCode() {
@@ -105,7 +104,7 @@ public class PacienteAlumno implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.PacienteAlumno[ idPacienteAlumno=" + idPacienteAlumno + " ]";
+        return "com.unsis.odonto.edu.entity.base.PacienteAlumno[ idPacienteAlumno=" + idPacienteAlumno + " ]";
     }
     
 }

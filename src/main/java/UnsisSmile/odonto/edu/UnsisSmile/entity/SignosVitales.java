@@ -1,11 +1,12 @@
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable; 
+import java.io.Serializable;  
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.Basic;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -17,14 +18,13 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+
 /**
  *
  * @author labingsw05
  */
 @Entity
 @Table(name = "signos_vitales")
-//@NamedQueries({
-//    @NamedQuery(name = "SignosVitales.findAll", query = "SELECT s FROM SignosVitales s")})
 public class SignosVitales implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -52,8 +52,8 @@ public class SignosVitales implements Serializable {
     private Double glucosa;
     @Column(name = "pulso")
     private Double pulso;
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "signosVitales", fetch = FetchType.LAZY)
-//    private List<Consulta> consultaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "signosVitales", fetch = FetchType.LAZY)
+    private List<Consulta> consultaList;
     @OneToMany(mappedBy = "signosVitales", fetch = FetchType.LAZY)
     private List<HistoriaClinicaGeneral> historiaClinicaGeneralList;
 
@@ -144,13 +144,13 @@ public class SignosVitales implements Serializable {
         this.pulso = pulso;
     }
 
-//    public List<Consulta> getConsultaList() {
-//        return consultaList;
-//    }
-//
-//    public void setConsultaList(List<Consulta> consultaList) {
-//        this.consultaList = consultaList;
-//    }
+    public List<Consulta> getConsultaList() {
+        return consultaList;
+    }
+
+    public void setConsultaList(List<Consulta> consultaList) {
+        this.consultaList = consultaList;
+    }
 
     public List<HistoriaClinicaGeneral> getHistoriaClinicaGeneralList() {
         return historiaClinicaGeneralList;
@@ -182,7 +182,7 @@ public class SignosVitales implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.SignosVitales[ idSignosVitales=" + idSignosVitales + " ]";
+        return "com.unsis.odonto.edu.entity.base.SignosVitales[ idSignosVitales=" + idSignosVitales + " ]";
     }
     
 }

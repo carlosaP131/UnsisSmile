@@ -1,6 +1,6 @@
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable; 
+import java.io.Serializable;  
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -24,8 +24,7 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "periodontograma")
-//@NamedQueries({
-//    @NamedQuery(name = "Periodontograma.findAll", query = "SELECT p FROM Periodontograma p")})
+
 public class Periodontograma implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -37,11 +36,10 @@ public class Periodontograma implements Serializable {
     @Lob
     @Column(name = "descripcion")
     private String descripcion;
-//    @Column(name = "fecha")
-//    @Temporal(TemporalType.DATE)
-//    private Date fecha;
-//    @OneToMany(mappedBy = "periodontograma", fetch = FetchType.LAZY)
-//    private List<MedicionBolsasDetalle> medicionBolsasDetalleList;
+    @Column(name = "fecha", columnDefinition = "DATE")
+    private LocalDate fecha;
+    @OneToMany(mappedBy = "periodontograma", fetch = FetchType.LAZY)
+    private List<MedicionBolsasDetalle> medicionBolsasDetalleList;
 
     public Periodontograma() {
     }
@@ -65,22 +63,22 @@ public class Periodontograma implements Serializable {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-//
-//    public Date getFecha() {
-//        return fecha;
-//    }
-//
-//    public void setFecha(Date fecha) {
-//        this.fecha = fecha;
-//    }
-//
-//    public List<MedicionBolsasDetalle> getMedicionBolsasDetalleList() {
-//        return medicionBolsasDetalleList;
-//    }
-//
-//    public void setMedicionBolsasDetalleList(List<MedicionBolsasDetalle> medicionBolsasDetalleList) {
-//        this.medicionBolsasDetalleList = medicionBolsasDetalleList;
-//    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
+
+    public List<MedicionBolsasDetalle> getMedicionBolsasDetalleList() {
+        return medicionBolsasDetalleList;
+    }
+
+    public void setMedicionBolsasDetalleList(List<MedicionBolsasDetalle> medicionBolsasDetalleList) {
+        this.medicionBolsasDetalleList = medicionBolsasDetalleList;
+    }
 
     @Override
     public int hashCode() {
@@ -104,7 +102,7 @@ public class Periodontograma implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Periodontograma[ idPeriodontograma=" + idPeriodontograma + " ]";
+        return "com.unsis.odonto.edu.entity.base.Periodontograma[ idPeriodontograma=" + idPeriodontograma + " ]";
     }
     
 }

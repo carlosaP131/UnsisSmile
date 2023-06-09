@@ -1,6 +1,6 @@
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable; 
+import java.io.Serializable;  
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -16,19 +16,16 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 /**
  *
  * @author labingsw05
  */
 @Entity
 @Table(name = "catedraticos")
-@NamedQueries({
-    @NamedQuery(name = "Catedraticos.findAll", query = "SELECT c FROM Catedraticos c")})
 public class Catedraticos implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -51,9 +48,8 @@ public class Catedraticos implements Serializable {
     private String telefono;
     @Column(name = "sexo")
     private Character sexo;
-//    @Column(name = "fecha_nacimiento")
-//    @Temporal(TemporalType.DATE)
-    private Date fechaNacimiento;
+    @Column(name = "fecha_nacimiento", columnDefinition = "DATE")
+    private LocalDate fechaNacimiento;
     @Column(name = "numero_trabajador")
     private String numeroTrabajador;
     @Basic(optional = false)
@@ -61,12 +57,12 @@ public class Catedraticos implements Serializable {
     private String emailCatedratico;
     @Column(name = "estatus")
     private Boolean estatus;
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "catedraticos", fetch = FetchType.LAZY)
-//    private List<HistoriaClinicaGeneral> historiaClinicaGeneralList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "catedraticos", fetch = FetchType.LAZY)
+    private List<HistoriaClinicaGeneral> historiaClinicaGeneralList;
     @JoinColumn(name = "fk_id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-//    private Usuarios usuarios;
-//    @OneToMany(mappedBy = "catedraticos", fetch = FetchType.LAZY)
+    private Usuarios usuarios;
+    @OneToMany(mappedBy = "catedraticos", fetch = FetchType.LAZY)
     private List<CatedraticoGrupo> catedraticoGrupoList;
 
     public Catedraticos() {
@@ -145,11 +141,11 @@ public class Catedraticos implements Serializable {
         this.sexo = sexo;
     }
 
-    public Date getFechaNacimiento() {
+    public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -177,21 +173,21 @@ public class Catedraticos implements Serializable {
         this.estatus = estatus;
     }
 
-//    public List<HistoriaClinicaGeneral> getHistoriaClinicaGeneralList() {
-//        return historiaClinicaGeneralList;
-//    }
-//
-//    public void setHistoriaClinicaGeneralList(List<HistoriaClinicaGeneral> historiaClinicaGeneralList) {
-//        this.historiaClinicaGeneralList = historiaClinicaGeneralList;
-//    }
-//
-//    public Usuarios getUsuarios() {
-//        return usuarios;
-//    }
-//
-//    public void setUsuarios(Usuarios usuarios) {
-//        this.usuarios = usuarios;
-//    }
+    public List<HistoriaClinicaGeneral> getHistoriaClinicaGeneralList() {
+        return historiaClinicaGeneralList;
+    }
+
+    public void setHistoriaClinicaGeneralList(List<HistoriaClinicaGeneral> historiaClinicaGeneralList) {
+        this.historiaClinicaGeneralList = historiaClinicaGeneralList;
+    }
+
+    public Usuarios getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(Usuarios usuarios) {
+        this.usuarios = usuarios;
+    }
 
     public List<CatedraticoGrupo> getCatedraticoGrupoList() {
         return catedraticoGrupoList;
@@ -223,7 +219,7 @@ public class Catedraticos implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Catedraticos[ idCatedratico=" + idCatedratico + " ]";
+        return "com.unsis.odonto.edu.entity.base.Catedraticos[ idCatedratico=" + idCatedratico + " ]";
     }
     
 }

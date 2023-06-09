@@ -1,6 +1,6 @@
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable; 
+import java.io.Serializable;  
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -17,6 +17,8 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 /**
  *
@@ -24,8 +26,7 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "movimientosUsuarios")
-//@NamedQueries({
-//    @NamedQuery(name = "MovimientosUsuarios.findAll", query = "SELECT m FROM MovimientosUsuarios m")})
+
 public class MovimientosUsuarios implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -38,11 +39,11 @@ public class MovimientosUsuarios implements Serializable {
     private String entidad;
     @Column(name = "id_entidad")
     private Integer idEntidad;
-//    @Column(name = "fecha_de_realizacion")
-//    @Temporal(TemporalType.TIMESTAMP)
-//    private Date fechaDeRealizacion;
-//    @Column(name = "tipo_movimiento")
-//    private Character tipoMovimiento;
+    @Column(name = "fecha_de_realizacion")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaDeRealizacion;
+    @Column(name = "tipo_movimiento")
+    private Character tipoMovimiento;
 
     public MovimientosUsuarios() {
     }
@@ -75,21 +76,21 @@ public class MovimientosUsuarios implements Serializable {
         this.idEntidad = idEntidad;
     }
 
-//    public Date getFechaDeRealizacion() {
-//        return fechaDeRealizacion;
-//    }
-//
-//    public void setFechaDeRealizacion(Date fechaDeRealizacion) {
-//        this.fechaDeRealizacion = fechaDeRealizacion;
-//    }
-//
-//    public Character getTipoMovimiento() {
-//        return tipoMovimiento;
-//    }
-//
-//    public void setTipoMovimiento(Character tipoMovimiento) {
-//        this.tipoMovimiento = tipoMovimiento;
-//    }
+    public Date getFechaDeRealizacion() {
+        return fechaDeRealizacion;
+    }
+
+    public void setFechaDeRealizacion(Date fechaDeRealizacion) {
+        this.fechaDeRealizacion = fechaDeRealizacion;
+    }
+
+    public Character getTipoMovimiento() {
+        return tipoMovimiento;
+    }
+
+    public void setTipoMovimiento(Character tipoMovimiento) {
+        this.tipoMovimiento = tipoMovimiento;
+    }
 
     @Override
     public int hashCode() {
@@ -113,7 +114,7 @@ public class MovimientosUsuarios implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.MovimientosUsuarios[ idMovimientos=" + idMovimientos + " ]";
+        return "com.unsis.odonto.edu.entity.base.MovimientosUsuarios[ idMovimientos=" + idMovimientos + " ]";
     }
     
 }

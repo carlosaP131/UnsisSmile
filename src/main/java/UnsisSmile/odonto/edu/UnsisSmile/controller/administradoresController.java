@@ -1,3 +1,11 @@
+/**
+ *Autor:Nancy Obed Martínez Miguel
+ *Fecha de creación:09 de junio del 2023
+ *Fecha de Modificación:
+ *Descripción: se crea la clase del administradoresController para implementar los métodos correspondientes
+ *             
+ *             
+ */
 package UnsisSmile.odonto.edu.UnsisSmile.controller;
 
 import java.util.List;
@@ -33,7 +41,7 @@ public class administradoresController {
 		service.eliminarRegistro(id_administrador);
 	}
 	@GetMapping("/obtenerAdministradorPorId/{id}")
-	public Administradores obtenerRegistroById(@PathVariable int id_admin) {
+	public Administradores obtenerRegistroById(@PathVariable Long id_admin) {
 		return service.obtenerRegistroById(id_admin);}
 	
 	@GetMapping("/listar")
