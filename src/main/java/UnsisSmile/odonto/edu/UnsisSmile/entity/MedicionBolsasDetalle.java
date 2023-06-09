@@ -1,6 +1,6 @@
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable; 
+import java.io.Serializable;  
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -17,15 +17,14 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
- 
+
 /**
  *
  * @author labingsw05
  */
 @Entity
 @Table(name = "medicion_bolsas_detalle")
-//@NamedQueries({
-//    @NamedQuery(name = "MedicionBolsasDetalle.findAll", query = "SELECT m FROM MedicionBolsasDetalle m")})
+
 public class MedicionBolsasDetalle implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -40,15 +39,15 @@ public class MedicionBolsasDetalle implements Serializable {
     @JoinColumn(name = "fk_id_codigo_pieza_dental", referencedColumnName = "id_codigo_pieza_dental")
     @ManyToOne(fetch = FetchType.LAZY)
     private CodigoPiezaDental codigoPiezaDental;
-//    @JoinColumn(name = "fk_id_periodontograma", referencedColumnName = "id_periodontograma")
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    private Periodontograma periodontograma;
-//    @JoinColumn(name = "fk_id_regiones_diente_periodontograma", referencedColumnName = "id_regiones_diente_periodontograma")
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    private RegionesDientePeriodontograma regionesDientePeriodontograma;
-//    @JoinColumn(name = "fk_id_regiones_medicion_bolsas", referencedColumnName = "id_regiones_medicion_bolsas")
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    private RegionesMedicionBolsas regionesMedicionBolsas;
+    @JoinColumn(name = "fk_id_periodontograma", referencedColumnName = "id_periodontograma")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Periodontograma periodontograma;
+    @JoinColumn(name = "fk_id_regiones_diente_periodontograma", referencedColumnName = "id_regiones_diente_periodontograma")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private RegionesDientePeriodontograma regionesDientePeriodontograma;
+    @JoinColumn(name = "fk_id_regiones_medicion_bolsas", referencedColumnName = "id_regiones_medicion_bolsas")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private RegionesMedicionBolsas regionesMedicionBolsas;
 
     public MedicionBolsasDetalle() {
     }
@@ -81,29 +80,29 @@ public class MedicionBolsasDetalle implements Serializable {
         this.codigoPiezaDental = codigoPiezaDental;
     }
 
-//    public Periodontograma getPeriodontograma() {
-//        return periodontograma;
-//    }
-//
-//    public void setPeriodontograma(Periodontograma periodontograma) {
-//        this.periodontograma = periodontograma;
-//    }
-//
-//    public RegionesDientePeriodontograma getRegionesDientePeriodontograma() {
-//        return regionesDientePeriodontograma;
-//    }
-//
-//    public void setRegionesDientePeriodontograma(RegionesDientePeriodontograma regionesDientePeriodontograma) {
-//        this.regionesDientePeriodontograma = regionesDientePeriodontograma;
-//    }
-//
-//    public RegionesMedicionBolsas getRegionesMedicionBolsas() {
-//        return regionesMedicionBolsas;
-//    }
-//
-//    public void setRegionesMedicionBolsas(RegionesMedicionBolsas regionesMedicionBolsas) {
-//        this.regionesMedicionBolsas = regionesMedicionBolsas;
-//    }
+    public Periodontograma getPeriodontograma() {
+        return periodontograma;
+    }
+
+    public void setPeriodontograma(Periodontograma periodontograma) {
+        this.periodontograma = periodontograma;
+    }
+
+    public RegionesDientePeriodontograma getRegionesDientePeriodontograma() {
+        return regionesDientePeriodontograma;
+    }
+
+    public void setRegionesDientePeriodontograma(RegionesDientePeriodontograma regionesDientePeriodontograma) {
+        this.regionesDientePeriodontograma = regionesDientePeriodontograma;
+    }
+
+    public RegionesMedicionBolsas getRegionesMedicionBolsas() {
+        return regionesMedicionBolsas;
+    }
+
+    public void setRegionesMedicionBolsas(RegionesMedicionBolsas regionesMedicionBolsas) {
+        this.regionesMedicionBolsas = regionesMedicionBolsas;
+    }
 
     @Override
     public int hashCode() {
@@ -127,7 +126,7 @@ public class MedicionBolsasDetalle implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.MedicionBolsasDetalle[ idMedicionBolsasDetalle=" + idMedicionBolsasDetalle + " ]";
+        return "com.unsis.odonto.edu.entity.base.MedicionBolsasDetalle[ idMedicionBolsasDetalle=" + idMedicionBolsasDetalle + " ]";
     }
     
 }

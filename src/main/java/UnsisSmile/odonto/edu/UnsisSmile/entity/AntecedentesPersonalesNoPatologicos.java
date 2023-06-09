@@ -1,6 +1,6 @@
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable; 
+import java.io.Serializable;  
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -24,8 +24,7 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "antecedentes_personales_no_patologicos")
-//@NamedQueries({
-//    @NamedQuery(name = "AntecedentesPersonalesNoPatologicos.findAll", query = "SELECT a FROM AntecedentesPersonalesNoPatologicos a")})
+
 public class AntecedentesPersonalesNoPatologicos implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -47,8 +46,8 @@ public class AntecedentesPersonalesNoPatologicos implements Serializable {
     private Boolean unoOMasRefrescosDia;
     @Column(name = "horas_duerme_dia")
     private Integer horasDuermeDia;
-    @Column(name = "ba\u00f1o_veces_x_semana")
-    private Integer bañoVecesXSemana;
+    @Column(name = "banio_veces_x_semana")
+    private Integer banioVecesXSemana;
     @Column(name = "cepillado_x_dia")
     private Integer cepilladoXDia;
     @Column(name = "su_vivienda_tiene_piso")
@@ -129,12 +128,12 @@ public class AntecedentesPersonalesNoPatologicos implements Serializable {
         this.horasDuermeDia = horasDuermeDia;
     }
 
-    public Integer getBañoVecesXSemana() {
-        return bañoVecesXSemana;
+    public Integer getBanioVecesXSemana() {
+        return banioVecesXSemana;
     }
 
-    public void setBañoVecesXSemana(Integer bañoVecesXSemana) {
-        this.bañoVecesXSemana = bañoVecesXSemana;
+    public void setBanioVecesXSemana(Integer banioVecesXSemana) {
+        this.banioVecesXSemana = banioVecesXSemana;
     }
 
     public Integer getCepilladoXDia() {
@@ -191,7 +190,7 @@ public class AntecedentesPersonalesNoPatologicos implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.AntecedentesPersonalesNoPatologicos[ idAntecedentesPersonalesNoPatologicos=" + idAntecedentesPersonalesNoPatologicos + " ]";
+        return "com.unsis.odonto.edu.entity.base.AntecedentesPersonalesNoPatologicos[ idAntecedentesPersonalesNoPatologicos=" + idAntecedentesPersonalesNoPatologicos + " ]";
     }
     
 }

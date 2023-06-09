@@ -1,6 +1,6 @@
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable; 
+import java.io.Serializable;  
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -17,15 +17,14 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
+ 
 /**
  *
  * @author labingsw05
  */
 @Entity
 @Table(name = "interconsulta_medica")
-//@NamedQueries({
-//    @NamedQuery(name = "InterconsultaMedica.findAll", query = "SELECT i FROM InterconsultaMedica i")})
+
 public class InterconsultaMedica implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -136,7 +135,7 @@ public class InterconsultaMedica implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.InterconsultaMedica[ idInterconsultaMedica=" + idInterconsultaMedica + " ]";
+        return "com.unsis.odonto.edu.entity.base.InterconsultaMedica[ idInterconsultaMedica=" + idInterconsultaMedica + " ]";
     }
     
 }

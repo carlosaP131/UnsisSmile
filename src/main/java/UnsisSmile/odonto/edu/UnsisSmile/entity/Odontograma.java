@@ -1,6 +1,6 @@
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable; 
+import java.io.Serializable;  
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -17,6 +17,8 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 /**
  *
@@ -24,8 +26,7 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "odontograma")
-//@NamedQueries({
-//    @NamedQuery(name = "Odontograma.findAll", query = "SELECT o FROM Odontograma o")})
+
 public class Odontograma implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -37,9 +38,8 @@ public class Odontograma implements Serializable {
     @Lob
     @Column(name = "descripcion")
     private String descripcion;
-    @Column(name = "fecha")
-//    @Temporal(TemporalType.DATE)
-//    private Date fecha;
+    @Column(name = "fecha", columnDefinition = "DATE")
+    private LocalDate fecha;
     @OneToMany(mappedBy = "odontograma", fetch = FetchType.LAZY)
     private List<HistoriaClinicaGeneral> historiaClinicaGeneralList;
     @OneToMany(mappedBy = "odontograma1", fetch = FetchType.LAZY)
@@ -69,14 +69,14 @@ public class Odontograma implements Serializable {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-//
-//    public Date getFecha() {
-//        return fecha;
-//    }
-//
-//    public void setFecha(Date fecha) {
-//        this.fecha = fecha;
-//    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
 
     public List<HistoriaClinicaGeneral> getHistoriaClinicaGeneralList() {
         return historiaClinicaGeneralList;
@@ -124,7 +124,7 @@ public class Odontograma implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Odontograma[ idOdontograma=" + idOdontograma + " ]";
+        return "com.unsis.odonto.edu.entity.base.Odontograma[ idOdontograma=" + idOdontograma + " ]";
     }
     
 }

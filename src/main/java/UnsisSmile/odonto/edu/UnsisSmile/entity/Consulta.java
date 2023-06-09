@@ -1,6 +1,6 @@
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable; 
+import java.io.Serializable;  
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -17,14 +17,14 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+
 /**
  *
  * @author labingsw05
  */
 @Entity
 @Table(name = "consulta")
-//@NamedQueries({
-//    @NamedQuery(name = "Consulta.findAll", query = "SELECT c FROM Consulta c")})
+
 public class Consulta implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,24 +48,23 @@ public class Consulta implements Serializable {
     @Lob
     @Column(name = "motivo_de_la_consulta")
     private String motivoDeLaConsulta;
-    @Column(name = "fecha_de_consulta")
-//    @Temporal(TemporalType.DATE)
-//    private Date fechaDeConsulta;
+    @Column(name = "fecha_de_consulta",  columnDefinition = "DATE")
+    private LocalDate fechaDeConsulta;
     @JoinColumn(name = "fk_id_clinica", referencedColumnName = "id_clinica")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Clinica clinica;
-//    @JoinColumn(name = "fk_id_paciente", referencedColumnName = "id_paciente")
-////    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-////    private Paciente paciente;
-//    @JoinColumn(name = "fk_id_procedimiento_realizado", referencedColumnName = "id_procedimiento_tipo")
-////    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-////    private ProcedimientoTipo procedimientoTipo;
-//    @JoinColumn(name = "fk_id_signos_vitales", referencedColumnName = "id_signos_vitales")
-////    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-////    private SignosVitales signosVitales;
-//    @JoinColumn(name = "fk_id_alumno", referencedColumnName = "id_usuario")
-//    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-//    private Usuarios usuarios;
+    @JoinColumn(name = "fk_id_paciente", referencedColumnName = "id_paciente")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Paciente paciente;
+    @JoinColumn(name = "fk_id_procedimiento_realizado", referencedColumnName = "id_procedimiento_tipo")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private ProcedimientoTipo procedimientoTipo;
+    @JoinColumn(name = "fk_id_signos_vitales", referencedColumnName = "id_signos_vitales")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private SignosVitales signosVitales;
+    @JoinColumn(name = "fk_id_alumno", referencedColumnName = "id_usuario")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Usuarios usuarios;
 
     public Consulta() {
     }
@@ -122,13 +121,13 @@ public class Consulta implements Serializable {
         this.motivoDeLaConsulta = motivoDeLaConsulta;
     }
 
-//    public Date getFechaDeConsulta() {
-//        return fechaDeConsulta;
-//    }
-//
-//    public void setFechaDeConsulta(Date fechaDeConsulta) {
-//        this.fechaDeConsulta = fechaDeConsulta;
-//    }
+    public LocalDate getFechaDeConsulta() {
+        return fechaDeConsulta;
+    }
+
+    public void setFechaDeConsulta(LocalDate fechaDeConsulta) {
+        this.fechaDeConsulta = fechaDeConsulta;
+    }
 
     public Clinica getClinica() {
         return clinica;
@@ -138,37 +137,37 @@ public class Consulta implements Serializable {
         this.clinica = clinica;
     }
 
-//    public Paciente getPaciente() {
-//        return paciente;
-//    }
-//
-//    public void setPaciente(Paciente paciente) {
-//        this.paciente = paciente;
-//    }
-//
-//    public ProcedimientoTipo getProcedimientoTipo() {
-//        return procedimientoTipo;
-//    }
-//
-//    public void setProcedimientoTipo(ProcedimientoTipo procedimientoTipo) {
-//        this.procedimientoTipo = procedimientoTipo;
-//    }
-//
-//    public SignosVitales getSignosVitales() {
-//        return signosVitales;
-//    }
-//
-//    public void setSignosVitales(SignosVitales signosVitales) {
-//        this.signosVitales = signosVitales;
-//    }
-//
-//    public Usuarios getUsuarios() {
-//        return usuarios;
-//    }
-//
-//    public void setUsuarios(Usuarios usuarios) {
-//        this.usuarios = usuarios;
-//    }
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
+    }
+
+    public ProcedimientoTipo getProcedimientoTipo() {
+        return procedimientoTipo;
+    }
+
+    public void setProcedimientoTipo(ProcedimientoTipo procedimientoTipo) {
+        this.procedimientoTipo = procedimientoTipo;
+    }
+
+    public SignosVitales getSignosVitales() {
+        return signosVitales;
+    }
+
+    public void setSignosVitales(SignosVitales signosVitales) {
+        this.signosVitales = signosVitales;
+    }
+
+    public Usuarios getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(Usuarios usuarios) {
+        this.usuarios = usuarios;
+    }
 
     @Override
     public int hashCode() {
@@ -192,7 +191,7 @@ public class Consulta implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Consulta[ idConsulta=" + idConsulta + " ]";
+        return "com.unsis.odonto.edu.entity.base.Consulta[ idConsulta=" + idConsulta + " ]";
     }
     
 }

@@ -48,9 +48,8 @@ public class Administradores implements Serializable {
     private String telefono;
     @Column(name = "numero_trabajador")
     private String numeroTrabajador;
-//    @Column(name = "fecha_nacimiento")
-//    @Temporal(TemporalType.DATE)
-    private Date fechaNacimiento;
+    @Column(name = "fecha_nacimiento", columnDefinition = "DATE")
+    private LocalDate fechaNacimiento;
     @Column(name = "sexo")
     private Character sexo;
     @Basic(optional = false)
@@ -138,11 +137,11 @@ public class Administradores implements Serializable {
         this.numeroTrabajador = numeroTrabajador;
     }
 
-    public Date getFechaNacimiento() {
+    public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
