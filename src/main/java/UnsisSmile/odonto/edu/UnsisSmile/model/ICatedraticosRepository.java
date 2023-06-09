@@ -28,7 +28,7 @@ public interface ICatedraticosRepository extends JpaRepository<Catedraticos, Lon
 	
 	//Procedimiento almacenado para eliminar un catedraticos.
 	@Procedure(name = "eliminarCatedratico")	
-	Catedraticos eliminarCatedratico (int idCatedraticos);
+	Catedraticos eliminarCatedratico (Long idCatedraticos);
 	
 	//Procedimiento almacenado para obtener un catedraticos en especifico, con su Id.
 	@Procedure(name = "obtenerCatedratico")	

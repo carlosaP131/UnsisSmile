@@ -15,14 +15,14 @@ import javax.xml.crypto.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import UnsisSmile.odonto.edu.UnsisSmile.entity.Administradores;
 import UnsisSmile.odonto.edu.UnsisSmile.entity.Catedraticos;
 import UnsisSmile.odonto.edu.UnsisSmile.model.ICatedraticosRepository;
 
 
 @Service
 public class CatedraticosService{
-	
-	private static final String String = null;
 	
 	/*@Autowired es una anotación de Spring Framework que se utiliza para realizar la inyección,
 	 * de dependencias automáticamente en las aplicaciones Java.*/
@@ -33,15 +33,38 @@ public class CatedraticosService{
 	 *  que un método o una clase debe ser gestionada por transacciones.*/
 	@Transactional
 	public void crearRegistro(Catedraticos catedratico) {	
-	//	repository.insertarCatedratico(catedratico.getNombre(),catedratico.getNombre2(),catedratico.getApellido(),
-		//		catedratico.getApellido2(),catedratico.getCurp(),catedratico.getTelefono(),catedratico.getSexo(),
-			//	catedratico.getFechaNacimiento(),catedratico.getNumeroTrabajador(),catedratico.getEmailCatedratico());
+		//	repository.insertarCatedratico(catedratico.getNombre(),catedratico.getNombre2(),catedratico.getApellido(),
+		//	catedratico.getApellido2(),catedratico.getCurp(),catedratico.getTelefono(),catedratico.getSexo(),
+		//	catedratico.getFechaNacimiento(),catedratico.getNumeroTrabajador(),catedratico.getEmailCatedratico());
+	}
+
+	@Transactional
+	public void eliminarRegistro(Long id_catedratico) {
+	   repository.eliminarCatedratico(id_catedratico);
+	}
+
+	@Transactional
+	public Catedraticos obtenerRegistroById(Long id) {
+		return repository.obtenerCatedratico(id);
 	}
 	
 	@Transactional
-	public Catedraticos getCatedraticosId_SP(Long id) {
-		return repository.obtenerCatedratico(id);
+	public List<Catedraticos> obtenerTodosRegistro() {
+		return (List<Catedraticos>) repository.obtenerTodosCatedraticos();
 	}
+	
+	@Transactional
+	public void actualizarRegistro(Catedraticos catedraticos) {
+		//repository.actualizarCatedraticos(Catedraticos.getNombre1(),
+		// Catedraticos.getNombre2(), Catedraticos.getApellido1(),
+		// Catedraticos.getApellido2(),
+		// Catedraticos.getCurp(),Catedraticos.getTelefono(),
+		// Catedraticos.getNumeroTrabajador(), Catedraticos.getFechaNacimiento(),
+		// Catedraticos.getSexo(), Catedraticos.getEmailAdmin());
+
+	}
+
+	
 
 
 	
