@@ -41,9 +41,9 @@ public class AlumnoController {
 	 * @param id El ID del alumno a editar.
 	 * @return El objeto Alumnos editado correspondiente al ID especificado.
 	 */
-	public Alumnos editarAlumnoId(@PathVariable Long id) {
-		return service.actualizarAlumno(id);
-	}
+//	public Alumnos editarAlumnoId(@PathVariable Long id) {
+//		return service.actualizarAlumno(id);
+//	}
 
 	@DeleteMapping("/eliminarAlumnos/{id}")
 	/**
