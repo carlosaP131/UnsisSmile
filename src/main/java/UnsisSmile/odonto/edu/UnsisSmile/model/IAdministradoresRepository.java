@@ -21,18 +21,16 @@ import UnsisSmile.odonto.edu.UnsisSmile.entity.Administradores;
 public interface IAdministradoresRepository extends JpaRepository<Administradores, Integer> {
 	// procedimiento para crear un administrador
 	@Procedure(name = "insertarAdministrador")
-	Administradores insertarAdministrador(String nombre1, String nombre2, String apellido1, String apellido2,
-			String curp, String telefono, String numero_trabajador, LocalDate fecha_nacimiento, Character sexo,
-			String email_admin);
+	void insertarAdministrador(String nombre1, String nombre2, String apellido1, String apellido2, String curp,
+			String telefono, String numeroTrabajador, LocalDate fechaNacimiento, Character sexo, String emailAdmin);
 
 	// procedimiento para eliminar un administrador
-
-	@Procedure(name = "eliminarAdministrador")
+	@Procedure(name = "eliminarAdministrador") // funciona
 	void eliminarAdministrador(Integer id_admin);
 
 	// procedimiento para obtener un administrador
 	@Procedure(name = "obtenerAdministradores")
-	Administradores obtenAdministradores(Integer id_admin);
+	Administradores obtenerAdministradores(Integer id_admin);
 
 	// procedimiento para obtenerTodos los administrador
 	@Procedure(name = "obtenerTodosAdministradores")
