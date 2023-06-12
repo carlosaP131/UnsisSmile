@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,13 +33,13 @@ public class PacienteController {
 	@Autowired
 	private PacienteService service;
 	
-	@DeleteMapping("/eliminar/{id}")
+	@DeleteMapping("/eliminarPaciente/{id}")
 	public void eliminarRegistro(@PathVariable Long paciente) {
 		service.eliminarRegistros(paciente);
 		
 	}
 	
-	@DeleteMapping("/crear")
+	@PostMapping("/crearPaciente")
 	public void crearRegistro(@RequestBody Paciente paciente) {
 		service.crearRegistro(paciente);
 		
@@ -50,7 +51,7 @@ public class PacienteController {
 		
 	}
 	
-	@PutMapping("/actualizar/{id}")
+	@PutMapping("/actualizarPaciente/{id}")
 	public void actualizarRegistro(Paciente paciente) {
 		service.actualizarRegistro(paciente);
 		
