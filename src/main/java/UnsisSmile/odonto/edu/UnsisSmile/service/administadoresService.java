@@ -2,10 +2,9 @@
  *Autor:Nancy Obed Martínez Miguel
  *Fecha de creación:09 de junio del 2023
  *Fecha de Modificación:
- *Descripción: se crea la clase del administradoresSErvice para poder poder implementar nuestros meétodos
- *             
- *             
+ *Descripción: se crea la clase del administradoresSErvice para poder poder implementar nuestros meétodos            
  */
+
 package UnsisSmile.odonto.edu.UnsisSmile.service;
 
 import java.util.List;
@@ -33,18 +32,18 @@ public class administadoresService {
 	}
 
 	@Transactional
-	public void eliminarRegistro(Long id_administrador) {
-		repository.eliminarAdministrador(id_administrador);
+	public void eliminarRegistro(Integer id_admin) {
+		repository.eliminarAdministrador(id_admin);
 	}
 
 	@Transactional
-	public Administradores obtenerRegistroById(Long id_admin) {
+	public Administradores obtenerRegistroById(Integer id_admin) {
 		return repository.obtenAdministradores(id_admin);
 	}
 
 	@Transactional
 	public List<Administradores> obtenerTodosRegistro() {
-		return (List<Administradores>) repository.obtenerTodosAdministradores();
+		return repository.obtenerTodosAdministradores();
 	}
 
 	@Transactional
