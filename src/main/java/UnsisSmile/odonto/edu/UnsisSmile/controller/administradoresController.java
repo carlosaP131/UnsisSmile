@@ -41,7 +41,9 @@ public class administradoresController {
 		service.eliminarRegistro(id_admin);
 	}
 	@GetMapping("/obtenerAdministradorPorId/{idAdministrador}")
-	public Administradores obtenerRegistroById(@PathVariable  Integer idAdministrador) {
+
+	public Administradores obtenerRegistroById(@PathVariable Integer idAdministrador) {
+		System.out.println("tamaño: ");
 		return service.obtenerRegistroById(idAdministrador);}
 	
 	@GetMapping("/listar")
@@ -52,9 +54,7 @@ public class administradoresController {
 	@PutMapping("/actualizar/{id}")
 	public void actualizarRegistro(@RequestBody Administradores administradores, @PathVariable Integer id) {
 		administradores.setIdAdministrador(id);
-		service.actualizarRegistro(administradores);}
-	
-	
-	
+		service.actualizarRegistro(administradores);
+		}
 	
 }

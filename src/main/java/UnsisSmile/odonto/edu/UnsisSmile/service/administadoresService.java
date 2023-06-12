@@ -22,12 +22,10 @@ public class administadoresService {
 
 	@Transactional
 	public void crearRegistro(Administradores administradores) {
-		// repository.insertarAdministrador(administradores.getNombre1(),
-		// administradores.getNombre2(), administradores.getApellido1(),
-		// administradores.getApellido2(),
-		// administradores.getCurp(),administradores.getTelefono(),
-		// administradores.getNumeroTrabajador(), administradores.getFechaNacimiento(),
-		// administradores.getSexo(), administradores.getEmailAdmin());
+		repository.insertarAdministrador(administradores.getNombre1(), administradores.getNombre2(),
+				administradores.getApellido1(), administradores.getApellido2(), administradores.getCurp(),
+				administradores.getTelefono(), administradores.getNumeroTrabajador(),
+				administradores.getFechaNacimiento(), administradores.getSexo(), administradores.getEmailAdmin());
 
 	}
 
