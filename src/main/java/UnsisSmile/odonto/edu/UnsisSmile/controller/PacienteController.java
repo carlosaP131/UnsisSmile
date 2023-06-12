@@ -1,3 +1,10 @@
+/**
+ *Autor:Getzemani Alejandro Gonzalez Cruz
+ *Fecha de creación:9 de junio 2023
+ *Fecha de Modificación: 9 de junio 2023
+ *Descripción:clase controller para Paciente
+ */
+
 package UnsisSmile.odonto.edu.UnsisSmile.controller;
 
 import java.util.List;
@@ -18,7 +25,9 @@ import UnsisSmile.odonto.edu.UnsisSmile.service.PacienteService;
 
 
 @RestController
-@RequestMapping("/unsis")
+//@CrossOrigin(origins="http://localhost:4200")
+
+@RequestMapping("/unsis")// http:localhost:8080/api/crear
 public class PacienteController {
 	@Autowired
 	private PacienteService service;
@@ -38,6 +47,12 @@ public class PacienteController {
 	@GetMapping("/obtenerPacientePorId/{id}")
 	public List<Paciente> obtenerRegistro(@PathVariable Long idpaciente){
 		return service.obtenerRegistros(idpaciente);
+		
+	}
+	
+	@PutMapping("/actualizar/{id}")
+	public void actualizarRegistro(Paciente paciente) {
+		service.actualizarRegistro(paciente);
 		
 	}
 	

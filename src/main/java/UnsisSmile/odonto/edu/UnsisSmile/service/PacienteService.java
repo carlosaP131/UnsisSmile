@@ -1,3 +1,10 @@
+/**
+ *Autor:Getzemani Alejandro Gonzalez Cruz
+ *Fecha de creación:9 de junio 2023
+ *Fecha de Modificación: 9 de junio 2023
+ *Descripción:clase service para Paciente
+ */
+
 package UnsisSmile.odonto.edu.UnsisSmile.service;
 
 import java.util.List;
