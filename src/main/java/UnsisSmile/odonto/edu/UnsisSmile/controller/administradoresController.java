@@ -40,9 +40,10 @@ public class administradoresController {
 	public void eliminarRegistro(@PathVariable Integer id_admin) {
 		service.eliminarRegistro(id_admin);
 	}
-	@GetMapping("/obtenerAdministradorPorId/{id}")
-	public Administradores obtenerRegistroById(@PathVariable Integer id_admin) {
-		return service.obtenerRegistroById(id_admin);}
+	@GetMapping("/obtenerAdministradorPorId/{idAdministrador}")
+	public Administradores obtenerRegistroById(@PathVariable Integer idAdministrador) {
+		System.out.println("tamaño: ");
+		return service.obtenerRegistroById(idAdministrador);}
 	
 	@GetMapping("/listar")
 	public  List<Administradores>listarTodosRegistros() {
