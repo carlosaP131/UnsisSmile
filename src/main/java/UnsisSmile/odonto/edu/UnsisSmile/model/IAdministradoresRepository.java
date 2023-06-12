@@ -28,11 +28,11 @@ public interface IAdministradoresRepository extends JpaRepository<Administradore
 	// procedimiento para eliminar un administrador
 
 	@Procedure(name = "eliminarAdministrador")
-	void eliminarAdministrador(Integer id_admin);
+	void eliminarAdministrador(Integer idAdministrador);
 
 	// procedimiento para obtener un administrador
 	@Procedure(name = "obtenerAdministradores")
-	Administradores obtenAdministradores(Integer id_admin);
+	Administradores obtenerAdministradores(Integer id_admin);
 
 	// procedimiento para obtenerTodos los administrador
 	@Procedure(name = "obtenerTodosAdministradores")
