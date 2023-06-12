@@ -1,11 +1,11 @@
-package UnsisSmile.odonto.edu.service;
+package UnsisSmile.odonto.edu.UnsisSmile.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
 import UnsisSmile.odonto.edu.UnsisSmile.entity.Alumnos;
-import UnsisSmile.odonto.edu.model.IAlumnoRepository;
+import UnsisSmile.odonto.edu.UnsisSmile.model.IAlumnoRepository;
 import jakarta.transaction.Transactional;
 
 @Service
@@ -20,7 +20,7 @@ public class AlumnoService {
 	 * @param id El ID del objeto Alumnos a obtener.
 	 * @return El objeto Alumnos correspondiente al ID proporcionado.
 	 */
-	public Alumnos obtenerAlumnos(Long id) {
+	public Alumnos obtenerAlumnos(Integer id) {
 	    return repository.obternerAlumnos(id);
 	}
 
@@ -31,7 +31,7 @@ public class AlumnoService {
 	 * @param id El ID del objeto Alumnos a eliminar.
 	 * @return El objeto Alumnos que ha sido eliminado.
 	 */
-	public Alumnos eliminarAlumno(Long id) {
+	public Alumnos eliminarAlumno(Integer id) {
 	    return repository.eliminarAlumno(id);
 	}
 
@@ -44,10 +44,16 @@ public class AlumnoService {
 	 */
 	public Alumnos actualizarAlumno(Alumnos alumnos) {
 	    return repository.actualizarAlumno(alumnos.getIdAlumno(), alumnos.getNombre(), alumnos.getNombre2(),
-	            alumnos.getApellido(), alumnos.getApellido2(), alumnos.getSexo(), alumnos.getCurp(),
-	            alumnos.getSemestreGrupo().getIdSemestreGrupo(), alumnos.getMatricula(), alumnos.getTelefono(), alumnos.getEmailAlumno());
+	    		alumnos.getApellido(), alumnos.getApellido2(), alumnos.getSexo(), alumnos.getCurp(),
+	    		alumnos.getSemestreGrupo().getIdSemestreGrupo(), alumnos.getMatricula(), alumnos.getTelefono(), alumnos.getEmailAlumno());
 	}
 
+	
+	
+	
+	
+	
+	
 	@Transactional
 	/**
 	 * Crea un nuevo objeto Alumnos.
@@ -71,5 +77,6 @@ public class AlumnoService {
 	public Alumnos obtenerTodosAlumnos() {
 	    return repository.obtenerTodosAlumnos();
 	}
+
 
 }

@@ -1,4 +1,4 @@
-package UnsisSmile.odonto.edu.model;
+package UnsisSmile.odonto.edu.UnsisSmile.model;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.query.Procedure;
@@ -8,7 +8,7 @@ import UnsisSmile.odonto.edu.UnsisSmile.entity.Alumnos;
 import UnsisSmile.odonto.edu.UnsisSmile.entity.SemestreGrupo;
 
 @Repository
-public interface IAlumnoRepository extends JpaRepository<Alumnos, Long> {
+public interface IAlumnoRepository extends JpaRepository<Alumnos, Integer> {
 	@Procedure(name = "InsertarAlumno")
 	/**
 	 * Procedimiento almacenado para insertar un nuevo objeto Alumnos.
@@ -28,25 +28,27 @@ public interface IAlumnoRepository extends JpaRepository<Alumnos, Long> {
 	Alumnos InsertarAlumnos(String nombre, String nombre2, String apellido, String apellido2, Character sexo,
 	        String curp, int idSemestreGrupo, String matricula, String telefono, String mail);
 
-	@Procedure(name = "obtenerAlumnos")
+	
 	/**
 	 * Procedimiento almacenado para obtener un objeto Alumnos por su ID.
 	 *
 	 * @param id El ID del objeto Alumnos a obtener.
 	 * @return El objeto Alumnos correspondiente al ID proporcionado.
 	 */
-	Alumnos obternerAlumnos(Long id);
+	@Procedure(name = "obtenerAlumnos")
+	Alumnos obternerAlumnos(Integer id);
 
-	@Procedure(name = "eliminarAlumno")
+	
 	/**
 	 * Procedimiento almacenado para eliminar un objeto Alumnos por su ID.
 	 *
 	 * @param id El ID del objeto Alumnos a eliminar.
 	 * @return El objeto Alumnos que ha sido eliminado.
 	 */
-	Alumnos eliminarAlumno(Long id);
+	@Procedure(name = "eliminarAlumno")
+	Alumnos eliminarAlumno(Integer id);
 
-	@Procedure(name = "actualizarAlumno")
+	
 	/**
 	 * Procedimiento almacenado para actualizar un objeto Alumnos.
 	 *
@@ -63,16 +65,18 @@ public interface IAlumnoRepository extends JpaRepository<Alumnos, Long> {
 	 * @param mail             El correo electrónico actualizado del alumno.
 	 * @return El objeto Alumnos actualizado.
 	 */
+	@Procedure(name = "actualizarAlumno")
 	Alumnos actualizarAlumno(int idAlumno, String nombre, String nombre2, String apellido,
 	        String apellido2, Character sexo, String curp, int idSemestreGrupo, String matricula,
 	        String telefono, String mail);
 
-	@Procedure(name = "obtenerTodosAlumnos")
+
 	/**
 	 * Procedimiento almacenado para obtener todos los objetos Alumnos.
 	 *
 	 * @return Una lista de todos los objetos Alumnos.
 	 */
+	@Procedure(name = "obtenerTodosAlumnos")
 	Alumnos obtenerTodosAlumnos();
 
 }
