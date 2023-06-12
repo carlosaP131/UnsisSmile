@@ -21,12 +21,12 @@ import UnsisSmile.odonto.edu.UnsisSmile.entity.SemestreGrupo;
 
 public interface ISemestreGrupoImpl extends JpaRepository<SemestreGrupo,Long> {
 	//Procedimiento que Recibe un String de Semestre y regresa una lista de grupos
-	@Procedure (name = "spFiltarSemGrup")
-	List<String> spFiltarSemGrup(String semestre);
+	@Procedure (name = "filtarGrupos")
+	List<String> filtarGrupos(String semestre);
 	//Procedimiento que Recibe dos Strings de Semestre y un grupo regresa un id de semestre
 	@Procedure(name = "filtrarIdSemestreGrupo")
 	int filtrarIdSemestreGrupo(String semestre ,String grupo);
 	//Procedimiento que Recibe un Int de Id y regresa  una lista de grupos
-	@Procedure(name = "spFiltarSemGrup")
+	@Procedure(name = "filtarGrupos")
 	ArrayList<String> obtenerSemGrup(int id);
 }
