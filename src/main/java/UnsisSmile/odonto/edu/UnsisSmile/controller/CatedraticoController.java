@@ -40,12 +40,12 @@ public class CatedraticoController {
 		service.crearRegistro(catedraticos);
 	}
 	
-	@DeleteMapping("/eliminar/{id}")
-	public void eliminarRegistro(@PathVariable Long id_catedratico) {
+	@DeleteMapping("/eliminar/{id_catedratico}")
+	public void eliminarRegistro(@PathVariable Integer id_catedratico) {
 		service.eliminarRegistro(id_catedratico);
 	}
 	@GetMapping("/obtenerTodosAdministradores/{id}")
-	public Catedraticos obtenerRegistroById(@PathVariable Long id) {
+	public Catedraticos obtenerRegistroById(@PathVariable Integer id) {
 		return service.obtenerRegistroById(id);
 		}
 	

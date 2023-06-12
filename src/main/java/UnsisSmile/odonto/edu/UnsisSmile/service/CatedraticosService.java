@@ -39,13 +39,13 @@ public class CatedraticosService{
 	}
 
 	@Transactional
-	public void eliminarRegistro(Long id_catedratico) {
+	public void eliminarRegistro(Integer id_catedratico) {
 	   repository.eliminarCatedratico(id_catedratico);
 	}
 
 	@Transactional
-	public Catedraticos obtenerRegistroById(Long id) {
-		return repository.obtenerCatedratico(id);
+	public Catedraticos obtenerRegistroById(Integer id_catedratico) {
+		return repository.obtenerCatedratico(id_catedratico);
 	}
 	
 	@Transactional
