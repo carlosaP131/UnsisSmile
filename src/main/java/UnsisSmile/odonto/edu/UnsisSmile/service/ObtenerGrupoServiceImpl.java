@@ -17,7 +17,7 @@ public class ObtenerGrupoServiceImpl {
 	private  ISemestreGrupoImpl  repository;
 	//Obtiene una lista de semestres
 	public List<String> obtenerRegistros(String semestre) {
-        return repository.spFiltarSemGrup(semestre);
+        return repository.filtarGrupos(semestre);
     }
 
     //Obtiene una lista de grupos
