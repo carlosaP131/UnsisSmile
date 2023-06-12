@@ -30,10 +30,10 @@ public class SemestreGrupoController {
         return service.obtenerRegistros(semestre);
     }
 	//Muestra un grupo
-	@GetMapping("/obtenerSemestreGrupo/{id}")
-    public ArrayList<String> obtenerSemGrup(@PathVariable int id) {
-        return service.obtenerSemGrup(id);
-    }
+	//@GetMapping("/obtenerSemestreGrupo/{id}")
+    //public ArrayList<String> obtenerSemGrup(@PathVariable int id) {
+      //  return service.obtenerSemGrup(id);
+    //}
 	//Muestra los grupos por semestre
 	@GetMapping("/obtenerIdSemestre/{semestre},{ grupo}")
     public int obtenerIdSG(@PathVariable String semestre,@PathVariable String grupo) {

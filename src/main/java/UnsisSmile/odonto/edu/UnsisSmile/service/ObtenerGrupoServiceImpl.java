@@ -21,9 +21,9 @@ public class ObtenerGrupoServiceImpl {
     }
 
     //Obtiene una lista de grupos
-    public ArrayList<String> obtenerSemGrup(int id) {
-        return repository.obtenerSemGrup(id);
-    }
+    //public ArrayList<String> obtenerSemGrup(int id) {
+      //  return repository.obtenerSemGrup(id);
+    //}
 
     //Obtiene un grupo
     public int obtenerIdSG(String semestre, String grupo) {

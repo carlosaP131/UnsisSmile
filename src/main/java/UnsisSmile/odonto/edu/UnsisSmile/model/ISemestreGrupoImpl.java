@@ -27,6 +27,6 @@ public interface ISemestreGrupoImpl extends JpaRepository<SemestreGrupo,Long> {
 	@Procedure(name = "filtrarIdSemestreGrupo")
 	int filtrarIdSemestreGrupo(String semestre ,String grupo);
 	//Procedimiento que Recibe un Int de Id y regresa  una lista de grupos
-	@Procedure(name = "filtarGrupos")
-	ArrayList<String> obtenerSemGrup(int id);
+	//@Procedure(name = "filtarGrupos")
+	//ArrayList<String> obtenerSemGrup(int id);
 }
