@@ -1,6 +1,9 @@
 package UnsisSmile.odonto.edu.UnsisSmile.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,52 +18,54 @@ import UnsisSmile.odonto.edu.UnsisSmile.service.AlumnoService;
 //microservicios
 @RestController
 //@CrossOrigin(origins = "http://localhost:42000")
-@RequestMapping("/api") // http://localhost:8080/api/crear
+@RequestMapping("/unsis") // http://localhost:8080/api/crear
 public class AlumnoController {
 	// Inyectar el servicio
 	@Autowired
 	private AlumnoService service;
 
-	@GetMapping("/obtenerAlumnos/{id}")
 	/**
 	 * Obtiene un objeto Alumnos con el ID especificado.
 	 *
 	 * @param id El ID del alumno a obtener.
 	 * @return El objeto Alumnos correspondiente al ID especificado.
 	 */
+	@GetMapping("/obtenerAlumnos/{id}")
 	public Alumnos obtenerAlumnoId(@PathVariable Integer id) {
 		return service.obtenerAlumnos(id);
 	}
 
-	@PutMapping("/editarAlumnos/{id}")
 	/**
 	 * Edita un objeto Alumnos con el ID especificado.
 	 *
 	 * @param id El ID del alumno a editar.
 	 * @return El objeto Alumnos editado correspondiente al ID especificado.
 	 */
-//	public Alumnos editarAlumnoId(@PathVariable Alumnos alumnos) {
-//		return service.actualizarAlumno(alumnos.getIdAlumno(), alumnos.getNombre(), alumnos.getNombre2(), alumnos.getApellido(), alumnos.getApellido2(), alumnos.getSexo(), alumnos.getCurp(), alumnos.getSemestreGrupo().getIdSemestreGrupo(), alumnos.getMatricula(), alumnos.getTelefono(), alumnos.getEmailAlumno());
+	@PutMapping("/editarAlumnos/{id}")
+	//public Alumnos editarAlumnoId(@PathVariable Alumnos alumnos) {
+		//return service.actualizarAlumno(alumnos.getIdAlumno(), alumnos.getNombre(), alumnos.getNombre2(), alumnos.getApellido(), alumnos.getApellido2(), alumnos.getSexo(), alumnos.getCurp(), alumnos.getSemestreGrupo().getIdSemestreGrupo(), alumnos.getMatricula(), alumnos.getTelefono(), alumnos.getEmailAlumno());
 //	}
 
-	@DeleteMapping("/eliminarAlumnos/{id}")
+	
 	/**
 	 * Elimina un objeto Alumnos con el ID especificado.
 	 *
 	 * @param id El ID del alumno a eliminar.
 	 * @return El objeto Alumnos eliminado correspondiente al ID especificado.
+	 * 
 	 */
-	public Alumnos eliminarAlumnoId(@PathVariable Integer id) {
-		return service.eliminarAlumno(id);
+	@DeleteMapping("/eliminarAlumno/{id}")
+	public void eliminarAlumno(@PathVariable Integer id) {
+		service.eliminarAlumno(id);
 	}
 
-	@PostMapping("/crearAlumnos/{id}")
 	/**
 	 * Crea un nuevo objeto Alumnos.
 	 *
 	 * @param alumno El objeto Alumnos a crear.
 	 * @return El objeto Alumnos recién creado.
 	 */
+	@PostMapping("/crearAlumnos/{id}")
 	public Alumnos crearAlumno(Alumnos alumno) {
 		return service.crearAlumno(alumno);
 	}
@@ -71,7 +76,7 @@ public class AlumnoController {
 	 * @return Una lista de todos los objetos Alumnos.
 	 */
 	@GetMapping("/obtenerTodosAlumnos")
-	public Alumnos obtenerTodosAlumnos() {
+	public List<Alumnos> obtenerTodosAlumnos() {
 		System.out.println("ingresando....");
 		return service.obtenerTodosAlumnos();
 	}

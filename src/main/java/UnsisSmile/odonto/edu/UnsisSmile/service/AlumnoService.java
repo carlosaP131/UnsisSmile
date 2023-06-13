@@ -1,5 +1,7 @@
 package UnsisSmile.odonto.edu.UnsisSmile.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
@@ -31,8 +33,8 @@ public class AlumnoService {
 	 * @param id El ID del objeto Alumnos a eliminar.
 	 * @return El objeto Alumnos que ha sido eliminado.
 	 */
-	public Alumnos eliminarAlumno(Integer id) {
-	    return repository.eliminarAlumno(id);
+	public void eliminarAlumno(Integer id) {
+	    repository.eliminarAlumno(id);
 	}
 
 	@Transactional
@@ -74,7 +76,7 @@ public class AlumnoService {
 	 *
 	 * @return Una lista de todos los objetos Alumnos.
 	 */
-	public Alumnos obtenerTodosAlumnos() {
+	public List<Alumnos> obtenerTodosAlumnos() {
 	    return repository.obtenerTodosAlumnos();
 	}
 

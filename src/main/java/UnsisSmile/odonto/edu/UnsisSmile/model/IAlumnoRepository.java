@@ -1,5 +1,7 @@
 package UnsisSmile.odonto.edu.UnsisSmile.model;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.stereotype.Repository;
@@ -46,7 +48,7 @@ public interface IAlumnoRepository extends JpaRepository<Alumnos, Integer> {
 	 * @return El objeto Alumnos que ha sido eliminado.
 	 */
 	@Procedure(name = "eliminarAlumno")
-	Alumnos eliminarAlumno(Integer id);
+	void eliminarAlumno(Integer id);
 
 	
 	/**
@@ -77,6 +79,6 @@ public interface IAlumnoRepository extends JpaRepository<Alumnos, Integer> {
 	 * @return Una lista de todos los objetos Alumnos.
 	 */
 	@Procedure(name = "obtenerTodosAlumnos")
-	Alumnos obtenerTodosAlumnos();
+	List<Alumnos> obtenerTodosAlumnos();
 
 }
