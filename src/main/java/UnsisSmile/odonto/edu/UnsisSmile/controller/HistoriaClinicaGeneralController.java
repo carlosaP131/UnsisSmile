@@ -8,9 +8,7 @@
 package UnsisSmile.odonto.edu.UnsisSmile.controller;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,42 +17,59 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import UnsisSmile.odonto.edu.UnsisSmile.entity.HistoriaClinicaGeneral;
 import UnsisSmile.odonto.edu.UnsisSmile.service.HistoriaClinicaGeneralService;
 
 @RestController
-//@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/unsis")
 public class HistoriaClinicaGeneralController {
-	// Spring se encarga de gestionar la creacion de los objetos
+	/**
+	 *  Spring se encarga de gestionar la creacion de los objetos
+	 */
 	@Autowired 
 	private HistoriaClinicaGeneralService service;
 	
-	//Método POST de invocación de service para creación de registros 
+	/**
+	 * Método POST de invocación de service para creación de registros 
+	 * @param HistoriaClinicaGeneral
+	 */
 	@PostMapping("/crearHCG")
 	public void crearRegistro(@RequestBody HistoriaClinicaGeneral HistoriaClinicaGeneral) {
 		service.crearRegistro(HistoriaClinicaGeneral);
 	}
 	
-	//Método GET de invocación de service para listar los registros HCG
+	/**
+	 * Método GET de invocación de service para listar los registros HCG
+	 * @return
+	 */
 	@GetMapping("/listarHCG")
 	public List<HistoriaClinicaGeneral> listarRegistros() {
 		return service.obtenerRegistros();
 	}
 	
-	//Método DELETE de invocación de service para eliminación de registros
+	/**
+	 * Método DELETE de invocación de service para eliminación de registros
+	 * @param id
+	 */
 	@DeleteMapping("/eliminarHCG/{id}")
 	public void eliminarRegistro(@PathVariable Long id) {
 		service.eliminarRegistro(id);
 	}
-	//Método GET de invocación de service para listar un registro especificado mediante un id
+	/**
+	 * Método GET de invocación de service para listar un registro especificado mediante un id
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/listarHCGById/{id}")
 	public HistoriaClinicaGeneral obtenerRegistroById(@PathVariable Long id) {
 		return service.obtenerRegistroById(id);
 	}
 	
-	//Método PUT de invocación de service para actualización de registros
+	/**
+	 * Método PUT de invocación de service para actualización de registros
+	 * @param HistoriaClinicaGeneral
+	 * @param id
+	 */
 	@PutMapping("/actualizarHCG/{id}")
 	public void actualizarRegistro(@RequestBody HistoriaClinicaGeneral HistoriaClinicaGeneral, @PathVariable Integer id) {
 		HistoriaClinicaGeneral.setIdHistoriaClinicaGeneral(id);
