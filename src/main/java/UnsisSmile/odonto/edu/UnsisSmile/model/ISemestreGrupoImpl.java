@@ -12,7 +12,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.query.Procedure;
-
+import org.springframework.stereotype.Repository;
 
 import UnsisSmile.odonto.edu.UnsisSmile.entity.SemestreGrupo;
 
@@ -20,7 +20,7 @@ import UnsisSmile.odonto.edu.UnsisSmile.entity.SemestreGrupo;
 
 
 
-
+@Repository
 public interface ISemestreGrupoImpl extends JpaRepository<SemestreGrupo,Long> {
 	//Procedimiento que Recibe un String de Semestre y regresa una lista de grupos
 	@Procedure (name = "filtrarGrupos")

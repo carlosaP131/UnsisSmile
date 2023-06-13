@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import UnsisSmile.odonto.edu.UnsisSmile.model.ISemestreGrupoImpl;
 @Service
-public class ObtenerGrupoServiceImpl {
+public class semestreGrupoServiceImpl {
 	//Instanciado de la interfaz de SemestreGrupo
 	@Autowired
 	private  ISemestreGrupoImpl  repository;
