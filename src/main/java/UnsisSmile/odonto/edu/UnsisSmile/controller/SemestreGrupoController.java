@@ -23,20 +23,34 @@ import UnsisSmile.odonto.edu.UnsisSmile.service.SemestreGrupoServiceImpl;
 
 @RequestMapping("/unsis") // http:localhost:8080/api/crear
 public class SemestreGrupoController {
-	//Estanciado de el service de SemestreGrupo
+	/**
+	 * Estanciado de el service de SemestreGrupo
+	 */
 	@Autowired
 	private SemestreGrupoServiceImpl service;
-	//Muestra la lista de grupos
+	/**
+	 * Muestra la lista de grupos
+	 * @param semestreAux
+	 * @return
+	 */
 	@GetMapping("/filtrarGrupos/{semestreAux}")
 	public List<String> filtrarGrupos(@PathVariable String semestreAux) {
         return service.filtrarGrupos(semestreAux);
     }
-	//Muestra un grupo
+	/**
+	 * Muestra un grupo
+	 * @return
+	 */
 	@GetMapping("/ListarSemestreGrupo")
     public ArrayList<String>spListarSemestreGrupo() {
         return service.spListarSemestreGrupo();
     }
-	//Muestra los grupos por semestre
+	/**
+	 * Muestra los grupos por semestre
+	 * @param semestreAux
+	 * @param grupoAux
+	 * @return
+	 */
 	@GetMapping("/obtenerIdSemestre/semestre/{semestreAux}/grupo/{grupoAux}")
     public @ResponseBody int  filtrarIdSemestreGrupo(@PathVariable String semestreAux,@PathVariable String grupoAux) {
         return service.filtrarIdSemestreGrupo(semestreAux, grupoAux);

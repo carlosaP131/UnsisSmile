@@ -19,22 +19,36 @@ import org.springframework.transaction.annotation.Transactional;
 import UnsisSmile.odonto.edu.UnsisSmile.model.ISemestreGrupoImpl;
 @Service
 public class SemestreGrupoServiceImpl {
-	//Instanciado de la interfaz de SemestreGrupo
+	/**
+	 *Instanciado de la interfaz de SemestreGrupo
+	 */
 	@Autowired
 	private  ISemestreGrupoImpl  repository;
-	//Obtiene una lista de semestres
+	/**
+	 *Obtiene una lista de semestres
+	 * @param semestreAux
+	 * @return
+	 */
 	@Transactional
 	public List<String> filtrarGrupos(String semestreAux) {
         return repository.filtrarGrupos(semestreAux);
     }
 
-    //Obtiene una lista de grupos
+    /**
+     * Obtiene una lista de grupos
+     * @return
+     */
 	@Transactional
     public ArrayList<String> spListarSemestreGrupo() {
         return repository.spListarSemestreGrupo();
     }
 
-    //Obtiene un grupo
+	/**
+	 * Obtiene un grupo
+	 * @param semestreAux
+	 * @param grupoAux
+	 * @return
+	 */
 	@Transactional
     public int filtrarIdSemestreGrupo(String semestreAux,String grupoAux) {
 		

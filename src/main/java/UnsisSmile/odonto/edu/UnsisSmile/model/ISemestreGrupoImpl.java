@@ -24,15 +24,27 @@ import UnsisSmile.odonto.edu.UnsisSmile.entity.SemestreGrupo;
 
 @Repository
 public interface ISemestreGrupoImpl extends JpaRepository<SemestreGrupo,Long> {
-	//Procedimiento que Recibe un String de Semestre y regresa una lista de grupos
+	
+	/**
+	 * Procedimiento que Recibe un String de Semestre y regresa una lista de grupos
+	 * @param semestreAux
+	 * @return
+	 */
 	@Procedure (name = "filtrarGrupos")
 	List<String> filtrarGrupos(String semestreAux);
-	
-	//Procedimiento que Recibe dos Strings de Semestre y un grupo regresa un id de semestre
+	/**
+	 * 
+	 * @param semestreAux
+	 * @param grupoAux
+	 * @return
+	 */
 	@Query(value = "select unsis_smile.filtrarIdSemestreGrupo(:semestreAux, :grupoAux);\n", nativeQuery = true)
 	int filtrarIdSemestreGrupo(String semestreAux,String grupoAux);
 	
-	//Procedimiento que Recibe un Int de Id y regresa  una lista de grupos
+	/**
+	 *Procedimiento que Recibe un Int de Id y regresa  una lista de grupos
+	 * @return
+	 */
 	@Procedure(name = "spListarSemestreGrupo")
 	ArrayList<String> spListarSemestreGrupo();
 }
