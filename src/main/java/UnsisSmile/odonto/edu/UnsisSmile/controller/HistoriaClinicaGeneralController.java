@@ -1,4 +1,4 @@
-/*
+/**
  *Autor: Jesús Fernando Hernández Vite
  *Fecha de creación : 08 jun 2023, 08:45
  *Fecha de modificación: 08 jun 2023, 16:58
@@ -27,7 +27,8 @@ import UnsisSmile.odonto.edu.UnsisSmile.service.HistoriaClinicaGeneralService;
 //@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/unsis")
 public class HistoriaClinicaGeneralController {
-	@Autowired // Spring se encarga de gestionar la creacion de los objetos
+	// Spring se encarga de gestionar la creacion de los objetos
+	@Autowired 
 	private HistoriaClinicaGeneralService service;
 	
 	//Método POST de invocación de service para creación de registros 
