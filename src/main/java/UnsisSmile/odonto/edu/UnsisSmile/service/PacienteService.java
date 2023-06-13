@@ -8,11 +8,9 @@
 package UnsisSmile.odonto.edu.UnsisSmile.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import UnsisSmile.odonto.edu.UnsisSmile.entity.Paciente;
 import UnsisSmile.odonto.edu.UnsisSmile.model.IPacienteRepository;
 
@@ -20,8 +18,8 @@ import UnsisSmile.odonto.edu.UnsisSmile.model.IPacienteRepository;
 public class PacienteService {
 	@Autowired // Spring se encarga de gestionar la creacion de los objetos
 	private IPacienteRepository repository;
-	
-	@Transactional 
+
+	@Transactional
 	/**
 	 * Método de creación de registros pacientes
 	 */
@@ -29,37 +27,36 @@ public class PacienteService {
 		repository.save(paciente);
 	}
 
-	@Transactional 
+	@Transactional
 	/**
 	 * Método de eliminación de registros pacientes
 	 */
 	public void eliminarRegistros(Paciente paciente) {
 		repository.delete(paciente);
 	}
-	
-	@Transactional 
+
+	@Transactional
 	/**
 	 * Método para listar los registros pacientes
 	 */
 	public List<Paciente> obtenerRegistros(Long idPaciente) {
 		return repository.obtenerPacientePorAlumno(idPaciente);
 	}
-	
-	@Transactional 
+
+	@Transactional
 	/**
 	 * Método de actualización de pacientes
 	 */
 	public void actualizarRegistro(Paciente paciente) {
 		repository.save(paciente);
 	}
-	
+
 	/**
 	 * Método de listar de pacientes
 	 */
-	 public Paciente getPacienteByid_Native(int id) {
-		 return repository.getPacienteByid_Native(id);
-		
+	public Paciente getPacienteByid_Native(int id) {
+		return repository.getPacienteByid_Native(id);
+
 	}
-	
 
 }
