@@ -51,9 +51,16 @@ public class PacienteController {
 		
 	}
 	
-	@PutMapping("/actualizarPaciente/{id}")
-	public void actualizarRegistro(Paciente paciente) {
-		service.actualizarRegistro(paciente);
+//	@PutMapping("/actualizarPaciente/{id}")
+//	public void actualizarRegistro(Paciente paciente) {
+//		service.actualizarRegistro(paciente);
+//		
+//	}
+	
+	
+	@PutMapping("/actualizarPaciente/id/{id}/nombre1/{nombre1}/nombre2/{nombre2}")
+	public void actualizarRegistro(@PathVariable int id,@PathVariable String nombre1,@PathVariable String nombre2) {
+		service.actualizarRegistro(id,nombre1,nombre2);
 		
 	}
 	

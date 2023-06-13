@@ -37,10 +37,13 @@ public class PacienteService {
 		return repository.obtenerPacientePorAlumno(idPaciente);
 	}
 	
-	public void actualizarRegistro(Paciente paciente) {
-		repository.save(paciente);
+//	public void actualizarRegistro(Paciente paciente) {
+//		repository.save(paciente);
+//	}
+	@Transactional 
+	public void actualizarRegistro(int id,String nombre1, String nombre2) {
+		repository.getActualizarPaciente(id,nombre1,nombre2);
 	}
-	
 	
 	
 

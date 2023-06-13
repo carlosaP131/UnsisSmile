@@ -32,7 +32,7 @@ public class Paciente implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_paciente")
-    private Long idPaciente;
+    private Integer idPaciente;
     @Column(name = "nombre1")
     private String nombre1;
     @Column(name = "nombre2")
@@ -75,15 +75,15 @@ public class Paciente implements Serializable {
     public Paciente() {
     }
 
-    public Paciente(Long idPaciente) {
+    public Paciente(Integer idPaciente) {
         this.idPaciente = idPaciente;
     }
 
-    public Long getIdPaciente() {
+    public Integer getIdPaciente() {
         return idPaciente;
     }
 
-    public void setIdPaciente(Long idPaciente) {
+    public void setIdPaciente(Integer idPaciente) {
         this.idPaciente = idPaciente;
     }
 
