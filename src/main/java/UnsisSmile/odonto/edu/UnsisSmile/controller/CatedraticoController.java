@@ -12,7 +12,6 @@ import java.util.List;
 
 //Librerias importadas para el dasarrollo del controller. 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +20,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import UnsisSmile.odonto.edu.UnsisSmile.entity.Administradores;
 import UnsisSmile.odonto.edu.UnsisSmile.entity.Catedraticos;
 import UnsisSmile.odonto.edu.UnsisSmile.service.CatedraticosService;
 
@@ -40,10 +38,11 @@ public class CatedraticoController {
 		service.crearRegistro(catedraticos);
 	}
 	
-	@DeleteMapping("/eliminarCatedratico/{id_catedratico}")
+	@DeleteMapping("/eliminarCatedra/{id_catedratico}")
 	public void eliminarRegistro(@PathVariable Integer id_catedratico) {
 		service.eliminarRegistro(id_catedratico);
 	}
+	
 	@GetMapping("/obtenerTodosCatedratico/{id}")
 	public Catedraticos obtenerRegistroById(@PathVariable Integer id) {
 		return service.obtenerRegistroById(id);

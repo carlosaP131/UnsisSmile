@@ -11,12 +11,9 @@ package UnsisSmile.odonto.edu.UnsisSmile.service;
 
 //Librerias importadas para el dasarrollo del servicio de catedraticos. 
 import java.util.List;
-import javax.xml.crypto.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import UnsisSmile.odonto.edu.UnsisSmile.entity.Administradores;
 import UnsisSmile.odonto.edu.UnsisSmile.entity.Catedraticos;
 import UnsisSmile.odonto.edu.UnsisSmile.model.ICatedraticosRepository;
 
@@ -40,7 +37,7 @@ public class CatedraticosService{
 
 	@Transactional
 	public void eliminarRegistro(Integer id_catedratico) {
-	   repository.eliminarCatedratico(id_catedratico);
+	   repository.deleteById(id_catedratico);
 	}
 
 	@Transactional

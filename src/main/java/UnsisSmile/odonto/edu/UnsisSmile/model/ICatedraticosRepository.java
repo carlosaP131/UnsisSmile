@@ -16,7 +16,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.query.Procedure;
 import UnsisSmile.odonto.edu.UnsisSmile.entity.Catedraticos;
 
-public interface ICatedraticosRepository extends JpaRepository<Catedraticos, Long>{
+public interface ICatedraticosRepository extends JpaRepository<Catedraticos, Integer>{
 	//Procedimiento almacenado para insertar una lista de todos los catedraticos.
 	@Procedure(name = "insertarCatedratico")	
 	public void insertarCatedratico(String nombre, String nombre2, String apellido, String aplellido2, String curp, String telefono, 
