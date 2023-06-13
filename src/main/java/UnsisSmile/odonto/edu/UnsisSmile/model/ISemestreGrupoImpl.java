@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.stereotype.Repository;
 
@@ -28,7 +29,7 @@ public interface ISemestreGrupoImpl extends JpaRepository<SemestreGrupo,Long> {
 	List<String> filtrarGrupos(String semestreAux);
 	
 	//Procedimiento que Recibe dos Strings de Semestre y un grupo regresa un id de semestre
-	@Procedure (name = "filtrarIdSemestreGrupo")
+	@Query(value = "select unsis_smile.filtrarIdSemestreGrupo(:semestreAux, :grupoAux);\n", nativeQuery = true)
 	int filtrarIdSemestreGrupo(String semestreAux,String grupoAux);
 	
 	//Procedimiento que Recibe un Int de Id y regresa  una lista de grupos
