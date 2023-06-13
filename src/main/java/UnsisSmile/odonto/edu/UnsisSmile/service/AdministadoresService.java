@@ -16,13 +16,18 @@ import UnsisSmile.odonto.edu.UnsisSmile.model.IAdministradoresRepository;
 
 @Service
 public class AdministadoresService {
-	// Declara una variable "repository" e inyecta una implementación de
-	// "IAdministradoresRepository"
+	/**
+	 *  Declara una variable "repository" e inyecta una implementación de IAdministradoresRepository
+	 */
+	
 	@Autowired
 	private IAdministradoresRepository repository;
 
 	@Transactional
-	// Crea un nuevo registro de administrador utilizando los datos proporcionados.
+	/**
+	 *  Crea un nuevo registro de administrador utilizando los datos proporcionados.
+	 * @param administradores
+	 */
 	public void crearRegistro(Administradores administradores) {
 		repository.insertarAdministrador(administradores.getNombre1(), administradores.getNombre2(),
 				administradores.getApellido1(), administradores.getApellido2(), administradores.getCurp(),
@@ -32,30 +37,40 @@ public class AdministadoresService {
 	}
 
 	@Transactional
-	// Elimina un registro de administrador del repositorio utilizando el ID
-	// proporcionado.
+	/**
+	 * Elimina un registro de administrador del repositorio utilizando el ID proporcionado.
+	 * @param id_admin
+	 */
 	public void eliminarRegistro(Integer id_admin) {
 		repository.eliminarAdministrador(id_admin);
 	}
 
 	@Transactional
-	// Obtiene un registro de administrador del repositorio utilizando el ID
-	// proporcionado.
+	/**
+	 * Obtiene un registro de administrador del repositorio utilizando el ID proporcionado.
+	 * @param idAdministrador
+	 * @return
+	 */
 	public Administradores obtenerRegistroById(Integer idAdministrador) {
 		return repository.obtenerAdministradores(idAdministrador);
 	}
 
 	@Transactional
-	// Obtiene todos los registros de administradores del repositorio.
+	/**
+	 * Obtiene todos los registros de administradores del repositorio.
+	 * @return
+	 */
 	public List<Administradores> obtenerTodosRegistro() {
 		return repository.obtenerTodosAdministradores();
 	}
 
 	@Transactional
-	// Actualiza un registro de administrador en el repositorio utilizando los datos
-	// proporcionados.
+	/**
+	 * Actualiza un registro de administrador en el repositorio utilizando los datos proporcionados.
+	 * @param administradores
+	 */
 	public void actualizarRegistro(Administradores administradores) {
-		repository.actualizarAdministrador(administradores.getNombre1(), administradores.getNombre2(),
+		repository.actualizarAdministrador(administradores.getIdAdministrador(), administradores.getNombre1(), administradores.getNombre2(),
 				administradores.getApellido1(), administradores.getApellido2(), administradores.getCurp(),
 				administradores.getTelefono(), administradores.getNumeroTrabajador(),
 				administradores.getFechaNacimiento(), administradores.getSexo(), administradores.getEmailAdmin());

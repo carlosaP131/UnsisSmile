@@ -16,12 +16,27 @@ import UnsisSmile.odonto.edu.UnsisSmile.entity.Administradores;
 
 @Repository
 public interface IAdministradoresRepository extends JpaRepository<Administradores, Integer> {
-	// procedimiento para crear un administrador
+	/**
+	 *  procedimiento para crear un administrador
+	 * @param nombre1
+	 * @param nombre2
+	 * @param apellido1
+	 * @param apellido2
+	 * @param curp
+	 * @param telefono
+	 * @param numeroTrabajador
+	 * @param fechaNacimiento
+	 * @param sexo
+	 * @param emailAdmin
+	 */
 	@Procedure(name = "insertarAdministrador")
 	void insertarAdministrador(String nombre1, String nombre2, String apellido1, String apellido2, String curp,
 			String telefono, String numeroTrabajador, LocalDate fechaNacimiento, Character sexo, String emailAdmin);
 
-	// procedimiento para eliminar un administrador
+	/**
+	 *  procedimiento para eliminar un administrador
+	 * @param id_admin
+	 */
 	@Procedure(name = "eliminarAdministrador")
 	void eliminarAdministrador(Integer id_admin);
 
@@ -34,13 +49,29 @@ public interface IAdministradoresRepository extends JpaRepository<Administradore
 	@Procedure(name = "obtenerAdministradores")
 	Administradores obtenerAdministradores(Integer id_admin);
 
-	// procedimiento para obtenerTodos los administrador
+	/**
+	 *  procedimiento para obtenerTodos los administrador
+	 * @return
+	 */
 	@Procedure(name = "obtenerTodosAdministradores")
 	List<Administradores> obtenerTodosAdministradores();
 
-	// procedimiento para actualizar un administrador
+	/**
+	 *  procedimiento para actualizar un administrador
+	 * @param id_adminAux
+	 * @param nombre1Aux
+	 * @param nombre2Aux
+	 * @param apellido1Aux
+	 * @param apellido2Aux
+	 * @param curpAux
+	 * @param telefonoAux
+	 * @param numero_trabajadorAux
+	 * @param fecha_nacimientoAux
+	 * @param sexoAux
+	 * @param email_adminAux
+	 */
 	@Procedure(name = "actualizarAdministrador")
-	void  actualizarAdministrador(String nombre1Aux, String nombre2Aux, String apellido1Aux,
+	void  actualizarAdministrador(Integer id_adminAux, String nombre1Aux, String nombre2Aux, String apellido1Aux,
 			String apellido2Aux, String curpAux, String telefonoAux, String numero_trabajadorAux,
 			LocalDate fecha_nacimientoAux, Character sexoAux, String email_adminAux);
 
