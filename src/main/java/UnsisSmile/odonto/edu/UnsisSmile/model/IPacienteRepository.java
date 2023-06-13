@@ -14,6 +14,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.query.Procedure;
+import org.springframework.data.repository.query.Param;
 
 import UnsisSmile.odonto.edu.UnsisSmile.entity.Paciente;
 
@@ -34,6 +35,11 @@ public interface IPacienteRepository extends JpaRepository<Paciente, Long>{
     @Query (value="UPDATE paciente SET nombre1 = :nombre1 ,nombre2 = :nombre2  WHERE id_paciente = :id ;",nativeQuery = true)
 	void getActualizarPaciente( int id,  String nombre1, String nombre2);
 	
+    /**
+	 * Procedure para listar el paciente
+	 */
+    @Query (value="Select * from paciente where id_paciente = :_id",nativeQuery = true)
+	Paciente getPacienteByid_Native(@Param ("_id")int id);
 	
 
 }

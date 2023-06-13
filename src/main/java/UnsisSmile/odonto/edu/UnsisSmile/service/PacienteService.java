@@ -23,7 +23,7 @@ public class PacienteService {
 	
 	@Transactional 
 	/**
-	 * Método de creación de registros 
+	 * Método de creación de registros pacientes
 	 */
 	public void crearRegistro(Paciente paciente) {
 		repository.save(paciente);
@@ -32,7 +32,7 @@ public class PacienteService {
 	
 	@Transactional 
 	/**
-	 * Método de eliminación de registros
+	 * Método de eliminación de registros pacientes
 	 */
 	public void eliminarRegistros(Paciente paciente) {
 		repository.delete(paciente);
@@ -41,7 +41,7 @@ public class PacienteService {
 	
 	@Transactional 
 	/**
-	 * Método para listar los registros paciente
+	 * Método para listar los registros pacientes
 	 */
 	public List<Paciente> obtenerRegistros(Long idPaciente) {
 		return repository.obtenerPacientePorAlumno(idPaciente);
@@ -49,17 +49,19 @@ public class PacienteService {
 	
 	@Transactional 
 	/**
-	 * Método de actualización de registros
+	 * Método de actualización de pacientes
 	 */
 	public void actualizarRegistro(Paciente paciente) {
 		repository.save(paciente);
 	}
 	
-//	@Transactional 
-//	public void actualizarRegistro(int id,String nombre1, String nombre2) {
-//		repository.getActualizarPaciente(id,nombre1,nombre2);
-//	}
-	
+	/**
+	 * Método de listar de pacientes
+	 */
+	 public Paciente getPacienteByid_Native(int id) {
+		 return repository.getPacienteByid_Native(id);
+		
+	}
 	
 
 }

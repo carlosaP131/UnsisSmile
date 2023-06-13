@@ -66,17 +66,17 @@ public class PacienteController {
 	 * Método PUT de invocación de service para actualización de registros
 	 */
 	public void actualizarRegistro(@RequestBody Paciente paciente) {
-//		System.out.println("id: " + paciente.getIdPaciente());
-//		System.out.println("nombre: " + paciente.getNombre1());
 		service.actualizarRegistro(paciente);
 		
 	}
-	
-//	
-//	@PutMapping("/actualizarPaciente/id/{id}/nombre1/{nombre1}/nombre2/{nombre2}")
-//	public void actualizarRegistro(@PathVariable int id,@PathVariable String nombre1,@PathVariable String nombre2) {
-//		service.actualizarRegistro(id,nombre1,nombre2);
-//		
-//	}
+	/**
+	 * Método GET de invocación de service para actualización de registros
+	 */
+	@GetMapping("/obtenerPaciente/{id}")
+	 public Paciente getPacienteByid_Native(@PathVariable int id) {
+		 return service.getPacienteByid_Native(id);
+		
+	}
+	 
 	
 }
