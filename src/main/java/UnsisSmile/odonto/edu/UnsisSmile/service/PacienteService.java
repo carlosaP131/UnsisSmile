@@ -18,32 +18,47 @@ import UnsisSmile.odonto.edu.UnsisSmile.model.IPacienteRepository;
 
 @Service
 public class PacienteService {
-	@Autowired 
+	@Autowired // Spring se encarga de gestionar la creacion de los objetos
 	private IPacienteRepository repository;
 	
-	
 	@Transactional 
+	/**
+	 * Método de creación de registros 
+	 */
 	public void crearRegistro(Paciente paciente) {
 		repository.save(paciente);
 	}
 	
-	@Transactional 
-	public void eliminarRegistros(Long idPaciente) {
-		repository.deleteById(idPaciente);
-	}
 	
 	@Transactional 
+	/**
+	 * Método de eliminación de registros
+	 */
+	public void eliminarRegistros(Paciente paciente) {
+		repository.delete(paciente);
+	}
+	
+	
+	@Transactional 
+	/**
+	 * Método para listar los registros paciente
+	 */
 	public List<Paciente> obtenerRegistros(Long idPaciente) {
 		return repository.obtenerPacientePorAlumno(idPaciente);
 	}
 	
-//	public void actualizarRegistro(Paciente paciente) {
-//		repository.save(paciente);
-//	}
 	@Transactional 
-	public void actualizarRegistro(int id,String nombre1, String nombre2) {
-		repository.getActualizarPaciente(id,nombre1,nombre2);
+	/**
+	 * Método de actualización de registros
+	 */
+	public void actualizarRegistro(Paciente paciente) {
+		repository.save(paciente);
 	}
+	
+//	@Transactional 
+//	public void actualizarRegistro(int id,String nombre1, String nombre2) {
+//		repository.getActualizarPaciente(id,nombre1,nombre2);
+//	}
 	
 	
 

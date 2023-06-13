@@ -19,11 +19,19 @@ import UnsisSmile.odonto.edu.UnsisSmile.entity.Paciente;
 
 public interface IPacienteRepository extends JpaRepository<Paciente, Long>{
 
-    //Procedure para obtener el paciente
+    
+	/**
+	 * Procedure para obtener el paciente
+	 */
 	@Procedure(name = "obtenerPacientePorAlumno")
 	List<Paciente> obtenerPacientePorAlumno(Long id_alum);
 	
-	@Query (value="UPDATE paciente SET nombre1 = :nombre1 ,nombre2 = :nombre2  WHERE id_paciente = :id ;",nativeQuery = true)
+	
+    
+	/**
+	 * Procedure para actualizar el paciente
+	 */
+    @Query (value="UPDATE paciente SET nombre1 = :nombre1 ,nombre2 = :nombre2  WHERE id_paciente = :id ;",nativeQuery = true)
 	void getActualizarPaciente( int id,  String nombre1, String nombre2);
 	
 	
