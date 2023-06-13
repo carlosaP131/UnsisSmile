@@ -8,7 +8,6 @@
 package UnsisSmile.odonto.edu.UnsisSmile.controller;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,12 +17,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import UnsisSmile.odonto.edu.UnsisSmile.entity.Administradores;
 import UnsisSmile.odonto.edu.UnsisSmile.entity.Paciente;
 import UnsisSmile.odonto.edu.UnsisSmile.service.PacienteService;
-
-
 
 @RestController
 //@CrossOrigin(origins="http://localhost:4200")
@@ -42,14 +37,12 @@ public class PacienteController {
 		service.eliminarRegistros(paciente);
 	}
 	
-	
 	@PostMapping("/crearPaciente")
 	/**
 	 * Método POST de invocación de service para creación de registros 
 	 */
 	public void crearRegistro(@RequestBody Paciente paciente) {
 		service.crearRegistro(paciente);
-		
 	}
 	
 	@GetMapping("/obtenerPacientePorId/{id}")
@@ -58,7 +51,6 @@ public class PacienteController {
 	 */
 	public List<Paciente> obtenerRegistro(@PathVariable Long idpaciente){
 		return service.obtenerRegistros(idpaciente);
-		
 	}
 	
 	@PutMapping("/actualizarPaciente/{id}")
@@ -67,15 +59,14 @@ public class PacienteController {
 	 */
 	public void actualizarRegistro(@RequestBody Paciente paciente) {
 		service.actualizarRegistro(paciente);
-		
 	}
+	
 	/**
 	 * Método GET de invocación de service para actualización de registros
 	 */
 	@GetMapping("/obtenerPaciente/{id}")
 	 public Paciente getPacienteByid_Native(@PathVariable int id) {
 		 return service.getPacienteByid_Native(id);
-		
 	}
 	 
 	

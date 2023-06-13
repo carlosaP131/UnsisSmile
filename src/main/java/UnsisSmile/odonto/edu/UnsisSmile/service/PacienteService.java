@@ -28,8 +28,7 @@ public class PacienteService {
 	public void crearRegistro(Paciente paciente) {
 		repository.save(paciente);
 	}
-	
-	
+
 	@Transactional 
 	/**
 	 * Método de eliminación de registros pacientes
@@ -37,7 +36,6 @@ public class PacienteService {
 	public void eliminarRegistros(Paciente paciente) {
 		repository.delete(paciente);
 	}
-	
 	
 	@Transactional 
 	/**

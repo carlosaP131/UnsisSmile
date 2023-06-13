@@ -19,16 +19,12 @@ import org.springframework.data.repository.query.Param;
 import UnsisSmile.odonto.edu.UnsisSmile.entity.Paciente;
 
 public interface IPacienteRepository extends JpaRepository<Paciente, Long>{
-
-    
 	/**
 	 * Procedure para obtener el paciente
 	 */
 	@Procedure(name = "obtenerPacientePorAlumno")
 	List<Paciente> obtenerPacientePorAlumno(Long id_alum);
 	
-	
-    
 	/**
 	 * Procedure para actualizar el paciente
 	 */
