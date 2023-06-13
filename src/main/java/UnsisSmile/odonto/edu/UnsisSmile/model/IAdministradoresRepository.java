@@ -2,11 +2,10 @@
  *Autor:Nancy Obed Martínez Miguel
  *Fecha de creación:09 de junio del 2023
  *Fecha de Modificación:13 de junio del 2023
- *Descripción: se crea la interfaz adiministradoresRepository que contiene los procedimientos que ocupará la clase implemtadora
- *             
- *             
+ *Descripción: se crea la interfaz adiministradoresRepository que contiene los procedimientos que ocupará la clase implemtadora           
  */
 package UnsisSmile.odonto.edu.UnsisSmile.model;
+
 import java.time.LocalDate;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,7 +16,8 @@ import UnsisSmile.odonto.edu.UnsisSmile.entity.Administradores;
 @Repository
 public interface IAdministradoresRepository extends JpaRepository<Administradores, Integer> {
 	/**
-	 *  procedimiento para crear un administrador
+	 * procedimiento para crear un administrador
+	 * 
 	 * @param nombre1
 	 * @param nombre2
 	 * @param apellido1
@@ -34,15 +34,16 @@ public interface IAdministradoresRepository extends JpaRepository<Administradore
 			String telefono, String numeroTrabajador, LocalDate fechaNacimiento, Character sexo, String emailAdmin);
 
 	/**
-	 *  procedimiento para eliminar un administrador
+	 * procedimiento para eliminar un administrador
+	 * 
 	 * @param id_admin
 	 */
 	@Procedure(name = "eliminarAdministrador")
 	void eliminarAdministrador(Integer id_admin);
 
-	
 	/**
 	 * procedimiento para obtener un administrador
+	 * 
 	 * @param id_admin
 	 * @return
 	 */
@@ -50,14 +51,16 @@ public interface IAdministradoresRepository extends JpaRepository<Administradore
 	Administradores obtenerAdministradores(Integer id_admin);
 
 	/**
-	 *  procedimiento para obtenerTodos los administrador
+	 * procedimiento para obtenerTodos los administrador
+	 * 
 	 * @return
 	 */
 	@Procedure(name = "obtenerTodosAdministradores")
 	List<Administradores> obtenerTodosAdministradores();
 
 	/**
-	 *  procedimiento para actualizar un administrador
+	 * procedimiento para actualizar un administrador
+	 * 
 	 * @param id_adminAux
 	 * @param nombre1Aux
 	 * @param nombre2Aux
@@ -71,7 +74,7 @@ public interface IAdministradoresRepository extends JpaRepository<Administradore
 	 * @param email_adminAux
 	 */
 	@Procedure(name = "actualizarAdministrador")
-	void  actualizarAdministrador(Integer id_adminAux, String nombre1Aux, String nombre2Aux, String apellido1Aux,
+	void actualizarAdministrador(Integer id_adminAux, String nombre1Aux, String nombre2Aux, String apellido1Aux,
 			String apellido2Aux, String curpAux, String telefonoAux, String numero_trabajadorAux,
 			LocalDate fecha_nacimientoAux, Character sexoAux, String email_adminAux);
 
