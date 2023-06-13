@@ -1,7 +1,7 @@
 /**
  *Autor:Carlos Aurelio Alcántara Pérez
  *Fecha de creación: 7-06-2023 ***
- *Fecha de actualización:8-06-2023
+ *Fecha de actualización:13-06-2023
  *Descripción: Model del Semestre grupo
  */
 
