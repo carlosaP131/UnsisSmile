@@ -1,20 +1,17 @@
 /**
  *Autor:Nancy Obed Martínez Miguel
  *Fecha de creación:09 de junio del 2023
- *Fecha de Modificación:
+ *Fecha de Modificación:13 de junio del 2023
  *Descripción: se crea la interfaz adiministradoresRepository que contiene los procedimientos que ocupará la clase implemtadora
  *             
  *             
  */
 package UnsisSmile.odonto.edu.UnsisSmile.model;
-
 import java.time.LocalDate;
 import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.stereotype.Repository;
-
 import UnsisSmile.odonto.edu.UnsisSmile.entity.Administradores;
 
 @Repository
@@ -25,7 +22,7 @@ public interface IAdministradoresRepository extends JpaRepository<Administradore
 			String telefono, String numeroTrabajador, LocalDate fechaNacimiento, Character sexo, String emailAdmin);
 
 	// procedimiento para eliminar un administrador
-	@Procedure(name = "eliminarAdministrador") // funciona
+	@Procedure(name = "eliminarAdministrador")
 	void eliminarAdministrador(Integer id_admin);
 
 	// procedimiento para obtener un administrador
