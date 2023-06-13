@@ -23,52 +23,81 @@ import UnsisSmile.odonto.edu.UnsisSmile.entity.Administradores;
 import UnsisSmile.odonto.edu.UnsisSmile.service.AdministadoresService;
 
 @RestController
-//@CrossOrigin(origins="http://localhost:4200")
-//Ruta base para todas las solicitudes en este controlador
+
+/**
+ * Ruta base para todas las solicitudes en este controlador
+ * 
+ * @author labingsw03
+ *
+ */
 @RequestMapping("/unsis")
 public class AdministradoresController {
 
-	@Autowired // Inyección de dependencia del servicio AdministradoresService
+	@Autowired
+	/**
+	 * Inyección de dependencia del servicio AdministradoresService
+	 */
 	private AdministadoresService service;
 
-	// Ruta para crear un nuevo administrador
-	@PostMapping("/crearAdministrador")
 	/**
+	 * Ruta para crear un nuevo administrador Llama al método del servicio para
+	 * crear un nuevo registro de administrador
 	 * 
 	 * @param administradores
 	 */
+	@PostMapping("/crearAdministrador")
+
 	public void crearRegistro(@RequestBody Administradores administradores) {
-		// Llama al método del servicio para crear un nuevo registro de administrador
 		service.crearRegistro(administradores);
 	}
 
-	// Ruta para eliminar administrador
+	/**
+	 * Ruta para eliminar administrador Llama al método del servicio para eliminar
+	 * un registro de administrador
+	 * 
+	 * @param id_admin
+	 */
 	@DeleteMapping("/eliminarAdministrador/{id_admin}")
 	public void eliminarRegistro(@PathVariable Integer id_admin) {
-		// Llama al método del servicio para eliminar un registro de administrador
 		service.eliminarRegistro(id_admin);
 	}
 
-	// Ruta para obtener un administrador por id
+	/**
+	 * Ruta para obtener un administrador por id Llama al método del servicio para
+	 * obtener un registro de administrador por id
+	 * 
+	 * @param idAdministrador
+	 * @return
+	 */
 	@GetMapping("/obtenerAdministradorPorId/{idAdministrador}")
 	public Administradores obtenerRegistroById(@PathVariable Integer idAdministrador) {
-		// Llama al método del servicio para obtener un registro de administrador por id
 		return service.obtenerRegistroById(idAdministrador);
 	}
 
-	// Ruta para listar todos los administradores
+	/**
+	 * Ruta para listar todos los administradores Llama al método del servicio para
+	 * listar todos los administradores
+	 * 
+	 * @return
+	 */
 	@GetMapping("/listarTodosAdministradores")
 	public List<Administradores> listarTodosRegistros() {
-		// Llama al método del servicio para listar todos los administradores
 		return service.obtenerTodosRegistro();
 	}
 
-	// Ruta para actualizar un administrador
+	/**
+	 * Ruta para actualizar un administrador Actualiza el ID del administrador con
+	 * el valor proporcionado Llama al método del servicio para actualizar el
+	 * registro de administrador
+	 * 
+	 * @param administradores
+	 * @param id
+	 */
 	@PutMapping("/actualizarAdministrador/{id}")
 	public void actualizarRegistro(@RequestBody Administradores administradores, @PathVariable Integer id) {
-		// Actualiza el ID del administrador con el valor proporcionado
+
 		administradores.setIdAdministrador(id);
-		/// Llama al método del servicio para actualizar el registro de administrador
+
 		service.actualizarRegistro(administradores);
 	}
 
