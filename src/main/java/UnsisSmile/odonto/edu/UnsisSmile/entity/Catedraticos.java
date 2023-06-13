@@ -1,10 +1,19 @@
-package UnsisSmile.odonto.edu.UnsisSmile.entity;
+/**
+ * Autor: Baldomero Sainos Hernández 
+ * Autor de modificación: Baldomero Sainos Hernández
+ * Fecha creación: 05 de Junio de 2023
+ * Fecha modificación: 13 Junio de 2023
+ * Descripción: Clase Catedraticos, se implementó la clase entity.
+ */
 
+package UnsisSmile.odonto.edu.UnsisSmile.entity;
+/**
+ * Librerias importadas para el dasarrollo del entity. 
+ */
 import java.io.Serializable;  
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Basic;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -14,16 +23,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
-/**
- *
- * @author labingsw05
- */
+
 @Entity
 @Table(name = "catedraticos")
 public class Catedraticos implements Serializable {
@@ -61,6 +64,7 @@ public class Catedraticos implements Serializable {
     private List<HistoriaClinicaGeneral> historiaClinicaGeneralList;
     @JoinColumn(name = "fk_id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JsonIgnore
     private Usuarios usuarios;
     @OneToMany(mappedBy = "catedraticos", fetch = FetchType.LAZY)
     private List<CatedraticoGrupo> catedraticoGrupoList;
