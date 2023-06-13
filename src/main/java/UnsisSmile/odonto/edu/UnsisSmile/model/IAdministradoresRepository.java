@@ -25,7 +25,12 @@ public interface IAdministradoresRepository extends JpaRepository<Administradore
 	@Procedure(name = "eliminarAdministrador")
 	void eliminarAdministrador(Integer id_admin);
 
-	// procedimiento para obtener un administrador
+	
+	/**
+	 * procedimiento para obtener un administrador
+	 * @param id_admin
+	 * @return
+	 */
 	@Procedure(name = "obtenerAdministradores")
 	Administradores obtenerAdministradores(Integer id_admin);
 
@@ -35,7 +40,7 @@ public interface IAdministradoresRepository extends JpaRepository<Administradore
 
 	// procedimiento para actualizar un administrador
 	@Procedure(name = "actualizarAdministrador")
-	Administradores actualizarAdministrador(String nombre1Aux, String nombre2Aux, String apellido1Aux,
+	void  actualizarAdministrador(String nombre1Aux, String nombre2Aux, String apellido1Aux,
 			String apellido2Aux, String curpAux, String telefonoAux, String numero_trabajadorAux,
 			LocalDate fecha_nacimientoAux, Character sexoAux, String email_adminAux);
 

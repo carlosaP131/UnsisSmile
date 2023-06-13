@@ -6,6 +6,7 @@
  */
 
 package UnsisSmile.odonto.edu.UnsisSmile.service;
+
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,12 +16,13 @@ import UnsisSmile.odonto.edu.UnsisSmile.model.IAdministradoresRepository;
 
 @Service
 public class AdministadoresService {
-    //Declara una variable "repository" e inyecta una implementación de "IAdministradoresRepository"
+	// Declara una variable "repository" e inyecta una implementación de
+	// "IAdministradoresRepository"
 	@Autowired
 	private IAdministradoresRepository repository;
 
 	@Transactional
-	//Crea un nuevo registro de administrador utilizando los datos proporcionados.
+	// Crea un nuevo registro de administrador utilizando los datos proporcionados.
 	public void crearRegistro(Administradores administradores) {
 		repository.insertarAdministrador(administradores.getNombre1(), administradores.getNombre2(),
 				administradores.getApellido1(), administradores.getApellido2(), administradores.getCurp(),
@@ -30,13 +32,15 @@ public class AdministadoresService {
 	}
 
 	@Transactional
-	// Elimina un registro de administrador del repositorio utilizando el ID proporcionado.
+	// Elimina un registro de administrador del repositorio utilizando el ID
+	// proporcionado.
 	public void eliminarRegistro(Integer id_admin) {
 		repository.eliminarAdministrador(id_admin);
 	}
 
 	@Transactional
-	// Obtiene un registro de administrador del repositorio utilizando el ID proporcionado.
+	// Obtiene un registro de administrador del repositorio utilizando el ID
+	// proporcionado.
 	public Administradores obtenerRegistroById(Integer idAdministrador) {
 		return repository.obtenerAdministradores(idAdministrador);
 	}
@@ -48,14 +52,13 @@ public class AdministadoresService {
 	}
 
 	@Transactional
-	// Actualiza un registro de administrador en el repositorio utilizando los datos proporcionados.
+	// Actualiza un registro de administrador en el repositorio utilizando los datos
+	// proporcionados.
 	public void actualizarRegistro(Administradores administradores) {
-//		 repository.actualizarAdministrador(administradores.getNombre1(),
-//		 administradores.getNombre2(), administradores.getApellido1(),
-//		 administradores.getApellido2(),
-//		 administradores.getCurp(),administradores.getTelefono(),
-//		 administradores.getNumeroTrabajador(), administradores.getFechaNacimiento(),
-//		 administradores.getSexo(), administradores.getEmailAdmin());
+		repository.actualizarAdministrador(administradores.getNombre1(), administradores.getNombre2(),
+				administradores.getApellido1(), administradores.getApellido2(), administradores.getCurp(),
+				administradores.getTelefono(), administradores.getNumeroTrabajador(),
+				administradores.getFechaNacimiento(), administradores.getSexo(), administradores.getEmailAdmin());
 
 	}
 }

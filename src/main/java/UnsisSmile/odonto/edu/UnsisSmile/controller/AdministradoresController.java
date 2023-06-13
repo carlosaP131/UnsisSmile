@@ -33,6 +33,10 @@ public class AdministradoresController {
 
 	// Ruta para crear un nuevo administrador
 	@PostMapping("/crearAdministrador")
+	/**
+	 * 
+	 * @param administradores
+	 */
 	public void crearRegistro(@RequestBody Administradores administradores) {
 		// Llama al método del servicio para crear un nuevo registro de administrador
 		service.crearRegistro(administradores);

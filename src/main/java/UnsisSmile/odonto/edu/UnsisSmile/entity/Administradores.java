@@ -61,7 +61,7 @@ public class Administradores implements Serializable {
     private Boolean estatus;
     @JoinColumn(name = "fk_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
+    @JsonIgnore //Evita la serialización de la relación con usuarios
     private Usuarios usuarios;
 
     public Administradores() {
