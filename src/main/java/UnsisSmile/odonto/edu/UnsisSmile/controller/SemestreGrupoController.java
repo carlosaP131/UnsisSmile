@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import UnsisSmile.odonto.edu.UnsisSmile.service.semestreGrupoServiceImpl;
@@ -31,13 +33,13 @@ public class SemestreGrupoController {
         return service.filtrarGrupos(semestreAux);
     }
 	//Muestra un grupo
-	//@GetMapping("/obtenerSemestreGrupo/{id}")
-    //public ArrayList<String> obtenerSemGrup(@PathVariable int id) {
-      //  return service.obtenerSemGrup(id);
-    //}
+	@GetMapping("/ListarSemestreGrupo")
+    public ArrayList<String>spListarSemestreGrupo() {
+        return service.spListarSemestreGrupo();
+    }
 	//Muestra los grupos por semestre
-	@GetMapping("/obtenerIdSemestre/{semestre},{ grupo}")
-    public int obtenerIdSG(@PathVariable String semestre,@PathVariable String grupo) {
-        return service.obtenerIdSG(semestre, grupo);
+	@GetMapping("/obtenerIdSemestre/semestre/{semestreAux}/grupo/{grupoAux}")
+    public @ResponseBody int  filtrarIdSemestreGrupo(@PathVariable String semestreAux,@PathVariable String grupoAux) {
+        return service.filtrarIdSemestreGrupo(semestreAux, grupoAux);
     }
 }

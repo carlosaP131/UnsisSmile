@@ -8,6 +8,7 @@
 package UnsisSmile.odonto.edu.UnsisSmile.service;
 
 
+import java.util.ArrayList;
 //import java.util.ArrayList;
 import java.util.List;
 
@@ -28,14 +29,16 @@ public class semestreGrupoServiceImpl {
     }
 
     //Obtiene una lista de grupos
-    //public ArrayList<String> obtenerSemGrup(int id) {
-      //  return repository.obtenerSemGrup(id);
-    //}
+	@Transactional
+    public ArrayList<String> spListarSemestreGrupo() {
+        return repository.spListarSemestreGrupo();
+    }
 
     //Obtiene un grupo
 	@Transactional
-    public int obtenerIdSG(String semestre, String grupo) {
-        return repository.filtrarIdSemestreGrupo(semestre, grupo);
+    public int filtrarIdSemestreGrupo(String semestreAux,String grupoAux) {
+		
+        return repository.filtrarIdSemestreGrupo(semestreAux, grupoAux);
     }
 	
 }
