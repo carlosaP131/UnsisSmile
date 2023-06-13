@@ -34,27 +34,49 @@ public class PacienteController {
 	private PacienteService service;
 	
 	@DeleteMapping("/eliminarPaciente/{id}")
-	public void eliminarRegistro(@PathVariable Long paciente) {
+	/**
+	 * Método DELETE de invocación de service para eliminación de registros
+	 */
+	public void eliminarRegistro(Paciente paciente,@PathVariable Integer id )  {
+		paciente.setIdPaciente(id);
 		service.eliminarRegistros(paciente);
-		
 	}
 	
+	
 	@PostMapping("/crearPaciente")
+	/**
+	 * Método POST de invocación de service para creación de registros 
+	 */
 	public void crearRegistro(@RequestBody Paciente paciente) {
 		service.crearRegistro(paciente);
 		
 	}
 	
 	@GetMapping("/obtenerPacientePorId/{id}")
+	/**
+	 * Método GET de invocación de service para listar un registro especificado mediante un id
+	 */
 	public List<Paciente> obtenerRegistro(@PathVariable Long idpaciente){
 		return service.obtenerRegistros(idpaciente);
 		
 	}
 	
 	@PutMapping("/actualizarPaciente/{id}")
-	public void actualizarRegistro(Paciente paciente) {
+	/**
+	 * Método PUT de invocación de service para actualización de registros
+	 */
+	public void actualizarRegistro(@RequestBody Paciente paciente) {
 		service.actualizarRegistro(paciente);
 		
 	}
+	/**
+	 * Método GET de invocación de service para actualización de registros
+	 */
+	@GetMapping("/obtenerPaciente/{id}")
+	 public Paciente getPacienteByid_Native(@PathVariable int id) {
+		 return service.getPacienteByid_Native(id);
+		
+	}
+	 
 	
 }

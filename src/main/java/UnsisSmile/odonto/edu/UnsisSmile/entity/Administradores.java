@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -59,6 +61,7 @@ public class Administradores implements Serializable {
     private Boolean estatus;
     @JoinColumn(name = "fk_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore //Evita la serialización de la relación con usuarios
     private Usuarios usuarios;
 
     public Administradores() {
