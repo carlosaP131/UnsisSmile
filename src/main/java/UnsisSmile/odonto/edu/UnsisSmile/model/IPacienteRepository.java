@@ -1,7 +1,7 @@
 /**
  *Autor:Getzemani Alejandro Gonzalez Cruz
  *Fecha de creación:9 de junio 2023
- *Fecha de Modificación: 9 de junio 2023
+ *Fecha de Modificación: 13 de junio 2023
  *Descripción:clase model para Paciente, modelamos el crud de dicho objeto
  *             implementando la clase interfaz
  */
