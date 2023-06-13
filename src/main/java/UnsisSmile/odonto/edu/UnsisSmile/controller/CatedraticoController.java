@@ -33,7 +33,7 @@ public class CatedraticoController {
 	private CatedraticosService service;
 
 
-	@PostMapping("/crearCatedratico")
+	@PostMapping("/crearCatedra")
 	public void crearRegistro(@RequestBody Catedraticos catedraticos) {
 		service.crearRegistro(catedraticos);
 	}
