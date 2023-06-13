@@ -1,17 +1,14 @@
-/** ****************************************************************************
- *Autor:Carlos Aurelio Alcántara Pérez
- *Fecha de creación: 7-06-2023 ***
- *Fecha de actualización:8-06-2023
- *Descripción: Entity de Antecedentes Heredo familiares
- **
- * ****************************************************************************/
+/**
+ * Autor: Joel Francisco Figueroa Martinez 
+ * Fecha creación: 09 de Junio de 2023
+ * Fecha modificación: 13 Junio de 2023
+ * Descripción: Modela a la tabla Antecedentes Heredofamiliares
+ */
+
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable;  
-import java.time.LocalDate;
-import java.util.Date;
+import java.io.Serializable;   
 import java.util.List;
-
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,16 +16,10 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
-/**
- *
- * @author labingsw05
- */
 @Entity
 @Table(name = "antecedentes_heredofamiliares")
 

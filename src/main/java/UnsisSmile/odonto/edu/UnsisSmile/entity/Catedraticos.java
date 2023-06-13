@@ -1,18 +1,16 @@
-/**
- * Autor: Baldomero Sainos Hernández 
- * Autor de modificación: Baldomero Sainos Hernández
- * Fecha creación: 05 de Junio de 2023
+/** 
+ * Autor: Joel Francisco Figueroa Martinez 
+ * Fecha creación: 09 de Junio de 2023
  * Fecha modificación: 13 Junio de 2023
- * Descripción: Clase Catedraticos, se implementó la clase entity.
+ * Descripción: Modela a la tabla Catedraticos
  */
 
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
-/**
- * Librerias importadas para el dasarrollo del entity. 
- */
-import java.io.Serializable;  
+
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Basic;
 import jakarta.persistence.CascadeType;

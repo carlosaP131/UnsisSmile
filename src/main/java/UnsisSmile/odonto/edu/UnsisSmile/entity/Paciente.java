@@ -1,15 +1,14 @@
 /**
- *Autor:Getzemani Alejandro Gonzalez Cruz
- *Fecha de creación:9 de junio 2023
- *Fecha de Modificación: 13 de junio 2023
- *Descripción:Entity de Paciente
+ * Autor: Joel Francisco Figueroa Martinez 
+ * Fecha creación: 09 de Junio de 2023
+ * Fecha modificación: 13 Junio de 2023
+ * Descripción: Modela a la tabla Paciente
  */
 
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
-import java.io.Serializable;  
+import java.io.Serializable;   
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import jakarta.persistence.Basic;
 import jakarta.persistence.CascadeType;
@@ -19,15 +18,9 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Lob;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-/**
- *
- * @author labingsw05
- */
+
 @Entity
 @Table(name = "paciente")
 
