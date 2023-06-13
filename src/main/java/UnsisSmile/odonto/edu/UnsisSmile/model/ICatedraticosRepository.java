@@ -12,8 +12,12 @@ package UnsisSmile.odonto.edu.UnsisSmile.model;
 
 //Librerias importadas para el dasarrollo de la interfaz. 
 import java.time.LocalDate;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.query.Procedure;
+//import com.curso.spring.springboot.entity.Libro;
+
 import UnsisSmile.odonto.edu.UnsisSmile.entity.Catedraticos;
 
 public interface ICatedraticosRepository extends JpaRepository<Catedraticos, Integer>{
@@ -24,7 +28,7 @@ public interface ICatedraticosRepository extends JpaRepository<Catedraticos, Int
 	
 	//Procedimiento almacenado para obtener una lista de todos los catedraticos.
 	@Procedure(name = "obtenerTodosCatedraticos")	
-	Catedraticos obtenerTodosCatedraticos ();
+	List<Catedraticos> obtenerTodosCatedraticos();
 	
 	//Procedimiento almacenado para eliminar un catedraticos.
 	@Procedure(name = "eliminarCatedratico")	
@@ -32,8 +36,8 @@ public interface ICatedraticosRepository extends JpaRepository<Catedraticos, Int
 	
 	//Procedimiento almacenado para obtener un catedraticos en especifico, con su Id.
 	@Procedure(name = "obtenerCatedratico")	
-	Catedraticos obtenerCatedratico (Integer id_catedratico);
-	
+	Catedraticos obtenerCatedratico (Integer id_cat);
+
 	//Procedimiento almacenado para actualizar un catedraticos.
 	@Procedure(name = "actualizarCatedraticos")	
 	Catedraticos actualizarCatedraticos (String id_catedraticoAux, String nombreAux, String nombre2Aux, String apellidoAux, String apellido2Aux,

@@ -43,20 +43,21 @@ public class CatedraticoController {
 		service.eliminarRegistro(id_catedratico);
 	}
 	
-	@GetMapping("/obtenerTodosCatedratico/{id}")
-	public Catedraticos obtenerRegistroById(@PathVariable Integer id) {
-		return service.obtenerRegistroById(id);
+	@GetMapping("/obtenerCatedratico/{id_catedratico}")
+	public Catedraticos obteneCatedratico(@PathVariable Integer id_catedratico) {
+		return service.obtenerCatedratico(id_catedratico);
 		}
 	
-	@GetMapping("/listarCatedratico")
-	public  List<Catedraticos>listarTodosRegistros() {
-		return service.obtenerTodosRegistro();
+	@GetMapping("/listarTodosCatedraticos")
+	public  List<Catedraticos>listarTodosCatedraticos() {
+		return service.obtenerTodosCatedraticos();
 	}
+//	
+//	@PutMapping("/actualizarCatedra/{id}")
+//	public void actualizarRegistro(@RequestBody Catedraticos catedraticos, @PathVariable int id) {
+//		catedraticos.setIdCatedratico(id);
+//		service.actualizarRegistro(catedraticos);}
 	
-	@PutMapping("/actualizarCatedratico/{id}")
-	public void actualizarRegistro(@RequestBody Catedraticos catedraticos, @PathVariable int id) {
-		catedraticos.setIdCatedratico(id);
-		service.actualizarRegistro(catedraticos);}
 	
 	
 }

@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Basic;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -57,6 +59,7 @@ public class Catedraticos implements Serializable {
     private List<HistoriaClinicaGeneral> historiaClinicaGeneralList;
     @JoinColumn(name = "fk_id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JsonIgnore
     private Usuarios usuarios;
     @OneToMany(mappedBy = "catedraticos", fetch = FetchType.LAZY)
     private List<CatedraticoGrupo> catedraticoGrupoList;

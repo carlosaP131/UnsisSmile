@@ -37,29 +37,26 @@ public class CatedraticosService{
 
 	@Transactional
 	public void eliminarRegistro(Integer id_catedratico) {
-	   repository.deleteById(id_catedratico);
+	   repository.eliminarCatedratico(id_catedratico);
 	}
 
 	@Transactional
-	public Catedraticos obtenerRegistroById(Integer id_catedratico) {
-		return repository.obtenerCatedratico(id_catedratico);
+	public Catedraticos obtenerCatedratico(Integer id_cat) {
+		return repository.obtenerCatedratico(id_cat);
 	}
 	
 	@Transactional
-	public List<Catedraticos> obtenerTodosRegistro() {
-		return (List<Catedraticos>) repository.obtenerTodosCatedraticos();
+	public List<Catedraticos> obtenerTodosCatedraticos() {
+		return repository.obtenerTodosCatedraticos();
 	}
-	
 	@Transactional
 	public void actualizarRegistro(Catedraticos catedraticos) {
-		//repository.actualizarCatedraticos(Catedraticos.getNombre1(),
-		// Catedraticos.getNombre2(), Catedraticos.getApellido1(),
-		// Catedraticos.getApellido2(),
-		// Catedraticos.getCurp(),Catedraticos.getTelefono(),
-		// Catedraticos.getNumeroTrabajador(), Catedraticos.getFechaNacimiento(),
-		// Catedraticos.getSexo(), Catedraticos.getEmailAdmin());
-
-	}
+		repository.actualizarCatedraticos(catedraticos.getNombre(),catedraticos.getNombre2(), catedraticos.getApellido(),catedraticos.getApellido2(),
+				catedraticos.getCurp(),catedraticos.getTelefono(),null, catedraticos.getSexo(),catedraticos.getFechaNacimiento(),catedraticos.getNumeroTrabajador(),
+				catedraticos.getEmailCatedratico());
+	
+		
+		}
 
 	
 
