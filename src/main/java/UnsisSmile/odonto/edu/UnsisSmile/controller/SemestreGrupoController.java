@@ -14,11 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import UnsisSmile.odonto.edu.UnsisSmile.service.semestreGrupoServiceImpl;
+import UnsisSmile.odonto.edu.UnsisSmile.service.SemestreGrupoServiceImpl;
 
 @RestController
 
@@ -26,7 +25,7 @@ import UnsisSmile.odonto.edu.UnsisSmile.service.semestreGrupoServiceImpl;
 public class SemestreGrupoController {
 	//Estanciado de el service de SemestreGrupo
 	@Autowired
-	private semestreGrupoServiceImpl service;
+	private SemestreGrupoServiceImpl service;
 	//Muestra la lista de grupos
 	@GetMapping("/filtrarGrupos/{semestreAux}")
 	public List<String> filtrarGrupos(@PathVariable String semestreAux) {
