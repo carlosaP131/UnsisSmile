@@ -36,24 +36,25 @@ public class administradoresController {
 		service.crearRegistro(administradores);
 	}
 	
-	@DeleteMapping("/eliminar/{id}")
-	public void eliminarRegistro(@PathVariable Long id_administrador) {
-		service.eliminarRegistro(id_administrador);
+	@DeleteMapping("/eliminar/{id_admin}")
+	public void eliminarRegistro(@PathVariable Integer id_admin) {
+		service.eliminarRegistro(id_admin);
 	}
-	@GetMapping("/obtenerAdministradorPorId/{id}")
-	public Administradores obtenerRegistroById(@PathVariable Long id_admin) {
-		return service.obtenerRegistroById(id_admin);}
+	@GetMapping("/obtenerAdministradorPorId/{idAdministrador}")
+
+	public Administradores obtenerRegistroById(@PathVariable Integer idAdministrador) {
+		System.out.println("tamaño: ");
+		return service.obtenerRegistroById(idAdministrador);}
 	
 	@GetMapping("/listar")
 	public  List<Administradores>listarTodosRegistros() {
+		System.out.println("tamaño: " + service.obtenerTodosRegistro());
 		return service.obtenerTodosRegistro();
 	}
 	@PutMapping("/actualizar/{id}")
-	public void actualizarRegistro(@RequestBody Administradores administradores, @PathVariable int id) {
+	public void actualizarRegistro(@RequestBody Administradores administradores, @PathVariable Integer id) {
 		administradores.setIdAdministrador(id);
-		service.actualizarRegistro(administradores);}
-	
-	
-	
+		service.actualizarRegistro(administradores);
+		}
 	
 }
