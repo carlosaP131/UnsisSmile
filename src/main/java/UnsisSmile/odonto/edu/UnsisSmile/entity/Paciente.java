@@ -1,10 +1,16 @@
+/**
+ *Autor:Getzemani Alejandro Gonzalez Cruz
+ *Fecha de creación:9 de junio 2023
+ *Fecha de Modificación: 13 de junio 2023
+ *Descripción:Entity de Paciente
+ */
+
 package UnsisSmile.odonto.edu.UnsisSmile.entity;
 
 import java.io.Serializable;  
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
-
 import jakarta.persistence.Basic;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
