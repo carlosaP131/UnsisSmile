@@ -7,7 +7,7 @@
  * ****************************************************************************/
 package UnsisSmile.odonto.edu.UnsisSmile.model;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -19,10 +19,12 @@ import UnsisSmile.odonto.edu.UnsisSmile.entity.SemestreGrupo;
 
 
 
+
+
 public interface ISemestreGrupoImpl extends JpaRepository<SemestreGrupo,Long> {
 	//Procedimiento que Recibe un String de Semestre y regresa una lista de grupos
-	@Procedure (name = "filtarGrupos")
-	List<String> filtarGrupos(String semestre);
+	@Procedure (name = "filtrarGrupos")
+	List<String> filtrarGrupos(String semestreAux);
 	//Procedimiento que Recibe dos Strings de Semestre y un grupo regresa un id de semestre
 	@Procedure(name = "filtrarIdSemestreGrupo")
 	int filtrarIdSemestreGrupo(String semestre ,String grupo);

@@ -7,17 +7,24 @@
  * ****************************************************************************/
 package UnsisSmile.odonto.edu.UnsisSmile.service;
 
-import java.util.ArrayList;
+
+//import java.util.ArrayList;
 import java.util.List;
 
-import UnsisSmile.odonto.edu.UnsisSmile.model.ISemestreGrupoImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import UnsisSmile.odonto.edu.UnsisSmile.model.ISemestreGrupoImpl;
+@Service
 public class ObtenerGrupoServiceImpl {
-	//Instanciado de la interfaz de SemestreGrupo 
+	//Instanciado de la interfaz de SemestreGrupo
+	@Autowired
 	private  ISemestreGrupoImpl  repository;
 	//Obtiene una lista de semestres
-	public List<String> obtenerRegistros(String semestre) {
-        return repository.filtarGrupos(semestre);
+	@Transactional
+	public List<String> filtrarGrupos(String semestreAux) {
+        return repository.filtrarGrupos(semestreAux);
     }
 
     //Obtiene una lista de grupos
@@ -26,6 +33,7 @@ public class ObtenerGrupoServiceImpl {
     //}
 
     //Obtiene un grupo
+	@Transactional
     public int obtenerIdSG(String semestre, String grupo) {
         return repository.filtrarIdSemestreGrupo(semestre, grupo);
     }
