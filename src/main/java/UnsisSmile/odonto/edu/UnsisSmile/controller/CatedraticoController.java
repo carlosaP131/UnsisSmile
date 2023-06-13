@@ -42,7 +42,7 @@ public class CatedraticoController {
 	 * 
 	 * @param Método para crear un nuevo catedratico.
 	 */
-	@PostMapping("/crearCatedra")
+	@PostMapping("/crearCatedraticos")
 	public void crearRegistro(@RequestBody Catedraticos catedraticos) {
 		service.crearRegistro(catedraticos);
 	}
@@ -51,7 +51,7 @@ public class CatedraticoController {
 	 * 
 	 * @param Método para eliminar un catedratico.
 	 */
-	@DeleteMapping("/eliminarCatedra/{id_catedratico}")
+	@DeleteMapping("/eliminarCatedraticos/{id_catedratico}")
 	public void eliminarRegistro(@PathVariable Integer id_catedratico) {
 		service.eliminarRegistro(id_catedratico);
 	}
