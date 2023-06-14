@@ -11,7 +11,7 @@ import UnsisSmile.odonto.edu.UnsisSmile.entity.SemestreGrupo;
 
 @Repository
 public interface IAlumnoRepository extends JpaRepository<Alumnos, Integer> {
-	@Procedure(name = "InsertarAlumno")
+	
 	/**
 	 * Procedimiento almacenado para insertar un nuevo objeto Alumnos.
 	 *
@@ -27,8 +27,9 @@ public interface IAlumnoRepository extends JpaRepository<Alumnos, Integer> {
 	 * @param mail             El correo electrónico del alumno.
 	 * @return El objeto Alumnos creado.
 	 */
-	Alumnos InsertarAlumnos(String nombre, String nombre2, String apellido, String apellido2, Character sexo,
-	        String curp, int idSemestreGrupo, String matricula, String telefono, String mail);
+	@Procedure(name = "insertarAlumno")
+	void insertarAlumno(String nombre, String nombre2, String apellido, String apellido2, Character sexo,
+	        String curp, Integer idSemestreGrupo, String matricula, String telefono, String mail);
 
 	
 	/**
@@ -48,7 +49,7 @@ public interface IAlumnoRepository extends JpaRepository<Alumnos, Integer> {
 	 * @return El objeto Alumnos que ha sido eliminado.
 	 */
 	@Procedure(name = "eliminarAlumno")
-	void eliminarAlumno(Integer id);
+	void eliminarAlumno(Integer id_alumnoAux);
 
 	
 	/**
@@ -68,9 +69,8 @@ public interface IAlumnoRepository extends JpaRepository<Alumnos, Integer> {
 	 * @return El objeto Alumnos actualizado.
 	 */
 	@Procedure(name = "actualizarAlumno")
-	Alumnos actualizarAlumno(int idAlumno, String nombre, String nombre2, String apellido,
-	        String apellido2, Character sexo, String curp, int idSemestreGrupo, String matricula,
-	        String telefono, String mail);
+	void actualizarAlumno(Integer id_alumnoAux, String nombreAux, String nombre2Aux, String apellidoAux, String apellido2Aux, Character sexoAux,
+	        String curpAux, Integer idSemestreGrupoAux, String matriculaAux, String telefonoAux, String mailAux);
 
 
 	/**

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
+import UnsisSmile.odonto.edu.UnsisSmile.entity.Administradores;
 import UnsisSmile.odonto.edu.UnsisSmile.entity.Alumnos;
 import UnsisSmile.odonto.edu.UnsisSmile.model.IAlumnoRepository;
 import jakarta.transaction.Transactional;
@@ -15,70 +16,83 @@ public class AlumnoService {
 	@Autowired // Inyección de dependencia para el repositorio IAlumnoRepository
 	private IAlumnoRepository repository;
 
+	/**
+	 * Crea un nuevo registro de administrador utilizando los datos proporcionados.
+	 * 
+	 * @param administradores
+	 */
 	@Transactional
+	public void crearRegistro(Alumnos alumno) {
+		repository.insertarAlumno(alumno.getNombre(), alumno.getNombre2(), alumno.getApellido(),
+				alumno.getApellido2(), alumno.getSexo(), alumno.getCurp(),
+			 1, alumno.getMatricula(), alumno.getTelefono(),
+				alumno.getEmailAlumno());
+
+	}
+
+	
 	/**
 	 * Obtiene un objeto Alumnos por su ID.
 	 *
 	 * @param id El ID del objeto Alumnos a obtener.
 	 * @return El objeto Alumnos correspondiente al ID proporcionado.
 	 */
+	@Transactional
 	public Alumnos obtenerAlumnos(Integer id) {
-	    return repository.obternerAlumnos(id);
+		return repository.obternerAlumnos(id);
 	}
 
-	@Transactional
+	
 	/**
 	 * Elimina un objeto Alumnos por su ID.
 	 *
 	 * @param id El ID del objeto Alumnos a eliminar.
 	 * @return El objeto Alumnos que ha sido eliminado.
 	 */
-	public void eliminarAlumno(Integer id) {
-	    repository.eliminarAlumno(id);
+	@Transactional
+	public void eliminarRegistro(Integer id_alumnoAux) {
+		repository.eliminarAlumno(id_alumnoAux);
 	}
 
-	@Transactional
+	
 	/**
 	 * Actualiza un objeto Alumnos.
 	 *
 	 * @param alumnos El objeto Alumnos con los datos actualizados.
+	 * @return 
 	 * @return El objeto Alumnos actualizado.
 	 */
-	public Alumnos actualizarAlumno(Alumnos alumnos) {
-	    return repository.actualizarAlumno(alumnos.getIdAlumno(), alumnos.getNombre(), alumnos.getNombre2(),
-	    		alumnos.getApellido(), alumnos.getApellido2(), alumnos.getSexo(), alumnos.getCurp(),
-	    		alumnos.getSemestreGrupo().getIdSemestreGrupo(), alumnos.getMatricula(), alumnos.getTelefono(), alumnos.getEmailAlumno());
+	@Transactional
+	public void actualizarAlumno(Alumnos alumno) {
+		 repository.actualizarAlumno(alumno.getIdAlumno(), alumno.getNombre(), alumno.getNombre2(), alumno.getApellido(),
+					alumno.getApellido2(), alumno.getSexo(), alumno.getCurp(),
+					 3, alumno.getMatricula(), alumno.getTelefono(),
+						alumno.getEmailAlumno());
 	}
 
-	
-	
-	
-	
-	
-	
-	@Transactional
-	/**
-	 * Crea un nuevo objeto Alumnos.
-	 *
-	 * @param alumno El objeto Alumnos a crear.
-	 * @return El objeto Alumnos creado.
-	 */
-	public Alumnos crearAlumno(Alumnos alumno) {
-	    return repository.InsertarAlumnos(alumno.getNombre(), alumno.getNombre2(), alumno.getApellido(),
-	            alumno.getApellido2(), alumno.getSexo(), alumno.getCurp(),
-	            alumno.getSemestreGrupo().getIdSemestreGrupo(), alumno.getMatricula(), alumno.getTelefono(),
-	            alumno.getEmailAlumno());
-	}
+//	@Transactional
+//	/**
+//	 * Crea un nuevo objeto Alumnos.
+//	 *
+//	 * @param alumno El objeto Alumnos a crear.
+//	 * @return El objeto Alumnos creado.
+//	 */
+//	public Alumnos crearAlumno(Alumnos alumno) {
+//		return repository.InsertarAlumnos(alumno.getNombre(), alumno.getNombre2(), alumno.getApellido(),
+//				alumno.getApellido2(), alumno.getSexo(), alumno.getCurp(),
+//				alumno.getSemestreGrupo().getIdSemestreGrupo(), alumno.getMatricula(), alumno.getTelefono(),
+//				alumno.getEmailAlumno());
+//	}
 
-	@Transactional
+	
 	/**
 	 * Obtiene todos los objetos Alumnos.
 	 *
 	 * @return Una lista de todos los objetos Alumnos.
 	 */
+	@Transactional
 	public List<Alumnos> obtenerTodosAlumnos() {
-	    return repository.obtenerTodosAlumnos();
+		return repository.obtenerTodosAlumnos();
 	}
-
 
 }

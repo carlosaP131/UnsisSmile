@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import UnsisSmile.odonto.edu.UnsisSmile.entity.Alumnos;
+import UnsisSmile.odonto.edu.UnsisSmile.entity.SemestreGrupo;
 import UnsisSmile.odonto.edu.UnsisSmile.service.AlumnoService;
 
 //microservicios
@@ -23,6 +25,17 @@ public class AlumnoController {
 	// Inyectar el servicio
 	@Autowired
 	private AlumnoService service;
+
+	/**
+	 * Crea un nuevo objeto Alumnos.
+	 *
+	 * @param alumno El objeto Alumnos a crear.
+	 * @return El objeto Alumnos recién creado.
+	 */
+	@PostMapping("/crearAlumno")
+	public void crearAlumno(@RequestBody Alumnos alumno) {
+		service.crearRegistro(alumno);
+	}
 
 	/**
 	 * Obtiene un objeto Alumnos con el ID especificado.
@@ -42,11 +55,11 @@ public class AlumnoController {
 	 * @return El objeto Alumnos editado correspondiente al ID especificado.
 	 */
 	@PutMapping("/editarAlumnos/{id}")
-	//public Alumnos editarAlumnoId(@PathVariable Alumnos alumnos) {
-		//return service.actualizarAlumno(alumnos.getIdAlumno(), alumnos.getNombre(), alumnos.getNombre2(), alumnos.getApellido(), alumnos.getApellido2(), alumnos.getSexo(), alumnos.getCurp(), alumnos.getSemestreGrupo().getIdSemestreGrupo(), alumnos.getMatricula(), alumnos.getTelefono(), alumnos.getEmailAlumno());
-//	}
+	public void editarAlumnoId(@RequestBody Alumnos alumno, @PathVariable Integer id) {
+		alumno.setIdAlumno(id);
+		service.actualizarAlumno(alumno);
+	}
 
-	
 	/**
 	 * Elimina un objeto Alumnos con el ID especificado.
 	 *
@@ -54,20 +67,9 @@ public class AlumnoController {
 	 * @return El objeto Alumnos eliminado correspondiente al ID especificado.
 	 * 
 	 */
-	@DeleteMapping("/eliminarAlumno/{id}")
-	public void eliminarAlumno(@PathVariable Integer id) {
-		service.eliminarAlumno(id);
-	}
-
-	/**
-	 * Crea un nuevo objeto Alumnos.
-	 *
-	 * @param alumno El objeto Alumnos a crear.
-	 * @return El objeto Alumnos recién creado.
-	 */
-	@PostMapping("/crearAlumnos/{id}")
-	public Alumnos crearAlumno(Alumnos alumno) {
-		return service.crearAlumno(alumno);
+	@DeleteMapping("/eliminarAlumno/{id_alumnoAux}")
+	public void eliminarRegistro(@PathVariable Integer id_alumnoAux) {
+		service.eliminarRegistro(id_alumnoAux);
 	}
 
 	/**

@@ -14,6 +14,9 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -67,9 +70,13 @@ public class Alumnos implements Serializable {
     private List<PacienteAlumno> pacienteAlumnoList;
     @JoinColumn(name = "fk_id_semestre_grupo", referencedColumnName = "id_semestre_grupo")
     @ManyToOne(fetch = FetchType.LAZY)
+
+    //@JsonProperty("semestreGrupo")
+    @JsonIgnore
     private SemestreGrupo semestreGrupo;
     @JoinColumn(name = "f_id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JsonIgnore
     private Usuarios usuarios;
 
     public Alumnos() {

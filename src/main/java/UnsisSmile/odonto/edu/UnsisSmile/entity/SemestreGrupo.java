@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -35,12 +37,14 @@ public class SemestreGrupo implements Serializable {
     @OneToMany(mappedBy = "semestreGrupo", fetch = FetchType.LAZY)
     private List<Alumnos> alumnosList;
     @JoinColumn(name = "fk_id_grupo", referencedColumnName = "id_grupos")
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     private Grupo grupo;
     @JoinColumn(name = "fk_id_semestre", referencedColumnName = "id_semestre")
     @ManyToOne(fetch = FetchType.LAZY)
     private Semestres semestres;
     @OneToMany(mappedBy = "semestreGrupo", fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<CatedraticoGrupo> catedraticoGrupoList;
 
     public SemestreGrupo() {
