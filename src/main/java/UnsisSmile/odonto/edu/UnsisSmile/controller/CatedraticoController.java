@@ -66,6 +66,7 @@ public class CatedraticoController {
 		return service.obtenerCatedratico(id_catedratico);
 		}
 	
+
 	/**
 	 * 
 	 * @return Método para obtener toda la lista de todos los catedraticos.
@@ -73,6 +74,8 @@ public class CatedraticoController {
 	@GetMapping("/listarTodosCatedraticos")
 	public  List<Catedraticos>listarTodosCatedraticos() {
 		return service.obtenerTodosCatedraticos();
+
+
 	}
 	
 	/**
