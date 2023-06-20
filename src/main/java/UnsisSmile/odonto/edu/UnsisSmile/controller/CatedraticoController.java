@@ -49,7 +49,7 @@ public class CatedraticoController {
 		return service.obtenerRegistroById(id);
 		}
 	
-	@GetMapping("/listarCatedratico")
+	@GetMapping("/listarTodosCatedraticos")
 	public  List<Catedraticos>listarTodosRegistros() {
 		return service.obtenerTodosRegistro();
 	}
