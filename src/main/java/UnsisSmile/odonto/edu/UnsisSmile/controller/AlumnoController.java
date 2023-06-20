@@ -19,7 +19,7 @@ import UnsisSmile.odonto.edu.UnsisSmile.service.AlumnoService;
 
 //microservicios
 @RestController
-//@CrossOrigin(origins = "http://localhost:42000")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/unsis") // http://localhost:8080/api/crear
 public class AlumnoController {
 	// Inyectar el servicio
