@@ -2,7 +2,7 @@
  *Autor:Nancy Obed Martínez Miguel
  *Fecha de creación:09 de junio del 2023
  *Fecha de Modificación: 13 de junio del 2023
- *Descripción: se crea la clase del administradoresSErvice para poder poder implementar nuestros meétodos            
+ *Descripción: se crea la clase del administradoresService para poder  implementar nuestros métodos            
  */
 
 package UnsisSmile.odonto.edu.UnsisSmile.service;
@@ -17,15 +17,17 @@ import UnsisSmile.odonto.edu.UnsisSmile.model.IAdministradoresRepository;
 @Service
 public class AdministadoresService {
 	/**
-	 *  Declara una variable "repository" e inyecta una implementación de IAdministradoresRepository
+	 * Declara una variable "repository" e inyecta una implementación de
+	 * IAdministradoresRepository
 	 */
-	
+
 	@Autowired
 	private IAdministradoresRepository repository;
 
 	@Transactional
 	/**
-	 *  Crea un nuevo registro de administrador utilizando los datos proporcionados.
+	 * Crea un nuevo registro de administrador utilizando los datos proporcionados.
+	 * 
 	 * @param administradores
 	 */
 	public void crearRegistro(Administradores administradores) {
@@ -38,7 +40,9 @@ public class AdministadoresService {
 
 	@Transactional
 	/**
-	 * Elimina un registro de administrador del repositorio utilizando el ID proporcionado.
+	 * Elimina un registro de administrador del repositorio utilizando el ID
+	 * proporcionado.
+	 * 
 	 * @param id_admin
 	 */
 	public void eliminarRegistro(Integer id_admin) {
@@ -47,7 +51,9 @@ public class AdministadoresService {
 
 	@Transactional
 	/**
-	 * Obtiene un registro de administrador del repositorio utilizando el ID proporcionado.
+	 * Obtiene un registro de administrador del repositorio utilizando el ID
+	 * proporcionado.
+	 * 
 	 * @param idAdministrador
 	 * @return
 	 */
@@ -58,6 +64,7 @@ public class AdministadoresService {
 	@Transactional
 	/**
 	 * Obtiene todos los registros de administradores del repositorio.
+	 * 
 	 * @return
 	 */
 	public List<Administradores> obtenerTodosRegistro() {
@@ -66,13 +73,15 @@ public class AdministadoresService {
 
 	@Transactional
 	/**
-	 * Actualiza un registro de administrador en el repositorio utilizando los datos proporcionados.
+	 * Actualiza un registro de administrador en el repositorio utilizando los datos
+	 * proporcionados.
+	 * 
 	 * @param administradores
 	 */
 	public void actualizarRegistro(Administradores administradores) {
-		repository.actualizarAdministrador(administradores.getIdAdministrador(), administradores.getNombre1(), administradores.getNombre2(),
-				administradores.getApellido1(), administradores.getApellido2(), administradores.getCurp(),
-				administradores.getTelefono(), administradores.getNumeroTrabajador(),
+		repository.actualizarAdministrador(administradores.getIdAdministrador(), administradores.getNombre1(),
+				administradores.getNombre2(), administradores.getApellido1(), administradores.getApellido2(),
+				administradores.getCurp(), administradores.getTelefono(), administradores.getNumeroTrabajador(),
 				administradores.getFechaNacimiento(), administradores.getSexo(), administradores.getEmailAdmin());
 
 	}

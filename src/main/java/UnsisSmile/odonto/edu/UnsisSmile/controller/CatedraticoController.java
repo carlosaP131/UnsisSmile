@@ -2,17 +2,18 @@
  * Autor: Baldomero Sainos Hernández 
  * Autor de modificación: Baldomero Sainos Hernández
  * Fecha creación: 05 de Junio de 2023
- * Fecha modificación: 09 mayo de 2023
+ * Fecha modificación: 13 Junio de 2023
  * Descripción: Clase CAtedraticoController, se modelo el crud de dicho objeto
  *              implementando la clase interfaz
  */
+
 package UnsisSmile.odonto.edu.UnsisSmile.controller;
 
+/**
+ * Librerias importadas para el dasarrollo del controller. 
+ */
 import java.util.List;
-
-//Librerias importadas para el dasarrollo del controller. 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,43 +22,71 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import UnsisSmile.odonto.edu.UnsisSmile.entity.Administradores;
 import UnsisSmile.odonto.edu.UnsisSmile.entity.Catedraticos;
 import UnsisSmile.odonto.edu.UnsisSmile.service.CatedraticosService;
 
 
 @RestController
-//@CrossOrigin(origins = "http://localhost:4200")
+/**
+ * 
+ * @CrossOrigin(origins = "http://localhost:4200"
+ *
+ */
 @RequestMapping("/unsis")
 public class CatedraticoController {
 	
 	@Autowired
 	private CatedraticosService service;
 
-
-	@PostMapping("/crearCatedratico")
+	/**
+	 * 
+	 * @param Método para crear un nuevo catedratico.
+	 */
+	@PostMapping("/crearCatedraticos")
 	public void crearRegistro(@RequestBody Catedraticos catedraticos) {
 		service.crearRegistro(catedraticos);
 	}
 	
-	@DeleteMapping("/eliminarCatedratico/{id_catedratico}")
+	/**
+	 * 
+	 * @param Método para eliminar un catedratico.
+	 */
+	@DeleteMapping("/eliminarCatedraticos/{id_catedratico}")
 	public void eliminarRegistro(@PathVariable Integer id_catedratico) {
 		service.eliminarRegistro(id_catedratico);
 	}
-	@GetMapping("/obtenerTodosCatedratico/{id}")
-	public Catedraticos obtenerRegistroById(@PathVariable Integer id) {
-		return service.obtenerRegistroById(id);
+	
+	/**
+	 * 
+	 * @param Método para obtener un catedratico.
+	 * @return nos retorna el catedratico con respecto al id_catedratico solicitado.
+	 */
+	@GetMapping("/obtenerCatedratico/{id_catedratico}")
+	public Catedraticos obteneCatedratico(@PathVariable Integer id_catedratico) {
+		return service.obtenerCatedratico(id_catedratico);
 		}
 	
-	@GetMapping("/listarCatedratico")
-	public  List<Catedraticos>listarTodosRegistros() {
-		return service.obtenerTodosRegistro();
+
+	/**
+	 * 
+	 * @return Método para obtener toda la lista de todos los catedraticos.
+	 */
+	@GetMapping("/listarTodosCatedraticos")
+	public  List<Catedraticos>listarTodosCatedraticos() {
+		return service.obtenerTodosCatedraticos();
+
+
 	}
 	
-	@PutMapping("/actualizarCatedratico/{id}")
-	public void actualizarRegistro(@RequestBody Catedraticos catedraticos, @PathVariable int id) {
+	/**
+	 * 
+	 * @param Método para actualizar un catedratico. 
+	 */
+	@PutMapping("/actualizarCatedraticos/{id}")
+	public void actualizarRegistro(@RequestBody Catedraticos catedraticos, @PathVariable Integer id) {
 		catedraticos.setIdCatedratico(id);
 		service.actualizarRegistro(catedraticos);}
+	
 	
 	
 }
