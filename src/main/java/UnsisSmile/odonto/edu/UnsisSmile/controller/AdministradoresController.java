@@ -30,8 +30,9 @@ import UnsisSmile.odonto.edu.UnsisSmile.service.AdministadoresService;
  * @author labingsw03
  *
  */
-@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/unsis")
+@CrossOrigin(origins = "http://localhost:4200")
+
 public class AdministradoresController {
 
 	@Autowired
